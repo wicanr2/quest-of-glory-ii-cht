@@ -3,7 +3,7 @@
 > Quest for Glory II: Trial by Fire — English ↔ Traditional Chinese translation record.
 > 這份檔案完整記錄本專案的繁中化譯文,中英對照,作為經典流傳。
 
-**目前收錄:2025 條**(持續增補中,語料總量約 2350 句)。
+**目前收錄:2061 條**(持續增補中,語料總量約 2350 句)。
 
 - 正式對照檔:[`qfg2-cht.tsv`](qfg2-cht.tsv)(`English<TAB>繁體中文`)
 - 語感參照 1990 年代《軟體世界》三大誌攻略;專名走阿拉伯/波斯風音譯(見 [`../CONTEXT.md`](../CONTEXT.md))。
@@ -16,6 +16,8 @@
 | "At nightfall tonight, go the door at the end of 'Askeri Darb,' off 'Saif Darb.' Obey, or  | 今晚入夜後,去『Saif Darb』岔出的『Askeri Darb』盡頭那扇門。乖乖照辦,否則你會後悔。 |
 | "At nightfall tonight, go the door at the end of 'Saif Darb.' Obey, or you'll regret it." | 「今晚入夜後,去『Saif Darb』盡頭那扇門。乖乖照辦,否則你會後悔。」 |
 | "If you know what's good for you, you will obey orders. We will leave them here. If you do | 「你要是識相,就乖乖聽令。指令我們留在這兒。你不照辦,有你好受的。我們會盯著你。」 |
+| "Keep off the grass." | 「請勿踐踏草坪。」 |
+| "Obey the laws at all times." | 「時刻遵守律法。」 |
 | "Tomorrow night is your last night. You'll get your final orders then. Be seeing you." | 「明晚是你的最後一晚。到時你會收到最終指令。回頭見。」 |
 | A barrel full of animal entrails. Lovely. | 一整桶的動物內臟。真是「賞心悅目」。 |
 | A beautifully ornate window adorns this area of the wall. | 牆上這一處鑲著一扇華美雕飾的窗。 |
@@ -24,6 +26,7 @@
 | A decorative basket adorns the alley. | 一只裝飾用的籃子點綴著巷子。 |
 | A delicately crafted jar of copper and bronze. | 一只以紅銅與青銅精工打造的罐子。 |
 | A derelict window hangs unevenly from its battered frame. | 一扇破窗歪斜地掛在殘破的窗框上。 |
+| A discarded barrel rests nearby. | 附近擱著一只廢棄的木桶。 |
 | A discarded barrel rests nearby. The wood shows heavy signs of rot. | 附近擱著一只廢棄的木桶,木頭已嚴重腐朽。 |
 | A eunuch patrols the parapet. | 一名宦官在城垛上巡邏。 |
 | A feeling of peace and tranquility permeates the area. | 一股祥和寧靜的氣息瀰漫此地。 |
@@ -45,6 +48,7 @@
 | A square, flat box lies discarded among the trash. | 一只方扁的盒子被丟棄在垃圾堆裡。 |
 | A strange sort of person, even for a human. | 真是個怪人——即便以人類的標準來看也一樣。 |
 | A strong aura of magic radiates from the Water Elemental. You suspect the creature isn't n | 水元素精靈渾身散發著濃烈的魔法氣息。你直覺這傢伙絕不像外表那般人畜無害。 |
+| A strong sense of magic radiates from the Elemental. | 那元素精靈散發著強烈的魔法氣息。 |
 | A swordsman such as yourself should focus on sticking close to his opponent in order to av | 像你這樣的劍士,該專注於緊貼對手,以免被遠距攻擊打個措手不及;對手發動攻勢時,則偶爾後撤。 |
 | A topiary expert, you are not. | 修剪花木的高手,你肯定不是。 |
 | A Water Elemental in the fountain of town would be the greatest of misfortunes. | 要是讓水元素精靈鑽進城裡的噴泉,那可就是天大的災難了。 |
@@ -69,7 +73,3 @@
 | After years of study, you became a very knowledgeable wizard. However, on occasion, you fi | 經年累月的鑽研,你成了一位學識淵博的巫師。然而,你偶爾仍會想起阿布杜拉、卡塔族,以及你在夏皮爾所有其他朋友的下落。 |
 | After you, my friend. I will humbly follow. | 您先請,朋友。我恭敬地跟在後頭。 |
 | Ah, good day. I am busy as always, making up a batch of pills. If you need something, just | 啊,你好。我一如往常地忙,正在調一批藥丸。有什麼需要,儘管說。 |
-| Ah, I did not notice you come in. | 啊,我沒注意到你進來。 |
-| Ah, many greetings, Effendi. Is it not a beautiful day today? We are, indeed, fortunate th | 啊,萬般問候,閣下。今天天氣可真好,不是嗎?我們的確有幸,這樣的日子不必標上價錢,人人都能享受。 |
-| Ah, men... always coming and going. Always going and coming, and always too soon. | 唉,男人哪……總是來來去去,去去來來,而且總是走得太早。 |
-| Ah, then you are indeed a friend in a place where we both need friends. We need to escape  | 啊,那麼在這你我都需要朋友的地方,你果真是個朋友。我們得逃出這座牢獄。 |

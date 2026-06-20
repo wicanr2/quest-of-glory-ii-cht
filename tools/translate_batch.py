@@ -4235,10 +4235,86 @@ BATCH = {
    "我唯一短缺的材料是深色的恐魯斯鱗片。公恐魯斯的鱗片在交配季會變得深得多,是效力強勁的藥丸成分。可惜,索魯斯的交配季還要好幾個月才到。",
  "Greetings, friend of the Katta.":
    "你好,卡塔族的朋友。",
+ # --- 第四十二批:頑固精確短句 + 其他 ---
+ "A discarded barrel rests nearby.":
+   "附近擱著一只廢棄的木桶。",
+ "A strong sense of magic radiates from the Elemental.":
+   "那元素精靈散發著強烈的魔法氣息。",
+ "As you expected, the door is locked.":
+   "不出你所料,門鎖著。",
+ "I accept your challenge gladly, my friend.":
+   "我樂意接受你的挑戰,朋友。",
+ "I am called Sadik Isfahani":
+   "我叫薩迪克·伊斯法罕尼。",
+ "I have already given you my very last speck of it.":
+   "我最後一點點都已經給你了。",
+ "Inside, you have stored the essence of the Pizza Elemental.":
+   "裡頭裝著你封存的「披薩元素精靈」精華。",
+ "It takes real muscle to be good at arm wrestling.":
+   "比腕力要比得好,得有真本事的肌肉。",
+ "\"Keep off the grass.\"":
+   "「請勿踐踏草坪。」",
+ "No rest for the weary":
+   "累歸累,可沒得歇。",
+ "\"Obey the laws at all times.\"":
+   "「時刻遵守律法。」",
+ "That is not an appropriate sponsor.":
+   "那不是個合適的引薦人。",
+ "That is not a valid alley room number.":
+   "那不是個有效的巷弄房號。",
+ "That wouldn't be a good idea.":
+   "這主意不妙。",
+ "The beast is much too large to fetch":
+   "這野獸太大了,「取物」術搬不動。",
+ "The Brigand is no longer in any condition to reply.":
+   "那強盜已經沒法回話了。",
+ "The door is locked.":
+   "門鎖著。",
+ "The map only works in the streets and plazas.":
+   "地圖只在街道與廣場上管用。",
+ "There is a strong sense of magic upon the Fire Elemental.":
+   "火元素精靈身上有股強烈的魔法氣息。",
+ "There is only silence from beyond the door.":
+   "門後唯有一片寂靜。",
+ "There is only silence from beyond the door. The occupants must be sleeping.":
+   "門後唯有一片寂靜。屋裡的人想必睡了。",
+ "There's no time for that.":
+   "沒空管那個。",
+ "There's no time for that now!":
+   "現在沒空管那個!",
+ "There's no time for that now.":
+   "現在沒空管那個。",
+ "These traditional windows are square-shaped and have been built into the wall.":
+   "這些傳統樣式的窗子呈方形,嵌在牆裡。",
+ "The soles of your boots show signs of heavy deterioration.":
+   "你的靴底已顯出嚴重磨損的跡象。",
+ "May you have a good day today.":
+   "願你今天順心如意。",
+ "My name is Lira.":
+   "我叫莉拉。",
+ "Plaza of the Palace":
+   "王宮廣場",
+ "I am trying to develop a pill which will protect against the effect of the claws of the Ghoul.":
+   "我正試著研發一種藥丸,用來抵禦食屍鬼爪子的效力。",
+ "I don't have the bellows anymore. Someone must have figured they needed them badly enough to steal them.":
+   "我沒風箱了。準是有人覺得非要不可,把它偷走了。",
+ "I still need the \"Fruit of Compassion.\" You need to add the victim's hair at the last moment.":
+   "我還需要「慈悲之果」。受害者的頭髮得由你在最後一刻加進去。",
+ "The guards look even more stone-faced than usual. Maybe you shouldn't be picking your nose in public.":
+   "那些衛兵的臉比平常更鐵青。也許你不該在大庭廣眾下挖鼻孔。",
+ "The item Saba sold you is a disk that's made of many small strings of reed carefully woven together.":
+   "薩巴賣給你的是個圓盤,用許多細小的蘆葦條精心編成。",
+ "Thank you, a thousand thank-yous. It is with your support that I may continue my vital work":
+   "謝謝你,千恩萬謝。全靠你的支持,我才能繼續這要緊的工作。",
 }
 
+corpus_set=set(corpus)
 resolved=[]
 for sub, zh in BATCH.items():
+    # 1) 精確全字匹配優先(解決同前綴長變體的歧義)
+    if sub in corpus_set:
+        resolved.append((sub, zh)); continue
+    # 2) 退回唯一子串匹配
     hits=[c for c in corpus if sub in c]
     if len(hits)==1:
         resolved.append((hits[0], zh))

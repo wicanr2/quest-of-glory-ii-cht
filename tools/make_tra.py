@@ -74,6 +74,25 @@ def main():
                 continue
             pairs.append((src, dst))
 
+    # 自創/系列專屬名詞首次出現時附原文(使用者要求:特殊名詞旁放英文)。
+    # 每句每詞只加一次;已被括號跟隨者跳過。長詞先處理避免子詞重疊(卡塔族 > 卡塔)。
+    GLOSS = {
+        "恐魯斯": "Terrorsaurus", "索魯斯": "Saurus", "卡塔": "Katta",
+        "獅人": "Liontaur", "鎮尼": "Djinni", "豺狼人": "Jackalman",
+        "阿德·阿維斯": "Ad Avis", "伊布利斯": "Iblis", "夏皮爾": "Shapeir", "拉希爾": "Raseir",
+    }
+    def gloss(text):
+        for zh in sorted(GLOSS, key=len, reverse=True):
+            i = text.find(zh)
+            if i < 0:
+                continue
+            after = i + len(zh)
+            if after < len(text) and text[after] in "(（":
+                continue  # 已加註
+            text = text[:after] + f"({GLOSS[zh]})" + text[after:]
+        return text
+    pairs = [(src, gloss(dst)) for src, dst in pairs]
+
     # GameID block:uid=0, name=""
     gameid = struct.pack("<i", 0) + wstr_enc("")
     # Dict block
