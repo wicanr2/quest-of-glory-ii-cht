@@ -197,6 +197,131 @@ BATCH = {
    "他是本地的衛兵之一。",
  "Hello! Bone jar! Hi, guy! Set a spell, take your shoes off! What may I do to you":
    "哈囉!笨豬有!嗨呀老兄!坐下歇會兒,把鞋脫了吧!有啥能「效勞」你的?",
+ # --- 第四批:對白 / 劇情 / 物品 / 戰鬥 ---
+ "go the door at the end of 'Askeri Darb,' off 'Saif Darb.' Obey, or you'll regret it":
+   "今晚入夜後,去『Saif Darb』岔出的『Askeri Darb』盡頭那扇門。乖乖照辦,否則你會後悔。",
+ "Alas, my heart is broken":
+   "唉,我的心都碎了。",
+ "Ask for a sign another time":
+   "改天再來求籤吧。",
+ "By golly, it is! There's a silver lining on the underside of Keapon's cloud":
+   "我的天,還真是!姬朋這朵烏雲底下,總算透出一線光明。",
+ "Don't expect any cutting replies":
+   "別指望聽到什麼犀利的回嘴。",
+ "For some reason the item seems stuck in your pocket. It appears you have only your magic skills to rely upon here":
+   "不知怎地,那件東西像黏在口袋裡似的。看來在這兒,你只能靠魔法了。",
+ "Good. I hate to part with it unless there is a very good cause":
+   "很好。要不是有天大的理由,我可捨不得割愛。",
+ "Hello, Master. You still have one wish left":
+   "您好,主人。您還剩一個願望。",
+ "I already gave you the bellows, remember":
+   "我風箱已經給你啦,記得吧?",
+ "I believe, O Hero, that for you I have a pin":
+   "英雄啊,我想我這兒有根別針正合你用。",
+ "I know only that it is something to be greatly feared":
+   "我只知道,那是個極其可怕的東西。",
+ "I will need a Griffin's feather. You must add the hair of the victim yourself at the last moment. It must be fresh":
+   "我需要一根獅鷲的羽毛。受害者的頭髮得由你在最後一刻親手加進去,而且必須是新鮮的。",
+ "If you be tired, we go back to Main Hall. Much more comfortable there":
+   "你要是累了,咱們就回大廳去。那兒舒服多了。",
+ "Issur's bellows really blow up a storm with the Air Elemental inside":
+   "把風元素精靈關進去,伊蘇的風箱當真能颳起一場風暴。",
+ "It is my honor, Effendi":
+   "這是小的的榮幸,閣下。",
+ "It will flame for the battle only, for it draws its strength from mine":
+   "它只在戰鬥時燃燒,因為它的力量取自於我。",
+ "It's an exotic potted plant":
+   "一盆奇特的盆栽。",
+ "It's the city of Shapeir inside a glass dome. When the dome is shaken, a sand storm envelops the city":
+   "玻璃罩裡是夏皮爾城。一搖那罩子,沙暴便籠罩全城。",
+ "Khaveen is anxiously pacing back and forth across the hall":
+   "哈維因正焦躁地在大廳裡來回踱步。",
+ "May thee be granted a happy evening, Effendi":
+   "願您有個愉快的夜晚,閣下。",
+ "My name is Larisha":
+   "我叫拉莉莎。",
+ "Nevertheless, shall we make a deal at forty dinars":
+   "不過呢,四十第納爾,這筆買賣成交如何?",
+ "Now, please excuse me. I really must get back to my work":
+   "好了,失陪了。我真的得回去幹活兒了。",
+ "Our fellow Katta promised they would send us support and aid whenever we were in need":
+   "我們卡塔族的同胞答應過,只要我們有需要,必定伸出援手。",
+ "Please leave the sword with Uhura in the Guild Hall when you are done with it":
+   "用完那把劍,請交還給公會大廳的烏胡拉。",
+ "Rakeesh's sword arm and reflexes be very quick. Don't be surprised if your attacks miss":
+   "拉基什的劍臂和反應都快得很。你的攻擊要是常常落空,可別意外。",
+ "Shema just gave you these clothes. It'd be rude to discard them right in front of her":
+   "雪瑪才剛把這身衣裳送你,當著她的面丟掉可太失禮了。",
+ "Sorry, Chief. With your spell collection this incomplete, you'll only meet with quick defeat":
+   "抱歉啦,老大。你這法術學得七零八落,上去也只是速速吃敗仗。",
+ "Thank you for the kindness you have shown Julanar. You are a true hero for helping her":
+   "謝謝你對茱拉娜爾的善意。肯幫她,你是個真正的英雄。",
+ "That would have no effect on the Air Elemental":
+   "這對風元素精靈起不了作用。",
+ "The Earth Elemental crushes everything in its path":
+   "土元素精靈會輾碎一切擋路之物。",
+ "The Liontaur is carefully looking you over, almost as if he's analyzing you":
+   "那獅人仔細地打量著你,簡直像在分析你似的。",
+ "The bag feels pretty heavy and is obviously filled with plenty of coins":
+   "這袋子沉甸甸的,顯然裝滿了錢幣。",
+ "The crash of boulder upon boulder echoes through the cavern":
+   "巨石撞擊巨石的轟響在洞穴中迴盪。",
+ "The grate, while damaged and rusty, is still solid enough to withstand your attempts at opening it":
+   "那鐵柵雖然殘破生鏽,卻仍夠堅固,任你怎麼弄都打不開。",
+ "The magic rope you purchased from the Magic Shop looks like an ordinary rope":
+   "你從魔法店買來的魔繩,看著跟普通繩子沒兩樣,只是盤得更緊、也更輕。",
+ "The pill makes you thirsty, so you take out your waterskin":
+   "藥丸讓你口渴,於是你取出了水袋。",
+ "The shop has closed for the night":
+   "店家已經打烊了。",
+ "The thick layer of dust in this merchant stall suggests it hasn't been used in a long time":
+   "這攤位上積了厚厚一層灰,看來已經很久沒人用了。",
+ "The wooden door's latch seems to be stuck. It doesn't respond":
+   "木門的門閂似乎卡住了,毫無反應。",
+ "There is nothing left in the box":
+   "盒子裡什麼也不剩了。",
+ "There's nobody around to talk to":
+   "附近沒有人可以攀談。",
+ "This constellation is said to resemble a Saurus":
+   "據說這個星座的形狀像一頭索魯斯。",
+ "Those guards are well-paid to ignore my friends":
+   "那些衛兵收了好處,專門對我的朋友睜一隻眼閉一隻眼。",
+ "Utilize the skull-splitter on opponents who use low attacks to quickly end the battle":
+   "對付慣使下盤攻擊的對手,用「劈顱式」能速戰速決、占得上風。",
+ "Well, young Jackal, may fortune always favor you":
+   "好啦,小豺狼,願好運永遠眷顧你。",
+ "Who do you call upon to be your sponsor and mentor in these hallowed halls of the Wizard's Institute of Technocery":
+   "在這巫師技術學院的神聖殿堂裡,你要請誰當你的引薦人與導師?",
+ "You are suddenly, forcefully reminded that \"It isn't the fall that hurts; it's when you hit the ground.\"":
+   "你猛地、狠狠地體會到一句話:「摔下來不疼,著地那一下才要命。」",
+ "You can now pick (on) locks your own size":
+   "現在你可以開(捉弄)跟你差不多大的鎖了!",
+ "You can't see a thing. It's too dark":
+   "你什麼也看不見,太暗了。",
+ "You describe to Zayishah how the Emir was transformed into a Saurus":
+   "你向札伊莎描述埃米爾如何被變成了一頭索魯斯,如今正由阿姿莎照料著。",
+ "You don't have a use for any of the pots on display":
+   "陳列的這些罐子,你都用不上。",
+ "You drop the basket into the storage chest":
+   "你把籃子放進儲物箱。",
+ "You have not answered my question. Who are you that knocks upon my door":
+   "你還沒回答我的問題。敲我門的,究竟是何人?",
+ "You look at the dangerous-looking guard and think better of it":
+   "你看了看那一臉兇相的衛兵,還是打消了念頭。",
+ "You really ought to prepare for the departing caravan, Hero":
+   "英雄,你真該為即將啟程的商隊做準備了。",
+ "You return the reward to Rakeesh and tell him that the city being safe again is enough":
+   "你把酬勞退還給拉基什,告訴他城市重歸安寧,這份回報就已足夠。",
+ "You should sit down first if you wish to speak with Abdulla":
+   "你若想跟阿布杜拉說話,得先坐下。",
+ "You still don't have the skill, Phil, so I'll spare you the bill":
+   "你火候還不到啊老兄,這筆帳我就先不跟你算清。",
+ "You take a careful sip from your waterskin. It tastes great":
+   "你小心地就著水袋啜了一口,味道好極了。",
+ "You tell the Katta about your friendship with his cousin Shema":
+   "你向這位卡塔族人說起你和他表親雪瑪的交情。",
+ "You'd just get fingerprints all over it":
+   "你只會在上頭按得到處都是指紋!",
 }
 
 resolved=[]
