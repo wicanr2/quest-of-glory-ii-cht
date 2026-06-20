@@ -3492,6 +3492,113 @@ BATCH = {
    "你取回那個垃圾桶。",
  "You retrieve the basket":
    "你取回那個籃子。",
+ # --- 第三十一批 ---
+ "I haven't seen anything this bizarre since that guy from Iceland came along and offered to do a comedy routine":
+   "自從那個從冰島來的傢伙提議表演段相聲後,我就沒見過這麼離奇的事了。",
+ "I'm happy to hear that the dispel potion did its job after what you've been through to gather the ingredients":
+   "聽說那瓶驅散藥水起了作用,我很高興——畢竟你為了湊齊材料,可吃了不少苦。",
+ "I regret that there is no time for tales, Hero. You must finish your preparations before the caravan leaves you behind":
+   "抱歉,英雄,沒空講故事了。你得在商隊把你丟下之前做好準備。",
+ "It would be best if a person would sit down, that the Poet Omar might read and illuminate the minds of all who hear":
+   "各位最好坐下來,讓詩人奧瑪爾吟誦,以啟迪所有聆聽者的心靈。",
+ "I will be happy to listen to your stories when you return, Hero-friend. But I wish not to waste any of your time now":
+   "你回來時,我很樂意聽你的故事,英雄朋友。但此刻我不願浪費你半點時間。",
+ "Magic, magic, where'd it begin? Go and ask the mighty Djinn.[Magic, magic, where'd it stop? Look around my Magic Shop":
+   "魔法魔法,從何而起?去問那威猛的鎮尼。[魔法魔法,止於何地?且看我這魔法店裡。",
+ "My graduation present for you is the 'Reversal' Spell. You may recall the Kobold's use of it against you in Spielburg":
+   "我給你的畢業禮物是「反轉」術。你或許還記得在史畢柏格,那狗頭人就是用它對付你的。",
+ "Perhaps it's your proximity, or perhaps your choice of words, but in any event, you seem to have startled the Griffin":
+   "也許是你靠得太近,也許是你的措辭,總之你似乎驚動了那頭獅鷲。",
+ "Quest for Glory and all related material are copyrighted by Sierra Entertainment, Inc. and are used with permission":
+   "《英雄傳奇》及一切相關素材的版權屬於 Sierra Entertainment, Inc.,經授權使用。",
+ "Rumor has it that the captain of the Raseirian Guard is a master at swordplay. If you go there, you gotta fight him":
+   "傳聞拉希爾衛隊長是個劍術高手。你要是去那兒,非跟他打一場不可!",
+ "Saying goodbye to all our friends and relatives was difficult, but I was pleased to see how supportive everyone was":
+   "向所有親友道別著實不易,但見大家如此鼎力相挺,我很欣慰。",
+ "Seeing as no one in his right mind would actually want a Saurus, you won't mind that I have the right Saurus for you":
+   "鑒於但凡神智正常的人都不會真想要一頭索魯斯,你應該不介意我這兒正好有頭合適的索魯斯吧。",
+ "That really hurt. But it only really hurt for a few moments. The pain is quite gone now. So is every other sensation":
+   "那真的很痛。不過也只痛了片刻。如今痛楚已盡數消退——其他一切知覺也是。",
+ "The hope of the Katta was now resting on a prophecy that foretold the restoration of the city at the hands of a hero":
+   "卡塔族的希望,如今寄託在一則預言上——它預示這座城將由一位英雄之手重獲新生。",
+ "The note inside indicates that purse's owner enjoys poetry. Do you happen to know of one whom fits that description":
+   "裡頭的字條顯示,這錢袋的主人喜愛詩歌。你可知道有誰符合這描述?",
+ "The only proper way to dispose of your Saurus is to sell it. Simply disposing of the registration won't do the trick":
+   "處理你索魯斯的唯一正當方式就是把牠賣掉。光把登記文件扔了可不管用。",
+ "The powder of burning shimmers and sparkles as it shifts in the bag. You quickly close it again so as not to lose any":
+   "燃燒之粉在袋中晃動時閃爍生輝。你連忙重新封好,免得漏掉半點。",
+ "This pillar is too close to the wall and you need more room to Levitate. Try moving up to a different pillar instead":
+   "這根柱子離牆太近,你「飄浮」需要更大空間。換到另一根柱子旁試試。",
+ "Velvet curtains and marble casements signify that you could very well be situated in the more ritzy area of the city":
+   "絲絨窗簾與大理石窗框,顯示你八成置身於城裡較為奢華的地段。",
+ "What a shame you couldn't make it back to the cage in time. Now we'll never know whether the beast was enchanted or not":
+   "真可惜你沒能及時趕回籠邊。如今我們永遠無從得知那野獸究竟有沒有中魔法了。",
+ "You can't expect the Elemental to simply jump into your waterskin on its own. You'll have to think of something else":
+   "你總不能指望那元素精靈自個兒跳進你的水袋吧。你得另想辦法。",
+ "You decide to do your bit for world conservation and remove the box from the street. You take it into your possession":
+   "你決定為環保盡份心力,把那盒子從街上撿走,據為己有。",
+ "You drink the last few drops from your waterskin. You might want to start looking for a place where you can refill it":
+   "你喝光了水袋裡最後幾滴水。你或許該開始找個能裝水的地方了。",
+ "You no longer have your old sword. Getting rid of your current sword as well would make you a pretty pathetic fighter":
+   "你的舊劍已經沒了。要是連現在這把也扔了,你這戰士可就太可悲了。",
+ "You retrieve the undead unguent from your chest":
+   "你從箱子取回那瓶驅亡靈藥膏。",
+ "You retrieve the Warrior's Diary":
+   "你取回那本「戰士日記」。",
+ "You retrieve the waterskin":
+   "你取回那個水袋。",
+ "You retrieve the waterskin containing the essence of the Water Elemental from your chest":
+   "你從箱子取回那個裝著水元素精靈精華的水袋。",
+ "You retrieve the weaving":
+   "你取回那件編織物。",
+ "You retrieve the wind in the bellows from your chest":
+   "你從箱子取回那只封著風的風箱。",
+ "You retrieve your dagger from the carnage and carefully wipe it clean for reuse":
+   "你從一片血肉狼藉中取回匕首,仔細擦淨以備再用。",
+ "You retrieve your dagger from the corpse and carefully wipe it clean for reuse":
+   "你從屍體上取回匕首,仔細擦淨以備再用。",
+ "You retrieve your daggers from the carnage and carefully wipe them clean for reuse":
+   "你從一片血肉狼藉中取回那些匕首,仔細擦淨以備再用。",
+ "You retrieve your daggers from the corpse and carefully wipe them clean for reuse":
+   "你從屍體上取回那些匕首,仔細擦淨以備再用。",
+ "You retrieve your shield":
+   "你取回你的盾牌。",
+ "You retrieve your spare clothes":
+   "你取回你的備用衣裳。",
+ "You return the key to Shameen and Shema and thank them from the bottom of your heart for all they've done for you":
+   "你把鑰匙還給沙明和雪瑪,打從心底感謝他們為你做的一切。",
+ "You're up to your compass in Elementals! You can't use your map now":
+   "你被元素精靈纏得脫不開身!現在沒法用地圖。",
+ "You're walking through one of the many twisty streets of the city":
+   "你正穿行在這城裡眾多曲折街道中的一條。",
+ "You're walking through one of the twisting streets of the city":
+   "你正穿行在這城裡一條曲折的街道上。",
+ "You're welcome, but please, I must make haste":
+   "不客氣,但請見諒,我得趕路了。",
+ "Your Fetch spell is blocked by the cabinet door":
+   "你的「取物」術被櫃門擋住了。",
+ "Your greeting goes unanswered":
+   "你的問候無人回應。",
+ "Your hand passes right through the Djinni. He is entirely made of magic, after all":
+   "你的手直接穿過了那鎮尼。畢竟,他渾身都是由魔法構成的。",
+ "Your hand would make a nice appetizer for him. You wisely decide to withdraw your offering":
+   "你的手拿去當他的開胃菜倒挺合適。你明智地收回了伸出的手。",
+ "Your heavy, one-handed broadsword is an admirable weapon for a strong warrior":
+   "你那把沉重的單手闊劍,對強壯的戰士而言是件令人稱羨的兵器。",
+ "Your magic rope performs well":
+   "你的魔繩很好使。",
+ "Your mind is a jumble of half-completed thoughts":
+   "你腦中盡是一堆殘缺不全的念頭。",
+ "Your pawn isn't a valid target for that spell":
+   "你的棋子不能當那個法術的目標。",
+ "Your registration papers are of no interest to the Saurus. They simply permit you to ride it":
+   "你的登記文件那索魯斯一點興趣也沒有,它們不過是准你騎牠罷了。",
+ "Your Reversal spell has worn off":
+   "你的「反轉」術效力已過。",
+ "Your Reversal spell is wearing off":
+   "你的「反轉」術效力正在消退。",
+ "You retrieve the chainmail armor from your chest":
+   "你從箱子取回那件鎖子甲。",
 }
 
 resolved=[]
