@@ -4062,6 +4062,63 @@ BATCH = {
    "附近擱著一只廢棄的木桶。",
  "It seems to have no effect.":
    "似乎毫無作用。",
+ # --- 第三十七批 ---
+ "I craft experimental necklaces from a material I call fool's iron. When wet, the gold resembles ordinary iron to the untrained eye. I believe it may prove useful to prevent them from being stolen during a burglary":
+   "我用一種我管它叫「愚人鐵」的材料,打造實驗性的項鍊。沾了水,那金子在外行人眼裡就跟普通鐵沒兩樣。我相信這能防它們在竊案中被偷走。",
+ "It is not a paladin's nature to judge others, but I would strongly advise you to be wary of who you announce your profession to. Many people in this city are leery of thieves after the tragedy that befell Raseir":
+   "妄加評斷他人並非聖騎士的本性,但我要鄭重勸你:對誰表明你的行當,可得當心。拉希爾那場慘劇之後,這城裡許多人對盜賊都心存戒備。",
+ "Like all of Spielburg's citizens, we were most impressed when you dispelled the enchantment upon Elsa von Spielburg and caused the defeat of the Brigands":
+   "如同史畢柏格所有的子民,你解除艾莎·馮·史畢柏格身上的魔咒、又促成強盜團覆滅時,我們都深深折服。",
+ "Magic, magic everywhere. Find it at Aziza's lair. Magic, magic, wait a bit. Find it in the soul of WIT. Magic, magic in the stars. The Astrologer can see that far":
+   "魔法魔法,無處不在。阿姿莎的居所裡尋它。魔法魔法,且慢些。巫師技術學院的魂魄裡尋它。魔法魔法,藏於星辰。占星師看得那般遠。",
+ "Many forget the polite thing to do,[  Greetings, too often, are given by few.[I accept and confide, in your gesture with pride,[  The same I extend now to you":
+   "多少人忘了該有的禮數,[  問候之語,難得有人付出。[我欣然領受,並引以為傲地信賴你的舉止,[  此刻,我也以同樣的問候回贈於你。",
+ "Maybe you could use some magical fire to burn magical earth? I do have some powder of burning that might work. But it is very rare, and it makes such pretty flames! I'd hate to have it wasted":
+   "也許你可以用些魔法之火去燒魔法之土?我倒有些燃燒之粉,或許管用。但它非常稀有,綻放的火焰又那麼美!我可捨不得它被浪費。",
+ "Mirror your opponent's fighting style. Mount an offense to break through his guard and retaliate with counterattacks if he becomes more aggressive":
+   "把對手的打法照樣奉還。發動攻勢突破他的防禦;他若轉趨兇猛,就以反擊回敬。",
+ "My second cousin Sashanan the jeweler in the Plaza of the Palace, and my third cousin once removed, Tiram the rug merchant, were unable to set up their stands today. An Elemental of Air is filling the plaza":
+   "我那在王宮廣場賣珠寶的二表親薩沙南,還有我那隔了輩的三表親、賣地毯的提拉姆,今天都沒法擺攤。一頭風元素精靈正盤踞著整座廣場!",
+ "My spine shivers at the thought of so much battle with the fiendish Ghouls, but despite your bravery, I regret that my larder of Ghoul claws is full, and I can purchase no more":
+   "一想到要跟那些兇殘的食屍鬼這般廝殺,我就脊背發涼。可儘管你英勇過人,很遺憾,我儲爪的庫房已經滿了,沒法再收。",
+ "My thanks that you returned my purse,[Although it seems that it is much the worse[For a thief has stolen what was there[And gives me back a purse that now is bare":
+   "謝你把我的錢袋送回,[只是它的下場似乎更悲——[小偷偷走了裡頭的一切,[還我一只如今空空的錢袋。",
+ "My wallets are perfect for carrying large amounts of money without weighing you down. Buy one and it is guaranteed you shall feel much lighter than before":
+   "我的錢包用來裝大筆鈔票卻不壓身,再合適不過。買一個,保你覺得比先前輕快許多。",
+ "Nevertheless, I'm holding a sale in which I'm set on selling my sole remaining Saurus to some susceptible schmuck. This is truly your lucky day":
+   "話雖如此,我正辦著一場特賣,鐵了心要把我僅剩的一頭索魯斯賣給某個好騙的冤大頭。今天可真是你的幸運日!",
+ "Nevertheless, you will need to find her before you can buy anything here. You may have less trouble finding her if the names of the streets make sense to you":
+   "話雖如此,你得先找到她,才能在這兒買東西。你若弄懂了街名的意思,找她或許就沒那麼費勁。",
+ "Once your opponent starts advancing, approach him in order to avoid terrain loss. A safe way to battle is to stay inside melee range until your opponent attempts an attack":
+   "對手一開始進逼,你就上前迎他,以免失了地利。一種穩妥的打法,是守在近身範圍內,直到對手出招。",
+ "Only the Katta can stand to work the bazaars in the summer. The rest of the year, you cannot walk through the plazas, there are so many merchants":
+   "也只有卡塔族受得了夏天在市集做生意。一年裡其餘時節,廣場上商人多得讓你寸步難行。",
+ "Our fresh dates are stuffed with the finest of almonds, carefully roasted over the brazier, and then glazed in honey. We personally stuff the dates ourselves":
+   "我們的鮮椰棗塞著最上等的杏仁,在炭爐上細細烤過,再裹上蜂蜜。每一顆都是我們親手填的。",
+ "Our kin in Shapeir had not forgotten about us. They sent a great deal of trade items along with the very next caravan heading for Spielburg. That happened to be Abdulla's caravan":
+   "我們在夏皮爾的族人並沒忘了我們。他們託下一支前往史畢柏格的商隊捎來大批貨物。那正好是阿布杜拉的商隊。",
+ "Our people can fight, if necessary, but because of our small stature we see battle as a last resort, rather than a way to gain individual glory":
+   "必要時我們族人也能戰,但因身形矮小,我們視戰鬥為最後手段,而非博取個人榮耀的途徑。",
+ "Over the past year, despite the excitement of seeing new lands and cultures, I have felt the pangs of homesickness quite often. But I have never felt regret being by Shameen's side":
+   "過去這一年,儘管見識新天地、新風土令人興奮,我仍時常嘗到鄉愁的滋味。但守在沙明身邊,我從未後悔過。",
+ "Perhaps it was the prospect of traveling through the freezing mountain area again that kept us in Spielburg. Or perhaps it was a glimmer of hope that we would still find what we were seeking":
+   "或許是想到要再次穿越那冰封的山區,才把我們留在了史畢柏格。又或許,是那一線「終能尋得所求」的微光。",
+ "Pity. Ah, well, there will be others. Good night, sir":
+   "可惜。唉,算了,還會有別人的。晚安,先生。",
+ "Rakeesh also has powerful strike he call Ankh Slash. Hits three times. Hurts plenty. Rakeesh need to concentrate to use it. Watch him carefully. Rakeesh lose concentration when you dodge or parry initial swing":
+   "拉基什還有一記威猛的攻擊,他管它叫「安卡斬」。連擊三下,痛得很。拉基什得凝神才使得出來。仔細盯著他。你閃開或招架住他頭一揮,他就會分神。",
+ "Rakeesh be paladin and only fights to defend himself. He always give opponent room to retreat. Never corners people. If you be tired, retreating to corner will grant you quick break":
+   "拉基什是聖騎士,只為自衛而戰。他總給對手留下後退的餘地,從不把人逼到角落。你要是累了,退到角落能讓你喘口氣。",
+ "Regardless, we decided to stay in Spielburg for the winter and used our remaining funds to set up what you came to know as the Hero's Tale Inn":
+   "無論如何,我們決定在史畢柏格過冬,用剩下的錢開了你後來認識的那家「英雄傳說客棧」。",
+ "Seeing that every self-respecting monster would be able to out-bite, out-scratch and out-claw you, keeping your only means of evening the odds in your possession would be smart":
+   "鑒於任何有點自尊的怪物,在啃咬、抓撓、揮爪上都贏得了你,留著你唯一能扳平劣勢的本錢,才是聰明之舉。",
+ "Shema and I heard several stories about Erana as we made our way from Shapeir to Spielburg. Particularly in the areas near Sangerhafen and Mordavia, tales about her were plentiful":
+   "雪瑪和我從夏皮爾趕往史畢柏格的途中,聽過好幾則伊瑞娜的故事。尤其在桑格哈芬與莫達維亞一帶,關於她的傳說多不勝數。",
+ "I am trying to develop a pill which will protect against the effect of the claws of the Ghoul":
+   "我正試著研發一種藥丸,用來抵禦食屍鬼爪子的效力。",
+ "In this place, you must rely upon only your magic":
+   "在這個地方,你只能仰賴你的魔法。",
 }
 
 resolved=[]
