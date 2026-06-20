@@ -2465,6 +2465,131 @@ BATCH = {
    "我們的塔不容說謊者。",
  "Welcome back. If you see something that interests you, let me know":
    "歡迎回來。你要是看上了什麼,就告訴我。",
+ # --- 第二十二批 ---
+ "It would be best to wait until you're back in the main Guild Hall before telling about your stories, Hero":
+   "英雄,你那些故事,最好等回到公會大廳再說。",
+ "I will look into what signs have guided your life thus far, and see how they will affect you in the future":
+   "我會查查迄今引領你人生的是哪些星象,再看它們將如何影響你的未來。",
+ "Most of Spielburg's problems were a great many years old, yet you managed to solve them in such little time":
+   "史畢柏格的麻煩多半積了許多年,你卻在這麼短的時間內一一化解。",
+ "Oh, Effendi. This is by far the best food this lowly beggar has ever tasted. I am in awe of your generosity":
+   "啊,閣下。這是我這卑微乞丐吃過最好的食物了。您的慷慨令我敬佩不已。",
+ "Old pieces of paper have seemingly been carried here by the wind and walked into the pavement by passersby":
+   "幾張舊紙片像是被風颳到這兒,又被過路人踩進了石板地裡。",
+ "Open it and it may fall. Close it and it may fall. Leave it alone and it'll be fine. You decide on option 3":
+   "開它它可能掉,關它它可能掉,別碰它倒沒事。你選了第三個。",
+ "Seeing that you two kids are hitting it off from the start, it sounds like a good time to start heading off":
+   "瞧你倆小傢伙一見如故,看來我也該識相地走人了。",
+ "The awning must have been bright and colorful in the past. Now, it's as dreary as the wall it's attached to":
+   "這遮篷想必曾經鮮豔奪目。如今,卻跟它依附的那面牆一樣黯淡。",
+ "The Brigand doesn't seem to have any cash on him. You do, however, find a small book in one of his pockets":
+   "那強盜身上似乎沒帶錢。不過,你在他口袋裡找到一本小冊子。",
+ "The closet doors are latched closed. Besides, there is nothing inside the closet. You don't need to open it":
+   "櫥門扣著。再說,櫥裡什麼也沒有,你不必開它。",
+ "The snake took a wrong turn one day and wound up listening to a Katta who likes to think he's Benny Goodman":
+   "那條蛇某天拐錯了彎,結果聽起一個自以為是班尼·古德曼的卡塔族人吹奏。",
+ "This is finest souvenir stand in town. I personally guarantee it. This is also only souvenir stand in town":
+   "這是城裡最棒的紀念品攤,我親自掛保證。這也是城裡唯一的紀念品攤。",
+ "Welcome. How may I be of service":
+   "歡迎。有什麼能為您效勞的?",
+ "Welcome. It is good to have a visitor who understands the proper way to enter conversation":
+   "歡迎。能有一位懂得如何得體開口的訪客,真好。",
+ "Welcome. May the stars smile upon you":
+   "歡迎。願群星向你微笑。",
+ "Well, I hope you figure out how to deal with it. This city will soon run out of water":
+   "好吧,但願你想得出對付它的法子。這座城快沒水了。",
+ "Well, that was going nowhere the long way":
+   "唉,這一通繞下來,還是白忙一場。",
+ "Well, you go north until you get to the fountain and you take-a the road west from there":
+   "這樣啊,你往北走到噴泉,再從那兒走西邊的路。",
+ "We shall all die of thirst":
+   "我們都會渴死的!",
+ "We sold the inn we were running at that time so we would have funds to obtain new supplies during the trip":
+   "我們把當時經營的客棧賣了,好籌些錢在途中採購新的補給。",
+ "We were most saddened to hear that the valley was still beset with problems":
+   "聽聞那山谷仍是麻煩纏身,我們深感哀傷。",
+ "We were much relieved when Spielburg valley finally came within sight":
+   "當史畢柏格谷地終於映入眼簾,我們大大鬆了口氣。",
+ "We will keep you in our thoughts":
+   "我們會把你放在心上。",
+ "What are you looking for":
+   "你在找什麼?",
+ "What a small world":
+   "這世界真小!",
+ "What a wonder! Is it a dream? Oh, Effendi, there is no end to your goodness":
+   "真是奇蹟!莫非是夢?啊,閣下,您的善心沒有止境。",
+ "What do you take me for, a common criminal? There is nothing common about me":
+   "你把我當什麼了,一個尋常罪犯?我這人可一點都不尋常。",
+ "What element does the Apothecary specialize in":
+   "藥師專精於哪一種元素?",
+ "What is Ja'Afar's most crucial role for Omar":
+   "賈法爾對奧瑪爾而言最關鍵的角色是什麼?",
+ "What is the element most appropriate to the owner of the Magic Shop":
+   "哪一種元素最適合魔法店的老闆?",
+ "What is your wish, Master":
+   "你的願望是什麼,主人?",
+ "Whatsa matta you? You no like a big deal when you see it":
+   "你是咋了?好東西擺眼前你還不識貨?",
+ "What's a wimp like you asking about EOF for? Only real men join EOF":
+   "你這種膽小鬼問永恆戰士團做什麼?只有真男人才進得了永恆戰士團。",
+ "What you need is a loan. That's where I'll be leaving you until you come up with the cash":
+   "你需要的是一筆貸款。在你湊出錢來之前,我就跟你聊到這兒。",
+ "When it turns into its rat hole":
+   "等牠鑽回鼠洞的時候?",
+ "When you are forced to jump back to avoid damage, your instincts may trigger the leaping lunge":
+   "當你被迫向後跳開以閃避傷害時,本能或許會觸發一記「躍進突刺」。",
+ "When you are in battle against the Elemental, the flame of the sword will aid you":
+   "當你與元素精靈交戰時,劍上的火焰會助你一臂之力。",
+ "When you listen at the door, you hear scratchy whispers":
+   "你貼著門聽,聽見一陣沙啞的低語。",
+ "Which merchant are you trying to talk to":
+   "你想跟哪個商人說話?",
+ "Which of the elements do the wizards of WIT command":
+   "巫師技術學院的巫師駕馭哪一種元素?",
+ "While a barrel ride sounds exciting, there's no waterfall nearby":
+   "坐桶順流而下聽著刺激,可這附近沒有瀑布。",
+ "While the jewelry is lovely, it is also quite useless to you":
+   "這珠寶雖美,對你卻也相當無用。",
+ "While there is a powerful enchantment at work here, your Trigger spell does nothing to help remove it":
+   "此地雖有強大的魔咒運作,你的「觸發」術卻絲毫無助於解除它。",
+ "While the sign is a bit of an eyesore, you decide to leave it where it is":
+   "這招牌雖有點礙眼,你還是決定讓它留在原處。",
+ "Who injured the leg of Rakeesh":
+   "是誰傷了拉基什的腿?",
+ "Who is it that sent you here":
+   "是誰派你來這兒的?",
+ "Who is the companion of Erasmus":
+   "誰是伊拉斯謨的同伴?",
+ "Who needs the Holy Grail when you've got access to this cheat! (Don't tell Arthur)":
+   "有了這作弊碼,誰還稀罕聖杯!(別跟亞瑟王說。)",
+ "Why have you sought to enter into the Wizard's Institute of Technocery":
+   "你為何尋求進入巫師技術學院?",
+ "Why have you sought to enter WIT":
+   "你為何尋求進入巫師技術學院?",
+ "Why, I never noticed just how incredibly handsome you are until about a second ago":
+   "哎呀,直到一秒鐘前,我才注意到你竟是這般俊俏。",
+ "Wilmer, a drink for our young friend":
+   "威爾默,給我們這位年輕朋友來杯喝的。",
+ "Wilmer there just does not have quite what it takes to give me what I want":
+   "那邊那個威爾默,就是沒那本事給我想要的東西。",
+ "With fiery emotion, you explain to Harik that the Earth Elemental is attacking the city":
+   "你情緒激昂地向哈里克說明,土元素精靈正在攻擊這座城市。",
+ "Without food, you are unable to go on. You collapse and die of malnutrition":
+   "沒有食物,你撐不下去了。你倒地不起,死於營養不良。",
+ "With whom are you trying to speak, Hero":
+   "你想跟誰說話,英雄?",
+ "Yawn. You wonder how the guard can take this kind of activity day in, day out":
+   "呵欠。你納悶這衛兵怎麼能日復一日忍受這種差事。",
+ "Yeah, yeah. What do you want":
+   "好啦好啦。你想怎樣?",
+ "Yeh! Glasses! Maybe that's what you need to stop those migraines. Too bad you don't have any":
+   "對啦!眼鏡!說不定那正是治你偏頭痛的東西。可惜你一副也沒有。",
+ "Yes, even Elsa would not dare venture there alone without her father's guards to fight at her side":
+   "是啊,連艾莎也不敢在沒有她父親衛兵並肩作戰時,獨自闖那地方。",
+ "You already appear to be on his bad side and you'd prefer not to make the situation any worse":
+   "你似乎已經惹他不快了,還是別把情況弄得更糟為妙。",
+ "I will look into what signs have guided your life":
+   "我會查查迄今引領你人生的是哪些星象。",
 }
 
 resolved=[]
