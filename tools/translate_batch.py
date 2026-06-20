@@ -4212,6 +4212,29 @@ BATCH = {
    "然後,且慢——你看見你忠實的索魯斯朝你奔來。你得救了!你可以吃上一週的索魯斯排。其實啊,你大可就地擺個小攤,靠賣索魯斯排賺上一筆。",
  "Shema will be with you shortly.":
    "雪瑪很快就會來招呼你。",
+ # --- 第四十一批 ---
+ "I do not think there was any part of our journey where I felt more miserable than during the week it took us to reach Spielburg. The icy winds blowing through the pass chilled me to the bone and I had a lot of trouble breathing the thin mountain air":
+   "我們整段旅程裡,我想沒有哪一段比抵達史畢柏格那一週更難熬了。隘口颳來的冰風冷得我透骨,稀薄的山間空氣也讓我喘不過氣。",
+ "Join our 12-day horticulture seminar and learn all you'll ever need to know about making your hedge garden grow and getting results first time, every time! With \"Personal Flower: Pet the Hedge,\" we do all the hard work so that you won't have to":
+   "報名我們十二天的園藝研習營,學會讓你的綠籬花園生長所需的一切,次次見效、回回成功!有了「私房花卉:寵愛你的綠籬」,粗活我們全包,你什麼都不必做!",
+ "KEYS AND INSTRUCTIONS.[[CTRL-S: Show your Hero's statistics sheet.[[CTRL-R: Displays a map of the alley system.[[BackSpace or CTRL-H: Toggles your compass on and off.[[CTRL-T: Show the curent time and day.[[CTRL-I or TAB: Show inventory list (SCI style)":
+   "按鍵與說明。[[CTRL-S:顯示你英雄的屬性表。[[CTRL-R:顯示巷弄系統的地圖。[[退格鍵或 CTRL-H:開關你的羅盤。[[CTRL-T:顯示當前時辰與日期。[[CTRL-I 或 TAB:顯示物品清單(SCI 樣式)。",
+ "Learning about these things was most unsettling, for we did not know if the letters we had sent our kin had arrived in Shapeir safely or not. And without traders and tourists, we would never make enough money from our inn to leave Spielburg":
+   "得知這些事讓我們心緒難安,因為我們不知道捎給族人的信究竟有沒有平安送抵夏皮爾。而沒有商人與遊客,我們靠客棧永遠也賺不夠離開史畢柏格的錢。",
+ "Seeing that you do not excel in fighting technique, your best strategy may be to avoid hanging out in melee range too much. On the other hand, getting cornered is a predicament you should avoid at all costs, as it will be very hard to get out of":
+   "鑒於你的戰鬥技巧並不出眾,最佳策略或許是別在近身範圍逗留太久。另一方面,被逼到角落是你務必不惜代價避免的困境,因為那極難脫身。",
+ "THE ICON BAR[[The icons are all standard Sierra Icon Interface, and work the same way as Sierra's old point-and-click adventure games. Left-click to perform the action of the currently selected cursor. Right-click to cycle through available cursors":
+   "圖示列[[這些圖示全是標準的 Sierra 圖示介面,操作方式與 Sierra 早期的點選式冒險遊戲相同。左鍵執行當前選取游標的動作。右鍵則在可用的游標間循環切換。",
+ "THE ICONS[[HELP: Displays this help screen.[[OPTIONS: When pressed, several options will be displayed: SAVE, RESTORE, RESTART, QUIT, AGS, ABOUT (?), PLAY, GAME SKILL, SOUND VOLUME, MUSIC VOLUME, GAME SPEED, COMBAT OPTIONS, DIALOGUE SYSTEM, and SILLY CLOWNS":
+   "圖示說明[[說明:顯示此說明畫面。[[選項:按下後會顯示數個選項:存檔、讀檔、重新開始、離開、AGS、關於(?)、繼續、遊戲難度、音效音量、音樂音量、遊戲速度、戰鬥選項、對話系統,以及「傻氣小丑」。",
+ "THE ICONS[[WALK: Click this icon to move the Hero where you want him to walk.[[LOOK: Click this on specific things to receive a description about them.[[USE: Use this to pick items up and also to interact with your environment (e.g. opening a door)":
+   "圖示說明[[行走:點此圖示,讓英雄走到你要他去的地方。[[查看:對特定事物點這個,以取得它們的描述。[[使用:用它來撿拾物品,也用來與環境互動(例如開門)。",
+ "The Offense Slider: The further this slider is set to the right, the further the copilot will tend to concentrate on attack-related assistance":
+   "攻擊滑桿:此滑桿越往右設,戰鬥輔助就越傾向專注於與攻擊相關的協助。",
+ "The only ingredient I have run short of are dark Terrorsaurus scales. The scales of a male Terrorsaurus become much darker during mating season and make potent pill components. Unfortunately, Saurus mating season is still several months away":
+   "我唯一短缺的材料是深色的恐魯斯鱗片。公恐魯斯的鱗片在交配季會變得深得多,是效力強勁的藥丸成分。可惜,索魯斯的交配季還要好幾個月才到。",
+ "Greetings, friend of the Katta.":
+   "你好,卡塔族的朋友。",
 }
 
 resolved=[]
