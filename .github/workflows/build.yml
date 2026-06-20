@@ -42,14 +42,16 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - name: 安裝相依
-        run: brew install sdl2 sdl2_net freetype libpng libvorbis flac faad2 a52dec libmad fluid-synth
+      - name: 安裝相依(只裝 AGS 必要;多裝的 codec 會讓 configure 強制靜態連結而缺 .a)
+        run: brew install sdl2 sdl2_net freetype libpng libvorbis libogg flac
       - name: 取得並 patch ScummVM
         run: bash tools/apply_patches.sh "$GITHUB_WORKSPACE/scummvm-src"
       - name: configure + build + bundle
         working-directory: scummvm-src
         run: |
-          ./configure --disable-all-engines --enable-engine=ags --enable-release
+          ./configure --disable-all-engines --enable-engine=ags --enable-release \
+            --disable-mad --disable-faad --disable-a52 --disable-fluidsynth \
+            --disable-libcurl --disable-sndio
           make -j$(sysctl -n hw.ncpu)
           make bundle
       - name: 打包 DMG
@@ -81,11 +83,13 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
         run: |
-          # ScummVM Android toolchain build(僅 ags engine)。
-          # 參考 dists/android;首次執行請依 ScummVM 當前 Android 文件校正。
-          PATH="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
-          ./configure --host=android-aarch64 --enable-engine=ags --disable-all-engines --enable-release || \
-            { echo "::warning::Android configure 需依當前 ScummVM 文件校正"; exit 1; }
+          # ScummVM Android toolchain build(僅 ags engine)。需把 NDK clang 放進 PATH
+          # 並指定 target API 的 wrapper 當 CC/CXX,configure 才找得到編譯器。
+          # 注意:此 job 尚未在真實 runner 跑綠,首次請依 ScummVM dists/android 文件校正。
+          export PATH="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
+          export CC=aarch64-linux-android21-clang
+          export CXX=aarch64-linux-android21-clang++
+          ./configure --host=android-aarch64 --enable-engine=ags --disable-all-engines --enable-release
           make -j$(nproc)
           make androiddist
       - uses: actions/upload-artifact@v4
