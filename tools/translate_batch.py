@@ -2195,6 +2195,139 @@ BATCH = {
    "這扇窗的百葉,看起來隨時會從鉸鏈上掉下來。",
  "The sign looks tattered and worse for wear":
    "那招牌看起來破爛不堪、飽經風霜。",
+ # --- 第二十批 ---
+ "The sign of the Scorpion":
+   "天蠍之象。",
+ "The soles of your boots seem unable to withstand any more damage":
+   "你靴底似乎再也經不起任何磨損了。",
+ "The soles of your boots show signs of heavy deterioration":
+   "你的靴底已顯出嚴重磨損的跡象。",
+ "The sound of your footsteps seem to echo \"water\" in your ears":
+   "你的腳步聲在耳中迴響,彷彿在喊著「水」。",
+ "The spell does not seem to affect the wind":
+   "這法術似乎對風起不了作用。",
+ "The spell on the room prevents the powder from igniting":
+   "這房間的咒法使得粉末無法點燃。",
+ "The star pattern known as the Dragon":
+   "被稱作「巨龍」的星象。",
+ "The stars here appear to form a Dark Hand":
+   "這裡的星辰似乎排成了一隻「黑手」。",
+ "The strong bars prevent any would-be intruders from entering":
+   "那堅固的柵欄擋住了任何意圖闖入者。",
+ "The stuff inside the barrel would have no trouble crawling out on its own if it was so inclined":
+   "桶裡那玩意兒只要願意,自己爬出來毫不費勁。",
+ "The Sultan (May He Reign Forever!) is truly wise and powerful":
+   "蘇丹(願他永世統治!)著實英明而強大。",
+ "The sum doesn't balance. COD or DOA. Pay or go away":
+   "帳對不上。貨到付款,否則一拍兩散。給錢,不然走人。",
+ "The summer heat is dangerous for those who are not used to it":
+   "對不習慣的人來說,這夏日酷熱十分危險。",
+ "The sun is bright and the day is hot already this morning":
+   "今早陽光刺眼,天氣已經熱了起來。",
+ "The supernatural being looks like a skeleton with pieces of rotting flesh still attached to its bones":
+   "那超自然之物像具骷髏,骨頭上還黏著一塊塊腐肉。",
+ "The surgeon general warns...":
+   "衛生署長警告……",
+ "The swords are too firmly attached to the wall to Fetch":
+   "那些劍牢牢釘在牆上,「取物」術取不下來。",
+ "The taste will sell itself":
+   "這味道自會替自己招攬生意。",
+ "The tenants are either not at home or unwilling to let you in":
+   "屋裡的人若不是不在家,就是不願讓你進門。",
+ "The Terrorsaurus is too stupid to understand you":
+   "那頭恐魯斯蠢得聽不懂你的話。",
+ "The Terrorsaurus looks vicious, mean, and quite hungry":
+   "那頭恐魯斯看起來兇狠、惡毒,而且相當飢餓。",
+ "The tingling sensation is gone. It seems the unguent wore off":
+   "那刺麻感消失了。看來藥膏的效力過了。",
+ "The townsperson doesn't seem to understand you":
+   "那市民似乎聽不懂你的話。",
+ "The townsperson looks nondescript":
+   "那市民其貌不揚,毫無特徵。",
+ "The trash can's aroma suits its appearance very well":
+   "那垃圾桶的氣味,跟它的賣相還真相稱。",
+ "The tree does not respond":
+   "那棵樹沒有反應。",
+ "The tree rustles its leaves":
+   "那棵樹沙沙地擺動著葉子。",
+ "The trip from Shapeir to Sangerhafen had already taken several months and winter was approaching rapidly":
+   "從夏皮爾到桑格哈芬這趟路已走了好幾個月,寒冬又迅速逼近。",
+ "The wall appears to have a spell placed upon it":
+   "那面牆似乎被施了咒。",
+ "The wall at the end of the alley appears to have been damaged":
+   "巷子盡頭那面牆似乎受了損。",
+ "The wall is carrying a torch for you":
+   "那面牆對你「情有獨鍾」(還幫你舉著火把呢)。",
+ "The Warrior's Diary contains your recorded experiences during battle":
+   "「戰士日記」記錄著你在戰鬥中的種種經歷。",
+ "The warrior woman cradles baby Simba in her arms":
+   "那女戰士懷裡搖著小辛巴。",
+ "The warrior woman stands tall and proud":
+   "那女戰士站得挺拔而自豪。",
+ "The Water Elemental destroys all who go near her":
+   "水元素精靈會毀滅一切靠近她的人。",
+ "The Water Elemental doesn't seem to be affected by your spell":
+   "水元素精靈似乎不受你的法術影響。",
+ "The Water Elemental in the fountain of town is the greatest of misfortunes":
+   "水元素精靈進了城中的噴泉,正是天大的災禍。",
+ "The weapons at this stand resemble the ones the desert brigands use":
+   "這攤子上的兵器,跟沙漠強盜用的那些很像。",
+ "The wind grows stronger, and the merchants had great difficulty setting up their stands today":
+   "風越颳越大,今天商人們擺攤都吃足了苦頭。",
+ "The wind no longer blows as fiercely as before":
+   "風不再像先前颳得那麼猛了。",
+ "The window doesn't open up to you":
+   "那扇窗不為你而開。",
+ "The window doesn't open up to your words":
+   "那扇窗不為你的話語而開。",
+ "The window is always open. The climate here is always hot":
+   "這扇窗總是開著,這兒的氣候向來炎熱。",
+ "The window is barred from the inside":
+   "那扇窗從內側閂住了。",
+ "The window lacks curtains or shutters you can fiddle with":
+   "這扇窗沒有可供你擺弄的窗簾或百葉。",
+ "The wise old Dervish gives you a funny look, but says nothing. Now you just feel silly":
+   "那睿智的老苦行僧古怪地瞅了你一眼,卻什麼也沒說。這下你只覺得自己很蠢!",
+ "The Wizard's Institute of Technocery is for real Wizards rather than the real world":
+   "巫師技術學院是給真正的巫師待的,可不是給「真實世界」待的!",
+ "The woman is very attractive with her dark, curly hair and lovely figure. She smiles invitingly at you":
+   "那女子一頭深色鬈髮、身段曼妙,十分迷人,正朝你嫣然一笑、頗為撩人。",
+ "The wooden bars prevent the door from being opened, even if there was someone on the other side":
+   "那木栅擋住了門,就算另一側有人也開不了。",
+ "The words of departure are what I do hear,[  Farewell 'til the next time you lend me your ear":
+   "我聽見的,是道別之語,[  就此別過,待你下回再側耳傾聽。",
+ "They do not respond":
+   "它們沒有反應。",
+ "They obviously improve your looks. Zayishah just giggles at you":
+   "它們顯然讓你好看了些。札伊莎只是對你咯咯直笑。",
+ "They probably don't want to be petted":
+   "牠們大概不想被摸。",
+ "They travel very well":
+   "牠們很耐遠行。",
+ "This beautiful emerald-studded silver bowl was once the property of the silversmith Abu bin Ma'amar":
+   "這只鑲著翡翠的精美銀碗,曾是銀匠阿布·賓·馬阿瑪爾的財產。",
+ "This business has no major hang-ups... or does it":
+   "這買賣沒什麼大「掛」礙……還是有?",
+ "This does seem like a good place. You curl up near the pool and soon fall asleep":
+   "這地方看來不錯。你在水池邊蜷起身子,很快便睡著了。",
+ "This drink sizzles in the glass":
+   "這飲料在杯子裡嘶嘶作響。",
+ "This guy is the spitting-image of Prince Ali-Ababwa":
+   "這傢伙活脫脫就是阿里·阿巴布瓦王子的翻版。",
+ "This guy looks like he could play the piano, but strangely":
+   "這傢伙看起來會彈鋼琴,只是彈得有點怪。",
+ "This guy looks like he's been in the desert too long":
+   "這傢伙看起來在沙漠裡待得太久了。",
+ "This is a fine sword from the Weapon Shop of Issur":
+   "這是一把出自伊蘇兵器店的好劍。",
+ "This is a leather waterskin containing the essence of the Water Elemental":
+   "這是一個皮水袋,裡頭封著水元素精靈的精華。",
+ "This is not a good opportunity to use your rope":
+   "現在不是用繩子的好時機。",
+ "This is not a good time for that":
+   "現在做那個不是時候。",
+ "This is not a good time to practice your throwing":
+   "現在不是練投擲的好時機。",
 }
 
 resolved=[]
