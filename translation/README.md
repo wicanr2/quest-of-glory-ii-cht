@@ -3,7 +3,7 @@
 > Quest for Glory II: Trial by Fire — English ↔ Traditional Chinese translation record.
 > 這份檔案完整記錄本專案的繁中化譯文,中英對照,作為經典流傳。
 
-**目前收錄:2353 條**(持續增補中,語料總量約 2350 句)。
+**目前收錄:9144 條**(持續增補中,語料總量約 2350 句)。
 
 - 正式對照檔:[`qfg2-cht.tsv`](qfg2-cht.tsv)(`English<TAB>繁體中文`)
 - 語感參照 1990 年代《軟體世界》三大誌攻略;專名走阿拉伯/波斯風音譯(見 [`../CONTEXT.md`](../CONTEXT.md))。
@@ -13,63 +13,63 @@
 
 | English | 繁體中文 |
 |---|---|
+| !Set new speed. | !設定新速度。 |
+| "A worthy opponent," you say to yourself. | 「真是個值得一戰的對手。」你對自己這麼說。 |
+| "Albuquerque: 152,700 cubits." | 「阿布奎基:152,700 肘尺。」 |
 | "At nightfall tonight, go the door at the end of 'Askeri Darb,' off 'Saif Darb.' Obey, or  | 今晚入夜後,去『Saif Darb』岔出的『Askeri Darb』盡頭那扇門。乖乖照辦,否則你會後悔。 |
 | "At nightfall tonight, go the door at the end of 'Saif Darb.' Obey, or you'll regret it." | 「今晚入夜後,去『Saif Darb』盡頭那扇門。乖乖照辦,否則你會後悔。」 |
+| "Beneath the tombstones of the city that he once did found."　This is the Forbidden City, t | 「就在他昔日所建之城的墓碑之下。」　這裡就是禁城,這點毫無疑問。 |
+| "By the powers of all Darkness　By the power of my name　Shall your soul be mirrored outward | 「以一切黑暗之力　以吾名之力　令爾之魂如鏡般翻轉於外,　爾之軀亦復如是!」 |
+| "Downtown Shapeir Next Exit." | 「夏皮爾市中心,下個出口下。」 |
+| "For one thousand years and a year,　Iblis will be bound..."　I know that it has been one th | 「歷經一千年又一年,　伊布利斯將受縛……」　我清楚今天正好滿一千零一年,所以這段「絕對」沒錯。 |
 | "If you know what's good for you, you will obey orders. We will leave them here. If you do | 「你要是識相,就乖乖聽令。指令我們留在這兒。你不照辦,有你好受的。我們會盯著你。」 |
 | "Keep off the grass." | 「請勿踐踏草坪。」 |
+| "Maximum Speed 1.5." | 「最高速限 1.5。」 |
+| "No! Iblis is loose!" | 「不!伊布利斯掙脫了!」 |
 | "Obey the laws at all times." | 「時刻遵守律法。」 |
+| "Passing through the door unopened, that he will find there."　The door! Accursed door. Why | 「他將在那裡,穿越一道不曾開啟之門。」　那道門!該死的門。你怎麼就穿不過去? |
 | "Tomorrow night is your last night. You'll get your final orders then. Be seeing you." | 「明晚是你的最後一晚。到時你會收到最終指令。回頭見。」 |
-| A barrel full of animal entrails. Lovely. | 一整桶的動物內臟。真是「賞心悅目」。 |
-| A beautifully ornate window adorns this area of the wall. | 牆上這一處鑲著一扇華美雕飾的窗。 |
-| A business owner's sign hangs overhead. | 一面店家招牌懸在頭頂上。 |
-| A caravan is many travelers journeying together. It is much less dangerous that way. | 所謂商隊,就是一大群旅人結伴上路——這樣一來,危險可就少多了。 |
-| A decorative basket adorns the alley. | 一只裝飾用的籃子點綴著巷子。 |
-| A delicately crafted jar of copper and bronze. | 一只以紅銅與青銅精工打造的罐子。 |
-| A derelict window hangs unevenly from its battered frame. | 一扇破窗歪斜地掛在殘破的窗框上。 |
-| A discarded barrel rests nearby. | 附近擱著一只廢棄的木桶。 |
-| A discarded barrel rests nearby. The wood shows heavy signs of rot. | 附近擱著一只廢棄的木桶,木頭已嚴重腐朽。 |
-| A eunuch patrols the parapet. | 一名宦官在城垛上巡邏。 |
-| A feeling of peace and tranquility permeates the area. | 一股祥和寧靜的氣息瀰漫此地。 |
-| A finely crafted jar of brass and copper. The surface is so shiny and smooth it almost act | 一只黃銅與紅銅精製的罐子,表面光亮平滑,幾乎能當鏡子照。 |
-| A ghastly moan is all you hear from the other side of the door. | 門的另一側,你只聽見一聲淒厲的呻吟。 |
-| A handshake wouldn't do much to change this guy's bad attitude. | 光握個手,可改變不了這傢伙的臭脾氣。 |
-| A large iron grate blocks further passage in this direction. | 一道巨大的鐵柵欄擋住了這個方向的去路。 |
-| A long thread of twine, spread with damp articles of clothing is spanned across an open ou | 一條長麻繩,掛著一件件濕衣物,橫跨在戶外開闊處,好讓它們最大限度地曬到太陽。一般稱之為「曬衣繩」。 |
-| A mere week after Abdulla's arrival, another new face appeared in Spielburg. | 阿布杜拉抵達不過一週,史畢柏格又出現了一張新面孔。 |
-| A most interesting tale. | 真是個有意思的故事。 |
-| A most prudent decision upon your part. | 你這決定下得真是明智。 |
-| A pile of heavy wooden crates has been stacked here. | 這裡堆著一疊沉重的木箱。 |
-| A pity we couldn't make an exchange. Perhaps some other time, then. | 真可惜,這筆買賣沒談成。那就改日再說吧。 |
-| A potion to break enchantments? I know of one in which the victim drinks the potion and th | 破除魔咒的藥水?我聽過一種——只要中咒的人喝下去,法術便會解除。 |
-| A powerful aura of dark magic radiates from the Air Elemental. | 風元素精靈散發出強大的黑暗魔法氣息。 |
-| A quick glance at the skyline tells you how much in decline the city is. | 只消瞄一眼天際線,你便知道這座城市已沒落到何種地步。 |
-| A Raseirian guard patrols this section of the city. | 一名拉希爾衛兵在這一帶巡邏。 |
-| A simple yes or no will suffice. | 答個「要」或「不要」就行了。 |
-| A square, flat box lies discarded among the trash. | 一只方扁的盒子被丟棄在垃圾堆裡。 |
-| A strange sort of person, even for a human. | 真是個怪人——即便以人類的標準來看也一樣。 |
-| A strong aura of magic radiates from the Water Elemental. You suspect the creature isn't n | 水元素精靈渾身散發著濃烈的魔法氣息。你直覺這傢伙絕不像外表那般人畜無害。 |
-| A strong sense of magic radiates from the Elemental. | 那元素精靈散發著強烈的魔法氣息。 |
-| A swordsman such as yourself should focus on sticking close to his opponent in order to av | 像你這樣的劍士,該專注於緊貼對手,以免被遠距攻擊打個措手不及;對手發動攻勢時,則偶爾後撤。 |
-| A topiary expert, you are not. | 修剪花木的高手,你肯定不是。 |
-| A Water Elemental in the fountain of town would be the greatest of misfortunes. | 要是讓水元素精靈鑽進城裡的噴泉,那可就是天大的災難了。 |
-| A wise choice. I dislike a man who doesn't drink. | 明智之選。我可不喜歡滴酒不沾的男人。 |
-| A. You don't. You get down off a duck. | 答:你不「下」大象——鴨絨才是從鴨子身上拔的。 |
-| Abdulla glances at his tea as if he can't make up his mind whether to drink it or not. It' | 阿布杜拉瞥著他的茶,彷彿拿不定主意該不該喝。顯然,水元素精靈的消息正困擾著他。 |
-| Abdulla glances at you and looks a bit uncomfortable. Maybe you shouldn't be picking your  | 阿布杜拉瞥了你一眼,神色有些不自在。也許你不該在大庭廣眾下挖鼻孔。 |
-| Abdulla happened to be close to Spielburg when the road to the valley became accessible ag | 通往山谷的路重新開通時,阿布杜拉正好在史畢柏格附近,指望著當那年頭一個抵達谷地的商人,好賺上一小筆。 |
-| Abdulla seems a bit absent-minded and rarely seems to taste his food. It looks like news o | 阿布杜拉似乎有些心不在焉,吃東西也少有滋味。看來火元素精靈的消息可沒讓他的胃口好到哪去。 |
-| Abdulla was asked to sell trade items that the Katta merchants in Shapeir supplied him wit | 阿布杜拉受託代售夏皮爾卡塔族商人供給他的貨物,本該用所得的利潤助我們繼續上路。 |
-| Abu takes off his glasses, polishes them, puts them on again and continues looking at you. | 阿布摘下眼鏡,擦了擦,又戴回去,繼續盯著你看。也許你不該在大庭廣眾下挖鼻孔。 |
-| According to an ancient prophecy, when Raseir fell into darkness, a hero from the north wo | 古老的預言有云:當拉希爾墮入黑暗,北方終將有一位英雄前來,為這座城市重燃光明。 |
-| According to the Chief in Spielburg, thieves are resentful of people stealing without payi | 據史畢柏格的酋長說,盜賊們最恨那些不繳公會會費就偷東西的人。你決定還是別去領教他們有多恨。 |
-| Ad Avis is intent on raising Iblis. | 阿德·阿維斯一心要喚醒伊布利斯。 |
-| Ad Avis stands, glaring sternly, his black robes blowing in the wind. | 阿德·阿維斯佇立著,目光森冷,一襲黑袍在風中獵獵翻飛。 |
-| After all we've been through to come to an agreement, and you have the nerve not to have e | 費了這麼大勁才談攏,你倒好,竟厚著臉皮說錢不夠。 |
-| After an hour's rest, you feel better. | 歇了一個鐘頭,你覺得好多了。 |
-| After carefully squeezing the last drop of poison out of the tail, you drop it on the grou | 你小心地把尾巴裡最後一滴毒液擠乾,隨手扔在地上。 |
-| After the hour of rest, you don't really feel better. In fact, your thirst is worse than e | 歇了一個鐘頭,你並沒覺得好些。事實上,你比先前更渴了。 |
-| After the remainder of the Sultan's army returned and it became clear the Sultan did not w | 蘇丹殘餘的軍隊歸來、而蘇丹顯然不願再派人馬前往拉希爾之後,雪瑪和我決定離開夏皮爾,搭上第一支北行的商隊。 |
-| After trying to make a deal for some twenty minutes, you realize that you really don't nee | 討價還價了約莫二十分鐘後,你發覺自己其實沒「那麼」需要那枚別針。 |
-| After years of study, you became a very knowledgeable wizard. However, on occasion, you fi | 經年累月的鑽研,你成了一位學識淵博的巫師。然而,你偶爾仍會想起阿布杜拉、卡塔族,以及你在夏皮爾所有其他朋友的下落。 |
-| After you, my friend. I will humbly follow. | 您先請,朋友。我恭敬地跟在後頭。 |
-| Ah, good day. I am busy as always, making up a batch of pills. If you need something, just | 啊,你好。我一如往常地忙,正在調一批藥丸。有什麼需要,儘管說。 |
+| 'At nightfall tonight, go the door at the end of 'Askeri Darb,' off 'Saif Darb.' Obey, or  | 「今晚天黑時,前往『賽夫巷』岔出的『阿斯凱里巷』盡頭那扇門。照辦,否則你會後悔。」 |
+| 'At nightfall tonight, go the door at the end of 'Saif Darb.' Obey, or you'll regret it.' | 「今晚天黑時,前往『賽夫巷』盡頭那扇門。照辦,否則你會後悔。」 |
+| 'Ello, my name is Ego Montoya. You spill my water. Prepare to dry! | 哈囉,我叫艾果·蒙托亞。你潑了我的水。準備變乾吧! |
+| 'Guide to Sightseeing in Beautiful Raseir.' Only costa you one dinar since it only gotta o | 《美麗拉希爾觀光導覽》。只要一第納爾,因為它就只有一頁。 |
+| 'If you know what's good for you, you will obey orders. We will leave them here. If you do | 「識相的話,就乖乖聽令。我們會把命令留在這兒。不照辦,你會後悔的。我們盯著你呢。」 |
+| 'The Sultan sits upon this throne; I ponder if he's ever home? The Sultan sits inside his  | 「蘇丹端坐在這寶座上;我尋思他可曾回過家?蘇丹端坐在他的宮殿裡。他在不在裡頭?嗯,去問愛麗絲吧。」(前提是你找得到她——上回碰面,她正跟一隻貓閒聊,又跟那帽匠瞎扯。真是奇妙啊,老兄 |
+| 'Tis a tricky task talking to taxidermal tusks. | 跟標本象牙搭話,可是樁棘手活兒。 |
+| 'Tomorrow night is your last night. You'll get your final orders then. Be seeing you.' | 「明晚是你最後一晚。到時你會收到最後的命令。回頭見。」 |
+| ("When the moonlight shines between the Dragon's jaws...　And is caught and held there by t | 「當月光灑落於巨龍之顎間……　並為天蠍之爪所擒所握。」 |
+| ((Compared to the thought of eating anything in that barrel, the prospect of starving does | ((一想到要吃那桶子裡的任何東西,餓肚子聽起來倒也沒那麼糟了。 |
+| (Although for the life of me, I can't imagine why.) | (雖然我打死也想不通,自己幹嘛要找你。) |
+| (Coral, Bob, and Brine made me say this. Tanks for rising to the bait and falling for it,  | (都是珊瑚、鮑伯跟那一缸鹽水逼我說的啦。多「漁」你上鉤咬餌,還連魚鉤、魚線、鉛墜整套吞下肚!) |
+| (Dinars, that is. Dough, Flo. Shapeir buck an ear.) | (我是說第納爾啦。鈔票嘛,夏皮爾的銅板一串串。) |
+| (Either that, or some preschool and a plastic surgeon.) | (不然就是需要去念個幼稚園,外加找個整形醫師。) |
+| (Enter what?) | (闖進什麼?) |
+| (Hmmm, not here either. Maybe I didn't look hard enough before.) | (唔,這裡也沒有。也許我之前找得不夠仔細。) |
+| (How we got the gentlemen to agree is beyond me.) | (至於我們是怎麼把那兩位君子湊到一塊兒同意的,我也想不明白。) |
+| (I can think of several things.) | (我倒是想得出好幾樣。) |
+| (I knew there was something fishy about that last part, but let's not carp now that the de | (我就知道最後那段有點不對勁,不過生意都成了,咱也別再雞蛋裡挑骨頭啦。) |
+| (I wonder why father would have left the carpet rolled up? Oh well...) | (真奇怪,父親怎麼會把地毯捲起來不放呢?算了,管它的……) |
+| (I've had enough boardom as it is.) | (這日子早就無聊得快發霉了。) |
+| (If you ride one, that's exactly what you get.) | (你騎上去就曉得,你買到的正是這麼回事。) |
+| (It's the only way to get the glasses here clean!) | (這可是把這兒杯子洗乾淨的唯一辦法!) |
+| (Just remember to cut me in for my percentage of the profit.) | (可別忘了分我一份該得的利潤。) |
+| (Not here I guess...) | (這裡大概沒有……) |
+| (Now where did he hide his savings again?) | (他到底把私房錢藏哪兒了?) |
+| (Or better yet... just come back tomorrow and buy a Saurus. I'll charge interest!) | (或者更妙的是……你明天回來把索魯斯買了就成。我可要收利息哦!) |
+| (Perhaps he has a Saurus throatus?) | (說不定他害了索魯斯喉炎?) |
+| (Speaking of the Moneychanger, I'd like to deal with her myself.) | (說到那位錢莊老闆娘,我倒想親自跟她打交道。) |
+| (Then again, maybe you do and that's why you're doing it.) | (話說回來,搞不好你還真餓,所以才這麼做。) |
+| (There couldn't possibly be enough suckers like you around here to form a line to begin wi | (這附近哪湊得出夠多像你這樣的冤大頭,排得成一條隊伍嘛。) |
+| (They don't call it Saurus Rex for nothing.) | (人家管牠叫「索魯斯·雷克斯」可不是叫假的。) |
+| (We don't show any of that here, in order not to embarrass those people with tender sensib | (這裡就不一一展示了,免得讓那些心思細膩的人難為情。) |
+| (We're REALLY fishing here, folks.) | (各位,我們這可是「真的」在釣魚喔。) |
+| (Well, so much for copy protection.) | (好吧,防拷措施也就這麼回事了。) |
+| (Well, that was fun, but it didn't seem to have much effect.) | (嗯,是挺好玩的,可惜好像沒什麼用。) |
+| (Whether I'll respect you in the morning is something else.) | (至於明早我還會不會看得起你,那就是另一回事了。) |
+| (You should see the beauty I rest with.) | (你真該瞧瞧陪我歇腳的那位美人。) |
+| ) The message reads:　"Latest drag race results:　Salt: 5　The rest: 0 " | ) 留言寫著:　「最新飆車賽結果:　鹽湖隊:5　其他人:0 」 |
+| )Dinarzad smiles and looks at you expectantly. | 蒂娜薩德微微一笑,滿懷期待地看著你。 |
+| -"Desertside litter removal crews next 3 dunes." | -「沙漠側垃圾清運隊伍,前方三座沙丘。」 |
+| ... hmm... and Jupiter aligns with Mars (mumble, mumble)... | ……嗯……再加上木星與火星連成一線(喃喃,喃喃)…… |
+| ...after scraping it off the flagstones! | …等我先把它從石板地上刮下來再說! |
+| ...and that you won't enjoy it. | ……而那場面,你肯定不會好受。 |
