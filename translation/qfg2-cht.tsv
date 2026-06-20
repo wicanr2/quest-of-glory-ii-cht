@@ -1,5 +1,5 @@
 # 英雄傳奇II:烈火試煉 — 英↔繁中 對照典藏
-# English<TAB>繁體中文  /  共 2151 條
+# English<TAB>繁體中文  /  共 2170 條
 "At nightfall tonight, go the door at the end of 'Askeri Darb,' off 'Saif Darb.' Obey, or you'll regret it."	今晚入夜後,去『Saif Darb』岔出的『Askeri Darb』盡頭那扇門。乖乖照辦,否則你會後悔。
 "At nightfall tonight, go the door at the end of 'Saif Darb.' Obey, or you'll regret it."	「今晚入夜後,去『Saif Darb』盡頭那扇門。乖乖照辦,否則你會後悔。」
 "If you know what's good for you, you will obey orders. We will leave them here. If you don't follow them, you'll be sorry. We'll be watching you."	「你要是識相,就乖乖聽令。指令我們留在這兒。你不照辦,有你好受的。我們會盯著你。」
@@ -501,6 +501,7 @@ Infiltrating the Brigand fortress and striking at the heart of their threat was 
 Inside, you have stored the essence of the Pizza Elemental.	裡頭裝著你封存的「披薩元素精靈」精華。
 Inside, you have stored the essence of the Pizza Elemental. You have 1 slice left.	裡頭裝著你封存的「披薩元素精靈」精華。你還剩 1 片。
 Instead of dropping the purse, you might try returning it to where you found it.	與其把錢袋丟了,你不如試著把它放回原處。
+INVENTORY: The bottom of the inventory screen also shows the maximum weight your hero can carry to the left and the current weight your hero is carrying to the right. If you exceed the maximum allowed weight your hero will become overloaded and will begin to move slowly and more awkwardly. If this happens you should drop some items until you are no longer overloaded.	物品欄:物品欄畫面底部,左邊顯示你英雄能負荷的最大重量,右邊顯示他目前所背的重量。一旦超出允許的最大重量,你的英雄就會超重,行動變得遲緩而笨拙。若發生這種情況,你該丟下一些物品,直到不再超重為止。
 INVENTORY: Within this inventory screen are several options:[[ARROW: Selects an item[[LOOK: Displays a description of an item.[[DROP: Allows you to drop an item.[[OK: Returns to the game.	物品欄:這個物品欄畫面裡有幾個選項:[[箭頭:選取物品[[查看:顯示物品的描述。[[丟棄:讓你丟下物品。[[確定:返回遊戲。
 Is it really a basket? Won't know till you ask it.	這真是個籃子嗎?不問問它,怎會知道呢?
 Is that a refusal, Effendi?	這是拒絕的意思嗎,閣下?
@@ -983,6 +984,7 @@ Speak now the name of FLOWER!	現在,說出「花」的名字!
 Speak the name of power:	說出力量之名:
 Speaking of health, a Saurus can save your life. Let's say you're traveling in the desert, you're lost, and you've run out of food and water. You are crawling pathetically and hopelessly in the blazing desert sun.	說到保命,一頭索魯斯能救你一命。比方說,你在沙漠裡趕路,迷了路,食物和水都見了底。你正在炙熱的沙漠驕陽下,可憐又絕望地爬行著。
 SPECIAL ACTIONS MENU[[In the special actions menu you will find several more icons: WALK, RUN, SNEAK, REST, STATISTICS, TIME OF DAY, and OK.	特殊動作選單[[在特殊動作選單裡,你會找到更多圖示:行走、奔跑、潛行、休息、屬性、時辰,以及「確定」。
+SPECIAL ACTIONS MENU[[WALK: Change to walking mode.[[RUN: Change to running mode.[[SNEAK: Change to sneaking mode (only if you have Stealth skill).[[REST: Allows you to recover some health and stamina or pass time.[[STATISTICS: Shows your Hero's skill statistics sheet.[[TIME OF DAY: Shows the current time and day in Shapeir.[[OK: Closes the Special Actions menu.	特殊動作選單[[行走:切換為行走模式。[[奔跑:切換為奔跑模式。[[潛行:切換為潛行模式(僅在你具備潛行技能時)。[[休息:讓你恢復部分生命力與耐力,或讓時間流逝。[[屬性:顯示你英雄的技能屬性表。[[時辰:顯示夏皮爾當前的時辰與日期。[[確定:關閉特殊動作選單。
 Special today only, I sell you a genuine made-in-Japan, glow-in-dark turban which says, 'My father went to Shapeir and all he brought me was...'	今天限定特賣,我賣你一條正宗日本製的夜光頭巾,上頭寫著:「我爸去了夏皮爾,結果只帶回給我這個……」
 Stick to dealing with the kind of trash you're used to. Monsters, murderers, and madmen.	還是去對付你慣常那些渣滓吧——怪物、殺人犯,還有瘋子。
 Sticking your shoomflufluf out sideways, you touch your bozombie (wet side up, of course) to your flanigoogle, being careful not to cut off the circulation to your capitalary artery.	你把你的「咻夫拉夫」往旁邊一伸,讓你的「波喪比」(當然啦,濕的那面朝上)碰上你的「法尼咕咕」,還得小心別切斷通往「資本動脈」的血流。
@@ -1235,6 +1237,8 @@ The only proper way to dispose of your Saurus is to sell it. Simply disposing of
 The only response from the Air Elemental is a low, ominous hum.	風元素精靈唯一的回應,是一陣低沉而不祥的嗡鳴。
 The only thing it can tell you is that it is in a state beyond repair.	它唯一能告訴你的,就是它已經壞到沒法修了。
 The only thing they seem interested in is eating straw.	牠們似乎唯一感興趣的,就是吃草料。
+THE OPTIONS MENU[[GAME SKILL: Alters the difficulty of combat and other puzzles. Increase the slider to increase the challenge.[[SOUND VOLUME: Alters the volume of in-game sound effects. Drag the slider higher to increase the volume or lower to decrease it.[[MUSIC VOLUME: As above, but for music.[[GAME SPEED: Alters the game's speed according to the slider level.	選項選單[[遊戲難度:調整戰鬥與其他謎題的難度。將滑桿往上調可提高挑戰性。[[音效音量:調整遊戲內音效的音量。滑桿往高處拉可增大音量,往低處拉可減小。[[音樂音量:同上,但用於音樂。[[遊戲速度:依滑桿的高低調整遊戲速度。
+THE OPTIONS MENU[[GAME SKILL: Alters the difficulty of combat. Increase the slider to increase the challenge.[[SOUND VOLUME: Alters the volume of in-game sound effects. Drag the slider higher to increase the volume or lower to decrease it.[[MUSIC VOLUME: As above, but for music.[[GAME SPEED: Alters the game's speed according to the slider level.	選項選單[[遊戲難度:調整戰鬥的難度。將滑桿往上調可提高挑戰性。[[音效音量:調整遊戲內音效的音量。滑桿往高處拉可增大音量,往低處拉可減小。[[音樂音量:同上,但用於音樂。[[遊戲速度:依滑桿的高低調整遊戲速度。
 THE OPTIONS MENU[[SAVE: Saves the game.[[RESTORE: Restores a previously saved game.[[RESTART: Restarts the game again from the beginning.[[QUIT: Stop Playing.[[AGS: Information about the AGS Engine.[[ABOUT: Information about this game.[[PLAY: Return to the game.	選項選單[[存檔:儲存遊戲。[[讀檔:讀取先前儲存的遊戲。[[重新開始:從頭再玩一次。[[離開:停止遊戲。[[AGS:關於 AGS 引擎的資訊。[[關於:關於本遊戲的資訊。[[繼續:返回遊戲。
 The palace doors are barred securely from inside.	王宮的大門從內側牢牢閂住了。
 The Palace is a marvelous place to work.	王宮是個極好的做事之處。
@@ -1591,7 +1595,9 @@ Well, I hope you figure out how to deal with it. This city will soon run out of 
 Well, it is obvious you think being a hero is more important than being a scholar. Perhaps someday when you have matured a bit, you will comprehend the enormity of the education you have ignored!	好吧,你顯然認為當英雄比當學者重要。也許有朝一日你成熟了些,就會明白自己所忽視的那份學問有多麼了不起!
 Well, that was going nowhere the long way.	唉,這一通繞下來,還是白忙一場。
 Well, we certainly are going nowhere fast. I'm willing to make you my best offer. Twenty dinars and you ride away on a new (for you) Saurus. What do you say?	好吧,咱們這樣耗下去顯然沒個結果。我給你我最好的價:二十第納爾,你就能騎著一頭(對你而言)全新的索魯斯走人。怎麼樣?
+Well, you go north until you get to the fountain and from the fountain's north point, you turn-a to the left.	這樣啊,你往北走到噴泉,再從噴泉的北端往左拐。
 Well, you go north until you get to the fountain and you take-a the road west from there.	這樣啊,你往北走到噴泉,再從那兒走西邊的路。
+Well, you go north until you see a way to go left, and you take-a the way. Now you go until you see a way to go right, and you take-a thatta way.	這樣啊,你往北走,看到能往左的路就走那條。接著一直走,看到能往右的路,就走那條。
 Well, young Jackal, may fortune always favor you.	好啦,小豺狼,願好運永遠眷顧你。
 What a shame you couldn't make it back to the cage in time. Now we'll never know whether the beast was enchanted or not.	真可惜你沒能及時趕回籠邊。如今我們永遠無從得知那野獸究竟有沒有中魔法了。
 What a small world!	這世界真小!
@@ -1706,6 +1712,7 @@ You can hear a faint magical swirling sound coming from beyond this door.	你聽
 You can hear laughing and giggling from behind the door.	你聽見門後傳來陣陣談笑與咯咯的笑聲。
 You can hear termites chewing.	你聽得見白蟻啃咬的聲音。
 You can make out the mountains beyond the buildings to the north.	你能辨認出北面建築之外的群山。
+You can make out the mountains beyond the buildings to the south.	你能辨認出南面建築之外的群山。
 You can now climb with the best of them!	你現在攀爬的本事,已能與高手比肩!
 You can now pick (on) locks your own size!	現在你可以開(捉弄)跟你差不多大的鎖了!
 You can see the riding Sauruses in the stable over there.	你能看見那邊棚廄裡的坐騎索魯斯。
@@ -1717,6 +1724,8 @@ You can't do that at the moment.	你此刻沒法那麼做。
 You can't do that from your current position.	從你現在的位置沒法那麼做。
 You can't do that now.	你現在沒法那麼做。
 You can't do that right now.	你現在沒法那麼做。
+You can't do that while riding your Saurus.	你騎著索魯斯時沒法那麼做。
+You can't do that while riding your Saurus. You'd fall off!	你騎著索魯斯時沒法那麼做,會摔下來的!
 You can't drop it here!	你不能在這兒丟下它!
 You can't drop items right now.	你現在沒法丟下物品。
 You can't expect the Elemental to simply jump into your waterskin on its own. You'll have to think of something else.	你總不能指望那元素精靈自個兒跳進你的水袋吧。你得另想辦法。
@@ -1741,6 +1750,7 @@ You can't use your rope very well underneath the balcony.	在陽台底下,你的
 You cannot find a better treat in all the bazaar.	走遍整個市集,你也找不到比這更好的美味。
 You cannot manage to Fetch the feather with such a large rock weighing it down.	有這麼一塊大石頭壓著,你沒法把羽毛「取」過來。
 You cannot reach your Saurus from such a distance.	隔這麼遠,你構不著你的索魯斯。
+You carefully hide your thief license inside. That's one piece of incriminating evidence off your body. Now all you have to do is make sure you aren't caught red-handed.	你小心地把盜賊執照藏了進去。這下身上少了一件罪證。現在你只消確保自己別當場被逮個正著就成。
 You certainly know how to drive a hard bargain. Why don't we just agree at thirty for bridle, saddle, and Saurus?	你殺價可真有一套。不如就說定三十,馬轡、馬鞍連索魯斯全包了,如何?
 You challenge Keapon to a friendly magical duel.	你向姬朋提出一場友好的魔法對決。
 You collapse in the hot desert air and never awaken. Truly it is said that "water is life itself in a desert land."	你在炙熱的沙漠空氣中倒下,再也沒有醒來。古人說得真對:「在沙漠之地,水就是生命本身。」
@@ -1759,6 +1769,7 @@ You decide to wait until new year before swearing off crime. Again.	你決定等
 You delicately insert a lock pick into your left nostril.	你小心翼翼地把一把開鎖器伸進左鼻孔。
 You delicately insert the lock pick into your left nostril.	你小心翼翼地把開鎖器伸進左鼻孔。
 You describe to Zayishah how the Emir was transformed into a Saurus, and that Aziza is currently taking care of him.	你向札伊莎描述埃米爾如何被變成了一頭索魯斯,如今正由阿姿莎照料著。
+You detect an intense aura of dark magic emanating from the Ghoul. Its very presence seems to drain the strength right out of your Detect Magic spell.	你偵測到食屍鬼(Ghoul)散發出一股濃烈的黑暗魔法氣息。光是它在場,似乎就把你「偵測魔法」術的力道吸得一乾二淨。
 You detect no magic in this alcove.	你在這壁龕裡偵測不到魔法。
 You detect no magic in this area.	你在這一帶偵測不到魔法。
 You detect some magical residue on the cage.	你在那牢籠上偵測到一些魔法殘留。
@@ -1800,12 +1811,14 @@ You don't want to know.	你還是別知道的好。
 You don't want to miss the caravan in the morning, so you return to your room at the inn to prepare for the trip.	你不想錯過早上的商隊,於是回到客棧房裡,為這趟路做準備。
 You don't want to open the sealed game box. Ever since Chainsaw Monday, these vintage games have become real collector's items.	你不想拆開那個密封的遊戲盒。自從「電鋸星期一」以來,這些老遊戲都成了搶手的收藏品。
 You don't want to take the snake's basket. You might upset him.	你不想拿走那條蛇的籃子,免得惹惱牠。
+You don't work for the Shapeirian Sanitation Department. Besides, do you really want to carry around every piece of trash you find laying in the street?	你又不是夏皮爾清潔隊的。再說,你真想把街上撿到的每一片垃圾都帶在身上嗎?
 You drink the last few drops from your waterskin. You might want to start looking for a place where you can refill it.	你喝光了水袋裡最後幾滴水。你或許該開始找個能裝水的地方了。
 You drop a healing pill.	你掉了一顆治療藥丸。
 You drop a mana pill.	你掉了一顆法力藥丸。
 You drop a vigor pill.	你掉了一顆活力藥丸。
 You drop one of your daggers. Let's hope it doesn't end up in your back someday.	你掉了一把匕首。但願它哪天別插進你的背。
 You drop one of your food rations.	你掉了一份口糧。
+You drop one of your rocks. An idea flashes through your mind. Marking your trail with small rocks may be a very useful way to avoid getting lost in the desert.	你掉了一塊石頭。一個念頭閃過你腦海:用小石頭標記路徑,或許是在沙漠裡避免迷路的好法子。
 You drop one of your waterskins.	你掉了一個水袋。
 You drop the bag of sand.	你放下了那袋沙子。
 You drop the basket into the storage chest.	你把籃子放進儲物箱。
@@ -1836,8 +1849,11 @@ You drop the visa.	你放下了那張通行證。
 You drop the Warrior's Diary.	你放下了那本「戰士日記」。
 You dump the brass jar.	你倒空了那只黃銅罐。
 You dunk the basket.	你把籃子浸了一下。
+You eat a quarter of the doughy disk. Its flavor is unlike anything you've ever tasted. You feel invigorated, revitalized, and ready to take on the world.	你吃了那塊麵餅的四分之一。那滋味是你從未嘗過的。你覺得精力充沛、煥然一新,準備好征服世界。
+You eat the last quarter of the doughy disk. Its flavor is as magnificent as always, but you feel a sense of regret knowing that it's the last slice you'll ever get to eat.	你吃下那塊麵餅的最後四分之一。滋味一如既往地絕妙,但一想到這是你此生能吃到的最後一塊,你不禁生出一絲遺憾。
 You entrust the Warrior's Diary to the safety of your storage chest.	你把「戰士日記」妥善地交給儲物箱保管。
 You examine the item but find nothing unusual about it.	你細看這件物品,卻沒發現什麼異樣。
+You faintly hear "To the left... up... ah, right there!" The lamp glows faintly with pleasure, then decides it isn't dark enough to really put on a show, and goes out again.	你隱約聽見:「往左……往上……啊,就是那兒!」那盞燈愜意地微微一亮,旋即覺得這兒還不夠暗,不值得它好好表演一番,便又熄了。
 You feel a sharp shock as you try to remove the ring from your finger.	你想把戒指從指上取下時,感到一陣劇烈的刺痛。
 You feel a surge of power as the magical energy of the pill releases itself into your system.	藥丸的魔法能量釋入你體內,你感到一股力量湧起。
 You feel a tingling sensation as you rub the unguent over your body.	你把藥膏抹遍全身,感到一陣刺麻。
@@ -1857,6 +1873,7 @@ You get rid of the game box.	你把那個遊戲盒處理掉了。
 You get the feeling that the warrior woman doesn't much care for thieves, so you decide against it.	你感覺那女戰士不怎麼待見盜賊,於是打消了念頭。
 You give Harik a brief description of the caged beast.	你向哈里克簡短描述了那頭籠中野獸。
 You go until you can see a way to go left and you go to the left. Thatsa right way. Follow the road and you no can miss it.	你一直走,看到能往左拐的地方就往左。沒錯,就那條路。沿著走,絕錯不了。
+You go until you can see a way to go right and you go to the right. Then you go until you can go to the right again. Thatsa right way.	你一直走,看到能往右的路就往右。接著再走,直到又有個能往右的地方。沒錯,就那條路。
 You have 1 basket with desert sand stored.	你存放了 1 個裝著沙漠沙子的籃子。
 You have 1 cloth bag with desert sand stored.	你存放了 1 個裝著沙漠沙子的布袋。
 You have 1 empty clay pot stored.	你存放了 1 個空陶罐。
@@ -1875,7 +1892,9 @@ You have already won the bellows, remember?	你已經贏得風箱了,記得吧?
 You have already won the bellows. What more do you want?	你已經贏得風箱了。還想怎樣?
 You have an empty clay pot.	你有一個空陶罐。
 You have captured 100 screenshots; you cannot capture any more.	你已截取 100 張螢幕擷圖,無法再截了。
+You have captured your first screenshot. You may capture 99 more. If you quit this program, restart it, and take new screenshots, existing screenshots will be overwritten.	你已截取第一張螢幕擷圖,還可再截 99 張。你若離開本程式、重啟後再截新圖,現有的擷圖將被覆蓋。
 You have done all you can to weaken the spell on the tree.	削弱那棵樹上法術的事,你已盡力而為了。
+You have in your possession a beautifully crafted dagger made of pure silver which was once the property of Jabbar bin Ma'amar.	你擁有一把以純銀打造、做工精美的匕首,它曾是賈巴爾·賓·馬阿瑪爾的財產。
 You have in your possession a quantity of Fire Elemental-attracting incense.	你身上帶著一些能吸引火元素精靈的薰香。
 You have lived a most interesting life.	你過著一段極其精彩的人生。
 You have no desire to announce your presence to the distracted eunuch.	你無意向那個心不在焉的宦官表明自己在場。
