@@ -4119,6 +4119,47 @@ BATCH = {
    "我正試著研發一種藥丸,用來抵禦食屍鬼爪子的效力。",
  "In this place, you must rely upon only your magic":
    "在這個地方,你只能仰賴你的魔法。",
+ # --- 第三十八批 ---
+ "Powder of burning is a really excellent mixture of potassium nitrate from bat guano, powdered charcoal, sulfur, and ambergris. The ambergris doesn't really do anything, but it makes the powder smell more interesting":
+   "燃燒之粉,是一種上好的混合物,由蝙蝠糞提煉的硝酸鉀、炭粉、硫磺和龍涎香調成。龍涎香其實沒什麼作用,只是讓這粉聞起來更有意思些。",
+ "So it seems that things now have come full circle. The journey Shema and I made for the future of our homeland has ended and yours is about to begin":
+   "看來如今一切已繞了一整圈。雪瑪和我為家鄉未來而踏上的旅程已然結束,而你的旅程正要開始。",
+ "Something in the back of your mind tells you to deal with the problems in Raseir before dispelling the Emir":
+   "你腦海深處有個聲音告訴你,在解除埃米爾的魔咒之前,先處理拉希爾的麻煩。",
+ "So you made the gust bite the dust, Russ? Look, it's neat that you stalled a repeat by causing its defeat, Pete. But keep the bellows, Fellow, and now that the Elemental's mellow you can put it to good use, Bruce":
+   "這麼說,你讓那陣狂風一敗塗地啦,小羅?瞧,你把它打敗、攔下重演,真有一手,小彼。不過風箱你留著吧,老兄;如今那元素精靈乖了,你正好好好派它用場,小布。",
+ "Speaking of health, a Saurus can save your life. Let's say you're traveling in the desert, you're lost, and you've run out of food and water. You are crawling pathetically and hopelessly in the blazing desert sun":
+   "說到保命,一頭索魯斯能救你一命。比方說,你在沙漠裡趕路,迷了路,食物和水都見了底。你正在炙熱的沙漠驕陽下,可憐又絕望地爬行著。",
+ "Special today only, I sell you a genuine made-in-Japan, glow-in-dark turban which says, 'My father went to Shapeir and all he brought me was...'":
+   "今天限定特賣,我賣你一條正宗日本製的夜光頭巾,上頭寫著:「我爸去了夏皮爾,結果只帶回給我這個……」",
+ "Sticking your shoomflufluf out sideways, you touch your bozombie (wet side up, of course) to your flanigoogle, being careful not to cut off the circulation to your capitalary artery":
+   "你把你的「咻夫拉夫」往旁邊一伸,讓你的「波喪比」(當然啦,濕的那面朝上)碰上你的「法尼咕咕」,還得小心別切斷通往「資本動脈」的血流。",
+ "Talk about over-exerting yourself... that last little maneuver wore you out so much it hurt. In fact, it hurt so much, it killed you. Take it easier next time":
+   "這就叫用力過猛了……剛才那一小招把你累得發疼。事實上,疼到把你給疼死了。下回悠著點。",
+ "Thank you, a thousand thank-yous. It is with your support that I may continue my vital work.":
+   "謝謝你,千恩萬謝。全靠你的支持,我才能繼續這要緊的工作。",
+ "That is one thing, however, that it does very well. It cannot truly feel pain and thus will keep attacking, even while you are damaging it at the same time. Fight with caution":
+   "不過,有一件事它倒做得很到位:它感覺不到真正的痛,所以即便你同時在傷它,它仍會不停攻擊。作戰時務必謹慎。",
+ "That's one way of getting more iron in your diet":
+   "這倒是替三餐多補點鐵質的法子。",
+ "That's one way of getting more junk food in your diet":
+   "這倒是替三餐多添點垃圾食物的法子。",
+ "That sounds most interesting. It is probably not a natural creature, but around here, who can tell? You could try a dispel potion on it, though":
+   "聽起來真有意思。它八成不是自然生物,不過這一帶,誰說得準呢?你倒可以拿驅散藥水試試它。",
+ "The bazaar is wherever the merchants are. In the summer only the Katta can stand the heat. Other times of year, you cannot move in the plazas for so many stands and shops":
+   "商人在哪兒,市集就在哪兒。夏天裡,也只有卡塔族受得了那熱。一年其餘時節,廣場上攤子店鋪多得讓你動彈不得。",
+ "The Caravan Master informed us that recent snowfall had already made further passage through the Dragonsmoke Mountains impossible and that the caravan would head back towards Wien":
+   "商隊隊長通知我們,近日的降雪已使穿越龍煙山的去路斷絕,商隊將折返維恩。",
+ "The city walls are too slick to scale and you have no business on the rooftops anyway":
+   "城牆太滑,爬不上去,再說屋頂上也沒你的事。",
+ "The coffee has been boiled for hours, it would appear, and it best resembles brown ooze. You can understand why people remember Raseirish Coffee":
+   "這咖啡看樣子已經煮了好幾個鐘頭,最像一灘褐色的黏液。你這下明白,人們為何對「拉希爾咖啡」念念不忘了。",
+ "Magic, magic everywhere. Find it at Aziza's lair. Magic, magic, wait a bit. Find it in the soul of WIT. Magic, magic in the stars. The Astrologer can see that far":
+   "魔法魔法,無處不在。阿姿莎的居所裡尋它。魔法魔法,且慢些。巫師技術學院的魂魄裡尋它。魔法魔法,藏於星辰。占星師看得那般遠。",
+ "May you have a good day today":
+   "願你今天順心如意。",
+ "The beast is much too large to fetch":
+   "這野獸太大了,「取物」術搬不動。",
 }
 
 resolved=[]
