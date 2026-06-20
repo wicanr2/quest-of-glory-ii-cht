@@ -445,6 +445,115 @@ BATCH = {
    "你需要一把燃燒之劍的魔力,才能擊敗土元素精靈。",
  "You're not THAT desperate for a light":
    "你還沒淪落到「那麼」需要一點火光的地步。",
+ # --- 第六批:對白 / 旁白 / 諧音 ---
+ "Abdulla glances at you and looks a bit uncomfortable. Maybe you shouldn't be picking your nose in public":
+   "阿布杜拉瞥了你一眼,神色有些不自在。也許你不該在大庭廣眾下挖鼻孔。",
+ "A finely crafted jar of brass and copper. The surface is so shiny and smooth it almost acts like a mirror":
+   "一只黃銅與紅銅精製的罐子,表面光亮平滑,幾乎能當鏡子照。",
+ "After all we've been through to come to an agreement, and you have the nerve not to have enough money":
+   "費了這麼大勁才談攏,你倒好,竟厚著臉皮說錢不夠。",
+ "After an hour's rest, you feel better":
+   "歇了一個鐘頭,你覺得好多了。",
+ "After carefully squeezing the last drop of poison out of the tail, you drop it on the ground":
+   "你小心地把尾巴裡最後一滴毒液擠乾,隨手扔在地上。",
+ "After the hour of rest, you don't really feel better. In fact, your thirst is worse than ever":
+   "歇了一個鐘頭,你並沒覺得好些。事實上,你比先前更渴了。",
+ "After you, my friend. I will humbly follow":
+   "您先請,朋友。我恭敬地跟在後頭。",
+ "Ah, good day. I am busy as always, making up a batch of pills. If you need something, just let me know":
+   "啊,你好。我一如往常地忙,正在調一批藥丸。有什麼需要,儘管說。",
+ "Ah, I did not notice you come in":
+   "啊,我沒注意到你進來。",
+ "Ah, men... always coming and going. Always going and coming, and always too soon":
+   "唉,男人哪……總是來來去去,去去來來,而且總是走得太早。",
+ "Ah, then you are indeed a friend in a place where we both need friends. We need to escape from this prison":
+   "啊,那麼在這你我都需要朋友的地方,你果真是個朋友。我們得逃出這座牢獄。",
+ "Ah, true love at first sight. And what a sight for Saurus eyes":
+   "啊,一見鍾情的真愛。這在索魯斯眼裡,可真是養眼哪。",
+ "Alas, you are out of water":
+   "唉,你的水喝光了。",
+ "Ali Fakir said after you left that he had sold his last Saurus and must be going":
+   "你走後,阿里·法基爾說他最後一頭索魯斯也賣掉了,該動身了。",
+ "All you hear is a ringing in your own ears":
+   "你只聽見自己耳中的嗡嗡聲。",
+ "Always happy to be of service, Handsome":
+   "隨時樂意效勞,帥哥。",
+ "A mere week after Abdulla's arrival, another new face appeared in Spielburg":
+   "阿布杜拉抵達不過一週,史畢柏格又出現了一張新面孔。",
+ "Announcing that you are a thief would not be a good idea right now":
+   "現在嚷嚷自己是個盜賊,可不是什麼好主意。",
+ "Antidote pills to magically cure venomous stings and scratches":
+   "解毒藥丸,能以魔法治癒毒螫與抓傷。",
+ "Anything he says, ain't gonna be much":
+   "他就算開口,也說不出什麼名堂。",
+ "Are you saying you wish to help me weave baskets, Hero of the North":
+   "你是說你想幫我編籃子嗎,北方來的英雄?",
+ "Are you sure you want to quit":
+   "你確定要離開嗎?",
+ "As a favor for getting yourself busted, Jabbar first beat you senseless before cutting off your hand":
+   "為「答謝」你害自己被逮,賈巴爾先把你打個半死,才剁了你的手。",
+ "As I have said before, there is no room for amateurs in this city":
+   "我說過了,這座城市容不下外行人。",
+ "As it's getting late, you decide to return to the inn for the night":
+   "天色已晚,你決定回客棧過夜。",
+ "As you blow into the barrel, a white cloud of mold escapes into the air":
+   "你往桶裡一吹,一團白色的黴菌粉塵散入空中。",
+ "As you call out, you realize how silent the streets around you are":
+   "你一出聲,才驚覺四周街道是何等寂靜。",
+ "As you expected, the door is locked and bolted":
+   "不出你所料,門上了鎖、還閂著。",
+ "As you press your ear to the door, you hear the sound of solid wood":
+   "你把耳朵貼上門,聽見的只是一片厚實木頭的悶響。",
+ "As you search through your pouch, you discover that you have no more coins from Spielburg to exchange":
+   "你翻遍錢囊,發現再也沒有史畢柏格的錢幣可換了。",
+ "At any rate, I'm here to sell you a Saurus, and you're ready to buy it, right":
+   "總之,我是來賣你一頭索魯斯的,你也準備好要買了,對吧?",
+ "A. You don't. You get down off a duck":
+   "答:你不「下」大象——鴨絨才是從鴨子身上拔的。",
+ "Aziza would most likely be very offended if you tried to mount the enchanted Emir":
+   "你要是想騎那位中了魔法的埃米爾,阿姿莎多半會大為光火。",
+ "Bad idea. The sound of the coins being shifted into your own purse would surely alert the guards":
+   "餿主意。錢幣落進你錢袋的聲響,準會驚動衛兵。",
+ "Behind the locked door, you hear a family quarrel. Better not get involved":
+   "上了鎖的門後傳來一陣家庭口角。還是別淌這渾水。",
+ "Be it ever so humble, there's no face like Gnome's":
+   "金窩銀窩,都不如地精的臉窩。",
+ "Best of all, they can always find their way back to where they are stabled, so you need never get lost":
+   "最妙的是,牠們總能自己找回棚廄,你再也不必擔心迷路。",
+ "Better not. His bite is worse than his bark":
+   "還是別了。這傢伙咬起人來可比叫得兇。",
+ "Beyond the buildings to the south lies the great Shapeirian Desert":
+   "南面建築之外,便是浩瀚的夏皮爾大沙漠。",
+ "Beyond the door, all is deathly silent":
+   "門後是一片死寂。",
+ "Boy, did you look silly":
+   "老天,你那模樣可真蠢!",
+ "Bring it here, quickly. Give it to me":
+   "快拿過來,給我!",
+ "But sir, we have not yet done business. Surely what I have to tell you is worth five paltry dinars":
+   "可是先生,咱們生意還沒談成呢。我要告訴你的,難道不值區區五枚第納爾?",
+ "But, wait, perhaps Lasham, the plant merchant, might be able to assist you":
+   "不過,等等——或許賣花草的商人拉珊幫得上你。",
+ "CAUTION: Do not try this at home":
+   "警告:請勿在家嘗試。",
+ "Come over here and face me when you talk to me, wimp":
+   "跟我說話就過來當面說,膽小鬼。",
+ "Darkness will triumph unless you stop the last light":
+   "除非你阻止最後一道光熄滅,否則黑暗終將得勝。",
+ "Death sting: fatal without antidote":
+   "致命螫刺:無解藥即致死",
+ "Deflection is your new middle name":
+   "「格擋」就是你的新外號!",
+ "Discretion is your Friend":
+   "謹慎是你的好朋友!",
+ "And not a drop to drink":
+   "卻沒有一滴水可喝。",
+ "Carelessly tossing this gift aside wouldn't be very compassionate of you":
+   "把這份禮物隨手一丟,可顯不出你的慈悲心腸。",
+ "Better keep it. You're supposed to give it back, remember":
+   "還是留著吧。你可是得歸還的,記得嗎?",
+ "Beyond the buildings to the north lies the desert you recently crossed to get here":
+   "北面建築之外,是你不久前橫越而來的沙漠。",
 }
 
 resolved=[]
