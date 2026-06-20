@@ -82,24 +82,34 @@ def main():
         draw.text((ox, oy), ch, fill=255, font=font)
         glyphs[f"U+{ord(ch):04X}"] = i
 
-    # 引擎用二進位:'CJKF' + int32 size + int32 count + (int32 codepoint + size*size coverage)*
+    # 引擎用二進位:'CJKF' + int32 size + int32 count
+    #   每字:int32 codepoint + int32 advance(水平前進寬) + byte[size*size] coverage
+    # 同時烘 ASCII 0x20-0x7E(同一套 Noto、等高、比例半寬),讓中英混排同大小/同基線。
+    # 全字共用基線:em box 垂直置中,所有 glyph 以 anchor='la' 畫在固定 oy。
     if args.bin:
+        ascent, descent = font.getmetrics()
+        oy = (size - (ascent + descent)) // 2  # em box 垂直置中 → 共用基線
+        bin_chars = list(chars) + [chr(c) for c in range(0x20, 0x7F)]
         os.makedirs(os.path.dirname(args.bin) or ".", exist_ok=True)
         with open(args.bin, "wb") as bf:
             bf.write(b"CJKF")
-            bf.write(struct.pack("<ii", size, len(chars)))
+            bf.write(struct.pack("<ii", size, len(bin_chars)))
             cell = Image.new("L", (size, size), 0)
             cdraw = ImageDraw.Draw(cell)
-            for ch in chars:
+            for ch in bin_chars:
                 cdraw.rectangle([0, 0, size, size], fill=0)
-                bbox = cdraw.textbbox((0, 0), ch, font=font)
-                gw, gh = bbox[2] - bbox[0], bbox[3] - bbox[1]
-                ox = (size - gw) // 2 - bbox[0]
-                oy = (size - gh) // 2 - bbox[1]
-                cdraw.text((ox, oy), ch, fill=255, font=font)
-                bf.write(struct.pack("<i", ord(ch)))
+                cp = ord(ch)
+                glyph_w = font.getlength(ch)
+                if cp >= 0x2000:                 # 全形:置中,advance = size
+                    adv = size
+                    ox = (size - round(glyph_w)) // 2
+                else:                            # 半形 ASCII:左對齊,比例寬
+                    adv = min(size, max(1, round(glyph_w)))
+                    ox = 0
+                cdraw.text((ox, oy), ch, fill=255, font=font, anchor="la")
+                bf.write(struct.pack("<ii", cp, adv))
                 bf.write(cell.tobytes())
-        print(f"OK bin: {len(chars)} 字 @ {size}px → {args.bin}")
+        print(f"OK bin: {len(bin_chars)} 字(含 ASCII)@ {size}px → {args.bin}")
 
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     atlas.save(args.out + ".png")

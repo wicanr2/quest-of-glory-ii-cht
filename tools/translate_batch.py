@@ -89,6 +89,51 @@ BATCH = {
    "你好。願你一切安好,年輕的冒險者。",
  "Obviously a graduate of the Famous Adventurers' Correspondence School":
    "一看就是「著名冒險家函授學校」的高材生。",
+ # --- 第二批:系統 / 對白 / 戰鬥 ---
+ "Nothing you can say will mend the broken pot":
+   "破罐子難補,你再怎麼說好話也沒用。",
+ "Perhaps the carpet ride into the city was a bit much for you":
+   "乘魔毯進城,對你來說是不是有點吃不消啊,英雄?",
+ "Perhaps you should dismount first":
+   "或許你該先下坐騎。",
+ "Perhaps you should learn more about who sent you before you seek me":
+   "在來找我之前,你或許該先弄清楚究竟是誰派你來的。",
+ "Perhaps there is more a brain about you than I suspected":
+   "看來你腦袋比我想的還要靈光些。",
+ "That doesn't make you look very sexy":
+   "這可不怎麼讓你顯得有魅力。",
+ "That doesn't seem to affect the living flames of the Elemental":
+   "這對元素精靈那活生生的火焰,似乎起不了作用。",
+ "That file already exists. Please pick another name":
+   "這個檔名已經有了,請另取一個。",
+ "That is a most valuable item you have there":
+   "你手上那玩意兒,可是件稀世珍寶啊。",
+ "That is most kind of you. We love treats like these":
+   "您真是太客氣了。我們最愛這種好東西了。",
+ "That is indeed a sad tale. Let me show you of that which we speak":
+   "這的確是個令人傷感的故事。讓我把我們所說的指給你看吧。",
+ "That person isn't interested in the item you offer":
+   "那人對你拿出來的東西不感興趣。",
+ "That Saurus doesn't belong to you":
+   "那頭索魯斯可不是你的。",
+ "A potion to break enchantments? I know of one in which the victim drinks the potion and the spell ends":
+   "破除魔咒的藥水?我聽過一種——只要中咒的人喝下去,法術便會解除。",
+ "Aziza's pawn isn't a valid target for that spell":
+   "阿姿莎的棋子不能當這個法術的目標。",
+ "Casting spells when guards are around is not the wisest course of action":
+   "衛兵就在旁邊還施法,可不是什麼高明的舉動。",
+ "Don't fight them tonight":
+   "今晚別跟他們動手!",
+ "For some reason, your mind can't seem to focus enough to cast that spell":
+   "不知怎地,你心神無法集中,施展不出那個法術。",
+ "Furthermore, an overhead slash can be used to knock an enemy to the ground":
+   "此外,由上而下的劈砍能把敵人擊倒在地,還能避開對方迅捷的反擊。",
+ "Get the hell out of dodge? Not you":
+   "腳底抹油、溜之大吉?那可不是你的作風!",
+ "Good sword. Good fight. There be many proud of you":
+   "好劍法。好身手。會有不少人以你為榮的。",
+ "Maybe you find work for hero here, too":
+   "說不定這兒也有適合英雄幹的活兒。",
 }
 
 resolved=[]

@@ -26,6 +26,7 @@ build/pages/
 build/wt/
 build/corpus*.txt
 
-# 版權遊戲手冊 / 暫存下載
+# 版權遊戲手冊 / 暫存下載 / 任何遊戲壓縮檔
 manual/
 *.crdownload
+*.zip

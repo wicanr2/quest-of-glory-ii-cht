@@ -200,10 +200,10 @@ index afc68429..2a432ec8 100644
  	shared/font/wfn_font.o \
 diff --git a/engines/ags/shared/font/cjk_font.cpp b/engines/ags/shared/font/cjk_font.cpp
 new file mode 100644
-index 00000000..f0cc0cd0
+index 00000000..502aab42
 --- /dev/null
 +++ b/engines/ags/shared/font/cjk_font.cpp
-@@ -0,0 +1,80 @@
+@@ -0,0 +1,90 @@
 +/* ScummVM - Graphic Adventure Engine
 + *
 + * ScummVM is the legal property of its developers, whose names
@@ -230,6 +230,7 @@ index 00000000..f0cc0cd0
 +#include "ags/shared/debugging/out.h"
 +#include "ags/shared/util/stream.h"
 +#include "ags/globals.h"
++#include "common/config-manager.h"
 +
 +namespace AGS3 {
 +
@@ -257,6 +258,7 @@ index 00000000..f0cc0cd0
 +	for (int i = 0; i < count; ++i) {
 +		uint32 code = (uint32)in->ReadInt32();
 +		CjkGlyph glyph;
++		glyph.Advance = in->ReadInt32();
 +		glyph.Coverage.resize(bytes);
 +		in->Read(&glyph.Coverage[0], bytes);
 +		_glyphs[code] = glyph;
@@ -272,8 +274,16 @@ index 00000000..f0cc0cd0
 +	if (!s_tried) {
 +		s_tried = true;
 +		CjkFont *f = new CjkFont();
-+		// 16x16 is the default for the QFG2 CHT slice; fall back to 24x24.
-+		if (f->Load("cjkfont16.bin") || f->Load("cjkfont24.bin")) {
++		// ConfMan "ags_cjk_size" picks the preferred glyph size (16 or 24).
++		// 16 is the safe default (fits 320x200 text boxes); 24 is crisper but
++		// long auto-sized Display boxes may overflow at native resolution.
++		int pref = ConfMan.hasKey("ags_cjk_size") ? ConfMan.getInt("ags_cjk_size") : 16;
++		bool ok = false;
++		if (pref == 24)
++			ok = f->Load("cjkfont24.bin") || f->Load("cjkfont16.bin");
++		else
++			ok = f->Load("cjkfont16.bin") || f->Load("cjkfont24.bin");
++		if (ok) {
 +			s_font = f;
 +		} else {
 +			delete f;
@@ -286,10 +296,10 @@ index 00000000..f0cc0cd0
 +} // namespace AGS3
 diff --git a/engines/ags/shared/font/cjk_font.h b/engines/ags/shared/font/cjk_font.h
 new file mode 100644
-index 00000000..73741976
+index 00000000..ebe21d32
 --- /dev/null
 +++ b/engines/ags/shared/font/cjk_font.h
-@@ -0,0 +1,66 @@
+@@ -0,0 +1,67 @@
 +/* ScummVM - Graphic Adventure Engine
 + *
 + * ScummVM is the legal property of its developers, whose names
@@ -330,6 +340,7 @@ index 00000000..73741976
 +namespace AGS3 {
 +
 +struct CjkGlyph {
++	int Advance = 0;              // 水平前進寬(全形=size,ASCII=比例半寬)
 +	Common::Array<byte> Coverage; // size*size, 0..255
 +};
 +
@@ -388,7 +399,7 @@ index 6cd44ad2..41c71ccf 100644
  
  static void font_replace_renderer(size_t fontNumber, IAGSFontRenderer* renderer, IAGSFontRenderer2* renderer2) {
 diff --git a/engines/ags/shared/font/wfn_font_renderer.cpp b/engines/ags/shared/font/wfn_font_renderer.cpp
-index 9dfff34c..ede46e1b 100644
+index 9dfff34c..e4ce01f2 100644
 --- a/engines/ags/shared/font/wfn_font_renderer.cpp
 +++ b/engines/ags/shared/font/wfn_font_renderer.cpp
 @@ -23,6 +23,7 @@
@@ -399,7 +410,7 @@ index 9dfff34c..ede46e1b 100644
  #include "ags/shared/font/wfn_font.h"
  #include "ags/shared/gfx/bitmap.h"
  #include "ags/shared/util/stream.h"
-@@ -32,6 +33,24 @@ namespace AGS3 {
+@@ -32,6 +33,37 @@ namespace AGS3 {
  
  using namespace AGS::Shared;
  
@@ -418,24 +429,39 @@ index 9dfff34c..ede46e1b 100644
 +				ds->PutPixel(x, y, text_color);
 +		}
 +	}
-+	return size;
++	return glyph.Advance;
++}
++
++// True if the text contains at least one full-width CJK glyph present in the
++// atlas. On such a (mixed) line we route ASCII through the atlas too, so the
++// inline Latin matches the Chinese in size and baseline.
++static bool cht_line_has_cjk(const char *text, CjkFont *cjk) {
++	if (!cjk)
++		return false;
++	for (int code = ugetxc(&text); code; code = ugetxc(&text)) {
++		if (code >= 0x2000 && cjk->Get((uint32)code))
++			return true;
++	}
++	return false;
 +}
 +
  void WFNFontRenderer::AdjustYCoordinateForFont(int *ycoord, int fontNumber) {
  	// Do nothing
  }
-@@ -43,24 +62,33 @@ void WFNFontRenderer::EnsureTextValidForFont(char *text, int fontNumber) {
+@@ -43,24 +75,36 @@ void WFNFontRenderer::EnsureTextValidForFont(char *text, int fontNumber) {
  int WFNFontRenderer::GetTextWidth(const char *text, int fontNumber) {
  	const WFNFont *font = _fontData[fontNumber].Font;
  	const FontRenderParams &params = _fontData[fontNumber].Params;
 -	int text_width = 0;
 +	CjkFont *cjk = get_cjk_font();
++	const bool atlas = cht_line_has_cjk(text, cjk);
 +	int ascii_width = 0, cjk_width = 0;
  
  	for (int code = ugetxc(&text); code; code = ugetxc(&text)) {
 -		text_width += font->GetChar(code).Width;
-+		if (cjk && cjk->Get((uint32)code))
-+			cjk_width += cjk->Size();
++		const CjkGlyph *g = atlas ? cjk->Get((uint32)code) : nullptr;
++		if (g)
++			cjk_width += g->Advance;
 +		else
 +			ascii_width += font->GetChar(code).Width;
  	}
@@ -447,12 +473,13 @@ index 9dfff34c..ede46e1b 100644
  	const WFNFont *font = _fontData[fontNumber].Font;
  	const FontRenderParams &params = _fontData[fontNumber].Params;
 +	CjkFont *cjk = get_cjk_font();
++	const bool atlas = cht_line_has_cjk(text, cjk);
  	int max_height = 0;
  
  	for (int code = ugetxc(&text); code; code = ugetxc(&text)) {
 -		const uint16_t height = font->GetChar(code).Height;
 -		max_height = std::max(max_height, static_cast<int>(height));
-+		if (cjk && cjk->Get((uint32)code)) {
++		if (atlas && cjk->Get((uint32)code)) {
 +			max_height = std::max(max_height, cjk->Size());
 +		} else {
 +			const uint16_t height = font->GetChar(code).Height;
@@ -464,11 +491,12 @@ index 9dfff34c..ede46e1b 100644
  }
  
  static int RenderChar(Bitmap *ds, const int at_x, const int at_y, Rect clip,
-@@ -72,13 +100,19 @@ void WFNFontRenderer::RenderText(const char *text, int fontNumber, BITMAP *desti
+@@ -72,13 +116,20 @@ void WFNFontRenderer::RenderText(const char *text, int fontNumber, BITMAP *desti
  
  	const WFNFont *font = _fontData[fontNumber].Font;
  	const FontRenderParams &params = _fontData[fontNumber].Params;
 +	CjkFont *cjk = get_cjk_font();
++	const bool atlas = cht_line_has_cjk(text, cjk);
  	Bitmap ds(destination, true);
  
  	// NOTE: allegro's putpixel ignores clipping (optimization),
@@ -477,7 +505,7 @@ index 9dfff34c..ede46e1b 100644
 -	for (int code = ugetxc(&text); code; code = ugetxc(&text))
 -		x += RenderChar(&ds, x, y, clip, font->GetChar(code), params.SizeMultiplier, colour);
 +	for (int code = ugetxc(&text); code; code = ugetxc(&text)) {
-+		const CjkGlyph *g = cjk ? cjk->Get((uint32)code) : nullptr;
++		const CjkGlyph *g = atlas ? cjk->Get((uint32)code) : nullptr;
 +		if (g)
 +			x += RenderCjkGlyph(&ds, x, y, clip, *g, cjk->Size(), colour);
 +		else
