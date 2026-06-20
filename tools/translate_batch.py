@@ -2054,6 +2054,147 @@ BATCH = {
    "一堆堆惡臭的垃圾,讓這地方走起來實在不怎麼舒坦。",
  "The item Saba sold you is a disk that's made of many small strings of reed carefully woven together":
    "薩巴賣給你的是個圓盤,用許多細小的蘆葦條精心編成。",
+ # --- 第十九批 ---
+ "There. I do for you what I would not for another. This is a gift for all you have done for the city":
+   "好了。我為你做的,是別人求都求不來的。這是給你的禮物,謝你為這座城所做的一切。",
+ "There is a certain irony in the fact that you partially returned the favor":
+   "你算是部分回報了這份人情,這事透著幾分諷刺。",
+ "There is a magical aura around the door":
+   "門的四周縈繞著一股魔法氣息。",
+ "There is a strong enchantment on the beast and upon the cage":
+   "那野獸與牢籠上都施著強大的魔咒。",
+ "There is incredibly powerful magic going on in the room beyond the door at the top of the stairs":
+   "樓梯頂端那扇門後的房裡,正進行著無比強大的魔法。",
+ "There is no answer to your knocking":
+   "你敲門,無人應答。",
+ "There is no magical trap or lock on the cage door. Your Trigger spell has no effect":
+   "籠門上沒有魔法陷阱或鎖。你的「觸發」術毫無作用。",
+ "There is no need for that. I am a poet rich in spirit already":
+   "不必了。我是個精神上已然富足的詩人。",
+ "There is no need to return it yet, Hero-friend. Please keep it until you decide to end your stay here":
+   "還不必歸還,英雄朋友。請留著它,直到你決定結束在此的停留。",
+ "There is no noise coming from beyond the door. It doesn't sound like the residents are home":
+   "門後沒有半點聲響。聽起來屋裡的人不在家。",
+ "There is no response from the inside":
+   "裡頭沒有回應。",
+ "There is nothing in your storage chest to retrieve":
+   "你的儲物箱裡沒有可取出的東西。",
+ "There is no time to rest. You have a city to save":
+   "沒空休息。你還有一座城要救!",
+ "There is only silence from beyond the door":
+   "門後唯有一片寂靜。",
+ "There may be something in this city worth uprooting, but it isn't the local vines":
+   "這城裡或許有什麼值得連根拔除,但絕不是這些當地的藤蔓。",
+ "There's a thick layer of dust on the sconce":
+   "那壁燈座上積了厚厚一層灰。",
+ "There's a variety of boots for sale at this stand":
+   "這攤子上賣著各式各樣的靴子。",
+ "The residence has been abandoned. Nobody will answer your calls":
+   "這宅子已經荒廢了,沒人會應你的呼喚。",
+ "There's no keyhole on the outside of this door to pick":
+   "這門外側沒有可以撬的鑰匙孔。",
+ "There's no need. He's already being paid for his services here by Shameen":
+   "不必了。他在這兒的服務,沙明已經付過錢了。",
+ "There's no need to drop more incense -- the Fire Elemental is well inside the alley now":
+   "不必再丟薰香了——火元素精靈現在已經好好待在巷子裡了。",
+ "There's no need to go around buying such trinkets unless you're planning on wooing someone":
+   "除非你打算追求誰,否則沒必要到處買這種小玩意兒。",
+ "There's no need to go licking someone else's boots":
+   "沒必要去舔別人的靴子。",
+ "There's no need to purchase any more jewelry from the merchant":
+   "沒必要再跟那商人買更多珠寶了。",
+ "There's no need to throw things around an empty shop":
+   "沒必要在一家空店裡亂扔東西。",
+ "There's no point in resting here when your own room is a few steps away":
+   "你自己的房間就在幾步之遙,何必在這兒歇。",
+ "There's no point in trying that here. The door is obviously magical and has no lock to pick":
+   "在這兒試那個沒用。這門明顯帶魔法,根本沒鎖可撬。",
+ "There's no reason to return the bellows to Issur. Besides, you may still need them":
+   "沒理由把風箱還給伊蘇。再說,你說不定還用得上。",
+ "There's nothing more inside":
+   "裡頭沒別的了。",
+ "There's nothing to do there":
+   "那兒沒什麼好做的。",
+ "There's nothing to Fetch there":
+   "那兒沒什麼好「取」的。",
+ "There's nothing to open there":
+   "那兒沒什麼好開的。",
+ "There's nothing worth fetching":
+   "沒什麼值得取的。",
+ "There's no time for questions. You've got to do something":
+   "沒空問東問西。你得做點什麼。",
+ "There's no time for that":
+   "沒空管那個。",
+ "There's no time for that now":
+   "現在沒空管那個。",
+ "There's no time for that now, Hero":
+   "現在沒空管那個,英雄!",
+ "There's no time to rest now":
+   "現在沒空休息。",
+ "There's not much more in stock that's of any use to you":
+   "庫存裡再沒什麼對你有用的了。",
+ "There's no water left in your waterskin":
+   "你的水袋裡一滴水也不剩了。",
+ "There's no way you can reach Ad Avis and there is a magical barrier surrounding the room":
+   "你根本碰不到阿德·阿維斯,何況這房間四周還圍著一道魔法屏障。",
+ "There's only silence coming from the other side":
+   "另一側只傳來一片寂靜。",
+ "There's still some earth left in this worn case, but there's no sign of any plant life":
+   "這只破舊的盆裡還剩些泥土,卻不見半點植物的跡象。",
+ "There was talk that the storm was magical in nature and was conjured up":
+   "有人說那場風暴本質上是魔法,是被召喚出來的。",
+ "There will be a caravan to Raseir in 1 day":
+   "一天後將有一支前往拉希爾的商隊。",
+ "The rock is made of red sandstone":
+   "這塊石頭是紅砂岩做的。",
+ "The rock is shaped like the head of a Griffin":
+   "這塊石頭形狀像獅鷲的頭。",
+ "The rock looks, predictably, much like any other desert rock":
+   "不出所料,這塊石頭看起來跟別的沙漠石頭沒兩樣。",
+ "The rock reflects the desert heat":
+   "這塊石頭反射著沙漠的熱氣。",
+ "The rocks shake, but they are still well-supported at the base":
+   "那些岩石搖晃著,基座卻依然穩固。",
+ "The sapphire pin has a value of 500 dinars. Would you care to bargain":
+   "這枚藍寶石別針價值五百第納爾。你想討價還價嗎?",
+ "The Saurus can't hear you from here":
+   "從這兒索魯斯聽不見你。",
+ "The Saurus meat is first dipped in spicy paprika":
+   "索魯斯肉要先裹上一層辣紅椒粉。",
+ "The save directory is full. You must replace an existing game:":
+   "存檔目錄已滿,你必須覆蓋一個現有的存檔:",
+ "The searing desert heat seems to draw the water right out of you":
+   "灼人的沙漠酷熱,彷彿要把你體內的水分全榨乾。",
+ "These impressive hedges have been cleverly manicured to conform with the upward direction of the walls":
+   "這些氣派的樹籬經過巧手修剪,順著牆向上的走勢成形。",
+ "The Seller of Sauruses will be here tomorrow. Perhaps you can purchase one then":
+   "賣索魯斯的明天會來。或許到時你能買一頭。",
+ "These look like beautiful but toxic oleander flowers":
+   "這些看起來是美麗卻有毒的夾竹桃花。",
+ "These make good salad for dinner. That be very kind of you":
+   "這些拿來當晚餐的沙拉正好。你真是太好心了。",
+ "These ornate scimitars make poor weapons, but a valuable decoration":
+   "這些華麗的彎刀當兵器不行,當擺飾倒挺值錢。",
+ "These traditional windows are arch-shaped and have been built into the wall":
+   "這些傳統樣式的窗子呈拱形,嵌在牆裡。",
+ "These traditional windows are square-shaped and have been built into the wall":
+   "這些傳統樣式的窗子呈方形,嵌在牆裡。",
+ "These traditional wooden windows are square-shaped and have been built into the wall":
+   "這些傳統的木窗呈方形,嵌在牆裡。",
+ "These vines seem to have been cut off near the root and are now withering away in the harsh sun":
+   "這些藤蔓似乎被攔腰齊根斬斷,如今正在烈日下枯萎。",
+ "The shiny brass lamp is engraved on the bottom: 'Aladdin Lamp Co.'":
+   "這盞亮晶晶的銅燈底部刻著:「阿拉丁神燈公司」。",
+ "The shop owner glares back at you. He looks strong and decidedly unfriendly":
+   "店主回瞪你一眼。他看起來壯實,而且擺明了不友善。",
+ "The shutters are barely managing to remain in place. Don't make matters worse":
+   "那百葉窗勉強還掛在原處。別把事情弄得更糟。",
+ "The shutters are just fine the way they are":
+   "那百葉窗就這樣挺好的。",
+ "The shutters on this window look ready to fall out of their hinges at any moment":
+   "這扇窗的百葉,看起來隨時會從鉸鏈上掉下來。",
+ "The sign looks tattered and worse for wear":
+   "那招牌看起來破爛不堪、飽經風霜。",
 }
 
 resolved=[]
