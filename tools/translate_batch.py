@@ -3171,6 +3171,115 @@ BATCH = {
    "你往衣服上澆了些水,暑氣稍稍緩解了些。",
  "Plaza of the Palace":
    "王宮廣場",
+ # --- 第二十八批 ---
+ "It's probably someone's job to tend to these torches at nightfall and at dawn. But that someone isn't you":
+   "入夜與破曉時照看這些火把,大概是某人的差事。但那個某人可不是你。",
+ "It's the new and improved Maxi-Cloud HyperTurbo V8 LE No-door Sports Coupe, the pinnacle of cloudal mediocrity":
+   "這是全新升級的「邁克斯雲端 超級渦輪 V8 LE 無門跑車」,雲族平庸之最。",
+ "Maybe you should consider a new line of work and get out of this hero business. Have you considered accounting":
+   "或許你該換個行當,別再幹這英雄這一行了。考慮過去當會計嗎?",
+ "Questions! Do you have nothing better to do than waste my time? Let me think, and I'd advise you to do the same":
+   "問題問題!你就沒別的事做,非得浪費我時間?讓我想想,也勸你自己多想想!",
+ "The portents foretell you will be deceived by Darkness and become its pawn in the destruction of all this world":
+   "徵兆預示:你將為黑暗所惑,淪為它毀滅這整個世界的棋子。",
+ "The Seller of Sauruses is a strange man. I have not heard one who can talk faster when trying to sell a Saurus":
+   "那賣索魯斯的是個怪人。論賣起索魯斯時嘴皮子有多溜,我還沒見過比他更快的。",
+ "The Water Elemental's very touch would drain the life from your body. Getting too close wouldn't be a good idea":
+   "水元素精靈光是一碰,就能吸乾你體內的生命。靠太近可不是什麼好主意。",
+ "This is my last and final offer. Ten dinars. If I go any lower I'll have to stand on a chair to take your money":
+   "這是我最後的出價了,十第納爾。再低下去,我都得站到椅子上才收得到你的錢。",
+ "You discard the flowers, preferring to do away with them before they have a chance to wilt inside your pockets":
+   "你把花丟了,寧可趁它們在口袋裡枯萎之前就處理掉。",
+ "You put a dagger in your chest. It's a good thing this action isn't parser-based, or you'd be dead right now":
+   "你把一把匕首放進箱子。幸好這動作不是用打字指令的,否則你現在已經沒命了。",
+ "You put away a small pot of earth":
+   "你收起了一小罐泥土。",
+ "You put away the cloth bag":
+   "你收起了那個布袋。",
+ "You put on the glasses. Suddenly, everything appears as though you were looking through a veil":
+   "你戴上眼鏡。霎時間,一切看來都像隔著一層薄紗。",
+ "You put the brass jar away":
+   "你收起了那只黃銅罐。",
+ "You put the brass lamp away":
+   "你收起了那盞銅燈。",
+ "You put the compass away":
+   "你收起了那個羅盤。",
+ "You put the decorative pot away":
+   "你收起了那只裝飾用的陶罐。",
+ "You put the Dervish beard away":
+   "你收起了那撮苦行僧鬍鬚。",
+ "You put the emerald bowl away":
+   "你收起了那只翡翠碗。",
+ "You put the EOF badge away":
+   "你收起了永恆戰士團的徽章。",
+ "You put the fan away":
+   "你收起了那把扇子。",
+ "You put the fine sword away":
+   "你收起了那把好劍。",
+ "You put the flat box away":
+   "你收起了那只扁盒子。",
+ "You put the flower art away":
+   "你收起了那件花藝。",
+ "You put the flowers in your storage chest and promise yourself to take them out again before they wither":
+   "你把花放進儲物箱,並暗自答應在它們凋謝前再取出來。",
+ "You put the Fruit of Compassion away":
+   "你收起了慈悲之果。",
+ "You put the game box away":
+   "你收起了那個遊戲盒。",
+ "You put the Ghoul's head away":
+   "你收起了食屍鬼的頭。",
+ "You put the inn key inside the chest":
+   "你把客棧鑰匙放進箱子裡。",
+ "You put the jade bracelet away":
+   "你收起了那只玉鐲。",
+ "You put the magic lamp away":
+   "你收起了那盞魔法神燈。",
+ "You put the magic rope away":
+   "你收起了那條魔繩。",
+ "You put the note into the storage chest":
+   "你把字條放進儲物箱。",
+ "You put the notes into the storage chest":
+   "你把那些字條放進儲物箱。",
+ "You put the ornate scimitars away":
+   "你收起了那些華麗的彎刀。",
+ "You put the protective boots away":
+   "你收起了那雙防護靴。",
+ "You put the purse away":
+   "你收起了那個錢袋。",
+ "You put the sand dome away":
+   "你收起了那個沙暴罩。",
+ "You put the sapphire pin away":
+   "你收起了那枚藍寶石別針。",
+ "You put the Scorpion tail away. You didn't feel too comfortable having that thing in your pack anyway":
+   "你收起了那條蠍尾。反正那東西擱在包裡,你也不怎麼安心。",
+ "You put the small pot inside the chest, assured it'll be safer here than in your backpack":
+   "你把小罐放進箱子,深信它擱在這兒總比擱在背包裡安全。",
+ "You put the stored coins back into your purse":
+   "你把存放的錢幣放回錢袋。",
+ "You put the trash can away":
+   "你收起了那個垃圾桶。",
+ "You put the waterskin away":
+   "你收起了那個水袋。",
+ "You put the waterskin inside the chest":
+   "你把水袋放進箱子裡。",
+ "You put the weaving away":
+   "你收起了那件編織物。",
+ "You put the wind in the bellows away":
+   "你收起了那只封著風的風箱。",
+ "You put the X-Ray Glasses away":
+   "你收起了那副透視眼鏡。",
+ "You put your ear up to the door, but it ain't talkin'":
+   "你把耳朵貼上門,可它一聲不吭。",
+ "You quickly shake your head no. The voices' reaction was a bit too hostile for comfort":
+   "你連忙搖頭否認。那些聲音的反應,敵意濃得令人不安。",
+ "Your belongings go up in a puff of smoke":
+   "你的家當化作一縷青煙,消失無蹤。",
+ "Your breath alone could blow this door down":
+   "光憑你一口氣,就能把這扇門吹倒。",
+ "Your chainmail armor is quite effective for protection, but it is VERY heavy":
+   "你的鎖子甲防護效果相當好,但「非常」沉重。",
+ "You drop the lamp":
+   "你放下了那盞燈。",
 }
 
 resolved=[]
