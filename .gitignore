@@ -1,0 +1,20 @@
+# 版權遊戲資料 — 絕不入庫
+game/
+quest-for-glory-ii-trial-by-fire.zip
+*.exe
+*.vox
+Qfg2vga.0*
+ac2game.ags
+
+# 上游 ScummVM 源碼(patch 對象,不納入本 repo;用 submodule/腳本取得)
+scummvm-src/
+
+# build / 驗證輸出
+build/
+out/
+*.o
+*.a
+
+# Python venv
+.venv/
+__pycache__/
