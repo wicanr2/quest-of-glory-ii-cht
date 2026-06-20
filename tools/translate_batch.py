@@ -3389,6 +3389,109 @@ BATCH = {
    "你取回那把扇子。",
  "My name is Lira":
    "我叫莉拉。",
+ # --- 第三十批 ---
+ "Isn't it exciting? Of course, some people don't appreciate its beauty. They actually want to get rid of it":
+   "夠刺激吧?當然啦,有些人不懂得欣賞它的美,還真想把它弄掉呢!",
+ "Keep going until you go north for two times. The next time you go north, her house is the first door on the west":
+   "一直走,往北走兩次。下次再往北時,她家就是西邊第一扇門。",
+ "That organization is supposed to be secret. Surely you don't want to go around telling everybody about it, do you":
+   "那組織照理說是祕密的。你總不至於想到處跟人張揚吧?",
+ "That was a good fight, but I still can't believe you didn't finish the job. The best members of EOF fight to kill":
+   "這架打得不錯,可我還是不敢相信你竟沒了結對手。永恆戰士團最頂尖的成員,出手就是要取命。",
+ "The Apothecary may be able to help you with your affliction, Effendi. He can be found in the Plaza of the Fountain":
+   "閣下,藥師或許能治您的病痛。他人在噴泉廣場。",
+ "The Flame Dart gets extinguished as soon as it touches the Water Elemental. Perhaps another approach is in order":
+   "火鏢一碰到水元素精靈就熄了。或許該換個法子。",
+ "The lack of a shopkeeper and available merchandise seriously hampers your ability to do any shopping at this stall":
+   "這攤子既沒店主、也沒貨,你在這兒實在沒法購物。",
+ "The Saurus is nowhere to be seen. Perhaps using your steed for target practice wasn't such a great idea after all":
+   "那索魯斯不見蹤影。看來拿自己的坐騎當靶子練習,終究不是什麼好主意。",
+ "The shape of the lamp makes it impossible to scoop the Fire Elemental up. You'll have to think of something else":
+   "這燈的形狀沒法把火元素精靈舀起來。你得另想辦法。",
+ "The weaponry might be suitable for city guards, but you can tell the average quality would hamper monster-slaying":
+   "這些兵器給城衛兵用或許還行,但你看得出,這平庸的品質拿去殺怪可會拖後腿。",
+ "This broken pot must have housed a plant once. The dust on the bottom of the pot suggests that was a long time ago":
+   "這只破罐子想必曾種過植物。罐底的積灰顯示那已是很久以前的事了。",
+ "We should really get to know each other better. I am so eager to find out if your actions reflect your sweet words":
+   "我們真該多認識認識彼此。我好想知道,你的行動是否配得上你那些甜言蜜語。",
+ "You certainly know how to drive a hard bargain. Why don't we just agree at thirty for bridle, saddle, and Saurus":
+   "你殺價可真有一套。不如就說定三十,馬轡、馬鞍連索魯斯全包了,如何?",
+ "You collapse in the hot desert air and never awaken. Truly it is said that \"water is life itself in a desert land.\"":
+   "你在炙熱的沙漠空氣中倒下,再也沒有醒來。古人說得真對:「在沙漠之地,水就是生命本身。」",
+ "You don't want to miss the caravan in the morning, so you return to your room at the inn to prepare for the trip":
+   "你不想錯過早上的商隊,於是回到客棧房裡,為這趟路做準備。",
+ "You retrieve the fine sword from your chest":
+   "你從箱子取回那把好劍。",
+ "You retrieve the flat box from your chest":
+   "你從箱子取回那只扁盒子。",
+ "You retrieve the flower art":
+   "你取回那件花藝。",
+ "You retrieve the Fruit of Compassion from your chest":
+   "你從箱子取回慈悲之果。",
+ "You retrieve the game box":
+   "你取回那個遊戲盒。",
+ "You retrieve the genuine Ali Fakir X-Ray Glasses from your chest":
+   "你從箱子取回那副阿里·法基爾正牌透視眼鏡。",
+ "You retrieve the Ghoul claw":
+   "你取回那只食屍鬼爪。",
+ "You retrieve the Ghoul's head":
+   "你取回那顆食屍鬼的頭。",
+ "You retrieve the Griffin feather from your chest":
+   "你從箱子取回那根獅鷲羽毛。",
+ "You retrieve the incense":
+   "你取回那份薰香。",
+ "You retrieve the inn key from your chest":
+   "你從箱子取回那把客棧鑰匙。",
+ "You retrieve the jade bracelet from your chest":
+   "你從箱子取回那只玉鐲。",
+ "You retrieve the leather jerkin from your chest":
+   "你從箱子取回那件皮背心。",
+ "You retrieve the lock pick from your chest":
+   "你從箱子取回那把開鎖器。",
+ "You retrieve the magic earth from your chest":
+   "你從箱子取回那份魔法泥土。",
+ "You retrieve the magic lamp from your chest":
+   "你從箱子取回那盞魔法神燈。",
+ "You retrieve the magic rope from your chest":
+   "你從箱子取回那條魔繩。",
+ "You retrieve the map from your chest":
+   "你從箱子取回那張地圖。",
+ "You retrieve the note":
+   "你取回那張字條。",
+ "You retrieve the notes":
+   "你取回那些字條。",
+ "You retrieve the ornate scimitars from your chest":
+   "你從箱子取回那些華麗的彎刀。",
+ "You retrieve the poisonous Scorpion tail":
+   "你取回那條有毒的蠍尾。",
+ "You retrieve the pot of dirt":
+   "你取回那罐泥土。",
+ "You retrieve the powder of burning":
+   "你取回那份燃燒之粉。",
+ "You retrieve the protective boots from your chest":
+   "你從箱子取回那雙防護靴。",
+ "You retrieve the purse from your chest":
+   "你從箱子取回那個錢袋。",
+ "You retrieve the sand dome":
+   "你取回那個沙暴罩。",
+ "You retrieve the sapphire pin from your chest":
+   "你從箱子取回那枚藍寶石別針。",
+ "You retrieve the silver dagger":
+   "你取回那把銀匕首。",
+ "You retrieve the sticker":
+   "你取回那張貼紙。",
+ "You retrieve the sword from your chest":
+   "你從箱子取回那把劍。",
+ "You retrieve the tea service from your chest":
+   "你從箱子取回那套茶具。",
+ "You retrieve the thieves' license from your chest":
+   "你從箱子取回那張盜賊執照。",
+ "You retrieve the thieves' toolkit from your chest":
+   "你從箱子取回那套盜賊工具。",
+ "You retrieve the trash can":
+   "你取回那個垃圾桶。",
+ "You retrieve the basket":
+   "你取回那個籃子。",
 }
 
 resolved=[]
