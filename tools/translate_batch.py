@@ -4555,6 +4555,177 @@ BATCH = {
    "你的角色已匯入為法師。你若覺得這職業不對,請於下方指明你的偏好……",
  "You realize that you don't have 50 centimes to pay the stable and board fee. You tell the guard you'll pay him as soon as you get some loose change":
    "你發覺自己連付馬廄草料費的五十生丁都拿不出來。你告訴衛兵,一有零錢就馬上付他。",
+ # --- 第四十八批:尾聲(中句+短重複)---
+ "Your leather armor is made of leather boiled in wax, a process which preserves and strengthens the material. As a side effect, there is a certain amount of olfactory discomfort in warm climates":
+   "你的皮甲是用蠟煮過的皮革製成,這道工序能保養並強化材質。副作用是:在溫暖的氣候下,會有那麼點氣味上的不適。",
+ "Your Open spell parts the drapes, revealing your presence. The occupants aren't happy to discover a thief in their house and opt to demonstrate the extent of their unhappiness to you physically":
+   "你的「開啟」術撥開了帷幔,暴露了你的行蹤。屋裡的人發現家中有賊,很不高興,並決定用拳腳讓你見識他們有多不高興。",
+ "Your Thieves' Toolkit contains a variety of slim, sharp instruments. In the right hands, these implements will open any locked (but unbarred) door":
+   "你的盜賊工具裡有各式纖細鋒利的器具。在行家手中,這些傢伙能打開任何上鎖(但沒閂)的門。",
+ "Your waterskin is getting much easier to carry. Unfortunately, that probably means you don't have much water left":
+   "你的水袋越來越好提了。可惜,這多半表示你的水所剩無幾。",
+ "You see a Katta musician playing some sort of musical instrument and charming a dangerous-looking snake. There are some brass coins thrown into his bowl":
+   "你看見一個卡塔(Katta)族樂師奏著某種樂器,逗弄著一條看來危險的蛇。他的缽裡丟著幾枚銅幣。",
+ "You see Tiram rubbing his eyes and then continuing to glance at you. Maybe you shouldn't be picking your nose in public":
+   "你看見提拉姆揉了揉眼,接著又不時瞄你。也許你不該在大庭廣眾下挖鼻孔。",
+ "You sense a feeling of purity and honesty from the enchantress which makes you feel she would not associate with, nor approve of, thieves":
+   "你從那女術士身上感受到一股純淨與誠實的氣息,讓你覺得她不會與盜賊往來,也不會認同他們。",
+ "You should hold onto that. You'll need it to prove ownership and registration of your Saurus":
+   "那個你該留著。你需要它來證明索魯斯的所有權與登記。",
+ "You should now return to Shapeir. They really need a real wizard-hero like you there. And, remember, 'Those who can, do.'":
+   "你現在該回夏皮爾了。那兒真的很需要像你這樣一位真正的巫師英雄。還有,記住:「能者,行之。」",
+ "You should probably get some rest while Shameen and I make some final preparations for tomorrow. We will be sure to wake you up in the morning":
+   "你大概該歇一歇,沙明和我來為明天做最後的準備。早上我們一定會叫醒你。",
+ "You show Harik a flask of undead unguent you purchased in Spielburg and ask him if he'd like to analyse it for his experiments":
+   "你拿出一瓶在史畢柏格買的驅亡靈藥膏給哈里克看,問他想不想拿去做實驗分析。",
+ "You spend an hour \"browsing\" the shop. You feel a lot better after the hour's rest, but Issur seems crankier than ever":
+   "你花了一個鐘頭「逛」店。歇了這一個鐘頭你舒坦多了,伊蘇卻似乎比平常更不耐煩了。",
+ "You spend an hour listening to stories about constellations you didn't even know to exist":
+   "你花了一個鐘頭,聽人說起你連存在都不知道的那些星座的故事。",
+ "You spend a short time making small talk with your friends while sharing Shema's delicious herbal tea":
+   "你花了點時間和朋友閒話家常,一邊分享著雪瑪美味的花草茶。",
+ "You stare at the awning and find yourself yawning -- maybe you woke up too early this morning":
+   "你盯著那遮篷,卻打起了哈欠——也許是今早醒得太早了。",
+ "You take off the weighty chainmail armor and store it in the chest. Whew, that thing sure was heavy":
+   "你脫下那身沉重的鎖子甲,收進箱子。呼,那玩意兒可真重!",
+ "You take the pill, but it doesn't seem to have any effect. Next time, follow the prescription":
+   "你服下藥丸,卻似乎毫無作用。下次,照處方來。",
+ "You tear open the game box. What's this? You find a complex map depicting Shapeir's alley system inside":
+   "你拆開遊戲盒。這是什麼?你在裡頭發現一張描繪夏皮爾巷弄系統的複雜地圖。",
+ "You tell about the enchanted meadow and the spell of protection surrounding the town of Spielburg":
+   "你說起那片受魔法庇佑的草原,以及環繞史畢柏格鎮的那道防護咒。",
+ "You tell about your arrival in Spielburg and how you were welcomed by Sheriff Meistersson":
+   "你說起自己抵達史畢柏格,以及邁斯特森郡長如何歡迎你。",
+ "You tell about your encounter with Baba Yaga and how she forced you to bring her a mandrake root":
+   "你說起自己與芭芭雅嘎的遭遇,以及她如何逼你為她取來一根曼德拉草根。",
+ "You tell Harik that you vanquished the Earth Elemental and that he may have the remaining powder back":
+   "你告訴哈里克,你已擊敗土元素精靈,剩下的粉末他可以收回去。",
+ "You tell Shameen and Shema about how you turned the Brigand leader back into Elsa von Spielburg":
+   "你向沙明和雪瑪說起,你如何把強盜頭子變回艾莎·馮·史畢柏格。",
+ "You tell Shameen and Shema about the Famous Adventurer's Correspondence School and how you used the information from those books to develop the skills of an adventurer":
+   "你向沙明和雪瑪說起「著名冒險家函授學校」,以及你如何靠那些書裡的知識,練就一身冒險者的本領。",
+ "You tell Shameen and Shema about the graveyard near Spielburg where you picked the root of the mandrake plant and how it was haunted by spirits at night":
+   "你向沙明和雪瑪說起史畢柏格附近那座墓地,你在那兒採了曼德拉草根,而那地方一到夜裡就鬧鬼。",
+ "You tell Shema she probably wouldn't believe you if you told her where you got it from, but that you will offer a slice to her and Shameen":
+   "你告訴雪瑪,你要是說出這東西的來歷,她大概不會信,但你還是願意分一片給她和沙明。",
+ "You tell your friends about the many fearsome monsters you encountered in the forest of Spielburg":
+   "你向朋友們說起你在史畢柏格森林裡遇上的眾多可怕怪物。",
+ "You tell your Katta friends about the Brigand warlock, who turned out to be the Baron's jester, Yorick":
+   "你向你的卡塔(Katta)族朋友說起那個強盜術士,他到頭來竟是男爵的弄臣約里克。",
+ "You think about it, and then think better about it. You don't really want to get the guy upset. You'd probably wind up with ants in your pants, egg on your face, and pie in your eye":
+   "你考慮了一下,還是打消了念頭。你並不真想惹惱那傢伙。否則你大概會落得個坐立難安、顏面盡失、自討沒趣的下場。",
+ "You think about shaking hands with him, but then you become aware of the faint smell of tabasco sauce, gun powder, and mule excrement on his palms. You don't know where this guy has been and you don't think you want to know either":
+   "你想跟他握手,卻聞到他掌心那股淡淡的辣椒醬、火藥和騾糞味。你不知道這傢伙都去過哪些地方,而且你想你也不想知道。",
+ "You think maybe you go visit the Enchantress, huh? Well, go north from the Plaza of the Fountain. When you come to a place where you can go south, go thatta way":
+   "你大概是想去拜訪那位女術士吧?這樣啊,從噴泉廣場往北走。走到能往南的地方,就往那邊去。",
+ "You think twice about eating more than one meal at a sitting. Bicarbonate of soda hasn't been invented yet":
+   "一頓吃兩餐?你還是再想想吧。小蘇打可還沒發明呢。",
+ "You touch the palm of your right hand to your left shoulder, extend the third digit of your left hand until the pad of the finger touches the underside of your right eye, touch your left toe to your left wrist, and twiddle your thumbs furiously":
+   "你以右手掌心貼住左肩,伸出左手中指,直到指腹觸及右眼下方,再讓左腳趾碰著左手腕,然後拚命轉動兩根拇指。",
+ "You uncurled me some whirl from a Dervish? Oh, frabjous day, hoorah, hooray! Here's the dinars that I must pay":
+   "你替我從苦行僧身上捲來了一陣旋風?喔,歡欣之日,呼啦,萬歲!這是我該付的第納爾。",
+ "You've never been comfortable fighting with a shield and dagger, so you store your shield as well":
+   "你向來不慣盾與匕首並用,於是把盾牌也一併收了起來。",
+ "You've never been comfortable fighting with a shield and dagger, so you take your sword as well":
+   "你向來不慣盾與匕首並用,於是把劍也一併取了出來。",
+ "You walk the hallowed halls of the ivory towers of WIT and devote the next twenty years of your life to learning. You become one of the greatest scholars of all time upon the subject of 'Scrying Scrolls.'":
+   "你漫步於巫師技術學院象牙塔的神聖殿堂,將此後二十年的人生奉獻給學問。你成了「占卜卷軸」這門學科有史以來最偉大的學者之一。",
+ "You will find things of interest there, but know that there are those who sleep in the next room. Be wary and, if you are very good, we will both share your profits":
+   "你會在那兒找到有意思的東西,但要知道,隔壁房裡有人睡著。多加小心;你若夠俐落,所得我倆便平分。",
+ "You will need to remember to add a freshly collected sample of the victim's hair before the victim drinks it":
+   "你得記住,在受害者喝下之前,加入一撮新採集的受害者頭髮。",
+ "You wouldn't stand a chance against him with your bare hands. Try getting your hands on a weapon":
+   "赤手空拳,你根本不是他的對手。設法弄把兵器吧。",
+ "ZAP: Places a magical charge on your weapon which will inflict some damage in combat.[[CALM: Pacifies your opponent for a short time.[[DAZZLE: Blinds your opponent for a short time.[[DETECT MAGIC: Tells you whether there is any magic present in your current surroundings.[[FETCH: Used to fetch small items from a distance.[[FLAME DART: An offensive fireball used in combat.":
+   "電擊:在你的兵器上施加魔法電荷,於戰鬥中造成些許傷害。[[鎮定:短時間內安撫你的對手。[[炫目:短時間內使你的對手目盲。[[偵測魔法:告訴你當前四周是否有魔法存在。[[取物:用來從遠處取來小型物品。[[火鏢:戰鬥中使用的攻擊性火球。",
+ "Zayishah seems slightly bothered by your gesture. Perhaps this isn't the best time for that":
+   "札伊莎似乎被你的舉動弄得有點不快。也許現在不是做那事的最佳時機。",
+ "You should dismount first.":
+   "你該先下坐騎。",
+ "You should exchange your money to Shapeirian currency first.":
+   "你該先把錢換成夏皮爾的貨幣。",
+ "You should first finish that which is on your table, Hero.":
+   "英雄,你該先把桌上的東西吃完。",
+ "You should get rid of your pursuer first.":
+   "你該先甩掉追你的人。",
+ "You should get up first.":
+   "你該先起身。",
+ "You should give that to Omar.":
+   "你該把那個給奧瑪爾。",
+ "You should not be doing that in front of Simba. Bad example.":
+   "你不該在辛巴面前那麼做,壞榜樣。",
+ "You should practice your lock-picking on a different door.":
+   "你該換一扇門練開鎖。",
+ "You should stand up first.":
+   "你該先站起來。",
+ "You should try that on a different door.":
+   "你該換一扇門試試。",
+ "You should wait until the guard is closer.":
+   "你該等衛兵再靠近些。",
+ "You should wait until there are no guards around.":
+   "你該等附近沒衛兵時再動手。",
+ "You should wait until your Saurus has stopped walking.":
+   "你該等你的索魯斯停下腳步。",
+ "You show great honor. May your deeds continue to shine.":
+   "你展現了崇高的榮譽。願你的事蹟持續閃耀。",
+ "You take an oil-filled lamp.":
+   "你拿了一盞盛滿油的燈。",
+ "You take off the glasses and put them away.":
+   "你摘下眼鏡收了起來。",
+ "You take the dagger.":
+   "你拿走了那把匕首。",
+ "You take the money and put it away.":
+   "你拿了錢收了起來。",
+ "You take the three potion bottles and put them away.":
+   "你拿了那三瓶藥水收了起來。",
+ "You take your leather jerkin off and store it.":
+   "你脫下皮背心收了起來。",
+ "You think twice about going out completely unarmed.":
+   "完全不帶武器就出門?你還是再想想吧。",
+ "You trash the trashcan.":
+   "你把那垃圾桶扔了。",
+ "You've already got a drink.":
+   "你已經有酒喝了。",
+ "You've just poured some water on yourself. You're still wet.":
+   "你才剛往自己身上澆了水。你還濕著呢。",
+ "You've mopped the floor with Sweeping Sir James.":
+   "你把「橫掃詹姆斯爵士」打得落花流水。",
+ "You want fries with that?":
+   "要不要再來份薯條?",
+ "You will find it most filling.":
+   "你會覺得它很管飽。",
+ "You will need to buy a map first.":
+   "你得先買張地圖。",
+ "You will only succeed in attracting more guards.":
+   "你只會招來更多衛兵。",
+ "Your weapon is now magically charged.":
+   "你的兵器現在帶著魔法電荷了。",
+ "Your waterskin can't squirt that far.":
+   "你的水袋噴不了那麼遠。",
+ "You see nothing of interest there.":
+   "那兒沒什麼有意思的東西。",
+ "You see nothing that would be useful to you.":
+   "你沒看見什麼對你有用的東西。",
+ "You see nothing that you wish to bargain for.":
+   "你沒看見什麼想討價還價的東西。",
+ "You sense a great deal of magic coming from the tree.":
+   "你感覺到那棵樹散發出大量的魔法。",
+ "You see a charming young Katta with a smile for you.":
+   "你看見一個迷人的年輕卡塔(Katta)族人,對你綻出笑容。",
+ "You spend an hour flirting with Dinarzad.":
+   "你花了一個鐘頭跟迪娜扎德調情。",
+ "You spend an hour discussing Shapeirian politics with Aziza.":
+   "你花了一個鐘頭跟阿姿莎討論夏皮爾的政局。",
+ "You spend an hour waiting in the shadows.":
+   "你花了一個鐘頭在暗處等候。",
+ "You spend an hour watching the Saurii run around.":
+   "你花了一個鐘頭看那些索魯斯四處奔跑。",
+ "You spend an hour being the butt of Keapon's jokes.":
+   "你花了一個鐘頭當姬朋笑話裡的笑柄。",
+ "You should be so lucky. Lucky, lucky, lucky...":
+   "你哪有那麼好命。好命,好命,真好命……",
+ "Zap: boost attack once":
+   "電擊:單次強化攻擊",
 }
 
 corpus_set=set(corpus)
