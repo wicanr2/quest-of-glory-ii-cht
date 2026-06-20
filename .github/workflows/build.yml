@@ -113,3 +113,40 @@ jobs:
         with:
           name: qfg2-cht-android
           path: scummvm-src/**/*.apk
+
+  # ---- Windows .exe + 相依 DLL(patched ScummVM,僅 ags engine,MSYS2 MinGW)----
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run: { shell: 'msys2 {0}' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            git make nasm
+            mingw-w64-x86_64-toolchain
+            mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_net
+            mingw-w64-x86_64-freetype mingw-w64-x86_64-libpng
+            mingw-w64-x86_64-libvorbis mingw-w64-x86_64-flac mingw-w64-x86_64-libmad
+      - name: 取得並 patch ScummVM
+        run: bash tools/apply_patches.sh "$GITHUB_WORKSPACE/scummvm-src"
+      - name: configure + build
+        working-directory: scummvm-src
+        run: |
+          ./configure --disable-all-engines --enable-engine=ags --enable-release
+          make -j$(nproc)
+      - name: 收集 scummvm.exe + 相依 DLL
+        run: |
+          mkdir -p dist-win
+          cp scummvm-src/scummvm.exe dist-win/
+          # 用 ntldd 找出所有 MinGW 相依 DLL 一併打包(玩家免裝 runtime)
+          pacman -S --noconfirm mingw-w64-x86_64-ntldd-git || true
+          for dll in $(ntldd -R dist-win/scummvm.exe | grep mingw64 | awk '{print $3}'); do cp "$dll" dist-win/ 2>/dev/null || true; done
+          ls -la dist-win/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qfg2-cht-windows
+          path: dist-win/
