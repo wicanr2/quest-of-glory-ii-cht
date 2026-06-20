@@ -29,7 +29,7 @@ index 3ede3f1d..9e322403 100644
  }
  
 diff --git a/engines/ags/engine/ac/global_translation.cpp b/engines/ags/engine/ac/global_translation.cpp
-index 7adcc725..884f791a 100644
+index 7adcc725..c766e964 100644
 --- a/engines/ags/engine/ac/global_translation.cpp
 +++ b/engines/ags/engine/ac/global_translation.cpp
 @@ -19,6 +19,10 @@
@@ -43,9 +43,13 @@ index 7adcc725..884f791a 100644
  #include "ags/shared/ac/common.h"
  #include "ags/engine/ac/display.h"
  #include "ags/engine/ac/game_state.h"
-@@ -31,15 +35,43 @@
+@@ -30,16 +34,91 @@
+ #include "ags/plugins/plugin_engine.h"
  #include "ags/shared/util/memory.h"
  #include "ags/engine/ac/string.h"
++#include "ags/shared/ac/game_setup_struct.h"
++#include "ags/shared/ac/game_struct_defines.h"
++#include "ags/shared/script/cc_script.h"
  #include "ags/globals.h"
 +#include "common/file.h"
 +#include "common/config-manager.h"
@@ -79,6 +83,50 @@ index 7adcc725..884f791a 100644
 +	}
 +}
 +
++// CHT 靜態抽取(M2):走訪已載入的資料結構,把可翻譯字串吐成檔(供翻譯)。
++// 重用引擎自己 parse 好的結構,不必自寫 MFL/script 解析器。
++// 由 ConfMan 字串 "ags_dump_static"(=輸出路徑)觸發;玩家 build 無作用。
++static void cht_dump_script_strings(FILE *f, const ccScript *scr) {
++	if (!scr || !scr->strings || scr->stringssize <= 0)
++		return;
++	const char *p = scr->strings;
++	const char *end = scr->strings + scr->stringssize;
++	while (p < end) {
++		size_t len = strlen(p);
++		if (len > 0)
++			fprintf(f, "%s\n", p);
++		p += len + 1;
++	}
++}
++
++void cht_dump_static_strings() {
++	Common::String path;
++	if (ConfMan.hasKey("ags_dump_static", ConfMan.getActiveDomainName()))
++		path = ConfMan.get("ags_dump_static", ConfMan.getActiveDomainName());
++	if (path.empty() && ConfMan.hasKey("ags_dump_static", Common::ConfigManager::kApplicationDomain))
++		path = ConfMan.get("ags_dump_static", Common::ConfigManager::kApplicationDomain);
++	if (path.empty())
++		return;
++	FILE *f = fopen(path.c_str(), "w");
++	if (!f)
++		return;
++	// 全域訊息(GlobalMessage,500+)
++	for (int i = 0; i < MAXGLOBALMES; ++i)
++		if (!_GP(game).messages[i].IsEmpty())
++			fprintf(f, "%s\n", _GP(game).messages[i].GetCStr());
++	// 腳本字串表(Display/Say/對白文字大宗)
++	cht_dump_script_strings(f, _GP(gamescript).get());
++	cht_dump_script_strings(f, _GP(dialogScriptsScript).get());
++	for (size_t i = 0; i < _GP(scriptModules).size(); ++i)
++		cht_dump_script_strings(f, _GP(scriptModules)[i].get());
++	// 物品名
++	for (int i = 0; i < _GP(game).numinvitems; ++i)
++		if (!_GP(game).invinfo[i].name.IsEmpty())
++			fprintf(f, "%s\n", _GP(game).invinfo[i].name.GetCStr());
++	fclose(f);
++	warning("CHT: static string dump → %s", path.c_str());
++}
++
  const char *get_translation(const char *text) {
  	if (text == nullptr)
  		quit("!Null string supplied to CheckForTranslations");
@@ -87,11 +135,33 @@ index 7adcc725..884f791a 100644
  	_G(source_text_length) = GetTextDisplayLength(text);
  
  #if AGS_PLATFORM_64BIT
+diff --git a/engines/ags/engine/ac/global_translation.h b/engines/ags/engine/ac/global_translation.h
+index dbfa0014..5fb154d9 100644
+--- a/engines/ags/engine/ac/global_translation.h
++++ b/engines/ags/engine/ac/global_translation.h
+@@ -29,6 +29,9 @@ int IsTranslationAvailable();
+ // GetTranslationName assumes a string buffer of MAX_MAXSTRLEN
+ int GetTranslationName(char *buffer);
+ 
++// CHT(M2):走訪已載入資料,把可翻譯字串吐到 ConfMan "ags_dump_static" 指定的檔。
++void cht_dump_static_strings();
++
+ } // namespace AGS3
+ 
+ #endif
 diff --git a/engines/ags/engine/main/engine.cpp b/engines/ags/engine/main/engine.cpp
-index bb406b57..2e1c6226 100644
+index bb406b57..40088d59 100644
 --- a/engines/ags/engine/main/engine.cpp
 +++ b/engines/ags/engine/main/engine.cpp
-@@ -55,6 +55,7 @@
+@@ -45,6 +45,7 @@
+ #include "ags/engine/ac/room_status.h"
+ #include "ags/engine/ac/speech.h"
+ #include "ags/shared/ac/sprite_cache.h"
++#include "ags/engine/ac/global_translation.h"
+ #include "ags/engine/ac/translation.h"
+ #include "ags/engine/ac/view_frame.h"
+ #include "ags/engine/ac/dynobj/script_object.h"
+@@ -55,6 +56,7 @@
  #include "ags/shared/debugging/out.h"
  #include "ags/engine/device/mouse_w32.h"
  #include "ags/shared/font/ags_font_renderer.h"
@@ -99,7 +169,7 @@ index bb406b57..2e1c6226 100644
  #include "ags/shared/font/fonts.h"
  #include "ags/shared/gfx/image.h"
  #include "ags/engine/gfx/graphics_driver.h"
-@@ -529,6 +530,10 @@ void engine_init_game_settings() {
+@@ -529,9 +531,16 @@ void engine_init_game_settings() {
  	// Setup a text encoding mode depending on the game data hint
  	if (_GP(game).options[OPT_GAMETEXTENCODING] == 65001) // utf-8 codepage number
  		set_uformat(U_UTF8);
@@ -110,6 +180,12 @@ index bb406b57..2e1c6226 100644
  	else
  		set_uformat(U_ASCII);
  
++	// CHT(M2):若設了 ConfMan "ags_dump_static",把可翻譯字串靜態吐檔。
++	cht_dump_static_strings();
++
+ 	int ee;
+ 
+ 	for (ee = 0; ee < 256; ee++) {
 diff --git a/engines/ags/module.mk b/engines/ags/module.mk
 index afc68429..2a432ec8 100644
 --- a/engines/ags/module.mk
