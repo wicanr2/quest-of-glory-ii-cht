@@ -3058,6 +3058,119 @@ BATCH = {
    "你沒有合適的工具來撬這個鎖。",
  "You drop the blue frog":
    "你放下了那隻藍青蛙。",
+ # --- 第二十七批 ---
+ "You have no water to give":
+   "你沒有水可給。",
+ "You haven't any to give":
+   "你一點也拿不出來給。",
+ "You haven't that much to give":
+   "你沒有那麼多可給。",
+ "You have placed the essence of the Earth Elemental inside a cloth bag":
+   "你已把土元素精靈的精華裝進一個布袋裡。",
+ "You have some tea, Hero":
+   "你有些茶,英雄。",
+ "You have truly earned the title of Hero":
+   "你著實掙得了「英雄」這個稱號。",
+ "You have your own attire":
+   "你有自己的衣裳。",
+ "You hear a roar of rocks collapsing in the distance":
+   "你聽見遠處傳來岩石崩塌的轟鳴。",
+ "You hear a sound of thunder":
+   "你聽見一陣雷聲。",
+ "You hear groans of pain from beyond this door, as if someone is being tortured":
+   "你聽見門那頭傳來痛苦的呻吟,彷彿有人正受著折磨。",
+ "You hear nothing out of the ordinary from behind the door":
+   "你從門後沒聽出什麼異樣。",
+ "You hear nothing unusual from behind the door":
+   "你從門後沒聽見什麼異樣。",
+ "You hear Saba subtly clearing her throat. Maybe you shouldn't be picking your nose in public":
+   "你聽見薩巴含蓄地清了清喉嚨。也許你不該在大庭廣眾下挖鼻孔。",
+ "You hear the sound of fierce flames flickering":
+   "你聽見烈焰熊熊跳動的聲響。",
+ "You hear the voice of Erasmus again":
+   "你又聽見了伊拉斯謨的聲音。",
+ "You hide your 'toothpick' inside the chest":
+   "你把你的「牙籤」藏進箱子裡。",
+ "You hope the jade bracelet is worth the trouble you went through to get your hands on it":
+   "你但願這只玉鐲,值得你費這麼大勁才弄到手。",
+ "You interrogate the amulets and discover that they have jewel-citizenship for both Shapeir and Raseir":
+   "你盤問那些護身符,發現它們同時擁有夏皮爾與拉希爾的「珠寶公民」身分。",
+ "You just came here to chat? I'm a busy man":
+   "你來這兒就為了閒聊?我可是個大忙人。",
+ "You know, I'd be willing to buy the Saurus for you at this point, as long as it runs away with you on it":
+   "說真的,事到如今,只要牠肯馱著你跑掉,我都願意替你把這索魯斯買下來。",
+ "You know, incense would make quite a lure for a Fire Elemental":
+   "你說,薰香拿來引火元素精靈倒是挺管用。",
+ "You know, you drive a hard bargain. I respect that in a man":
+   "說真的,你這價殺得真狠。我就敬重這樣的男人。",
+ "You know, you remind me of a Saurus I once knew":
+   "說真的,你讓我想起一頭我以前認識的索魯斯。",
+ "You lack the concentration to cast that spell":
+   "你的專注力不足以施那個法術。",
+ "You lean very close to the locked door, but hear nothing on the other side":
+   "你湊得極近貼著那上鎖的門,卻聽不見另一側有任何聲響。",
+ "You'll have to dismount first":
+   "你得先下坐騎。",
+ "You'll need to buy a compass first":
+   "你得先買個羅盤。",
+ "You'll need to get closer to the Fire Elemental first":
+   "你得先靠近火元素精靈。",
+ "You look like sucha fine person, have I gotta deal for you":
+   "你瞧著就是個體面人,我這兒可有筆好買賣等著你!",
+ "You may be wanting to know about some basic combat actions. I be happy to teach you":
+   "你大概想了解些基本的戰鬥動作吧。我很樂意教你。",
+ "You may call me al-Hajjaj":
+   "你可以叫我哈賈吉。",
+ "You may call me Fakhr Taj":
+   "你可以叫我法赫爾·塔吉。",
+ "You may need to take on those guards eventually, but now is not the time":
+   "你早晚得對付那些衛兵,但現在還不是時候。",
+ "You may use that spell only once here. Try another":
+   "那法術在這兒只能用一次。換一個試試。",
+ "You might need it":
+   "你或許用得上它。",
+ "You must answer yes or no":
+   "你必須回答「要」或「不要」。",
+ "You must give her the gifts of water, earth, and a hug":
+   "你必須獻給她水、土,以及一個擁抱。",
+ "You need a snake like you need a five-pound desert mosquito of your very own":
+   "你需要一條蛇,就跟你需要一隻自己專屬的五磅重沙漠蚊子一樣(根本不需要)。",
+ "You need to get some dough from the Moneychanger, Stranger":
+   "你得去找錢莊弄點銀子,陌生客。",
+ "You never could sing a bar. You can't communicate with them either":
+   "你五音不全,連一小節都唱不來,也沒法跟牠們溝通。",
+ "You now have staying power":
+   "你現在更耐操了!",
+ "You now have the gift of the gab":
+   "你現在能說會道了!",
+ "You offer Shema a bouquet of flowers as a token of admiration for her performance":
+   "你獻給雪瑪一束花,以表對她演出的傾慕。",
+ "You open the cloth bag and pour out the sand until it's empty again":
+   "你打開布袋,把沙子倒出來,直到它再次空了。",
+ "You pay the guard 50 centimes for stable and board":
+   "你付給衛兵五十生丁,作為馬廄與草料費。",
+ "You pay the guard the 50 centimes for your Saurus' stable and board":
+   "你付給衛兵五十生丁,作為你索魯斯的馬廄與草料費。",
+ "You pay the man his money":
+   "你把錢付給了那人。",
+ "You pick up the loose dagger":
+   "你撿起那把散落的匕首。",
+ "You pick up the loose daggers":
+   "你撿起那些散落的匕首。",
+ "You pick up the powder of burning and put it away":
+   "你撿起燃燒之粉收了起來。",
+ "You pick up the waterskin that now contains the essence of the Water Elemental":
+   "你撿起那個如今裝著水元素精靈精華的水袋。",
+ "You possess 1 small container of Saurus oil":
+   "你擁有 1 小罐索魯斯油。",
+ "You possess a small container of Saurus oil":
+   "你擁有一小罐索魯斯油。",
+ "You pour out the sand until the basket is empty again":
+   "你把沙子倒出來,直到籃子再次空了。",
+ "You pour some water over your clothes and feel a little relief from the heat":
+   "你往衣服上澆了些水,暑氣稍稍緩解了些。",
+ "Plaza of the Palace":
+   "王宮廣場",
 }
 
 resolved=[]
