@@ -3280,6 +3280,115 @@ BATCH = {
    "你的鎖子甲防護效果相當好,但「非常」沉重。",
  "You drop the lamp":
    "你放下了那盞燈。",
+ # --- 第二十九批 ---
+ "Your compass doesn't seem to work in this place":
+   "你的羅盤在這地方似乎失靈了。",
+ "Your compass never tells you which way to go, but it always tells you which way you're facing":
+   "你的羅盤從不告訴你該往哪走,卻總能告訴你正面朝著哪。",
+ "You're about as stealthy as the average Goon":
+   "你潛行起來,跟一般的打手一樣藏不住身。",
+ "You reach out to the sky":
+   "你朝天空伸出手。",
+ "You read the first note you received":
+   "你讀起收到的第一張字條。",
+ "You read the note you received":
+   "你讀起收到的那張字條。",
+ "You read the second note you received":
+   "你讀起收到的第二張字條。",
+ "You read the third note you received":
+   "你讀起收到的第三張字條。",
+ "You realize you don't have even a full dinar to give":
+   "你發覺自己連一整枚第納爾都拿不出來給。",
+ "You really don't feel like resting right now":
+   "你現在真的不想休息。",
+ "You're already climbing it":
+   "你已經在爬了!",
+ "Your ears are deafened by rocks crashing and shattering against one another":
+   "岩石互相撞擊碎裂的巨響,震得你耳朵發聾。",
+ "You're barred from doing that":
+   "你被禁止那麼做。",
+ "You're currently riding your trusty ship of the desert":
+   "你正騎著你那艘可靠的「沙漠之舟」。",
+ "You relate the tale of how made the Earth Elemental bite the dust":
+   "你講起自己如何讓土元素精靈一敗塗地的故事。",
+ "You relate the tale to your friends about how you made it through the Brigands' lair":
+   "你向朋友們講起,你是如何闖過強盜巢穴的。",
+ "You remember being told never to shake hands with a Gnome without wearing rubber gloves":
+   "你記得有人叮囑過:沒戴橡膠手套,千萬別跟地精握手。",
+ "You're more likely to make it out alive if you don't announce your presence to the guard":
+   "你要是不向衛兵張揚自己在場,活著脫身的機會還大些。",
+ "You're no longer overloaded. That's a load off your mind":
+   "你不再超重了。這下心頭也卸了個擔子。",
+ "You're not close enough":
+   "你還不夠近。",
+ "You're not in a good position to do that":
+   "你的位置不適合那麼做。",
+ "You're not interested in any of the bottles right now":
+   "你現在對那些瓶子都不感興趣。",
+ "You're not interested in any skin moisturizer right now":
+   "你現在對任何潤膚乳都不感興趣。",
+ "You're not on as-sign-ment":
+   "你又沒在執行什麼「招牌」任務。",
+ "You're not supposed to cast spells on yourself":
+   "你不該對自己施法術。",
+ "You're not wearing them":
+   "你沒穿著它們。",
+ "You're really stuffed already. You decide not to take advantage of your friends' hospitality":
+   "你已經撐得不行了。你決定不再叨擾朋友的款待。",
+ "You're supposed to save the city with this stuff, remember":
+   "你該用這東西去拯救這座城,記得吧?",
+ "You're too far away to offer the Saurus anything":
+   "你離得太遠,沒法餵那索魯斯任何東西。",
+ "You retrieve a healing pill":
+   "你取回一顆治療藥丸。",
+ "You retrieve all of your items from the storage chest":
+   "你把所有物品從儲物箱取了回來。",
+ "You retrieve a mana pill":
+   "你取回一顆法力藥丸。",
+ "You retrieve a poison cure pill":
+   "你取回一顆解毒藥丸。",
+ "You retrieve a ration":
+   "你取回一份口糧。",
+ "You retrieve a vigor pill":
+   "你取回一顆活力藥丸。",
+ "You retrieve the bag of sand":
+   "你取回那袋沙子。",
+ "You retrieve the basket":
+   "你取回那個籃子。",
+ "You retrieve the basket of sand":
+   "你取回那籃沙子。",
+ "You retrieve the bellows from your chest":
+   "你從箱子取回那只風箱。",
+ "You retrieve the blue frog from the storage chest":
+   "你從儲物箱取回那隻藍青蛙。",
+ "You retrieve the bouquet":
+   "你取回那束花。",
+ "You retrieve the brass jar":
+   "你取回那只黃銅罐。",
+ "You retrieve the brass lamp":
+   "你取回那盞銅燈。",
+ "You retrieve the cloth bag":
+   "你取回那個布袋。",
+ "You retrieve the compass from your chest":
+   "你從箱子取回那個羅盤。",
+ "You retrieve the container of oil":
+   "你取回那罐油。",
+ "You retrieve the decorative pot":
+   "你取回那只裝飾用的陶罐。",
+ "You retrieve the Dervish beard from your chest":
+   "你從箱子取回那撮苦行僧鬍鬚。",
+ "You retrieve the dispel potion":
+   "你取回那瓶驅散藥水。",
+ "You retrieve the Djinni ring from your chest":
+   "你從箱子取回那只鎮尼戒指。",
+ "You retrieve the emerald bowl from your chest":
+   "你從箱子取回那只翡翠碗。",
+ "You retrieve the empty pot":
+   "你取回那只空罐。",
+ "You retrieve the fan":
+   "你取回那把扇子。",
+ "My name is Lira":
+   "我叫莉拉。",
 }
 
 resolved=[]
