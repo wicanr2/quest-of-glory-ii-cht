@@ -1931,6 +1931,129 @@ BATCH = {
    "謝謝你,千恩萬謝。全靠你的支持,我才能繼續這要緊的工作。",
  "The ice is now very relaxed":
    "那冰塊現在很放鬆。",
+ # --- 第十八批 ---
+ "The Katta nods to acknowledge your presence":
+   "那卡塔族人點頭示意,表示注意到你了。",
+ "The Katta quickly bows to acknowledge your greeting and then moves on":
+   "那卡塔族人迅速一鞠躬回應你的問候,便走開了。",
+ "The Katta's Tail Inn is in the Gate Plaza":
+   "「卡塔之尾客棧」在城門廣場。",
+ "The Katta's Tail Inn is in this very plaza":
+   "「卡塔之尾客棧」就在這座廣場上。",
+ "The kitchen is closed already. Your tummy will have to wait until tomorrow morning":
+   "廚房已經打烊了。你的肚子只能等到明天早上。",
+ "The lamp burns brightly, lighting this otherwise darkened dead-end":
+   "那盞燈燃得正旺,照亮了這條原本漆黑的死巷。",
+ "The last thing this window needs is a set of greasy fingerprints smeared across its surface":
+   "這扇窗最不需要的,就是表面被抹上一排油膩的指紋。",
+ "The leather merchant frowns at you":
+   "那皮革商朝你皺眉。",
+ "The leonine creature before you looks ferocious and kindly at the same time":
+   "你面前這頭獅形生物,看起來既兇猛又和善。",
+ "The Liontaur looks calmly back at you":
+   "那獅人平靜地回望你。",
+ "The magic lamp is not useful here":
+   "魔法神燈在這兒派不上用場。",
+ "The Magic Shop owner might help you with such questions":
+   "魔法店的老闆或許能解答你這類問題。",
+ "The man gives you a scowl that could sink a sub":
+   "那人朝你擺出一張足以擊沉潛艇的臭臉。",
+ "The man is built just like an acrobat":
+   "那人一身體格活像個雜耍藝人。",
+ "The man looks to be dazed for some reason":
+   "那人不知怎地一臉茫然。",
+ "The map only works in the streets and plazas":
+   "地圖只在街道與廣場上管用。",
+ "The mechanic doesn't look like he's willing to interact with you, much less shake hands":
+   "那技工看來無意搭理你,更別說握手了。",
+ "The memory of a poet is long for those who aid him":
+   "詩人對助他之人,記性可長著呢。",
+ "The merchant looks at you strangely":
+   "那商人古怪地看著你。",
+ "The mere thought of putting your hand in there disgusts you":
+   "光想到要把手伸進那裡頭,你就一陣噁心。",
+ "The message reads:[[\"Misfortune will arise when the dinar hits the fountain.\"":
+   "上頭寫著:[[「當第納爾落入噴泉,厄運將至。」",
+ "The message reads:[[\"Rent your own Harem at Lou's.\"":
+   "上頭寫著:[[「到老盧家,租你專屬的後宮。」",
+ "The message reads:[[\"Those who dare to walk the fiery road will not return unscathed.\"":
+   "上頭寫著:[[「膽敢踏上烈火之路者,難以全身而退。」",
+ "The message reads:[[\"Those who turn onto the dark, starry path will face great peril.\"":
+   "上頭寫著:[[「轉入那條漆黑星路者,將面臨莫大凶險。」",
+ "The musician has no need of your Spielburgian money":
+   "那樂師不需要你的史畢柏格錢幣。",
+ "The musician nods and smiles while he plays":
+   "那樂師一邊演奏,一邊點頭微笑。",
+ "The musician seems too busy to answer you":
+   "那樂師似乎忙得無暇答理你。",
+ "The musician would not be interested in that":
+   "那樂師對那個不會感興趣。",
+ "Then honey is poured upon it":
+   "接著淋上蜂蜜。",
+ "Then it is quickly cooked over the brazier there":
+   "然後在那邊的炭爐上迅速烤熟。",
+ "Then you may leave, mere user of magic":
+   "那你可以走了,區區一個耍魔法的。",
+ "Then you must choose another sponsor":
+   "那你得另選一位引薦人。",
+ "The odd character at this stand seems vaguely familiar":
+   "這攤子上那個古怪傢伙,看著有點面熟。",
+ "The once beautiful pot now lies in ruins":
+   "那只曾經精美的陶罐,如今已成一堆碎片。",
+ "The only response from the Air Elemental is a low, ominous hum":
+   "風元素精靈唯一的回應,是一陣低沉而不祥的嗡鳴。",
+ "The only thing it can tell you is that it is in a state beyond repair":
+   "它唯一能告訴你的,就是它已經壞到沒法修了。",
+ "The only thing they seem interested in is eating straw":
+   "牠們似乎唯一感興趣的,就是吃草料。",
+ "The palace doors are barred securely from inside":
+   "王宮的大門從內側牢牢閂住了。",
+ "The Palace is a marvelous place to work":
+   "王宮是個極好的做事之處。",
+ "The Palace of the Emir looms ominously over the city":
+   "埃米爾的宮殿不祥地高踞於城市之上。",
+ "The Palace of the Sultan is a truly magnificent sight":
+   "蘇丹的宮殿著實是一派恢宏景象。",
+ "The pin is a token of the Katta's trust in you, O Hero":
+   "英雄啊,這枚別針是卡塔族對你信任的信物。",
+ "The place is the window on your left as you first enter the Fountain Plaza from here":
+   "那地方,是你從這兒初進噴泉廣場時左手邊的那扇窗。",
+ "The plant seems to have adapted to the desert heat":
+   "這株植物似乎已經適應了沙漠的酷熱。",
+ "The plaza is too open an area to capture and contain a Fire Elemental":
+   "廣場太空曠了,沒法捕捉並困住火元素精靈。",
+ "The pleasure is all mine, Hero":
+   "這是我的榮幸,英雄。",
+ "The Poet is bothered more by the thief than by the loss of money":
+   "比起損失的錢,詩人更在意那個小偷。",
+ "The Poet Omar is honored by your greetings and wishes you the same in return":
+   "詩人奧瑪爾很榮幸收到你的問候,也以同樣的祝福回敬你。",
+ "The pot you obtained from Toshur is carefully crafted and very smooth":
+   "你從托舒爾那兒得來的陶罐做工精細、十分光滑。",
+ "The pot you obtained from Toshur is colorful and very smooth":
+   "你從托舒爾那兒得來的陶罐色彩繽紛、十分光滑。",
+ "The presence of fetid trash piles makes this a less than pleasant area to navigate through":
+   "一堆堆惡臭的垃圾,讓這地方走起來實在不怎麼舒坦。",
+ "The quantity I have given you should suffice":
+   "我給你的份量應該夠了。",
+ "The rations are tasteless but filling":
+   "這乾糧雖然無味,倒挺管飽。",
+ "There are merchants for almost anything in this town":
+   "這鎮上幾乎什麼東西都有商人在賣。",
+ "There are no clothes hanging around here. Besides, you still have your own":
+   "這附近沒晾著衣服。再說,你自己的還在呢。",
+ "There are no games to restore":
+   "沒有可讀取的存檔。",
+ "There are no sounds coming from beyond this door":
+   "這門後沒有半點聲響。",
+ "There are too many guards to fight":
+   "衛兵太多了,打不過。",
+ "There doesn't seem to be anyone on the other side":
+   "另一側似乎沒有人。",
+ "The presence of fetid trash piles make this a less than pleasant area to navigate through":
+   "一堆堆惡臭的垃圾,讓這地方走起來實在不怎麼舒坦。",
+ "The item Saba sold you is a disk that's made of many small strings of reed carefully woven together":
+   "薩巴賣給你的是個圓盤,用許多細小的蘆葦條精心編成。",
 }
 
 resolved=[]
