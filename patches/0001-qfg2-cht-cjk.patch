@@ -29,7 +29,7 @@ index 3ede3f1d..9e322403 100644
  }
  
 diff --git a/engines/ags/engine/ac/global_translation.cpp b/engines/ags/engine/ac/global_translation.cpp
-index 7adcc725..c766e964 100644
+index 7adcc725..c2e54345 100644
 --- a/engines/ags/engine/ac/global_translation.cpp
 +++ b/engines/ags/engine/ac/global_translation.cpp
 @@ -19,6 +19,10 @@
@@ -43,13 +43,16 @@ index 7adcc725..c766e964 100644
  #include "ags/shared/ac/common.h"
  #include "ags/engine/ac/display.h"
  #include "ags/engine/ac/game_state.h"
-@@ -30,16 +34,91 @@
+@@ -30,18 +34,129 @@
  #include "ags/plugins/plugin_engine.h"
  #include "ags/shared/util/memory.h"
  #include "ags/engine/ac/string.h"
 +#include "ags/shared/ac/game_setup_struct.h"
 +#include "ags/shared/ac/game_struct_defines.h"
++#include "ags/shared/font/cjk_font.h"
++#include "ags/shared/font/fonts.h"
 +#include "ags/shared/script/cc_script.h"
++#include "ags/shared/debugging/out.h"
  #include "ags/globals.h"
 +#include "common/file.h"
 +#include "common/config-manager.h"
@@ -127,6 +130,36 @@ index 7adcc725..c766e964 100644
 +	warning("CHT: static string dump → %s", path.c_str());
 +}
 +
++// CHT: in-game F8 language toggle state. When false, get_translation returns
++// the original English even if a translation dictionary is loaded.
++static bool g_cht_translation_on = true;
++
++void cht_cycle_language_mode() {
++	// Cycle: 0 = 繁中 16x16, 1 = 繁中 24x24, 2 = English(原文).
++	static int mode = 0;
++	mode = (mode + 1) % 3;
++	const char *name;
++	if (mode == 0) {
++		g_cht_translation_on = true;
++		cht_set_cjk_enabled(true);
++		cht_set_cjk_size(16);
++		name = "\xE7\xB9\x81\xE4\xB8\xAD 16x16";
++	} else if (mode == 1) {
++		g_cht_translation_on = true;
++		cht_set_cjk_enabled(true);
++		cht_set_cjk_size(24);
++		name = "\xE7\xB9\x81\xE4\xB8\xAD 24x24";
++	} else {
++		g_cht_translation_on = false;
++		cht_set_cjk_enabled(false);
++		name = "English";
++	}
++	// Recompute every font's metrics so line spacing matches the new glyph size.
++	for (size_t i = 0; i < _GP(fonts).size(); ++i)
++		font_recalc_metrics(i);
++	Debug::Printf(kDbgMsg_Info, "CHT: language mode -> %s", name);
++}
++
  const char *get_translation(const char *text) {
  	if (text == nullptr)
  		quit("!Null string supplied to CheckForTranslations");
@@ -134,17 +167,25 @@ index 7adcc725..c766e964 100644
 +	cht_dump_source_string(text);
  	_G(source_text_length) = GetTextDisplayLength(text);
  
++	if (!g_cht_translation_on)
++		return text; // English mode
++
  #if AGS_PLATFORM_64BIT
+ 	// check if a plugin wants to translate it - if so, return that
+ 	// TODO: plugin API is currently strictly 32-bit, so this may break on 64-bit systems
 diff --git a/engines/ags/engine/ac/global_translation.h b/engines/ags/engine/ac/global_translation.h
-index dbfa0014..5fb154d9 100644
+index dbfa0014..5b840b53 100644
 --- a/engines/ags/engine/ac/global_translation.h
 +++ b/engines/ags/engine/ac/global_translation.h
-@@ -29,6 +29,9 @@ int IsTranslationAvailable();
+@@ -29,6 +29,12 @@ int IsTranslationAvailable();
  // GetTranslationName assumes a string buffer of MAX_MAXSTRLEN
  int GetTranslationName(char *buffer);
  
 +// CHT(M2):走訪已載入資料,把可翻譯字串吐到 ConfMan "ags_dump_static" 指定的檔。
 +void cht_dump_static_strings();
++
++// CHT:F8 遊戲中循環語言模式(繁中16 → 繁中24 → 英文原文)。
++void cht_cycle_language_mode();
 +
  } // namespace AGS3
  
@@ -186,6 +227,32 @@ index bb406b57..40088d59 100644
  	int ee;
  
  	for (ee = 0; ee < 256; ee++) {
+diff --git a/engines/ags/engine/main/game_run.cpp b/engines/ags/engine/main/game_run.cpp
+index a7e01c5a..3f183366 100644
+--- a/engines/ags/engine/main/game_run.cpp
++++ b/engines/ags/engine/main/game_run.cpp
+@@ -25,6 +25,7 @@
+ 
+ #include "common/std/limits.h"
+ #include "ags/engine/ac/button.h"
++#include "ags/engine/ac/global_translation.h"
+ #include "ags/shared/ac/common.h"
+ #include "ags/engine/ac/character.h"
+ #include "ags/engine/ac/character_extras.h"
+@@ -326,6 +327,13 @@ bool run_service_key_controls(KeyInput &out_key) {
+ 		return false;
+ 	}
+ 
++	// CHT: F8 cycles the in-game language mode (繁中16 → 繁中24 → English).
++	// Consumed here so the game script never sees F8 (QFG2 leaves it unbound).
++	if (agskey == eAGSKeyCodeF8) {
++		cht_cycle_language_mode();
++		return false;
++	}
++
+ 	// Alt+X, abort (but only once game is loaded)
+ 	if ((_G(displayed_room) >= 0) && (agskey == _GP(play).abort_key)) {
+ 		Debug::Printf("Abort key pressed");
 diff --git a/engines/ags/module.mk b/engines/ags/module.mk
 index afc68429..2a432ec8 100644
 --- a/engines/ags/module.mk
@@ -200,10 +267,10 @@ index afc68429..2a432ec8 100644
  	shared/font/wfn_font.o \
 diff --git a/engines/ags/shared/font/cjk_font.cpp b/engines/ags/shared/font/cjk_font.cpp
 new file mode 100644
-index 00000000..502aab42
+index 00000000..36191c57
 --- /dev/null
 +++ b/engines/ags/shared/font/cjk_font.cpp
-@@ -0,0 +1,90 @@
+@@ -0,0 +1,112 @@
 +/* ScummVM - Graphic Adventure Engine
 + *
 + * ScummVM is the legal property of its developers, whose names
@@ -268,38 +335,60 @@ index 00000000..502aab42
 +	return IsValid();
 +}
 +
++static CjkFont *s_font = nullptr;
++static int s_size = 0;        // currently loaded glyph size (16/24); 0 = none
++static bool s_enabled = true; // false in English mode
++
++static bool cht_load_size(int size) {
++	const char *fn = (size == 24) ? "cjkfont24.bin" : "cjkfont16.bin";
++	CjkFont *f = new CjkFont();
++	if (f->Load(fn)) {
++		delete s_font;
++		s_font = f;
++		s_size = size;
++		return true;
++	}
++	delete f;
++	return false;
++}
++
++void cht_set_cjk_size(int size) {
++	if (size != 16 && size != 24)
++		return;
++	if (size == s_size && s_font)
++		return;
++	cht_load_size(size);
++}
++
++int cht_get_cjk_size() {
++	return s_size;
++}
++
++void cht_set_cjk_enabled(bool on) {
++	s_enabled = on;
++}
++
 +CjkFont *get_cjk_font() {
-+	static CjkFont *s_font = nullptr;
-+	static bool s_tried = false;
-+	if (!s_tried) {
-+		s_tried = true;
-+		CjkFont *f = new CjkFont();
-+		// ConfMan "ags_cjk_size" picks the preferred glyph size (16 or 24).
++	static bool s_init = false;
++	if (!s_init) {
++		s_init = true;
++		// ConfMan "ags_cjk_size" picks the initial glyph size (16 or 24).
 +		// 16 is the safe default (fits 320x200 text boxes); 24 is crisper but
 +		// long auto-sized Display boxes may overflow at native resolution.
 +		int pref = ConfMan.hasKey("ags_cjk_size") ? ConfMan.getInt("ags_cjk_size") : 16;
-+		bool ok = false;
-+		if (pref == 24)
-+			ok = f->Load("cjkfont24.bin") || f->Load("cjkfont16.bin");
-+		else
-+			ok = f->Load("cjkfont16.bin") || f->Load("cjkfont24.bin");
-+		if (ok) {
-+			s_font = f;
-+		} else {
-+			delete f;
-+			s_font = nullptr;
-+		}
++		if (!cht_load_size(pref == 24 ? 24 : 16))
++			cht_load_size(pref == 24 ? 16 : 24); // fall back to the other size
 +	}
-+	return s_font;
++	return s_enabled ? s_font : nullptr;
 +}
 +
 +} // namespace AGS3
 diff --git a/engines/ags/shared/font/cjk_font.h b/engines/ags/shared/font/cjk_font.h
 new file mode 100644
-index 00000000..ebe21d32
+index 00000000..0af6c364
 --- /dev/null
 +++ b/engines/ags/shared/font/cjk_font.h
-@@ -0,0 +1,67 @@
+@@ -0,0 +1,72 @@
 +/* ScummVM - Graphic Adventure Engine
 + *
 + * ScummVM is the legal property of its developers, whose names
@@ -360,9 +449,14 @@ index 00000000..ebe21d32
 +	Common::HashMap<uint32, CjkGlyph> _glyphs;
 +};
 +
-+// Lazily loads cjkfontNN.bin via the asset manager; returns nullptr if absent.
-+// Once loaded (or determined absent) the result is cached.
++// Lazily loads cjkfontNN.bin via the asset manager; returns nullptr if absent
++// or if the CJK overlay is currently disabled (English mode). Cached.
 +CjkFont *get_cjk_font();
++
++// Runtime control for the in-game F8 language toggle.
++void cht_set_cjk_size(int size);     // 16 or 24; reloads the atlas
++int  cht_get_cjk_size();             // currently loaded size (0 if none)
++void cht_set_cjk_enabled(bool on);   // false = English mode (get_cjk_font -> null)
 +
 +} // namespace AGS3
 +
