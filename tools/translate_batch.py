@@ -4440,6 +4440,55 @@ BATCH = {
    "我們在史畢柏格為你舉行的典禮上見過他,但他似乎不是個討喜的人。我們向他問好時,他幾乎沒搭理我們。",
  "The shutters on this window are tightly closed as if the residence itself wishes to shut its eyes to the current state of the city":
    "這扇窗的百葉緊閉,彷彿這宅子自己想對城市的現狀閉上雙眼。",
+ # --- 第四十五批:長段敘事 ---
+ "Infiltrating the Brigand fortress and striking at the heart of their threat was not something you could have accomplished by pure luck or brute strength alone. What you displayed more than anything was courage and resourcefulness. We knew that we had finally found the hero that we had been searching for":
+   "潛入強盜堡壘、直搗其威脅的核心,絕非單憑運氣或蠻力就能辦到的。你所展現的,首要的是勇氣與機智。我們知道,我們終於找到了一直在尋覓的那位英雄。",
+ "It would have been one thing if our letter had not reached its destination or if our kin decided not to go out of their way to help us, but for the necessities required for our departure to make it all the way from Shapeir to Spielburg's mountain pass and then be stolen mere miles away from our doorstep was too much":
+   "信若沒能送達,或族人決意不肯費心相助,那是一回事;可那些供我們啟程所需的物資,千里迢迢從夏皮爾運到史畢柏格的山隘,竟在離我們家門僅幾哩處被搶——這實在太教人難受了。",
+ "Over the course of the winter, we had ample time to learn about Spielburg's history. We learned about the Baron becoming a recluse after the loss of his children. We heard about the Brigand band conducting raids. And we heard about the effect of the Brigand menace on the local trade routes and tourist business":
+   "整個冬天,我們有充裕的時間了解史畢柏格的歷史。我們得知男爵在喪失子女後變得離群索居,聽說了強盜團四處劫掠,也聽聞強盜之患對本地商路與觀光生意的影響。",
+ "The robbery was as much a tragedy to us as it was to Abdulla. There had been times during our journey when I came to question the feasibility of our mission. Shema and I were not used to a life on the road and as months went by, we started wondering how much longer we were meant to roam the far reaches of our world":
+   "那場劫案對我們而言,與對阿布杜拉一樣是場悲劇。旅途中曾有幾度,我開始懷疑我們這趟使命是否可行。雪瑪和我不慣風餐露宿的日子,月復一月,我們漸漸納悶:這天涯海角,我們究竟還註定要漂泊多久。",
+ "We spent most of our time there in the confines of our inn, as there were very few places to go in such a small town. And due to the monsters and Brigands in the forest, venturing outside the town gates was too dangerous":
+   "我們在那兒,多半時間都關在自家客棧裡,畢竟那麼個小鎮也沒幾處可去。再加上森林裡的怪物與強盜,踏出鎮門實在太危險。",
+ "We were afraid to embrace hope once again as the previous disappointment still lingered in our minds. But from the outset, we could tell that you were most kind a person and that impressed us greatly":
+   "先前的失望仍縈繞心頭,我們不敢再次擁抱希望。但打從一開始,我們就看得出你是個極其善良的人,這讓我們深受觸動。",
+ "We were not sure how long we could afford to provide him with a free room and board, but we felt partly responsible for his plight and could relate closely to his grief.":
+   "我們不確定還能免費供他食宿多久,但我們覺得自己對他的處境也有一份責任,也對他的悲傷感同身受。",
+ "We were told that the very caravan we were on would be the last that traveled west for many months. The Dragonsmoke mountain range near Spielburg is notorious for being difficult to traverse and caravans avoid it completely during the winter months":
+   "有人告訴我們,我們搭的這支商隊,將是好幾個月內最後一支西行的。史畢柏格附近的龍煙山脈以難以穿越著稱,商隊在冬季月份一概避之。",
+ "What I believe made you a hero in the end were not the books you read about adventuring, but your potential and knowledge about your own abilities":
+   "我相信,最終讓你成為英雄的,並非你讀過的那些冒險書籍,而是你的潛力,以及你對自身能力的了解。",
+ "When Abdulla entered our inn with the news that the Brigands had not only taken his belongings but our own wealth as well, I felt like things were collapsing around me":
+   "當阿布杜拉走進我們客棧,捎來強盜不僅奪走他的財物、連我們的財富也一併搶去的消息時,我只覺得周遭一切都在崩塌。",
+ "When mounting an offense, a plunge can be used to follow up a swing for additional damage":
+   "進攻時,可以接著一記突刺,追加傷害。",
+ "When our caravan made a stop in Spielburg, we visited the Adventurer's Guild there and spoke briefly with the Guild Master. We had hoped that a worthy adventurer had indeed claimed the title of hero there and that the Guild Master could inform us of his whereabouts":
+   "我們的商隊在史畢柏格停留時,我們去了當地的冒險者公會,和公會會長簡短談了談。我們本指望,當地真有一位夠格的冒險者掙得了英雄之名,而公會會長能告訴我們他的下落。",
+ "When Shameen first spoke of heading north, I did not know how to react. I have always been much more of a homemaker than an adventurer. The thought of leaving our home behind, not knowing where we were going or when we would return frightened me":
+   "沙明頭一回提起要北上時,我不知該作何反應。我向來更像個持家的人,而非冒險者。一想到要拋下家園,不知去向何方、也不知何時能返,我便害怕。",
+ "When the arcade difficulty level is set to easy or normal, the copilot feature can assist you with certain combat actions. This panel allows you to customize the copilot's priorities. Keep in mind that the copilot only assists you in battle. It will not fight the entire battle for you":
+   "當街機難度設為簡單或普通時,戰鬥輔助功能能在某些戰鬥動作上協助你。此面板讓你自訂輔助的優先順序。請記住,輔助只是在戰鬥中協助你,並不會替你打完整場仗。",
+ "When the fate of our kinsmen reached the Sultan, he immediately sent his army to set this injustice right. Unfortunately, his men never reached the gates of Raseir":
+   "我族人的遭遇傳到蘇丹耳中,他立即派軍要糾正這樁不義。可惜,他的人馬從未抵達拉希爾的城門。",
+ "Where was I? Oh yes. You tried to pass me counterfeit coins. I counter with a fit. We agreed upon dinars, not whatever you tried to give me. You need to see the Moneychanger before we can deal again":
+   "我說到哪了?喔對。你想拿假錢幣糊弄我。我可要跟你翻臉。咱們講好的是第納爾,不是你想塞給我的那玩意兒。你得先去找錢莊,我們才能再做買賣。",
+ "While Abdulla may seem somewhat foolish at times, he understands the value of friendship very well. He promised us that if he ever recovered his flying carpet from the Brigands, he would take us anywhere we wished to go, even if that meant leaving behind any of his treasure that would not fit on the carpet":
+   "阿布杜拉有時雖顯得有些憨,卻很懂友情的可貴。他答應我們,只要哪天從強盜手中奪回他的飛毯,就帶我們去任何想去的地方,哪怕得撇下毯子載不下的財寶也在所不惜。",
+ "While Raseir and Shapeir are supposed to be twin cities, a large part of the city appears to be blocked off. At least you can use the map to see where you are":
+   "拉希爾與夏皮爾照理說是雙子城,但這城裡有一大片地方似乎被封了起來。至少你還能用地圖看清自己身在何處。",
+ "While you have no idea what a bumper is, you instinctively know that this is a bumper sticker. It says: \"Back off man, I'm a professional hero.\"":
+   "你雖然不知道「保險桿」是什麼,卻本能地知道這是張保險桿貼紙。上頭寫著:「閃邊去,老兄,我可是專業英雄。」",
+ "With fiery emotion, you explain to Harik that the Earth Elemental is attacking the city. At first, he seems unconvinced, but your eloquence finally sways him":
+   "你情緒激昂地向哈里克說明土元素精靈正在攻擊這座城市。起初他似乎半信半疑,但你的口才終究說服了他。",
+ "With the roads to and from the valley cut off by the snow, our inn understandably had very little business. We were only able to make a living thanks to Shema's most excellent cooking skills":
+   "進出谷地的道路為大雪所阻,我們客棧的生意自然清淡得很。全靠雪瑪一手出色的廚藝,我們才得以維生。",
+ "You already took a feather, so don't be greedy. The Griffin probably needs them more than you":
+   "你已經拿走一根羽毛了,別貪心。那獅鷲八成比你更需要它們。",
+ "You ask Dinarzad how much she would pay for a key that would grant one access to the Katta's Tail Inn without arousing suspicion from patrolling guards":
+   "你問迪娜扎德,一把能讓人進出「卡塔之尾客棧」、又不致引起巡邏衛兵起疑的鑰匙,她願意出多少錢。",
+ "This is not a good place to practice your throwing":
+   "這裡不是練投擲的好地方。",
 }
 
 corpus_set=set(corpus)
