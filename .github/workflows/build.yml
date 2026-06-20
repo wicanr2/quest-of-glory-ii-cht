@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: 安裝相依(只裝 AGS 必要;多裝的 codec 會讓 configure 強制靜態連結而缺 .a)
-        run: brew install sdl2 sdl2_net freetype libpng libvorbis libogg flac bzip2 zlib
+        run: brew install sdl2 sdl2_net freetype libpng libvorbis libogg flac bzip2 zlib dylibbundler
       - name: 把 keg-only 的 bzip2/zlib 靜態檔 symlink 到 configure 硬編的路徑
         run: |
           # ScummVM configure 在 link 行硬編 /opt/homebrew/lib/libbz2.a 與 libz.a,
@@ -60,6 +60,18 @@ jobs:
             --disable-libcurl --disable-sndio --disable-tts
           make -j$(sysctl -n hw.ncpu)
           make bundle
+      - name: 把相依 dylib 打包進 .app(否則乾淨 Mac 缺 brew 庫會 dyld 閃退)
+        working-directory: scummvm-src
+        run: |
+          APP=$(ls -d ScummVM.app */ScummVM.app 2>/dev/null | head -1)
+          echo "bundling dylibs into $APP"
+          # dylibbundler 遞迴把非系統 dylib(brew 的 SDL2/freetype…)拷進 .app/Contents/libs 並改 install_name
+          dylibbundler -od -b -cd \
+            -x "$APP/Contents/MacOS/scummvm" \
+            -d "$APP/Contents/libs" \
+            -p "@executable_path/../libs/"
+          echo "=== 確認主執行檔已無外部 /opt/homebrew 依賴 ==="
+          otool -L "$APP/Contents/MacOS/scummvm" | grep -E "homebrew|/usr/local" && echo "!! 仍有外部依賴" || echo "OK:只剩系統庫與 @executable_path"
       - name: 打包 DMG
         run: |
           mkdir -p dmgroot && cp -R scummvm-src/ScummVM.app dmgroot/ 2>/dev/null || cp -R scummvm-src/*.app dmgroot/
