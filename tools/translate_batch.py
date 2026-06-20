@@ -322,6 +322,129 @@ BATCH = {
    "你向這位卡塔族人說起你和他表親雪瑪的交情。",
  "You'd just get fingerprints all over it":
    "你只會在上頭按得到處都是指紋!",
+ # --- 第五批:對白 / 商店 / 戰鬥 / 物品 ---
+ "Alas, you will need to visit the Moneychanger before you can buy anything here":
+   "唉,你得先去找錢莊兌換,才買得起這兒的東西。",
+ "Aziza does not want anything from you":
+   "阿姿莎不需要你任何東西。",
+ "Certainly you do not wish for more to eat":
+   "你肯定不想再吃了吧!",
+ "Don't try to interrupt Uhura's chain of attacks by dodging the first blow and attacking in between":
+   "別想著閃過烏胡拉的第一擊、再趁隙還手來打斷她的連段——那行不通。",
+ "For you, it will take a mere 18 dinars to loosen my lips":
+   "看在你的份上,區區十八第納爾,我這嘴就鬆了。",
+ "Greetings, Hero. Do you feel brave and lucky today? Nobody else around here seems willing to take my challenge":
+   "你好,英雄。今天覺得自己又勇又走運嗎?這附近可沒人敢接我的挑戰。",
+ "Hello, Master. You still have two wishes left":
+   "您好,主人。您還剩兩個願望。",
+ "I am always glad to be of assistance":
+   "能幫上忙,我向來樂意。",
+ "I confess I am a bit disappointed in you, sir. It seems I expected too much":
+   "老實說,我對你有點失望,先生。看來是我期望太高了。",
+ "I love a man who likes to keep in shape":
+   "我就喜歡懂得鍛鍊身材的男人。",
+ "I wish I had as much time to waste as you do":
+   "真希望我也有你這麼多時間可以揮霍。",
+ "If you know not whom you seek, you will surely not find that person here":
+   "你若連自己要找誰都不知道,在這兒是絕對找不著那人的。",
+ "It doesn't look like it would make a very suitable mount":
+   "看起來不太適合拿來當坐騎。",
+ "It is the finest suit of mail in all the realm. Its value is far beyond you":
+   "這是全國最上乘的一副鎖子甲,它的價值遠非你所能企及。",
+ "It would be impolite to disturb the Katta musician while he's playing":
+   "卡塔族樂師正在演奏,打擾他可不禮貌。",
+ "It's empty. This is a good thing as eating leftover scraps would be a very bad idea":
+   "空的。這是好事,畢竟吃別人的剩菜殘羹可不是什麼好主意。",
+ "It's too dark to see what you're dropping. You'd better not drop anything until you can see properly":
+   "太暗了,看不清你要丟什麼。等看得清楚再丟吧。",
+ "Lamb falafels and soured cream, along with a rabbit curry, are part of the meal for tonight":
+   "今晚的菜色有羊肉炸豆丸佐酸奶,還有一道兔肉咖哩。願它讓你吃得舒坦。",
+ "Maybe today you and I get in some practice at fighting. It will be good to feel the spear in my hand again":
+   "或許今天你我可以切磋切磋。能再次握握長矛的手感,挺不錯的。",
+ "My name is Sashari":
+   "我叫薩沙莉。",
+ "No response. The residence is either abandoned or the occupant is unwilling to answer you":
+   "沒有回應。這宅子若不是早已荒廢,就是裡頭的人不願搭理你。",
+ "Oh, it is so good to know my uncle is still alive. He is such a kind and friendly man":
+   "啊,得知我叔叔還活著,真是太好了。他是個多麼和善親切的人。",
+ "Please, you must sit down and relax before we shall speak of what you seek":
+   "來,你得先坐下放鬆,我們再來談你所求之事。",
+ "Scoree is the local food merchant":
+   "斯科里是本地的食品商。",
+ "Since it's forbidden to be out at night, the torches in this city don't seem to have a practical use anymore":
+   "既然夜裡禁止外出,這城裡的火把似乎也派不上用場了。",
+ "Success! You now have an open nose":
+   "成功!你的鼻子現在「暢通無阻」了。",
+ "That's one way of getting more fiber in your diet":
+   "這倒是替三餐多添點膳食纖維的法子。",
+ "The Griffin looks like a cross between a lion and an eagle. It seems to be sleeping":
+   "那獅鷲長得像獅子和老鷹的混血,似乎正在熟睡。",
+ "The Saurus seems curious and excited":
+   "那頭索魯斯顯得既好奇又興奮。",
+ "The bellows are a sign of my trade. What about them":
+   "風箱是我這行當的招牌。問它做什麼?",
+ "The door is locked and barred from within. Your Open spell has no effect":
+   "門從裡頭上了鎖、閂得死死的。你的「開啟」術毫無作用。",
+ "The money you find there should be more than enough to compensate the price of this little bit of information":
+   "你在那兒找到的錢,拿來付這一小條消息的費用,綽綽有餘。",
+ "The rings I sell are perfect when you wish to propose to your significant other":
+   "我賣的這些戒指,拿來向心上人求婚再合適不過了。",
+ "The still, small voice within this ring must be that of a Djinni -- a very weak one":
+   "這戒指裡那細微的低語,想必是個鎮尼——而且是非常孱弱的一個。",
+ "The western section of the city is visible beyond the roofs of the nearby buildings":
+   "越過附近屋頂,可以望見城市的西區。",
+ "There is a strong sense of magic beyond the Palace walls":
+   "宮牆之外,有一股濃烈的魔法氣息。",
+ "There's no point in returning Soulforge before the Earth Elemental has been dispatched permanently":
+   "在徹底了結土元素精靈之前,歸還鑄魂劍是沒有意義的。",
+ "These traditional windows are square-shaped and have been built into the wall":
+   "這些傳統樣式的窗子呈方形,嵌在牆裡。",
+ "This is not a good place to practice your Levitate spell":
+   "這裡可不是練「飄浮」術的好地方。",
+ "This sign has deteriorated to a point where it is no longer even legible":
+   "這招牌已殘破到連字都認不出來了。",
+ "Ugarte and I are old friends":
+   "烏加特和我是老交情了。",
+ "When mounting an offense, an inverse swing can be used to follow up a swing for additional damage":
+   "進攻時,可以接著一記反向揮砍,追加傷害。",
+ "Without water, you would not survive even an hour in the desert":
+   "沒有水,你在沙漠裡連一個鐘頭都撐不過。",
+ "You are getting really thirsty":
+   "你開始覺得非常口渴。",
+ "You bet your life you've seen this guy before":
+   "你敢拿性命打賭,你以前見過這傢伙。",
+ "You can't get a good shot at Ad Avis from where you are":
+   "從你現在的位置,瞄不準阿德·阿維斯。",
+ "You could never catch the magical mass of swirling wind using just your hands":
+   "光憑一雙手,你絕對抓不住那團旋轉的魔法旋風。",
+ "You dispose of the incense":
+   "你把薰香處理掉了。",
+ "You drop a healing pill":
+   "你掉了一顆治療藥丸。",
+ "You drop the poisonous claws on the ground and grind them to powder with your heel":
+   "你把毒爪丟在地上,用腳跟碾成了粉末。",
+ "You get a small glass of tepid, stale-tasting water":
+   "你拿到一小杯溫吞、走味的水。",
+ "You have done all you can to weaken the spell on the tree":
+   "削弱那棵樹上法術的事,你已盡力而為了。",
+ "You hear the sound of silence from behind the door":
+   "門後傳來的,是一片寂靜。",
+ "You never need be hungry again":
+   "你再也不必挨餓了!",
+ "You retrieve the EOF badge from your chest":
+   "你從箱子裡取出永恆戰士團的徽章。",
+ "You seem to have hit a communication barrier here":
+   "你在這兒似乎碰上了溝通的障礙。",
+ "You spend an hour checking out the interior of the Apothecary and watching Harik work":
+   "你花了一個鐘頭打量藥舖內部,看著哈里克幹活。",
+ "You store the incense":
+   "你把薰香收了起來。",
+ "You tell Harik about the caged beast":
+   "你把籠中那頭野獸的事告訴了哈里克。",
+ "You will need the magic of a flaming sword to defeat the Earth Elemental":
+   "你需要一把燃燒之劍的魔力,才能擊敗土元素精靈。",
+ "You're not THAT desperate for a light":
+   "你還沒淪落到「那麼」需要一點火光的地步。",
 }
 
 resolved=[]
