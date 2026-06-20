@@ -29,7 +29,7 @@ index 3ede3f1d..9e322403 100644
  }
  
 diff --git a/engines/ags/engine/ac/global_translation.cpp b/engines/ags/engine/ac/global_translation.cpp
-index 7adcc725..8cd76403 100644
+index 7adcc725..238a72d5 100644
 --- a/engines/ags/engine/ac/global_translation.cpp
 +++ b/engines/ags/engine/ac/global_translation.cpp
 @@ -19,6 +19,10 @@
@@ -43,7 +43,7 @@ index 7adcc725..8cd76403 100644
  #include "ags/shared/ac/common.h"
  #include "ags/engine/ac/display.h"
  #include "ags/engine/ac/game_state.h"
-@@ -30,18 +34,145 @@
+@@ -30,18 +34,268 @@
  #include "ags/plugins/plugin_engine.h"
  #include "ags/shared/util/memory.h"
  #include "ags/engine/ac/string.h"
@@ -55,6 +55,9 @@ index 7adcc725..8cd76403 100644
 +#include "ags/shared/game/room_struct.h"
 +#include "ags/shared/core/asset_manager.h"
 +#include "ags/shared/ac/common_defines.h"
++#include "ags/shared/gui/gui_button.h"
++#include "ags/shared/ac/sprite_cache.h"
++#include "ags/shared/gfx/bitmap.h"
 +#include "ags/shared/debugging/out.h"
  #include "ags/globals.h"
 +#include "common/file.h"
@@ -144,6 +147,126 @@ index 7adcc725..8cd76403 100644
 +	}
 +	fclose(f);
 +	warning("CHT: static string dump → %s", path.c_str());
++
++	// CHT button sprite dump(dev):遍歷所有 GUI button,印 name+image,
++	// 把 button 的 sprite 存成 raw(w/h/bpp + BGRA 像素)供 host 重繪中文版。
++	Common::String bpath = path + ".buttons.txt";
++	FILE *bf = fopen(bpath.c_str(), "w");
++	if (bf) {
++		for (size_t i = 0; i < _GP(guibuts).size(); ++i) {
++			AGS::Shared::GUIButton &b = _GP(guibuts)[i];
++			int imgs[4] = { b.GetNormalImage(), b.GetCurrentImage(), b.GetMouseOverImage(), b.GetPushedImage() };
++			fprintf(bf, "btn[%u] name='%s' normal=%d cur=%d over=%d push=%d\n",
++			        (unsigned)i, b.Name.GetCStr(), imgs[0], imgs[1], imgs[2], imgs[3]);
++			for (int k = 0; k < 4; ++k) {
++				int img = imgs[k];
++				if (img <= 0 || !_GP(spriteset).DoesSpriteExist(img))
++					continue;
++				AGS::Shared::Bitmap *spr = _GP(spriteset)[img];
++				if (!spr)
++					continue;
++				Common::String rfn = path + Common::String::format(".spr%d.raw", img);
++				FILE *rf = fopen(rfn.c_str(), "wb");
++				if (rf) {
++					int w = spr->GetWidth(), h = spr->GetHeight(), bpp = spr->GetBPP();
++					fwrite(&w, 4, 1, rf); fwrite(&h, 4, 1, rf); fwrite(&bpp, 4, 1, rf);
++					for (int y = 0; y < h; ++y)
++						fwrite(spr->GetScanLine(y), spr->GetLineLength(), 1, rf);
++					fclose(rf);
++				}
++			}
++		}
++		// 掃整個 spriteset,dump 職業 button 尺寸(h16-22,w30-150)的 sprite,
++		// 找 Magic User/Thief(它們是 button 依職業切換的 runtime image,啟動沒被 button 引用)。
++		for (int s = 0; s < (int)_GP(spriteset).GetSpriteSlotCount(); ++s) {
++			if (!_GP(spriteset).DoesSpriteExist(s))
++				continue;
++			AGS::Shared::Bitmap *spr = _GP(spriteset)[s];
++			if (!spr)
++				continue;
++			int w = spr->GetWidth(), h = spr->GetHeight();
++			if (h < 16 || h > 22 || w < 30 || w > 150)
++				continue;
++			Common::String rfn = path + Common::String::format(".scan%d.raw", s);
++			FILE *rf = fopen(rfn.c_str(), "wb");
++			if (rf) {
++				int bpp = spr->GetBPP();
++				fwrite(&w, 4, 1, rf); fwrite(&h, 4, 1, rf); fwrite(&bpp, 4, 1, rf);
++				for (int y = 0; y < h; ++y)
++					fwrite(spr->GetScanLine(y), spr->GetLineLength(), 1, rf);
++				fclose(rf);
++			}
++		}
++		fclose(bf);
++		warning("CHT: button sprite dump → %s", bpath.c_str());
++	}
++}
++
++// CHT:把重繪的中文 button 圖(cht_btnsprites.bin)注入 spriteset,替換對應 sprite。
++// 角色創建職業 button 等是美術 sprite(button 圖上印英文字),無法走 .tra,
++// 只能換圖。格式:int32 count + 每個[int32 idx, int32 w, int32 h, w*h*4 BGRA]。
++// 中文模式(get_cjk_font 非 null)才替換;F8 切英文不影響(已載入的 sprite 保持)。
++void cht_load_button_sprites() {
++	if (get_cjk_font() == nullptr)
++		return;
++	Common::File f;
++	if (!f.open("cht_btnsprites.bin"))
++		return;
++	int count = f.readSint32LE();
++	int loaded = 0;
++	for (int i = 0; i < count && !f.eos(); ++i) {
++		int idx = f.readSint32LE();
++		int w = f.readSint32LE();
++		int h = f.readSint32LE();
++		if (w <= 0 || h <= 0 || w > 4096 || h > 4096)
++			break;
++		AGS::Shared::Bitmap *bm = AGS::Shared::BitmapHelper::CreateBitmap(w, h, 32);
++		if (!bm)
++			break;
++		for (int y = 0; y < h; ++y)
++			f.read(bm->GetScanLineForWriting(y), w * 4);
++		if (_GP(spriteset).SetSprite(idx, std::unique_ptr<AGS::Shared::Bitmap>(bm)))
++			++loaded;
++	}
++	f.close();
++	warning("CHT: injected %d button sprite(s)", loaded);
++}
++
++// CHT(dev):runtime dump 當前所有 button 的 4 種 image(在特定畫面按 F10 觸發),
++// 找職業選擇畫面 Magic User/Thief 等「依職業切換」的 normal sprite。
++void cht_dump_buttons_rt() {
++	Common::String path = "cht_rtbtn";
++	if (ConfMan.hasKey("ags_dump_static", ConfMan.getActiveDomainName()))
++		path = ConfMan.get("ags_dump_static", ConfMan.getActiveDomainName());
++	Common::String bpath = path + ".rtbtn.txt";
++	FILE *bf = fopen(bpath.c_str(), "w");
++	if (!bf)
++		return;
++	for (size_t i = 0; i < _GP(guibuts).size(); ++i) {
++		AGS::Shared::GUIButton &b = _GP(guibuts)[i];
++		int imgs[4] = { b.GetNormalImage(), b.GetCurrentImage(), b.GetMouseOverImage(), b.GetPushedImage() };
++		fprintf(bf, "btn[%u] normal=%d cur=%d over=%d push=%d\n",
++		        (unsigned)i, imgs[0], imgs[1], imgs[2], imgs[3]);
++		for (int k = 0; k < 4; ++k) {
++			int img = imgs[k];
++			if (img <= 0 || !_GP(spriteset).DoesSpriteExist(img))
++				continue;
++			AGS::Shared::Bitmap *spr = _GP(spriteset)[img];
++			if (!spr)
++				continue;
++			Common::String rfn = path + Common::String::format(".rt%d.raw", img);
++			FILE *rf = fopen(rfn.c_str(), "wb");
++			if (rf) {
++				int w = spr->GetWidth(), h = spr->GetHeight(), bpp = spr->GetBPP();
++				fwrite(&w, 4, 1, rf); fwrite(&h, 4, 1, rf); fwrite(&bpp, 4, 1, rf);
++				for (int y = 0; y < h; ++y)
++					fwrite(spr->GetScanLine(y), spr->GetLineLength(), 1, rf);
++				fclose(rf);
++			}
++		}
++	}
++	fclose(bf);
++	warning("CHT: runtime button dump → %s", bpath.c_str());
 +}
 +
 +// CHT: in-game F8 language toggle state. When false, get_translation returns
@@ -190,15 +313,19 @@ index 7adcc725..8cd76403 100644
  	// check if a plugin wants to translate it - if so, return that
  	// TODO: plugin API is currently strictly 32-bit, so this may break on 64-bit systems
 diff --git a/engines/ags/engine/ac/global_translation.h b/engines/ags/engine/ac/global_translation.h
-index dbfa0014..5b840b53 100644
+index dbfa0014..aca13338 100644
 --- a/engines/ags/engine/ac/global_translation.h
 +++ b/engines/ags/engine/ac/global_translation.h
-@@ -29,6 +29,12 @@ int IsTranslationAvailable();
+@@ -29,6 +29,16 @@ int IsTranslationAvailable();
  // GetTranslationName assumes a string buffer of MAX_MAXSTRLEN
  int GetTranslationName(char *buffer);
  
 +// CHT(M2):走訪已載入資料,把可翻譯字串吐到 ConfMan "ags_dump_static" 指定的檔。
 +void cht_dump_static_strings();
++
++// CHT:把重繪的中文 button 圖(cht_btnsprites.bin)注入 spriteset,替換美術 sprite。
++void cht_load_button_sprites();
++void cht_dump_buttons_rt();
 +
 +// CHT:F8 遊戲中循環語言模式(繁中16 → 繁中24 → 英文原文)。
 +void cht_cycle_language_mode();
@@ -207,7 +334,7 @@ index dbfa0014..5b840b53 100644
  
  #endif
 diff --git a/engines/ags/engine/main/engine.cpp b/engines/ags/engine/main/engine.cpp
-index bb406b57..40088d59 100644
+index bb406b57..c548b422 100644
 --- a/engines/ags/engine/main/engine.cpp
 +++ b/engines/ags/engine/main/engine.cpp
 @@ -45,6 +45,7 @@
@@ -226,7 +353,7 @@ index bb406b57..40088d59 100644
  #include "ags/shared/font/fonts.h"
  #include "ags/shared/gfx/image.h"
  #include "ags/engine/gfx/graphics_driver.h"
-@@ -529,9 +531,16 @@ void engine_init_game_settings() {
+@@ -529,9 +531,18 @@ void engine_init_game_settings() {
  	// Setup a text encoding mode depending on the game data hint
  	if (_GP(game).options[OPT_GAMETEXTENCODING] == 65001) // utf-8 codepage number
  		set_uformat(U_UTF8);
@@ -239,12 +366,14 @@ index bb406b57..40088d59 100644
  
 +	// CHT(M2):若設了 ConfMan "ags_dump_static",把可翻譯字串靜態吐檔。
 +	cht_dump_static_strings();
++	// CHT:注入重繪的中文 button 圖(角色創建職業 button 等美術 sprite)。
++	cht_load_button_sprites();
 +
  	int ee;
  
  	for (ee = 0; ee < 256; ee++) {
 diff --git a/engines/ags/engine/main/game_run.cpp b/engines/ags/engine/main/game_run.cpp
-index a7e01c5a..3f183366 100644
+index a7e01c5a..a8007e05 100644
 --- a/engines/ags/engine/main/game_run.cpp
 +++ b/engines/ags/engine/main/game_run.cpp
 @@ -25,6 +25,7 @@
@@ -255,7 +384,7 @@ index a7e01c5a..3f183366 100644
  #include "ags/shared/ac/common.h"
  #include "ags/engine/ac/character.h"
  #include "ags/engine/ac/character_extras.h"
-@@ -326,6 +327,13 @@ bool run_service_key_controls(KeyInput &out_key) {
+@@ -326,6 +327,17 @@ bool run_service_key_controls(KeyInput &out_key) {
  		return false;
  	}
  
@@ -263,6 +392,10 @@ index a7e01c5a..3f183366 100644
 +	// Consumed here so the game script never sees F8 (QFG2 leaves it unbound).
 +	if (agskey == eAGSKeyCodeF8) {
 +		cht_cycle_language_mode();
++		return false;
++	}
++	if (agskey == eAGSKeyCodeF10) {  // CHT dev:runtime dump button sprites
++		cht_dump_buttons_rt();
 +		return false;
 +	}
 +
