@@ -2713,6 +2713,121 @@ BATCH = {
    "你帶著一個裝滿沙漠沙子的籃子。",
  "We should all die of thirst":
    "我們都會渴死的!",
+ # --- 第二十四批 ---
+ "Rakeesh looks slightly healthier than yesterday and a lot more at ease now that the city is no longer shaking":
+   "拉基什看來比昨天硬朗些了,城市不再震動後,他也自在了許多。",
+ "Shameen and Shema watch you and exchange a shocked glance. Maybe you shouldn't be picking your nose in public":
+   "沙明和雪瑪看著你,交換了一記驚愕的眼神。也許你不該在大庭廣眾下挖鼻孔。",
+ "Shapeir is such an interesting land, my good friend! I, of course, am your best source for local information":
+   "夏皮爾真是個有意思的地方,我的好朋友!當然啦,要打聽本地消息,我就是你最好的來源。",
+ "That strange man bears a striking resemblance to some of the other odd characters you've met around this city":
+   "那個怪人,跟你在這城裡遇過的幾個古怪傢伙長得出奇地像。",
+ "The Liontaur's fierce appearance contrasts greatly with the innocence of the infant sharing the mat with him":
+   "那獅人兇猛的外表,與同蓆而坐的嬰孩那份天真,形成強烈的對比。",
+ "This incense is made from the finest frankincense. It should attract the flame as the moth is attracted to it":
+   "這薰香用最上等的乳香製成,該能像火吸引飛蛾那般,把火焰引來。",
+ "When you listen very carefully at the door, it rumbles from deep within and says, \"I am the Door of Destiny.\"":
+   "你十分仔細地貼門細聽,只聽它從深處隆隆作響,說道:「我乃命運之門。」",
+ "You can't do that at the moment":
+   "你此刻沒法那麼做。",
+ "You can't do that from your current position":
+   "從你現在的位置沒法那麼做。",
+ "You can't do that now":
+   "你現在沒法那麼做。",
+ "You can't do that right now":
+   "你現在沒法那麼做。",
+ "You can't do that while riding your Saurus":
+   "你騎著索魯斯時沒法那麼做。",
+ "You can't drop items right now":
+   "你現在沒法丟下物品。",
+ "You can't drop it here":
+   "你不能在這兒丟下它!",
+ "You can tell in advance that the blacksmith wouldn't be up for a friendly handshake":
+   "你早料到那鐵匠不會樂意跟人友好地握手。",
+ "You can't knock on thin air very well":
+   "你總不能對著空氣敲門吧。",
+ "You can't look in your pack while riding a saurus":
+   "你騎著索魯斯時沒法翻看背包。",
+ "You can't open or close these decorative windows":
+   "這些裝飾用的窗子你開不了也關不了。",
+ "You can't open or close the window. Leave it in peace":
+   "這扇窗你開不了也關不了。別折騰它了。",
+ "You can't open the door":
+   "你打不開這扇門。",
+ "You can't possibly climb your rope while carrying this much excess weight":
+   "背著這麼多多餘的重量,你根本爬不上繩子。",
+ "You can't possibly Levitate while carrying this much excess weight":
+   "背著這麼多多餘的重量,你根本「飄浮」不起來。",
+ "You can't reach him; your legs won't move":
+   "你構不著他,你的腿動不了。",
+ "You can't reach it from here":
+   "從這兒你構不著它。",
+ "You can't reach it while the guards are blocking this street":
+   "衛兵擋著這條街時,你構不著它。",
+ "You can't reach the Saurus from here":
+   "從這兒你構不著那索魯斯。",
+ "You can't seem to Fetch the flames":
+   "你似乎沒法「取」走那些火焰。",
+ "You can't take the sign. It has been nailed into the sand":
+   "你拿不走那招牌,它被釘進沙裡了。",
+ "You can't use magic while riding your Saurus":
+   "你騎著索魯斯時沒法使用魔法。",
+ "You can't use that item there":
+   "你沒法在那兒用那件物品。",
+ "You can't use your rope very well underneath the balcony":
+   "在陽台底下,你的繩子不太好使。",
+ "You challenge Keapon to a friendly magical duel":
+   "你向姬朋提出一場友好的魔法對決。",
+ "You collapse under the hot desert sun and perish from dehydration. The desert is no place to be without water":
+   "你倒在炙熱的沙漠驕陽下,因脫水而死。沒有水,沙漠可不是人待的地方。",
+ "You consider it, but then think better of it":
+   "你考慮了一下,還是打消了念頭。",
+ "You could never hope to move the heavy iron grate":
+   "想搬動那道沉重的鐵柵,你連指望都別指望。",
+ "You curl up under the tree for a nap":
+   "你在樹下蜷起身子小睡片刻。",
+ "You'd better keep the lamp handy. There may be other dark caves to explore":
+   "你最好把燈帶在手邊。或許還有別的暗洞要探。",
+ "You'd better not. That's your last dagger, and you may need it for combat":
+   "還是別了。那是你最後一把匕首,戰鬥時或許用得上。",
+ "You'd better think of some way to get out of those shackles... and make it snappy":
+   "你最好想個法子掙脫那些鐐銬……動作快點!",
+ "You decide against calling out. You wouldn't want to draw more attention that necessary here":
+   "你決定不出聲。在這兒,你可不想招來多餘的注意。",
+ "You decide not to drop anything":
+   "你決定什麼都不丟。",
+ "You decide not to give anything":
+   "你決定什麼都不給。",
+ "You decide not to knock on the door":
+   "你決定不去敲門。",
+ "You decide to stick it out with travel rations":
+   "你決定將就著吃旅行乾糧。",
+ "You decide to wait until new year before swearing off crime. Again":
+   "你決定等到新年再金盆洗手。又一次。",
+ "You delicately insert a lock pick into your left nostril":
+   "你小心翼翼地把一把開鎖器伸進左鼻孔。",
+ "You detect no magic in this alcove":
+   "你在這壁龕裡偵測不到魔法。",
+ "You detect no magic in this area":
+   "你在這一帶偵測不到魔法。",
+ "You detect some magical residue on the cage":
+   "你在那牢籠上偵測到一些魔法殘留。",
+ "You'd have to be at the end of your rope to try talking to one":
+   "你得走投無路了,才會想跟那種東西說話。",
+ "You didn't manage to Fetch anything":
+   "你什麼也沒「取」到。",
+ "You discard a poison cure pill":
+   "你丟掉了一顆解毒藥丸。",
+ "You discard the decorative pot":
+   "你丟掉了那只裝飾用的陶罐。",
+ "You discard the purse":
+   "你丟掉了那個錢袋。",
+ "You discard the x-ray glasses. Those things looked silly anyway":
+   "你丟掉了那副透視眼鏡。反正那玩意兒看著也蠢。",
+ "You delicately insert the lock pick into your left nostril":
+   "你小心翼翼地把開鎖器伸進左鼻孔。",
+ "You are carrying a cloth bag filled with sand from the desert":
+   "你帶著一個裝滿沙漠沙子的布袋。",
 }
 
 resolved=[]
