@@ -24,10 +24,12 @@
 |---|---|
 | 引擎 CJK 渲染（ScummVM AGS patch） | ✅ 端到端打通，開場免責聲明已是繁體中文（見下圖） |
 | `.tra` 翻譯注入 + UTF-8 + 點陣字 atlas | ✅ 工具鏈完成（`tools/`） |
-| 全文翻譯 | 🚧 進行中（首批：免責聲明、標題） |
+| 全文字靜態抽取 | ✅ 6716 字串 / 2350 乾淨可翻句（引擎內走訪資料結構） |
+| 全文翻譯 | 🚧 進行中（主線首批已譯，語氣待依《軟體世界》攻略回調） |
 | 主選單裝飾標題字 | 🚧 該處繞過翻譯系統，待另解（精靈圖/字型替換） |
 | 640×480 / 24×24 高解析畫布 | 🚧 目前 16×16 + ScummVM 視窗放大；hi-res canvas 待做 |
-| macOS / Android GitHub Actions 打包 | 🚧 workflow 已備，待首次 runner 實跑校正 |
+| macOS `.dmg` GitHub Actions 打包 | ✅ CI 綠燈，自動產出 .dmg |
+| Android `.apk` GitHub Actions 打包 | 🚧 引擎可編譯，卡 Oboe 連結（需 ScummVM gradle/prefab 路徑） |
 
 ![開場免責聲明繁中化](docs/slice-cht-disclaimer.png)
 
