@@ -12,7 +12,7 @@ charset 來源(擇一):
 用法(docker uv venv):
   uv run tools/build_cjk_font.py --size 24 --common --out fonts/cjk24
 """
-import argparse, json, os, sys
+import argparse, json, os, struct, sys
 from PIL import Image, ImageFont, ImageDraw
 
 # host 字型候選(rule:中文字形從 host 上面找)
@@ -50,6 +50,7 @@ def main():
     ap.add_argument("--common", action="store_true")
     ap.add_argument("--cols", type=int, default=64)
     ap.add_argument("--out", default="fonts/cjk24")
+    ap.add_argument("--bin", help="另輸出引擎用 .cjkfont 二進位(CJKF + glyph coverage)")
     args = ap.parse_args()
 
     chars = set()
@@ -80,6 +81,25 @@ def main():
         oy = cy + (size - gh) // 2 - bbox[1]
         draw.text((ox, oy), ch, fill=255, font=font)
         glyphs[f"U+{ord(ch):04X}"] = i
+
+    # 引擎用二進位:'CJKF' + int32 size + int32 count + (int32 codepoint + size*size coverage)*
+    if args.bin:
+        os.makedirs(os.path.dirname(args.bin) or ".", exist_ok=True)
+        with open(args.bin, "wb") as bf:
+            bf.write(b"CJKF")
+            bf.write(struct.pack("<ii", size, len(chars)))
+            cell = Image.new("L", (size, size), 0)
+            cdraw = ImageDraw.Draw(cell)
+            for ch in chars:
+                cdraw.rectangle([0, 0, size, size], fill=0)
+                bbox = cdraw.textbbox((0, 0), ch, font=font)
+                gw, gh = bbox[2] - bbox[0], bbox[3] - bbox[1]
+                ox = (size - gw) // 2 - bbox[0]
+                oy = (size - gh) // 2 - bbox[1]
+                cdraw.text((ox, oy), ch, fill=255, font=font)
+                bf.write(struct.pack("<i", ord(ch)))
+                bf.write(cell.tobytes())
+        print(f"OK bin: {len(chars)} 字 @ {size}px → {args.bin}")
 
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     atlas.save(args.out + ".png")
