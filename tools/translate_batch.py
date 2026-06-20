@@ -4191,6 +4191,27 @@ BATCH = {
    "這野獸太大了,「取物」術搬不動。",
  "The map only works in the streets and plazas":
    "地圖只在街道與廣場上管用。",
+ # --- 第四十批 ---
+ "Even though you are not versed in swordsmanship, you have excellent skills with the dagger. Mix in offensive and defensive tactics and throw in the occasional long-range attack. Keep the enemy guessing what your next action will be":
+   "你雖不諳劍術,匕首卻使得極好。攻守兼施,偶爾再來記遠距攻擊,讓敵人摸不透你下一步要幹什麼。",
+ "I am trying to develop a pill which will protect against the effect of the claws of the Ghoul. I have not been able to get many claws, for few Ghouls are willing to give them to me, and few adventurers are willing to get them for me":
+   "我正試著研發一種抵禦食屍鬼爪子效力的藥丸。可惜爪子我弄不到多少——願意給的食屍鬼沒幾隻,願意替我去取的冒險者也沒幾個。",
+ "Katta do not necessarily dismiss prophecies. We believe that one's fate lies within oneself and is not predestined, regardless of what omens say. If anything, they indicate a possible outcome, but not one that will come to pass on its own":
+   "卡塔族並不一概否定預言。我們相信,一個人的命運繫於自身,而非命中註定,無論徵兆怎麼說。徵兆頂多指出一種可能的結局,卻不會自行應驗。",
+ "Magical games are an entertaining way to keep one's magical skills and mind in shape. My personal game of choice is my own interpretation of the Wizard's Whirl game. If you are interested in a friendly magical match, please let me know":
+   "魔法遊戲是讓人保持法術技藝與頭腦靈光的有趣方式。我個人偏好的是自己改編版的「巫師之旋」。你若有意來場友好的魔法較量,儘管告訴我。",
+ "MAGIC MENU[[The Magic Menu lists all the spells that your hero has learnt. Simply click on a spell to cast it. Available spells are ZAP, CALM, DAZZLE, DETECT MAGIC, FETCH, FLAME DART, FORCE BOLT, LEVITATE, OPEN, REVERSAL, and TRIGGER":
+   "魔法選單[[魔法選單列出你的英雄已學會的所有法術。點一下法術即可施放。可用的法術有:電擊、鎮定、炫目、偵測魔法、取物、火鏢、力箭、飄浮、開啟、反轉,以及觸發。",
+ "Perhaps after hearing our tale, you now understand that you did more than just become our traveling companion. You allowed us to return home with pride and gave a sense of purpose to the hardships we had endured over the past year":
+   "聽完我們的故事,或許你如今明白,你不僅僅是成了我們的旅伴。你讓我們得以光榮返鄉,也賦予了我們過去這一年所受的苦難一份意義。",
+ "That is most kind of you, but I do not think I would have a use for it. The tricky thing with salves, pills, and potions is that each region requires its own recipe, for none of the components used to make that oil are available here":
+   "你真是太好心了,但我想我用不上它。藥膏、藥丸和藥水麻煩就麻煩在:每個地方都得用自己的方子,因為製那種油的原料,這兒一樣也沒有。",
+ "THE ICONS[[TALK: Position the talk cursor on the person (or thing) you want to speak to. If conversation is possible, it will begin.[[LAST-USED ITEM: Displays the last inventory item you selected. Click it when you want to use this item":
+   "圖示說明[[交談:把交談游標移到你想說話的人(或物)身上。若能交談,對話便會開始。[[上次使用的物品:顯示你上回選取的物品。想用這件物品時點它即可。",
+ "Then, wait, You see your faithful Saurus running up to you. You are saved! You can eat Saurus steaks for a week. In fact, you can set up a concession stand right there and make a tidy sum off of Saurus steaks":
+   "然後,且慢——你看見你忠實的索魯斯朝你奔來。你得救了!你可以吃上一週的索魯斯排。其實啊,你大可就地擺個小攤,靠賣索魯斯排賺上一筆。",
+ "Shema will be with you shortly.":
+   "雪瑪很快就會來招呼你。",
 }
 
 resolved=[]
