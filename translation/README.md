@@ -3,7 +3,7 @@
 > Quest for Glory II: Trial by Fire — English ↔ Traditional Chinese translation record.
 > 這份檔案完整記錄本專案的繁中化譯文,中英對照,作為經典流傳。
 
-**目前收錄:2061 條**(持續增補中,語料總量約 2350 句)。
+**目前收錄:2097 條**(持續增補中,語料總量約 2350 句)。
 
 - 正式對照檔:[`qfg2-cht.tsv`](qfg2-cht.tsv)(`English<TAB>繁體中文`)
 - 語感參照 1990 年代《軟體世界》三大誌攻略;專名走阿拉伯/波斯風音譯(見 [`../CONTEXT.md`](../CONTEXT.md))。

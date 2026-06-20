@@ -4306,6 +4306,79 @@ BATCH = {
    "薩巴賣給你的是個圓盤,用許多細小的蘆葦條精心編成。",
  "Thank you, a thousand thank-yous. It is with your support that I may continue my vital work":
    "謝謝你,千恩萬謝。全靠你的支持,我才能繼續這要緊的工作。",
+ # --- 第四十三批:長段敘事 ---
+ "As with all of our kin, Shema and I are desert dwellers and unaccustomed to colder climates. We were having increasing difficulty dealing with the declining temperature as we traveled northwest through Sangerhafen":
+   "和我們所有族人一樣,雪瑪和我都是沙漠之民,不慣寒冷的氣候。我們往西北穿越桑格哈芬時,越來越難招架那一路下滑的氣溫。",
+ "Before our caravan left Spielburg, we wrote a letter to our kin, telling them we were alright and requesting support to continue our journey after the winter. We paid the Caravan Master to have it delivered to Shapeir":
+   "我們的商隊離開史畢柏格前,我們寫了封信給族人,報平安,並請他們支援我們在冬後繼續旅程。我們付錢託商隊隊長把信送到夏皮爾。",
+ "Despite our own sorrow, Shameen and I felt deeply for Abdulla. At the very least we still had a place to spend the night and a modest means of making income. We offered him our hospitality free of charge for as long as necessary":
+   "儘管自身也有愁苦,沙明和我仍深深同情阿布杜拉。至少我們還有過夜的地方,還有一份微薄的營生。我們免費招待他,要住多久都行。",
+ "Indeed. That remote region was ideal terrain for Brigands planning ambushes. During the colder months, avalanches are common and the paths are blocked by snow. In warmer months, monsters that reside in the forest during winter return to their habitual territory in the mountains":
+   "正是。那偏遠之地是強盜設伏的絕佳地形。較冷的月份雪崩頻仍,道路為雪所阻;較暖的月份,冬天棲身森林的怪物則重返牠們在山中慣常的領地。",
+ "Its eyes catch yours, and you can't seem to look away. Huge eyes, burning eyes that see your very soul. You seem to hear in your mind the words, \"Come closer, much closer. Come closer and release me, free me. Come closer and trust me. Look into my eyes and trust me.\"":
+   "牠的雙眼攫住了你的目光,你彷彿移不開視線。那雙巨大、灼灼燃燒的眼,直視你的靈魂深處。你似乎在腦中聽見一個聲音:「靠近些,再靠近些。靠近些,放了我,還我自由。靠近些,信我。看著我的眼睛,信我。」",
+ "The creature before you looks like a cross between a centaur and a lion. His muscular upper torso and leonine features add a certain ferocity to his appearance, but his eyes look kindly and calmly back at you. You notice a bandage is wrapped around his hind leg":
+   "你面前這頭生物,看上去像半人馬與獅子的混血。他結實的上半身與獅形容貌,為他平添幾分兇猛,那雙眼睛卻和善而平靜地回望你。你注意到他的一條後腿纏著繃帶。",
+ "The only monsters we saw there were of the stuffed variety on the walls of the Guild Hall. We did not dare to venture into the forest of Spielburg":
+   "我們在那兒見到的怪物,就只有公會大廳牆上那些做成標本的。我們可不敢踏進史畢柏格的森林。",
+ "The only other items inside the game box are some floppy disks and a glossy catalogue advertising upcoming Sierra On-Line games. None of these are important to your quest, however, so you close the box again":
+   "遊戲盒裡其餘的東西,不過是幾片磁片,和一本宣傳 Sierra On-Line 即將推出遊戲的光面型錄。這些對你的任務都無關緊要,於是你又把盒子闔上。",
+ "THE OPTIONS MENU[[SAVE: Saves the game.[[RESTORE: Restores a previously saved game.[[RESTART: Restarts the game again from the beginning.[[QUIT: Stop Playing.[[AGS: Information about the AGS Engine.[[ABOUT: Information about this game.[[PLAY: Return to the game":
+   "選項選單[[存檔:儲存遊戲。[[讀檔:讀取先前儲存的遊戲。[[重新開始:從頭再玩一次。[[離開:停止遊戲。[[AGS:關於 AGS 引擎的資訊。[[關於:關於本遊戲的資訊。[[繼續:返回遊戲。",
+ "The 'painting' Lisha made has been constructed with dried flowers and shows a blooming Julanar in her desert alcove. You wonder how Lisha found out about that":
+   "莉莎做的這幅「畫」是用乾燥花拼成的,描繪著茱拉娜爾在沙漠壁龕中綻放的模樣。你納悶莉莎是怎麼知道這事的。",
+ "There are tales told to me of a woman transformed into a plant through a Djinni's spell. She stands like a tree somewhere out in the desert, but it is said she bears no fruit":
+   "有人對我說起一個女子被鎮尼的法術變成植物的故事。她像棵樹般佇立在沙漠某處,但據說她不結果。",
+ "There is no higher-quality moisturizer or body oil in the world. The content of every bottle you see here was hand-made by myself, and nothing I sell contains any chemical components whatsoever":
+   "世上再沒有品質更高的潤膚乳或身體油了。你眼前每一瓶的內容物都是我親手製作,我賣的東西絕不含任何化學成分。",
+ "There is some form of magical protection around the cage which prevents me from detecting it. It is clear that a powerful magic user intends the creature to die. The beast is probably enchanted. You will need a dispel potion to find its true form":
+   "牢籠四周有某種魔法防護,害我偵測不到它。顯然有個強大的法師蓄意要這生物死。那野獸八成中了魔法。你需要一瓶驅散藥水,才能找出牠的真身。",
+ "There's no point cramming your storage chest full with pebbles. You'd be better off dropping them and getting more from the desert if you need them":
+   "把儲物箱塞滿小石子毫無意義。你不如把它們丟了,需要時再從沙漠裡撿。",
+ "These cases probably contained hedges long ago. The blackened ash inside of the containers suggests that those hedges were burned down at some point in the past":
+   "這些花盆從前大概種過綠籬。盆裡焦黑的灰燼顯示,那些綠籬曾在某個時候被燒毀。",
+ "These traditional windows are square-shaped and have been built into the wall. Heavy iron bars cover them":
+   "這些傳統樣式的方形窗嵌在牆裡,外頭還罩著厚重的鐵條。",
+ "The sheriff was a very kind man who had dinner at our inn at times together with his wife and assistant. He was always very eager to listen to tales about our homeland":
+   "那位郡長是個很和善的人,偶爾會帶著妻子和助手來我們客棧用晚餐。他總是熱切地想聽我們家鄉的故事。",
+ "The Sidestep/Misc Slider: When this slider favors Sidestep, the copilot will favor sidesteps to avoid attacks, keeping the hero in melee range. When this slider favors Misc, the copilot will try to duck or jump an attack if possible and will otherwise jump out of melee range":
+   "側移/其他滑桿:此桿偏向「側移」時,輔助會傾向以側步閃避攻擊,讓英雄保持在近身範圍。偏向「其他」時,輔助會盡量蹲下或跳過攻擊,否則便跳出近身範圍。",
+ "The sign hints at the presence of a formerly successful business. Unfortunately, it appears that the regime change took its toll on this as well":
+   "這招牌暗示著一樁昔日興旺的買賣。可惜,政權更迭似乎也讓它付出了代價。",
+ "The silver tea service is very finely wrought and was once the property of Kareem bin Ma'amar. It's a good thing you didn't take Kareem with your tea":
+   "這套銀茶具做工極其精細,曾是卡里姆·賓·馬阿瑪爾的財產。幸好你沒把卡里姆連茶一起「取」了去。",
+ "The stall has been empty for months at least. If the merchant left in a hurry, the stall must have been looted of its contents long before your arrival":
+   "這攤子至少空了好幾個月。那商人若是匆忙離去,攤上的貨想必早在你到來之前就被洗劫一空了。",
+ "The strange man decided to leave town with his friend of the golden hair and strange social behavior. He said something about going to 'Fredonia.'":
+   "那怪人決定和他那位金髮、舉止古怪的朋友一同離城。他提了一句要去「弗雷多尼亞」。",
+ "The Sultan has always been deeply concerned about the situation, but has not sent any more men for fear of losing them also. All he has been able to do is shelter those who fled or were driven from the city":
+   "蘇丹一直深為局勢憂心,卻因怕再折損人馬而不敢多派兵。他能做的,只有收容那些逃離或被逐出城的人。",
+ "The supper tonight is Saurus stuffed with grapes and saffron rice, and honeyed rabbit. This is a specialty of Shapeir and I hope you will like it":
+   "今晚的晚餐是釀了葡萄與番紅花飯的索魯斯,還有蜜汁兔肉。這是夏皮爾的招牌菜,希望你會喜歡。",
+ "The window's marble casement shows cracks in many places and the curtain resembles a faded rag. It's obvious this residence has seen better days":
+   "這扇窗的大理石窗框多處龜裂,窗簾像塊褪色的破布。顯然,這宅子早已風光不再。",
+ "The woman fits in well with the rest of the Guild Hall, but would stand out like a sore thumb in your average Shapeirian crowd. Her appearance gives you the impression that she's as foreign to these parts as you are":
+   "這女子待在公會大廳裡毫不突兀,擱進一般的夏皮爾人群中卻會格外扎眼。她的相貌給你一種印象:她跟你一樣,是這一帶的外鄉人。",
+ "The woodwork in this door has seen better days, but on the whole, the condition of the door seems better than the overall condition of the city":
+   "這門的木工早已風光不再,但整體看來,這門的狀況似乎還勝過這座城市的整體景況。",
+ "The xX Slash button: When assisting the player with follow-up slashes after a swing, this button will determine the maximum amount of slashes the copilot will attempt. This button will not work if the player does not have the ability to string attacks together":
+   "連斬鈕:在協助玩家於揮砍後追加連斬時,此鈕決定輔助嘗試的最大連斬次數。若玩家不具備串連攻擊的能力,此鈕將不起作用。",
+ "They are intelligent and brave creatures, willing to obey the slightest command from their master. They will take you wherever you wish and come to your aid against monsters":
+   "牠們是聰慧而勇敢的生物,願服從主人最細微的指令。牠們會載你去任何你想去的地方,並在你對抗怪物時前來相助。",
+ "Thieves have a variety of special skills, such as picking locks, hiding, and climbing walls. The thief tends to work around problems, rather than attacking them directly":
+   "盜賊身懷各種特殊技能,例如開鎖、藏匿與攀牆。盜賊傾向繞過問題,而非正面硬碰。",
+ "Thinking of all the injuries and wounds you WOULD have sustained without this armor protecting you is enough to cause second thoughts about dropping your leather jerkin":
+   "一想到若沒這身盔甲護著,你「本該」受的那些傷,就足以讓你對丟掉皮背心一事重新考慮。",
+ "This door must have been in poor state even before the city fell into decline. In its current state, its only real use would be to provide a meal for the local termite population":
+   "這門想必在這城市沒落之前就已殘破不堪。就它如今的狀態,唯一的實際用途,大概就是供本地的白蟻飽餐一頓。",
+ "This door must have provided entry to a wealthy home in the past. The bars blocking the door give you the impression the residence has been abandoned for quite some time":
+   "這門從前想必是通往一戶富貴人家的入口。封門的鐵條給你一種印象:這宅子已荒廢了好一陣子。",
+ "This genuine imitation brass secret membership badge, with its secret code and secret runic engraving (so secret that NOBODY knows what it means), marks you as an EOF member in good standing":
+   "這枚正宗仿黃銅的祕密會員徽章,帶著祕密暗號與祕密符文刻紋(祕密到沒有「任何人」知道它是什麼意思),標誌著你是永恆戰士團(EOF)聲譽良好的一員。",
+ "This is not a good place to cast your Fetch spell":
+   "這裡不是施「取物」術的好地方。",
+ "This is not a good place to cast your Trigger spell":
+   "這裡不是施「觸發」術的好地方。",
 }
 
 corpus_set=set(corpus)
