@@ -1095,6 +1095,165 @@ BATCH = {
    "這是塊精雕細琢、用心又費時的絕妙招牌。",
  "It is good to see one with manners":
    "能見到懂禮數的人,真難得。",
+ # --- 第十二批 ---
+ "It's a simple oil lamp you took from the Blue Parrot Inn":
+   "是一盞普通的油燈,你從「藍鸚鵡客棧」拿來的。",
+ "It's a writhing funnel of air. What a windbag":
+   "是一道扭動翻騰的氣漩。真是個吹牛皮的風袋!",
+ "It's best if you just walk carefully":
+   "你還是小心走路為妙。",
+ "It's beyond your carrying capacity":
+   "這超出你能背負的重量了。",
+ "It seems to have no effect":
+   "似乎毫無作用。",
+ "It seems to have no effect on the wall":
+   "對那面牆似乎毫無作用。",
+ "It's impolite to shout. Get closer if you wish to talk to someone":
+   "大吼大叫不禮貌。想跟人說話就走近些。",
+ "It's just a mirage":
+   "不過是海市蜃樓罷了。",
+ "It's just as it appears":
+   "它就跟看上去的一樣。",
+ "It's just some damaged brickwork. Not some secret passage":
+   "只是些破損的磚砌,不是什麼密道。",
+ "It's just your average, everyday magic lamp containing a Fire Elemental":
+   "就是一盞再平常不過、封著火元素精靈的魔法神燈罷了。",
+ "It's like talking to a brick wall":
+   "簡直像在對一堵磚牆說話。",
+ "It's not a chatterbox":
+   "它又不是個多嘴的傢伙。",
+ "It's not a talkasaurus":
+   "牠又不是「多嘴龍」。",
+ "It's not going to help you against the Earth Elemental from inside a chest":
+   "把它鎖在箱子裡,可幫不了你對付土元素精靈。",
+ "It's not intended for expectorating into":
+   "這東西可不是拿來吐口水的。",
+ "It's not much to look at":
+   "它看起來沒什麼看頭。",
+ "It's of no use to you":
+   "它對你沒有用處。",
+ "It's old news, walked on by old shoes. You can do without it":
+   "陳年舊聞,早被踩爛了。沒它你照樣過得去。",
+ "It's one of the Raseirian guards":
+   "是拉希爾衛兵中的一個。",
+ "It sounds as if there's a stream trickling on the other side of the purple door":
+   "聽起來,紫色門的另一側有一道淙淙流淌的溪水。",
+ "It sounds like a family of rats have taken up residence behind this locked door":
+   "聽起來,有一窩老鼠在這上鎖的門後安了家。",
+ "It sounds like a very nice place to live":
+   "聽起來是個很適合居住的好地方。",
+ "It sounds like someone is using the other side of this door as a dartboard":
+   "聽起來,有人把這門的另一面當成飛鏢靶了。",
+ "It's probably government propaganda. You can do without it":
+   "八成是官方的宣傳。沒它你照樣過得去。",
+ "It's really hard to get Khaveen to open up":
+   "要讓哈維因敞開心扉,可真不容易。",
+ "It's Sashanan, the jewelry merchant":
+   "是賣珠寶的商人薩沙南。",
+ "It's the Djinni of the ring":
+   "是戒指裡的鎮尼。",
+ "It's the Poet Omar, and his companion and translator, Ja'Afar":
+   "是詩人奧瑪爾,還有他的同伴兼翻譯賈法爾。",
+ "It's the stall of a Katta merchant who conducts business in the alleyways":
+   "是一個在巷弄裡做買賣的卡塔族商人的攤子。",
+ "It's too bulky to move":
+   "它太笨重,搬不動。",
+ "It's too dangerous around here to search the body right now. More guards could arrive at any moment":
+   "這附近太危險,現在不宜搜身。隨時可能有更多衛兵趕到。",
+ "It's too frail to even put in your pack without damaging it":
+   "它太脆弱了,連放進包裡都會弄壞。",
+ "It's too heavy to carry around":
+   "它太重了,帶不走。",
+ "It's too large to put in your backpack":
+   "它太大了,塞不進你的背包。",
+ "It's too slippery for your Fetch spell":
+   "它太滑了,你的「取物」術抓不住。",
+ "It swings both ways (or at least it used to in its day.)":
+   "它兩邊都能擺動(至少當年是這樣)。",
+ "It's your Raseirian visa. Don't leave town without it":
+   "是你的拉希爾通行證。沒它別出城。",
+ "It's your trusty riding Saurus":
+   "是你那頭可靠的坐騎索魯斯。",
+ "It takes real muscle to be good at arm wrestling":
+   "比腕力要比得好,得有真本事的肌肉。",
+ "It took some effort to win Sharaf's trust. You don't want to make him suspicious of you again":
+   "好不容易才贏得沙拉夫的信任,你可不想再讓他起疑。",
+ "It was cozy enough, but we were saddened to see such a place so dormant and lifeless":
+   "這地方倒也舒適,只是見它如此沉寂無生氣,著實令人傷感。",
+ "It will flame for you because I wish it to":
+   "它會為你燃燒,因為這是我的意願。",
+ "It would be a waste to strip this desert of the few plants that still grow here":
+   "把這沙漠裡僅存的幾株植物拔光,未免太可惜了。",
+ "It would be best to do that under the cover of complete darkness":
+   "這事最好趁著一片漆黑時動手。",
+ "It wouldn't be wise to disturb a snake-charmer in the middle of his song":
+   "在弄蛇人吹奏到一半時打擾他,可不是明智之舉。",
+ "It wouldn't really be wise announcing to the local guard that you are of the profession":
+   "向本地衛兵宣告你是幹這行的,實在算不上聰明。",
+ "It wouldn't survive a trip in your backpack":
+   "它經不起在你背包裡顛簸。",
+ "It would please me if you would come to my dance this evening":
+   "你今晚若肯來看我跳舞,我會很高興。",
+ "I've had better luck trying to buy a glow-in-the-dark turban. I think I'll quit while I'm behind":
+   "我連買夜光頭巾的運氣都比這好。我看還是趁著沒輸更慘收手吧。",
+ "I will ask the questions around here. Learn your place":
+   "這兒由我來發問。認清你的身分!",
+ "I will be honored to put your Saurus back into the stable for you, Effendi":
+   "閣下,我很榮幸替您把索魯斯牽回棚廄。",
+ "I will return the purse to Omar for you, although I do not think he will be happy to see it is now empty":
+   "我替你把錢袋還給奧瑪爾,不過他見它空了,大概不會高興。",
+ "I will return with a splendid meal for you":
+   "我這就去替您備一頓豐盛的餐點。",
+ "I will return with some tea for you":
+   "我這就去替您沏些茶來。",
+ "I wish you to bring me a small ornament to prove your skills":
+   "我要你帶一件小飾品來,證明你的本事。",
+ "I would follow you gladly. But first we must escape this cell":
+   "我樂意跟隨你。但我們得先逃出這間牢房。",
+ "I wouldn't be doing that. You don't know where that lock pick's been":
+   "我可不會那麼做。誰知道那把開鎖器去過什麼地方。",
+ "Ja'Afar does not want your money":
+   "賈法爾不要你的錢。",
+ "Jackalmen are humanoid canines who prefer to travel in packs":
+   "豺狼人是人形的犬類,慣於成群行動。",
+ "Jackalmen travel in packs and prefer attacking things previously wounded":
+   "豺狼人成群結隊,專挑已經受傷的目標下手。",
+ "Judging from those crazy colors, this frog just may be toxic. You decide not to suck on it":
+   "看那一身瘋狂的顏色,這青蛙八成有毒。你決定還是別舔它。",
+ "Just a minute and I'll introduce your Saurus to you":
+   "稍等一下,我把你的索魯斯介紹給你。",
+ "Just before your eyes close for the very last time, you reconsider the wisdom of abstaining from sleep":
+   "就在你的雙眼最後一次闔上之前,你重新斟酌起「不睡覺」這主意到底明不明智……",
+ "Keapon doesn't need the bellows. Besides, you may still need them":
+   "姬朋用不著這風箱。再說,你說不定還用得上。",
+ "Keapon isn't a valid target for spells":
+   "姬朋不能當法術的目標。",
+ "Keapon Laffin sold you one pair of Ali Fakir's Genuine X-Ray Glasses":
+   "姬朋·拉芬賣給你一副阿里·法基爾的正牌透視眼鏡。",
+ "Keapon likes to engage in magical games with visitors every so often. You should ask him about it":
+   "姬朋偶爾喜歡跟訪客玩玩魔法遊戲。你該問問他這事。",
+ "Keep it to yourself":
+   "這事你自己知道就好。",
+ "Keep it with you for now. It may come in handy":
+   "暫且留在身邊吧,說不定派得上用場。",
+ "Khaveen can't hear you from here":
+   "從這兒哈維因聽不見你。",
+ "Kiram is the local clothing merchant":
+   "基拉姆是本地的服裝商。",
+ "Knocking won't help. The door has been nailed shut":
+   "敲也沒用,這門已經被釘死了。",
+ "Konnichiwa! Come and tell me who! Hola! How now, brown cow":
+   "空你機哇!來告訴我是誰!喔啦!最近如何呀,花斑牛?",
+ "Kwa heri, Hero. Come back if you need more information or combat practice":
+   "再會(Kwa heri),英雄。需要更多消息或想練練身手,再回來。",
+ "Lasham fills your empty pot with dirt from one of her flower pots":
+   "拉珊從她的一個花盆裡舀了些土,把你的空罐填滿。",
+ "Leave him a loan, shark":
+   "放他一馬吧,放高利貸的。",
+ "Leave that job to the termites":
+   "那活兒就交給白蟻去幹吧。",
+ "Leave the window where it is. The occupant would appreciate it":
+   "讓那扇窗留在原處吧,屋主會感激你的。",
 }
 
 resolved=[]
