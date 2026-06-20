@@ -3924,6 +3924,81 @@ BATCH = {
    "看在你的份上,區區二十第納爾,我這嘴就鬆了。",
  "Go thatta way until you can turn right. Go right until you come to a place where you can go right again. Turn left. Follow the road and you no can miss it":
    "往那邊走,走到能右轉為止。一直右轉,直到又有個能再右轉的地方。左轉。沿著路走,絕錯不了。",
+ # --- 第三十五批 ---
+ "By actions rash,[    a person might then find,[ That others take exceptions[    to his crime.[ And rudeness returned[    rudely thus remind,[ That person to return[    to things sublime":
+   "魯莽行事者,[    終會驚覺,[ 他人對其罪愆[    心生不滿。[ 以無禮回敬無禮,[    便如此提點,[ 那人該回返[    崇高之境。",
+ "Drains are positioned at various locations throughout the alleyways. You can't imagine it raining much in Shapeir, so you assume these are mainly for clothesline washing and such":
+   "巷弄各處都設有排水口。你想像不出夏皮爾會常下雨,於是猜這些主要是供晾衣洗滌之類用的。",
+ "Finding her in Shapeir's maze of streets may be difficult without a map of the city. The street names may only provide you a limited means of orientation. Allow me to explain their meanings to you":
+   "沒有城市地圖,要在夏皮爾迷宮般的街巷裡找到她,只怕不易。街名能給你的方向指引也很有限。容我向你解釋它們的含義。",
+ "From Harik, you have obtained a quantity of the powder of burning. You are carrying 1 bag":
+   "你從哈里克那兒取得了一些燃燒之粉。你帶著 1 袋。",
+ "From Harik, you have obtained a quantity of the powder of burning. You have 1 bag stored":
+   "你從哈里克那兒取得了一些燃燒之粉。你存放了 1 袋。",
+ "Go to the east and then go south when you must. Follow the road and you be finding her":
+   "往東走,該往南時就往南。沿著路走,你就會找著她。",
+ "Greetings, friend of the Katta":
+   "你好,卡塔族的朋友。",
+ "Greetings, my good fellow. I'm Honest Ali Fakir and this is my short-term Shapeirian Saurus shop. If it's Saurus chops you're after, then I'm not your man. Go see a butcher":
+   "你好啊,老兄。我是老實人阿里·法基爾,這是我在夏皮爾的短期索魯斯店。你要是想找索魯斯排,那我可幫不上忙,去找屠夫吧。",
+ "Have you seen the Fire Elemental? It is magic of the most marvelous kind. So very beautiful, the dancing flames. If I but had such a creature at my command, the pills I would make":
+   "你見過火元素精靈嗎?那是最奇妙的一種魔法。那舞動的火焰,美極了。我若能差遣這麼一頭生物,做得出的藥丸可不得了!",
+ "He could not remove the enchantment that blocked Elsa's memories, so he remained in her service all those years despite the fact he was not a crook at heart":
+   "他解不開封鎖艾莎記憶的那道魔咒,於是儘管本性並非歹徒,這些年仍一直留在她身邊效力。",
+ "Hello, Master. You still have three wishes left":
+   "您好,主人。您還剩三個願望。",
+ "Here is a pin with a sapphire of exceeding clarity and color like that of your eyes, and a simple but elegant gold setting with the color like that of your hair. It would be a gift worthy of a Sultan":
+   "這枚別針鑲著一顆無比清澈的藍寶石,色澤如你的雙眸;簡樸而雅致的金鑲座,則似你的髮色。這是配得上蘇丹的一份禮物。",
+ "He seems like a good person, but what a horrible place to live. It is difficult for me to believe someone would live in a cold, dank cave of his own free will":
+   "他似乎是個好人,可那住處實在糟糕。我很難相信有人會心甘情願住在又冷又潮的洞穴裡。",
+ "Hey, boss. You a-come to the right-a place here! My name, he is Alichica and you find-a yourself at the finest souvenir stand in all-a Shapeir":
+   "嘿,老大,你可來對地方囉!我的名字叫阿里奇卡,你眼前這可是全夏皮爾最棒的紀念品攤。",
+ "His sons both serve in the guard and occasionally work night shifts. That's why the door is occasionally unbarred. You should be fine as long as you can avoid being around when they arrive or leave":
+   "他兩個兒子都當衛兵,偶爾值夜班。這就是那門偶爾沒閂的緣故。只要你避開他們來去的時候,應該就沒事。",
+ "His sons both serve in the guard and occasionally work night shifts. That's why the door is often unbarred. You should be fine as long as you can avoid being around when they arrive or leave":
+   "他兩個兒子都當衛兵,偶爾值夜班。這就是那門常常沒閂的緣故。只要你避開他們來去的時候,應該就沒事。",
+ "Holes have been burned into the soles of your boots. They won't be of any use to you anymore unless you have them patched up":
+   "你的靴底被燒出了破洞。除非拿去補,否則它們對你再也沒用了。",
+ "However, that could not surpass the anxiety I would feel if Shameen traveled alone, leaving me here worrying for him. So I decided to go with him":
+   "可這份不安,仍比不上沙明獨自上路、把我留在這兒替他擔憂時的那份焦慮。於是我決定隨他同行。",
+ "I already gave you the bellows. What more do you want":
+   "我風箱已經給你了。還想怎樣?",
+ "I am always out of Scorpion venom to make poison cure pills, and Ghoul claws for my experiments. I will pay 20 dinars for the tail of a Scorpion, and 15 dinars for the claws of a Ghoul":
+   "我做解毒藥丸總缺蠍毒,做實驗又總缺食屍鬼爪。一條蠍尾,我出二十第納爾;一對食屍鬼爪,出十五第納爾。",
+ "I am expecting some very fine armor within the coming weeks. If it pleases you, I can offer you a discount on kung fu dresses, duck helms, and tiger suits":
+   "接下來幾週我會進一批上好的盔甲。你若中意,功夫袍、鴨盔和虎裝我都能給你打個折。",
+ "I am in awe of your bravery that you have defeated so many of these fearful monsters, but I am presently overstocked with Scorpion venom, and I can purchase no more":
+   "你擊敗了這麼多可怕的怪物,你的英勇令我敬佩,可我眼下蠍毒存貨太多,沒法再收了。",
+ "I am sorry, my friend. Battling the Earth Elemental has severely weakened my leg. I am afraid I shall have to decline your challenge until I have recovered":
+   "抱歉,朋友。與土元素精靈一戰,我的腿傷得不輕。恐怕在康復之前,我只得婉拒你的挑戰。",
+ "I am sorry, my friend, but the Water Elemental prevents us from drawing any water from the fountain with which to make our tea. We must reserve what little tea we have left to serve with our meals":
+   "抱歉,朋友,水元素精靈害我們沒法從噴泉取水沏茶。剩下那一點茶,我們得留著配餐用。",
+ "If you can but walk from one end to the other, I will give you ten dinars":
+   "你只要能從這頭走到那頭,我就給你十第納爾。",
+ "\"If you know what's good for you, you will obey orders. We will leave them here. If you don't follow them, you'll be sorry. We'll be watching you.\"":
+   "「你要是識相,就乖乖聽令。指令我們留在這兒。你不照辦,有你好受的。我們會盯著你。」",
+ "I have a new assignment for you, if you're interested in another... job. For a small price, I'm willing to give you a gentle bump in the right direction":
+   "我有個新差事給你,如果你對另一樁……活兒有興趣的話。花點小錢,我願意輕輕推你一把,指條明路。",
+ "I have a substance called powder of burning that might be of some use against an Earth Elemental. Since you put it that way, I guess I will just have to give the powder to you":
+   "我有種叫燃燒之粉的東西,對付土元素精靈或許有點用。你既然這麼說了,看來我也只好把這粉給你了。",
+ "I have heard that it was you that vanquished the Elemental of Air as well as of Flame. Perhaps you now need to know something about the Element of Earth":
+   "我聽說風與火兩頭元素精靈都是你擊敗的。或許你現在該了解些關於土元素的事了。",
+ "I hear you be plenty good and beat the Elemental. You be some hero, for sure. It was no little honor, being able to use Rakeesh's sword. I will be giving it back, if you will be giving it to me":
+   "我聽說你本事了得,把那元素精靈給打敗了。你準是個英雄沒錯。能使拉基什的劍,可不是小小的榮耀。你把劍給我,我這就還回去。",
+ "I hope he will mature somewhat before the rule of the valley is entrusted to his care. A wise ruler regards his subjects as equals, rather than looking down on them":
+   "我但願在山谷的治理託付到他手上之前,他能稍稍成熟些。明君視子民為平等,而非居高臨下。",
+ "Inside, you have stored the essence of the Pizza Elemental. You have 1 slice left":
+   "裡頭裝著你封存的「披薩元素精靈」精華。你還剩 1 片。",
+ "In Spielburg too, a prophecy foretold the coming of a hero, but it was not that which lead you there. It was a poster in your local Guild Hall in Willowsby -- the one that called for a hero in Spielburg":
+   "在史畢柏格,同樣有一則預言預示英雄的到來,但領你前去的並非那預言,而是你家鄉柳鎮公會大廳裡的一張海報——那張為史畢柏格徵求英雄的海報。",
+ "INVENTORY: Within this inventory screen are several options:[[ARROW: Selects an item[[LOOK: Displays a description of an item.[[DROP: Allows you to drop an item.[[OK: Returns to the game":
+   "物品欄:這個物品欄畫面裡有幾個選項:[[箭頭:選取物品[[查看:顯示物品的描述。[[丟棄:讓你丟下物品。[[確定:返回遊戲。",
+ "I recall that when you agreed to accompany us on our journey back to Shapeir, you were most baffled by our reaction. You stood there with an awkward smile while Shema and I almost leapt for joy":
+   "我記得當你答應陪我們返回夏皮爾時,你對我們的反應一頭霧水。你站在那兒尷尬地笑著,雪瑪和我卻幾乎要欣喜得跳起來。",
+ "Don't bother trying to talk to the lamp light":
+   "別費勁跟那燈火搭話了。",
+ "Don't trouble yourself with such actions":
+   "你不必費這個事。",
 }
 
 resolved=[]
