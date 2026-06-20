@@ -1,0 +1,3 @@
+FROM qfg2-scummvm-builder
+RUN apt-get update && apt-get install -y --no-install-recommends imagemagick xdotool xvfb python3-pil \
+    && rm -rf /var/lib/apt/lists/*

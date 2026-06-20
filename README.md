@@ -48,6 +48,10 @@
 
 ![實機遊戲畫面：夏皮爾的卡塔之尾客棧](docs/screenshot-gameplay-shapeir.png)
 
+連 NPC 都說中文了 —— 卡塔商人沙明在客棧裡迎接你的開場白。專有名詞首次出現會自動補上原文（「卡塔(Katta)」「夏皮爾(Shapeir)」），老玩家對照原文無痛接軌：
+
+![實機中文 NPC 對話：卡塔商人沙明](docs/screenshot-gameplay-dialog.png)
+
 遊戲中按 **F8**，繁中 16×16 → 繁中 24×24 → 英文原版即時循環：
 
 ![F8 語言切換](docs/demo-f8-language-switch.gif)

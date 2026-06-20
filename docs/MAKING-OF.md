@@ -32,6 +32,7 @@ AGS 翻譯走 `.tra`(原文→譯文 dictionary,Avis Durgan 加密)。`tools/mak
 - header `"AGSTranslation\0"` + blocks(數字 id / 字串 id "ext_sopts")+ EOF。
 - 字串 = int32 len + Avis Durgan 加密 bytes;**GameUid=0 + 空名 → 跳過 game 比對。**
 - 抽字用「引擎內 dump 重用其 parser」(`cht_dump_static_strings` 走訪 `game.messages` + 三個 script 字串表 + 物品名),一次抽出 6716 字串(2350 乾淨可翻句),比自寫 MFL/script 解析器穩。
+- **涵蓋率陷阱(實機驗證才抓到)**:上述只涵蓋全域 messages + global/dialog script + 物品名 —— **NPC 對話沒進來**。AGS 把各房間的角色台詞(`character.Say`/`Display`)編進**各自的 `roomN.crm` room script**,全域 dump 抓不到。實機進遊戲後發現卡塔商人開場白還是英文,grep `translation.tsv` 查無此句才確認。**修法**:在 dump 時遍歷 `room0..MAX_ROOMS`,對存在的 `roomN.crm` 用 `load_room()` 載入臨時 `RoomStruct`,抽其 `CompiledScript->strings`。補上後 dump 從 2352 句暴增到 ~7455 句新增 NPC 對話 —— 這才是遊戲對話的大宗。**教訓:靜態抽取的「全」要對著實機逐房驗證,別信全域結構就以為抽全了。**
 
 ## 五、踩過的雷(AGDI / ScummVM 特有)
 
