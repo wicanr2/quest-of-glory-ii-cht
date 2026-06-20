@@ -44,14 +44,16 @@ jobs:
       - uses: actions/checkout@v4
       - name: 安裝相依(只裝 AGS 必要;多裝的 codec 會讓 configure 強制靜態連結而缺 .a)
         run: brew install sdl2 sdl2_net freetype libpng libvorbis libogg flac bzip2 zlib
+      - name: 把 keg-only 的 bzip2/zlib 靜態檔 symlink 到 configure 硬編的路徑
+        run: |
+          # ScummVM configure 在 link 行硬編 /opt/homebrew/lib/libbz2.a 與 libz.a,
+          # 但 brew bzip2/zlib 是 keg-only,.a 在 /opt/homebrew/opt/*/lib。建 symlink。
+          ln -sf /opt/homebrew/opt/bzip2/lib/libbz2.a /opt/homebrew/lib/libbz2.a
+          ln -sf /opt/homebrew/opt/zlib/lib/libz.a    /opt/homebrew/lib/libz.a
       - name: 取得並 patch ScummVM
         run: bash tools/apply_patches.sh "$GITHUB_WORKSPACE/scummvm-src"
       - name: configure + build + bundle
         working-directory: scummvm-src
-        env:
-          # brew bzip2/zlib 是 keg-only,沒進 /opt/homebrew/lib;補其 keg 路徑供靜態連結
-          LDFLAGS: -L/opt/homebrew/opt/bzip2/lib -L/opt/homebrew/opt/zlib/lib
-          CPPFLAGS: -I/opt/homebrew/opt/bzip2/include -I/opt/homebrew/opt/zlib/include
         run: |
           ./configure --disable-all-engines --enable-engine=ags --enable-release \
             --disable-mad --disable-faad --disable-a52 --disable-fluidsynth \
