@@ -1,62 +1,118 @@
 # 主線劇情翻譯批次:以唯一子串比對語料取「精確 key」,配繁中譯文。
-# 譯名遵循 CONTEXT.md(阿拉伯/波斯風)。
+# 語感:參照《軟體世界》三大誌生動口語;專名走 CONTEXT.md 阿拉伯/波斯風音譯。
+# 角色語域:Uhura 講 pidgin → 中文略簡略粗獷;Effendi → 敬稱「閣下」。
 import sys
 corpus = [l.rstrip('\n') for l in open('build/corpus_clean.txt', encoding='utf-8')]
 
-# {唯一辨識子串: 繁體中文譯文}  ([[ 為 AGS 換行,譯文保留)
+# {唯一辨識子串: 繁體中文譯文}  ([[ = AGS 換行,保留)
 BATCH = {
+ # --- 開場 / 系統 ---
  "ancient prophecy, when Raseir fell into darkness":
-   "根據一則古老的預言,當拉希爾陷入黑暗之時,一位來自北方的英雄將會降臨,為這座城市重新帶來光明。",
+   "古老的預言有云:當拉希爾墮入黑暗,北方終將有一位英雄前來,為這座城市重燃光明。",
+ # --- 反派 Ad Avis / 伊布利斯 ---
  "Ad Avis is intent on raising Iblis":
-   "阿德·阿維斯一心想要喚醒伊布利斯。",
+   "阿德·阿維斯一心要喚醒伊布利斯。",
  "Ad Avis stands, glaring sternly, his black robes":
-   "阿德·阿維斯佇立著,目光森冷,黑袍在風中翻飛。",
+   "阿德·阿維斯佇立著,目光森冷,一襲黑袍在風中獵獵翻飛。",
+ # --- 蘇丹 / 城市 ---
  "Although few see the Sultan, he sees all":
-   "雖然鮮少有人見過蘇丹,他卻洞悉一切。夏皮爾城中的每一個人、每一件事,都逃不過蘇丹的眼睛。",
+   "蘇丹深居簡出,卻洞燭一切。夏皮爾城裡的每一個人、每一樁事,都瞞不過他的眼睛。",
  "A Raseirian guard patrols this section of the city":
-   "一名拉希爾衛兵在這一帶的城區巡邏。",
+   "一名拉希爾衛兵在這一帶巡邏。",
+ "As you listen through the keyhole, you hear the regular goings on of Shapeirian life":
+   "你貼著鑰匙孔聽,夏皮爾市井的尋常喧鬧一一傳入耳中。",
+ "A business owner's sign hangs overhead":
+   "一面店家招牌懸在頭頂上。",
+ "A caravan is many travelers journeying together. It is much less dangerous that way":
+   "所謂商隊,就是一大群旅人結伴上路——這樣一來,危險可就少多了。",
+ "A barrel full of animal entrails. Lovely":
+   "一整桶的動物內臟。真是「賞心悅目」。",
+ # --- 四大元素精靈 ---
  "A strong aura of magic radiates from the Water Elemental":
-   "水元素精靈散發出強烈的魔法氣息。你懷疑這頭生物遠不如外表看來那般無害。",
+   "水元素精靈渾身散發著濃烈的魔法氣息。你直覺這傢伙絕不像外表那般人畜無害。",
  "An Air Elemental grows in power the more it blows":
-   "風元素精靈颳得越猛,力量就越強大。",
+   "風元素精靈颳得越狂,力量就越驚人。",
  "A Water Elemental in the fountain of town would be the greatest of misfortunes":
-   "若讓水元素精靈進入城中的噴泉,將是天大的災禍。",
+   "要是讓水元素精靈鑽進城裡的噴泉,那可就是天大的災難了。",
  "As you have discovered, incense is quite a lure for Fire Elementals":
-   "正如你所發現的,薰香對火元素精靈頗具吸引力。",
+   "你已經發現:薰香對火元素精靈很有吸引力。",
  "A powerful aura of dark magic radiates from the Air Elemental":
    "風元素精靈散發出強大的黑暗魔法氣息。",
  "All you have to do is to throw it at the Earth Elemental":
-   "你只需把它擲向土元素精靈即可。它爆炸時會綻放出美麗的火花。",
- "As you listen through the keyhole, you hear the regular goings on of Shapeirian life":
-   "你透過鑰匙孔聆聽,聽見夏皮爾市井生活的尋常聲響。",
- "A business owner's sign hangs overhead":
-   "一面店家的招牌懸在頭頂上方。",
- "A caravan is many travelers journeying together. It is much less dangerous that way":
-   "商隊是許多旅人結伴同行。如此一來危險便少了許多。",
- "A barrel full of animal entrails. Lovely":
-   "一桶滿滿的動物內臟。真「可愛」。",
+   "你只管把它往土元素精靈身上一扔就成。它炸開時,那火花可漂亮得很。",
+ # --- 商人介紹(自然口語)---
+ "It is Tashtari, the lamp merchant":
+   "這位是塔什塔里,賣燈的商人。",
+ "It is Ugarte, the water smuggler":
+   "這位是烏加特,走私水的販子。",
+ "It is Saba, the basket merchant":
+   "這位是薩巴,賣籃子的商人。",
+ "It is Lasham, the plant merchant":
+   "這位是拉珊,賣花草的商人。",
+ "It is Khaveen, captain of the Raseirian Guard":
+   "這位是哈維因,拉希爾衛隊的隊長。",
+ # --- 敬語 NPC(Effendi → 閣下)---
+ "It is my honor to aid you, Effendi":
+   "能為您效勞,是小的的榮幸,閣下。",
+ "It is I who owe you my humble thanks, Effendi":
+   "該道謝的是小的才對,閣下。",
+ "It is always a pleasure to see you, great Hero":
+   "能見到您,永遠是一件樂事,偉大的英雄。",
+ # --- 物品 / 場景描述 ---
+ "It is an ordinary, slightly rusty nail":
+   "一根普通的釘子,還有點生鏽。",
+ "It is a small clay pot, filled with dirt":
+   "一只小陶罐,裡頭裝滿了泥土。",
+ "It is dark beyond the open doorway":
+   "敞開的門後一片漆黑。",
+ "It is the reflection of your lamp light":
+   "那是你燈火的倒影。",
+ "It is hard to be a hero in the bottom of a dungeon":
+   "困在地牢底下,英雄也難當啊。",
+ "It is beyond repair":
+   "已經修不好了。",
+ "It is something you will never forget":
+   "這是你一輩子都忘不了的經歷。",
+ # --- 冒險者公會 / 戰鬥導師 Uhura(pidgin → 簡略粗獷)---
+ "I am sorry, but Uhura is the Guildmaster and combat instructor here":
+   "抱歉,烏胡拉是這兒的公會會長兼格鬥教官。我一般是不跟訪客過招的。",
+ "Maybe you do not hear so good. I be thinking you give me back Rakeesh's sword":
+   "你耳朵不大靈光吧?我看哪,你最好把拉基什的劍還來,不然我可要發大火了。",
+ "If you be willing to know more about swordsmanship, talk to Rakeesh":
+   "你要是想多學點劍術,就去找拉基什。我們還是娃娃的時候,他就已經會耍劍了。",
+ "Don't stand over Uhura when she flips back to her feet":
+   "烏胡拉翻身站起時,別站在她正上方——她會冷不防反擊,把局面整個翻過來。",
+ # --- 問候 ---
+ "Farewell, young adventurer. We shall speak again soon":
+   "再會了,年輕的冒險者。我們很快會再聊的,這點毋庸置疑。",
+ "Good day. I hope you are well, young adventurer":
+   "你好。願你一切安好,年輕的冒險者。",
+ "Obviously a graduate of the Famous Adventurers' Correspondence School":
+   "一看就是「著名冒險家函授學校」的高材生。",
 }
 
-# 解析:每個子串找到唯一對應的完整原文行
 resolved=[]
 for sub, zh in BATCH.items():
     hits=[c for c in corpus if sub in c]
     if len(hits)==1:
         resolved.append((hits[0], zh))
+    elif len(hits)==0:
+        print(f"  ⚠ 找不到: {sub[:45]}", file=sys.stderr)
     else:
-        print(f"  ⚠ 子串命中 {len(hits)} 筆,跳過: {sub[:40]}", file=sys.stderr)
+        print(f"  ⚠ 命中 {len(hits)} 筆(子串不唯一),跳過: {sub[:40]}", file=sys.stderr)
 
-# 既有 disclaimer + 標題保留(從現有 tsv 讀回前兩條非註解)
-existing=[]
+# disclaimer + 標題 從舊 tsv 保留(含特殊格式,不在 corpus_clean)
+keep=[]
 for line in open('tools/translation.tsv', encoding='utf-8'):
     line=line.rstrip('\n')
-    if line and not line.startswith('#') and '\t' in line:
-        existing.append(tuple(line.split('\t',1)))
+    if line.startswith('DISCLAIMER') or line.startswith('Quest for Glory II\t'):
+        keep.append(tuple(line.split('\t',1)))
 
-seen=set()
+seen=set(); rows=keep+resolved
 with open('tools/translation.tsv','w',encoding='utf-8') as f:
-    f.write("# 英雄傳奇II 繁中翻譯  英文原文<TAB>繁體中文  (譯名見 CONTEXT.md)\n")
-    for s,d in existing + resolved:
+    f.write("# 英雄傳奇II 繁中翻譯  英文原文<TAB>繁體中文\n")
+    f.write("# 語感:參照《軟體世界》三大誌生動口語;專名音譯見 CONTEXT.md\n")
+    for s,d in rows:
         if s in seen: continue
         seen.add(s); f.write(f"{s}\t{d}\n")
-print(f"翻譯總計 {len(seen)} 條(既有 {len(existing)} + 主線批次 {len(resolved)})")
+print(f"翻譯總計 {len(seen)} 條(保留 {len(keep)} + 主線批次 {len(resolved)})")
