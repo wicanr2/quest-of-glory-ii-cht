@@ -44,7 +44,9 @@
 
 ![實機開場過場](docs/gameplay-intro.gif)
 
-![開場沙漠運鏡](docs/screenshot-intro-desert.png)
+真正坐進遊戲裡的一刻 —— 英雄踏進夏皮爾的「卡塔之尾客棧」，紫帷幔、地毯、坐墊一如當年。畫面左上的標題「英雄傳奇 II：烈火試煉」，是引擎即時渲染的繁體中文，不是貼圖：
+
+![實機遊戲畫面：夏皮爾的卡塔之尾客棧](docs/screenshot-gameplay-shapeir.png)
 
 遊戲中按 **F8**，繁中 16×16 → 繁中 24×24 → 英文原版即時循環：
 
