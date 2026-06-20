@@ -1532,6 +1532,135 @@ BATCH = {
    "安靜。可能會被人聽見。",
  "No one seems to be listening.":
    "似乎沒有人在聽。",
+ # --- 第十五批:Rakeesh/Shema/系統/諧音 ---
+ "Quit blubbering and DO something":
+   "別再哭哭啼啼了,倒是做點什麼啊。",
+ "Rakeesh bears a grim expression, and there's a hint of shame on his face":
+   "拉基什神情嚴峻,臉上隱隱透著一絲羞愧。",
+ "Rakeesh' condition seems to have improved since yesterday, but his mood seems unchanged":
+   "拉基什的傷勢看來比昨天好些了,心情卻似乎沒什麼變化。",
+ "Rakeesh frowns and you realize that sparring will be difficult if you don't return his sword first":
+   "拉基什皺起眉,你意識到不先把劍還他,這架是切磋不成的。",
+ "Rakeesh has trouble keeping body balanced when getting hit. If you create opening, exploit it":
+   "拉基什挨打時不易穩住身形。你若製造出破綻,就好好把握。",
+ "Rakeesh just frowns at you. Maybe you shouldn't be picking your nose in public":
+   "拉基什只是朝你皺眉。也許你不該在大庭廣眾下挖鼻孔。",
+ "Rakeesh looks completely recovered from his battle a few days back and seems to be in quite high spirits":
+   "拉基什看來已從幾天前那場戰鬥中完全康復,精神還相當不錯。",
+ "Rakeesh relaxes, but his tail stays ever alert":
+   "拉基什放鬆了下來,那條尾巴卻始終保持警戒。",
+ "Rakeesh sits calmly nearby. The Liontaur seems well-accustomed to this room":
+   "拉基什在一旁安然端坐。這獅人似乎對這房間很是熟悉。",
+ "Rakeesh wouldn't have loaned it to you if he knew you'd be careless with it":
+   "拉基什要是早知道你會這麼粗心,根本不會把它借給你。",
+ "Raseir needs your urgent attention. You don't have time to sleep your valuable days away in Shapeir":
+   "拉希爾急需你關注。你可沒空在夏皮爾睡掉這些寶貴的日子。",
+ "Rather than taking full responsibility for a possible burglary, you decide to hold on to the key":
+   "與其為一樁可能的竊案扛下全責,你決定還是把鑰匙留著。",
+ "Remember to have the victim drink the potion in order to break the spell":
+   "記得讓受害者喝下藥水,才能解除咒語。",
+ "Right. At any rate, Wizard-Hero, good luck and farewell":
+   "好。總之,巫師英雄,祝你好運,再會了!",
+ "Roget the Saurus, is at a loss for words":
+   "「羅傑詞」索魯斯,一時語塞,說不出話來。",
+ "Run a local script here":
+   "在此執行本地腳本。",
+ "Run around the balcony? If you were down there, you might try running":
+   "繞著陽台跑?你要是在下頭,倒可以試著跑跑。",
+ "Salt already has everything he needs in his own workshop":
+   "索特在自己的工坊裡,要的東西一應俱全。",
+ "Scoree sometimes gets belly aches when he eats too much Saurus jerky":
+   "斯科里有時蜥蜴肉乾吃太多會鬧肚子。",
+ "Scorpion tails look as venomous as they are":
+   "蠍尾看起來有多毒,實際就有多毒。",
+ "Select a game to restore:":
+   "選擇要讀取的存檔:",
+ "Shall we shake hands on forty dinars for the Saurus":
+   "這頭索魯斯,四十第納爾,咱們握手成交如何?",
+ "Shameen gave you the key to the front door of the Katta's Tail Inn":
+   "沙明把「卡塔之尾客棧」前門的鑰匙交給了你。",
+ "Shameen looks at you and just scratches his head. Maybe you shouldn't be picking your nose in public":
+   "沙明看著你,只是搔了搔頭。也許你不該在大庭廣眾下挖鼻孔。",
+ "Shameen spends some time making you familiar with the words that make up the names of Shapeir's streets":
+   "沙明花了些時間,讓你熟悉組成夏皮爾街名的那些字詞。",
+ "Shapeir is safe for the time being. Concentrate your efforts on Raseir instead":
+   "夏皮爾暫時安全了。把心力轉到拉希爾去吧。",
+ "Shema has given you a spare suit of clothes for overnight trips, sales meetings, etc":
+   "雪瑪給了你一套備用衣裳,供你過夜出行、洽談生意等場合穿。",
+ "Shema spends some time explaining the names of the various streets to you":
+   "雪瑪花了些時間,向你解釋各條街道的名稱。",
+ "Shema will be with you shortly":
+   "雪瑪很快就會來招呼你。",
+ "Shema will be with you shortly with one of her splendid meals":
+   "雪瑪很快就會端著她那豐盛的餐點來招呼你。",
+ "Shema will be with you shortly with some of our wonderful tea":
+   "雪瑪很快就會端著我們上好的茶來招呼你。",
+ "She too will forever have our gratitude for allowing us to return home":
+   "她讓我們得以重返家園,我們同樣永遠感念。",
+ "Show me something worth bargaining for":
+   "拿點值得我討價還價的東西出來瞧瞧。",
+ "Sign here! No, sign there! On second thought, don't sign at all":
+   "在這兒簽!不,在那兒簽!再想想——還是別簽了。",
+ "Silence, infidel. Listen and pay attention or we will use force":
+   "住口,異教徒。給我聽好,否則別怪我們動粗。",
+ "Silly you! They're right there on the end of your nose":
+   "你這傻瓜!它們不就在你鼻尖上嗎!",
+ "Simba here is more like a lion. He is having a wonderful time":
+   "這位辛巴倒更像頭獅子。他正玩得開心呢。",
+ "Since you haven't received any service from Salt, there's no need to pay him for anything":
+   "你還沒接受索特任何服務,沒必要付他半文錢。",
+ "Since your need is great, this waterskin shall be a gift":
+   "既然你急需,這個水袋就送你了。",
+ "Sloree is the local meat merchant":
+   "斯洛里是本地的肉販。",
+ "Sneak around the balcony? If you were down there, you might try sneaking":
+   "繞著陽台潛行?你要是在下頭,倒可以試著潛行。",
+ "So, Hero of Spielburg, you think you want to go practice some? I could use workout":
+   "怎麼樣,史畢柏格的英雄,想去練練嗎?我也正好需要活動活動。",
+ "Someone behind this door is repeatedly saying 'Ma fhimt.' You don't understand":
+   "這門後有人反覆說著「Ma fhimt」。你聽不懂。",
+ "Someone is jiggling the handle on the other side of this locked door":
+   "有人在這上鎖的門另一側,不停搖晃著門把。",
+ "Someone is whistling a familiar tune in an odd key behind this door":
+   "這門後,有人用古怪的調子吹著一首耳熟的曲子。",
+ "Someone (or something) behind this door is thumping something as heavy as a pumpkin":
+   "這門後有人(或某種東西)正在敲打一件南瓜般沉重的物事。",
+ "Someone probably lives behind this door":
+   "這門後大概住著人。",
+ "Someone with your skills can do without my powder of burning":
+   "憑你的本事,沒我這燃燒之粉也行。",
+ "Something in the back of your mind tells you that you may need this magical earth at a later date":
+   "你腦海深處有個聲音告訴你,日後或許用得上這魔法泥土。",
+ "Sorry, boss, all I got is a buncha burnt wood":
+   "抱歉啦,老大,我這兒只有一堆燒焦的木頭。",
+ "Sorry, Master, but we must get Iblis first":
+   "抱歉,主人,但我們得先解決伊布利斯。",
+ "Sorry mister, don't have any spare parts for that model lying around. It'll take some time to order them":
+   "抱歉先生,那型號的備件我這兒沒現貨,得花些時間訂貨。",
+ "Sorry, my little Hero, but you just don't have the cash. You'll have to pay up to play with me":
+   "抱歉啦,我的小英雄,你錢就是不夠。想跟我玩,得先付錢。",
+ "Sorry, not right now":
+   "抱歉,現在不行。",
+ "Sounds like there's a whole lot of nothing going on behind this door":
+   "聽起來這門後啥事也沒有。",
+ "Sounds like work going on behind this door":
+   "聽起來這門後有人在幹活。",
+ "So what do you say, shall we shake hands and call it a deal":
+   "怎麼樣,咱們握個手,這買賣就算成交了?",
+ "Speak now the name of FLOWER":
+   "現在,說出「花」的名字!",
+ "Speak the name of power:":
+   "說出力量之名:",
+ "Stick to dealing with the kind of trash you're used to. Monsters, murderers, and madmen":
+   "還是去對付你慣常那些渣滓吧——怪物、殺人犯,還有瘋子。",
+ "Strong boots with soles reinforced with Mirak's toughest leather":
+   "結實的靴子,鞋底用米拉克最堅韌的皮革加固過。",
+ "Such a shame that we could not make a deal. The pin was truly perfect for you":
+   "這筆買賣沒成,真是可惜。那根別針真是再適合你不過了。",
+ "Such a thing is not nearly so grand as the Fire Elemental":
+   "這種東西可遠遠及不上火元素精靈那般了得。",
+ "No rest for the weary":
+   "累歸累,可沒得歇。",
 }
 
 resolved=[]
