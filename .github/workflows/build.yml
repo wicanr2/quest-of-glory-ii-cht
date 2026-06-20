@@ -57,7 +57,7 @@ jobs:
         run: |
           ./configure --disable-all-engines --enable-engine=ags --enable-release \
             --disable-mad --disable-faad --disable-a52 --disable-fluidsynth \
-            --disable-libcurl --disable-sndio
+            --disable-libcurl --disable-sndio --disable-tts
           make -j$(sysctl -n hw.ncpu)
           make bundle
       - name: 打包 DMG
