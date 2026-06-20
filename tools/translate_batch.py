@@ -1254,6 +1254,149 @@ BATCH = {
    "那活兒就交給白蟻去幹吧。",
  "Leave the window where it is. The occupant would appreciate it":
    "讓那扇窗留在原處吧,屋主會感激你的。",
+ # --- 第十三批:人名/諺語/對白 ---
+ "Let him out of the pen first":
+   "先把牠放出柵欄。",
+ "Let's get this story straight":
+   "咱們把話說清楚。",
+ "Like a lit brass lamp, may you always find your way. Farewell, Effendi":
+   "願你如一盞點亮的銅燈,永遠找得到方向。再會,閣下。",
+ "Looking back at you with joy, Abdulla makes a gesture of approval towards you with his tea cup":
+   "阿布杜拉欣喜地回望你,舉起茶杯朝你比了個讚許的手勢。",
+ "Looks like you need to get some more practice today. You be getting plenty good":
+   "看來你今天還得多練練。你已經很有長進了。",
+ "Magic users are known for their powerful spells and subtle, indirect solutions to problems":
+   "法師以強大的法術,以及巧妙迂迴的解題之道聞名。",
+ "Man who is always polite finds many people to help him":
+   "待人時時有禮者,自有眾人相助。",
+ "Man who keep one hand on weapon have difficulty walking in public":
+   "手不離兵刃者,難以坦然行於人前。",
+ "Man who wrongfully attack peaceful dervish will soon find himself up to his earlobes in wrongful attacks":
+   "無故攻擊和平苦行僧者,不久便會發覺自己深陷無故的攻擊裡,直沒到耳根。",
+ "Master, please hurry! We don't have much time left":
+   "主人,快點!我們時間不多了!",
+ "Master, we don't have time for purposeless spells":
+   "主人,我們沒空施那些沒用的法術。",
+ "Master, we must hurry onward":
+   "主人,我們得快點趕路。",
+ "Maybe these cases will once again decorate the environment. Better let them where they are":
+   "或許這些箱子有天會再次點綴此地。還是讓它們留在原處吧。",
+ "May diamonds light your day, Hero-friend":
+   "願鑽石照亮你的日子,英雄朋友。",
+ "May good fortune favor you, Effendi. Farewell":
+   "願好運眷顧您,閣下。再會。",
+ "May my lamp serve you well":
+   "願我這盞燈好好為你效力。",
+ "May you have a good day today":
+   "願你今天順心如意。",
+ "May you have a good day today, Effendi. Farewell":
+   "願您今日順心如意,閣下。再會。",
+ "May your day be filled with the scent of sweet flowers, Effendi":
+   "願您的一天充滿芬芳花香,閣下。",
+ "May you stay safe":
+   "願你平安。",
+ "Mayzun pays no attention to you":
+   "梅尊沒理會你。",
+ "Mirak is the local leather merchant":
+   "米拉克是本地的皮革商。",
+ "Most strange. If you have an upset stomach, perhaps you should buy a healing pill":
+   "真奇怪。你若是腸胃不適,或許該買顆治療藥丸。",
+ "Move out from behind the cage where there is more room":
+   "從籠子後面移到空間大些的地方。",
+ "Move out from under the parapet first":
+   "先從城垛底下移開。",
+ "Move out in front of the balcony first":
+   "先移到陽台前方。",
+ "Move up to a pillar first":
+   "先移到柱子旁。",
+ "My collection of perfumes contains fragrances for every occasion you could imagine":
+   "我收藏的香水,你想得到的任何場合都有對應的香氣。",
+ "My dirt should help you defeat the thing of air":
+   "我的泥土應該能助你擊敗那團風之物。",
+ "My name is Abd al-Malik":
+   "我叫阿卜杜勒-馬利克。",
+ "My name is Kadash":
+   "我叫卡達什。",
+ "My name is Kaleema":
+   "我叫卡莉瑪。",
+ "My name is Kareem":
+   "我叫卡里姆。",
+ "My name is Kasheem":
+   "我叫卡希姆。",
+ "My name is Laram":
+   "我叫拉拉姆。",
+ "My name is Laree":
+   "我叫拉里。",
+ "My name is Lira":
+   "我叫莉拉。",
+ "My name is Liram":
+   "我叫里拉姆。",
+ "My name is Mareek":
+   "我叫馬里克。",
+ "My name is Matak":
+   "我叫馬塔克。",
+ "My name is Neko":
+   "我叫內可。",
+ "My name is Sareena":
+   "我叫薩莉娜。",
+ "My name is Sayf al-Maluk":
+   "我叫賽夫·馬魯克。",
+ "My name is Shareem":
+   "我叫沙里姆。",
+ "My name is Sillah":
+   "我叫希拉。",
+ "My name is Sira":
+   "我叫希拉。",
+ "My name is Sonee":
+   "我叫索尼。",
+ "My name is Tarah":
+   "我叫塔拉。",
+ "My name is Tarim":
+   "我叫塔里姆。",
+ "My name is Tirak":
+   "我叫提拉克。",
+ "My name is Tracheema":
+   "我叫特拉奇瑪。",
+ "My pleasure it is to serve you, Effendi":
+   "能為您效勞是我的榮幸,閣下。",
+ "My pots can be used for anything, from carrying water to housing plants":
+   "我的陶罐什麼都能用,從盛水到種花無所不可。",
+ "My spear arm is getting tired of just holding Simba. Good thing for you, too, if we practice today":
+   "我這持矛的手光抱著辛巴都快累了。今天練一練,對你也是好事。",
+ "My sword is called 'Soulforge.' It is a flaming sword":
+   "我這把劍名叫「鑄魂」。是一把燃燒之劍。",
+ "My thanks, but I have no need for gifts":
+   "謝謝你,但我不需要禮物。",
+ "My, you are quite the eloquent and articulate one":
+   "哎呀,你還真是個能言善道、口齒伶俐的人哪!",
+ "Mzuri sana. I accept your challenge. Let's fight":
+   "很好(Mzuri sana)。我接受你的挑戰。來打吧。",
+ "Name contains invalid characters":
+   "名稱含有無效字元。",
+ "Nice try, but you'll have to find a more traditional method of opening her heart":
+   "想得美,你得用更老派的法子才能打開她的心扉。",
+ "Nobody responds to your call":
+   "沒有人回應你的呼喚。",
+ "Nobody seems to be listening":
+   "似乎沒有人在聽。",
+ "No fan game would be complete without one of these":
+   "少了這個,任何同人遊戲都稱不上完整。",
+ "No, Master. You'd only get yourself caught":
+   "不,主人。你那麼做只會害自己被逮。",
+ "No, Master. You don't need to do that now. Let's go":
+   "不,主人。你現在不必那麼做。我們走吧。",
+ "No, Master! You need to keep your feet on the ground":
+   "不,主人!你得腳踏實地。",
+ "No need to blow them dry. The sun can manage quite well on its own":
+   "不必把它們吹乾,太陽自己就辦得很好。",
+ "No need to buy a new purse. It'd be exactly like your old purse, except with less money in it":
+   "不必買新錢袋。那只會跟你舊的一模一樣,只是裡頭錢更少。",
+ "No one hears you knocking":
+   "沒有人聽見你敲門。",
+ "No rest for the weary":
+   "累歸累,可沒得歇。",
+ "My name is Sharim":
+   "我叫沙里姆。",
 }
 
 resolved=[]
