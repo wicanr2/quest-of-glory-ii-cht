@@ -1800,6 +1800,137 @@ BATCH = {
    "夏皮爾的錢幣上鑄著蘇丹哈倫·拉希德的肖像(願他永世統治!)。",
  "The combat copilot is not available on the highest difficulty setting":
    "在最高難度設定下,無法使用戰鬥輔助。",
+ # --- 第十七批:門/元素/衛兵/Katta ---
+ "The crates are nailed shut. You have neither the time nor the patience to open them":
+   "這些木箱都被釘死了。你既沒時間、也沒耐性去撬開它們。",
+ "The Creature of Water prevents any from approaching the fountain. I fear we will soon have no water":
+   "那水之造物不准任何人靠近噴泉。我怕我們很快就要沒水了。",
+ "The creature's tough, armor-like exterior is certain to render any bare-hand attacks completely useless":
+   "這生物堅硬如甲的外殼,肯定讓任何徒手攻擊全然無效。",
+ "The desert heat appears to be getting to you, Hero-friend":
+   "沙漠的酷熱似乎讓你有點吃不消了,英雄朋友。",
+ "The desert is a very dangerous place for any man":
+   "對任何人而言,沙漠都是個極其危險的地方。",
+ "The Djinni is not interested in any of your possessions":
+   "鎮尼對你的任何東西都不感興趣。",
+ "The door appears to be locked":
+   "門似乎鎖著。",
+ "The door defies your attempt to open it":
+   "這扇門任你怎麼弄都打不開。",
+ "The door does not seem to be magic, but there is a glow behind it":
+   "這門看來不帶魔法,門後卻透著一抹微光。",
+ "The door has swung out too far. You can't reach it from the pathway":
+   "門開得太外了,你從通道上構不著它。",
+ "The door is already open":
+   "門已經開著了。",
+ "The door is barred from the other side. Your Open spell has no effect":
+   "門從另一側閂住了。你的「開啟」術毫無作用。",
+ "The door is barred. Your Open spell has no effect":
+   "門閂著。你的「開啟」術毫無作用。",
+ "The door is locked":
+   "門鎖著。",
+ "The door is locked tight, and the sound of your knocks echoes hollowly in the alley, without response":
+   "門鎖得死死的,你的敲門聲在巷子裡空洞地迴響,無人應答。",
+ "The druggist seems to keep busy at his trade":
+   "那藥販似乎一直忙著做他的生意。",
+ "The dry heat of the desert seems to have stunted the plant's growth":
+   "沙漠乾燥的酷熱似乎遏止了這株植物的生長。",
+ "The duty of a guard in Shapeir is to make certain all people are safe from violence or ill-doing":
+   "夏皮爾衛兵的職責,是確保所有人免遭暴力與惡行。",
+ "The Earth Elemental is a hulking mass of rock whose very footsteps make the city shake":
+   "土元素精靈是一團龐然的岩石,光是踏步就能撼動整座城。",
+ "The Elemental dodges easily in the open plaza":
+   "在開闊的廣場上,那元素精靈輕易就閃開了。",
+ "The Elemental earth keeps slipping through your hands":
+   "那元素之土不斷從你指縫間滑落。",
+ "The Elemental is not in a good position for that":
+   "那元素精靈的位置不適合那麼做。",
+ "The Elemental's eyes aren't any more watery than usual":
+   "那元素精靈的眼睛並不比平常更濕潤。",
+ "The eunuch guard, Abu, paces back and forth":
+   "那名宦官衛兵阿布來回踱步。",
+ "The eunuch looks like a formidable foe":
+   "那宦官看起來是個難纏的對手。",
+ "The Fire Elemental seems to like that a lot":
+   "火元素精靈似乎很受用。",
+ "The flagstones of the street are in sordid condition, just like the rest of the city":
+   "街上的石板骯髒不堪,跟這城裡其他地方一個樣。",
+ "The flagstones of the street feel smooth":
+   "街上的石板摸起來光滑。",
+ "The flailing, bloodthirsty swordsman looks like he means business":
+   "那揮刀亂砍、嗜血的劍客,看來是來真的。",
+ "The footwear isn't really different from what you currently have":
+   "這鞋子跟你現在穿的其實沒什麼兩樣。",
+ "The Force Bolt is just absorbed. It's obviously not effective against liquid life forms":
+   "「力箭」被直接吸收了。對液態生命體顯然起不了作用。",
+ "The fountain is the heart of the city":
+   "噴泉是這座城市的心臟。",
+ "The \"fruit\" in the barrel is covered with a thick layer of mildew. Yuck":
+   "桶裡那些「水果」蒙著厚厚一層黴。噁!",
+ "The Ghoul's head is probably the most disgusting thing you've ever had the misfortune of carrying around":
+   "食屍鬼的頭,大概是你這輩子倒楣帶在身上的東西裡最噁心的一個。",
+ "The Ghoul would be delighted to shake hands with you. And suck your strength and stamina while doing so":
+   "食屍鬼會很樂意跟你握手——順便在握手時吸乾你的力氣與耐力。",
+ "The graffiti communicates to you in a different way":
+   "那塗鴉以另一種方式向你傳達訊息。",
+ "The Griffin has many feathers. Perhaps you can grab one of them":
+   "獅鷲有許多羽毛。或許你能抓走其中一根。",
+ "The Griffin's feather is grey-striped with silver at the tip. There is brown fur attached to the quill":
+   "這根獅鷲羽毛帶著灰色條紋,尖端泛銀,羽根上還黏著棕色的絨毛。",
+ "The guard does not respond":
+   "衛兵沒有回應。",
+ "The guard gives you a quick nod and then walks on":
+   "衛兵朝你飛快地點了個頭,便走開了。",
+ "The guard gives you a vicious glare before moving on":
+   "衛兵惡狠狠地瞪了你一眼,才繼續往前走。",
+ "The guard looks even more stone-faced than usual. Maybe you shouldn't be picking your nose in public":
+   "那衛兵的臉比平常更鐵青。也許你不該在大庭廣眾下挖鼻孔。",
+ "The guard looks official":
+   "那衛兵一副公差模樣。",
+ "The guards are too busy guarding the palace to listen to you":
+   "衛兵們忙著守衛王宮,沒空理你。",
+ "The guards march ceaselessly before the gates to the Palace":
+   "衛兵在王宮大門前不停地來回踏步。",
+ "The guards of this city look like tough, well-disciplined fighters":
+   "這城裡的衛兵看起來是一群剽悍、紀律嚴明的戰士。",
+ "The guards stand motionless at the gates":
+   "衛兵一動不動地守在大門口。",
+ "The Guild Hall was the first place Shema and I visited upon our arrival in Spielburg":
+   "公會大廳是雪瑪和我抵達史畢柏格後造訪的第一個地方。",
+ "The hot desert air scorches your throat as you breathe":
+   "你每吸一口氣,熾熱的沙漠空氣便灼著你的喉嚨。",
+ "THE ICONS[[INVENTORY: Choose this when you want to view and select from the items you're carrying":
+   "圖示說明[[物品欄:想查看並從你攜帶的物品中挑選時,選這個。",
+ "The incense is finely ground and has a sweet smelling scent":
+   "這薰香研磨得很細,散發著甜美的香氣。",
+ "The invisibility spell on the door has already been removed. Your spell has no further effects":
+   "門上的隱形咒已經解除了。你的法術不再有任何作用。",
+ "The item Saba sold you is a disk that's made of many small strings of reed carefully woven together":
+   "薩巴賣給你的是一個圓盤,用許多細小的蘆葦條精心編織而成。",
+ "The jerky is prepared with only the finest, most succulent, rock-flattened lizards":
+   "這肉乾只選用最上等、最多汁、用石頭壓扁的蜥蜴製成。",
+ "The jewelry I sell will make the woman you adore the most beautiful person in the world":
+   "我賣的珠寶,能讓你傾慕的女子成為世上最美的人。",
+ "The Katta are again afraid to set up their shops. The Creature of Earth grows ever more powerful":
+   "卡塔族又不敢開張做生意了。那土之造物越來越強大。",
+ "The Katta are most thankful that you have come to Shapeir":
+   "卡塔族對你來到夏皮爾感激不盡。",
+ "The Katta gave you this sapphire pin in thanks for your service to their kind":
+   "卡塔族送你這枚藍寶石別針,感謝你為他們族人效力。",
+ "The Katta is thin and it looks like he's recently been beaten":
+   "這卡塔族人瘦削不堪,看樣子近來挨過打。",
+ "The Katta just stares suspiciously at you":
+   "那卡塔族人只是滿腹狐疑地盯著你。",
+ "The Katta merchant has no need of that":
+   "那卡塔族商人不需要那個。",
+ "The Katta merchants could not set up in the plaza outside because of the fire this morning":
+   "因為今早那場火,卡塔族商人沒法在外頭的廣場擺攤。",
+ "Shema just gave you this spare change of clothes for Raseir. You do not want to store them now":
+   "雪瑪才剛給你這套去拉希爾用的備用衣裳。你現在不想收起來。",
+ "Thank you, a thousand thank-yous. It is with your support that I may continue my vital work":
+   "謝謝你,千恩萬謝。全靠你的支持,我才能繼續這要緊的工作。",
+ "The ice is now very relaxed":
+   "那冰塊現在很放鬆。",
 }
 
 resolved=[]
