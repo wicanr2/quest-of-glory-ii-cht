@@ -3999,6 +3999,69 @@ BATCH = {
    "別費勁跟那燈火搭話了。",
  "Don't trouble yourself with such actions":
    "你不必費這個事。",
+ # --- 第三十六批 ---
+ "A long thread of twine, spread with damp articles of clothing is spanned across an open outdoor gap for maximum exposure to the sunshine. Commonly known as a clothesline":
+   "一條長麻繩,掛著一件件濕衣物,橫跨在戶外開闊處,好讓它們最大限度地曬到太陽。一般稱之為「曬衣繩」。",
+ "A swordsman such as yourself should focus on sticking close to his opponent in order to avoid being caught off guard by long-distance attacks, occasionally backing off when your opponent mounts an offense":
+   "像你這樣的劍士,該專注於緊貼對手,以免被遠距攻擊打個措手不及;對手發動攻勢時,則偶爾後撤。",
+ "But maybe you gotta no kids? Then what you want is what I gotta right here -- a 'Shapeir in a bottle.' You shake it and you see Shapeir in a sandstorm. I sell it justa for you for only twice what it worth":
+   "不過你也許沒小孩?那你想要的,就是我這兒的這個——「瓶中夏皮爾」。你一搖,就看見夏皮爾陷入沙暴。看在你的份上,我只賣你它身價的兩倍。",
+ "I regret, Hero-friend, that we are unable to spare any more tea. We are short on water, and the Water Elemental prevents us from reaching the fountain":
+   "抱歉,英雄朋友,我們勻不出更多茶了。我們缺水,而水元素精靈又害我們到不了噴泉。",
+ "I sell shoes and boots that are light and fine. There is no footwear better suited for dashing back to the city entrance with a fierce monster on your tail":
+   "我賣的鞋靴又輕又好。論身後追著兇猛怪物、拔腿衝回城門口,沒有比這更合腳的了。",
+ "I still recall the day you first came wandering into our inn. I could tell by the look on your face that you had never seen a Katta before in your life":
+   "我至今仍記得你頭一回晃進我們客棧的那天。看你那神情,我就知道你這輩子從沒見過卡塔族。",
+ "It did strike me that while her deeds are known by so many, little is known about Erana herself. It is almost as if she were a benevolent spirit, rather than a living being who lived among us at one time":
+   "我的確注意到,她的事蹟雖為眾人所知,人們對伊瑞娜本人卻所知甚少。她幾乎像是一縷仁慈的精魂,而非曾活在我們之中的血肉之軀。",
+ "I tella you where to find the Guild Hall. You go outa the plaza here and take-a the street until you can turna left. Follow the road and you no can miss it":
+   "我告訴你公會大廳在哪。你出了這座廣場,沿街走到能左轉為止。沿著路走,絕錯不了。",
+ "I tella you where to find the Guild Hall. You go outa the plaza here and take-a the street until you can turna left. You go left until you can no go more. Then you go right":
+   "我告訴你公會大廳在哪。你出了這座廣場,沿街走到能左轉為止。一直左轉,走到不能再走。然後往右。",
+ "It is a pity that I do not have any of the potion made up. I have most of the ingredients, though. If you could find the ingredients I am missing, then I could make some dispel potions for you":
+   "可惜我手頭沒有調好的藥水。不過材料我大半都有。你若能找來我缺的那些材料,我就能替你調幾瓶驅散藥水。",
+ "It is difficult for me to imagine you started your adventures in Spielburg with nothing but the knowledge gained from a correspondence course to rely on":
+   "我很難想像,你在史畢柏格展開冒險時,憑藉的竟只有從函授課程學來的那點知識。",
+ "It is the finest suit of mail in all the realm. The Caravan Master has already paid for it":
+   "這是全國最上乘的一副鎖子甲。商隊隊長已經替它付過錢了。",
+ "It may be wise to keep it. Your trained reflexes may end up having you stick your bare hand into a monster's face the next time you meet one":
+   "留著它或許是明智的。你那練出來的反射動作,搞不好下回遇上怪物時,會讓你赤手往牠臉上招呼。",
+ "It's a crime to possess things like these and you know it. But considering how much money you paid to get it, it'd also be a crime to discard it":
+   "持有這種東西是犯法的,你心知肚明。但想想你花了多少錢才弄到手,把它丟了也同樣是種「罪過」。",
+ "It's a good tool, fool, but remember the rule: the magic can't last, and on your last cast it'll go fast, so don't waste it or you might find yourself hanging in air with nothing there":
+   "這是個好工具,傻小子,但記住規矩:魔法撐不久,你最後一次施展時它去得快,所以別浪費,否則你可能發覺自己懸在半空、腳下空無一物。",
+ "It seems the news of the Fire Elemental's capture has already reached Abdulla. He mumbles something between mouthfuls of food, which sounds like 'good job.'":
+   "火元素精靈被擒的消息,似乎已經傳到阿布杜拉耳裡。他邊大口吃著東西邊咕噥了一句,聽起來像是「幹得好」。",
+ "It's said that talking to a plant speeds up its growth. You may want to test that theory when you come across a case that actually has a plant inside":
+   "據說跟植物說話能加快它生長。等你哪天碰上一個裡頭真有植物的花盆,不妨驗證一下這說法。",
+ "It's used to make dark stains on light clothes. If you need it to ground old Blowhard, it's yours for a song. Dust in the wind. All you need is dust in the wind":
+   "它能在淺色衣物上染出深漬。你若需要它來收拾那老吹牛皮的,賤價就賣你。風中之塵啊,你需要的不過是風中一撮塵。",
+ "It's your friend Abdulla Doo, whom you met at the inn in Spielburg after he was robbed by the Brigands. In return for recovering his treasure and his carpet, he brought you with him to Shapeir":
+   "是你的朋友阿布杜拉·杜,你在史畢柏格客棧遇見他時,他剛被強盜洗劫過。為報你尋回他的財寶與地毯之恩,他帶你一同來到夏皮爾。",
+ "It takes real muscle to be good at arm wrestling. I'm the best. If you want me to prove it, let me know and I'll be glad to wrestle you":
+   "比腕力要比得好,得有真本事的肌肉。我就是最強的。你想要我證明,儘管說,我很樂意跟你扳一扳。",
+ "It was a mean, nasty, agitated, about-to-rip-your-head-off Griffin. Now it's merely about to be supper for those vultures who have no moral issues with semi-cannibalism":
+   "那本是頭兇惡、暴躁、就要把你腦袋扯下來的獅鷲。如今,牠不過是那群對「半同類相食」毫無道德顧忌的禿鷲的一頓晚餐罷了。",
+ "It will probably take all the powder I can give you to defeat such a thing as the Earth Elemental. Do not waste it, and please do not miss when you throw it":
+   "要擊敗土元素精靈這種東西,大概得用上我能給你的全部粉末。別浪費,擲的時候也千萬別失手。",
+ "It will probably take most of the powder I can give you to defeat such a thing as the Earth Elemental. Do not waste it, and please do not miss when you throw it":
+   "要擊敗土元素精靈這種東西,大概得用上我能給你的大半粉末。別浪費,擲的時候也千萬別失手。",
+ "It would be very possible to lure the Fire Elemental away from the plazas using this incense, and where it is weak from hunger and water, capture it":
+   "用這薰香把火元素精靈引離廣場,再趁牠因飢渴而虛弱時將牠捕獲,大有可為。",
+ "I will need a Griffin's feather and the \"Fruit of Compassion.\" You must add the hair of the victim yourself at the last moment. It must be fresh":
+   "我需要一根獅鷲羽毛和「慈悲之果」。受害者的頭髮得由你在最後一刻親手加進去,而且必須是新鮮的。",
+ "Just to show you what a swell person I am, I'll throw in a free saddle and bridle with the purchase. In fact, I'll even let you have free room and board at the stable":
+   "為了讓你見識見識我這人多夠意思,買了我還免費附送馬鞍和馬轡。事實上,連在馬廄的食宿我都讓你白住白吃。",
+ "Katta communities are very close-knit. We were positive that, if the letter arrived safely, our people would do everything in their power to help us":
+   "卡塔族的社群極其緊密。我們深信,只要那封信平安送達,族人必定竭盡所能來幫我們。",
+ "KEYS AND INSTRUCTIONS.[[F1: Displays this help screen.[[F5: Save menu.[[F6: Cast last non-targetted spell.[[F7: Restore menu.[[F9: Restart the game.[[F12: Save screenshot.[[CTRL-Q: Quit the game":
+   "按鍵與說明。[[F1:顯示此說明畫面。[[F5:存檔選單。[[F6:施放上一個無目標法術。[[F7:讀檔選單。[[F8:切換中文(16/24)/英文原文。[[F9:重新開始遊戲。[[F12:儲存螢幕擷圖。[[CTRL-Q:離開遊戲。",
+ "Like all of Spielburg's citizens, we were most impressed when you dispelled the enchantment upon Elsa von Spielburg and broke the curse on the Baron by defeating Baba Yaga":
+   "如同史畢柏格所有的子民,你解除艾莎·馮·史畢柏格身上的魔咒、又擊敗芭芭雅嘎破除男爵的詛咒時,我們都深深折服。",
+ "A discarded barrel rests nearby":
+   "附近擱著一只廢棄的木桶。",
+ "It seems to have no effect.":
+   "似乎毫無作用。",
 }
 
 resolved=[]
