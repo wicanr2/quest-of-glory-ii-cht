@@ -2328,6 +2328,143 @@ BATCH = {
    "現在做那個不是時候。",
  "This is not a good time to practice your throwing":
    "現在不是練投擲的好時機。",
+ # --- 第二十一批 ---
+ "This is not a safe place to rest":
+   "這裡不是個安全的歇腳處。",
+ "This is not a safe place to sleep":
+   "這裡不是個安全的睡覺地方。",
+ "This isn't a good moment to socialize":
+   "現在不是交際攀談的好時機。",
+ "This isn't the best place to practice your Levitate spell":
+   "這裡不是練「飄浮」術的好地方。",
+ "This is the harem girl's hand mirror":
+   "這是那後宮女子的手鏡。",
+ "This is the last page":
+   "這是最後一頁。",
+ "This is your title and registration for your trusty riding Saurus":
+   "這是你那頭可靠坐騎索魯斯的所有權證與登記文件。",
+ "This key can't be assigned to a combat action":
+   "這個按鍵不能指派給戰鬥動作。",
+ "This key doesn't fit that lock":
+   "這把鑰匙跟那個鎖不合。",
+ "This lamp of brass should serve you against the thing of fire. It is now your own":
+   "這盞銅燈該能助你對付那團火之物。如今它歸你了。",
+ "This leather purse uses a drawstring for closure":
+   "這個皮錢袋用束口繩封口。",
+ "This local reed basket is simple but elegant":
+   "這個當地的蘆葦籃簡樸卻雅致。",
+ "This make very fine wall trophy. Asante, Hero of Spielburg":
+   "這拿來當牆上的戰利品很不錯。Asante(謝謝),史畢柏格的英雄。",
+ "This merchant has various vests for sale":
+   "這商人賣著各式背心。",
+ "This merchant offers purses for sale":
+   "這商人賣著錢袋。",
+ "This merchant sells clay pots":
+   "這商人賣陶罐。",
+ "This ornament is the black figure of a bird, a falcon":
+   "這件飾品是一隻黑色鳥形雕像,一隻獵鷹。",
+ "This ornate window has lost much of its original beauty":
+   "這扇華麗的窗,已失去大半原有的美。",
+ "This 'painting' shows the city of Shapeir under a starry sky":
+   "這幅「畫」描繪著星空下的夏皮爾城。",
+ "This part of the wall seems to be in particularly bad shape":
+   "這一段牆似乎特別殘破。",
+ "This person isn't interested in the object you offer":
+   "這人對你拿出的東西不感興趣。",
+ "This residence appears to have been abandoned, as its door has been barred with several wooden planks":
+   "這宅子似乎已遭遺棄,門被好幾塊木板封死了。",
+ "This sign symbolizes the business owner's trade":
+   "這招牌象徵著店主所做的行當。",
+ "This square, flat box is made from material that somewhat resembles paper, except it is harder":
+   "這只方扁的盒子,材質有點像紙,只是更硬些。",
+ "This stand sells golden bracelets, rings, and necklaces":
+   "這攤子賣金手鐲、戒指和項鍊。",
+ "This street has been barricaded off. The sign reads: \"Road closed by order of Khaveen.\"":
+   "這條街被封了起來。告示寫著:「奉哈維因之命,此路封閉。」",
+ "This torch is not the light of your life":
+   "這支火把可不是你的「此生摯愛」。",
+ "This vase houses a lovely plant":
+   "這只花瓶裡養著一株可愛的植物。",
+ "This wealthy-looking Katta is Tiram, the carpet merchant":
+   "這個看來富裕的卡塔族人,是賣地毯的商人提拉姆。",
+ "This will only take me one second":
+   "我一秒鐘就好。",
+ "This will take many hours, so you will need to come back some other day":
+   "這得花上好幾個鐘頭,你得改天再來。",
+ "This window frame has seen better days":
+   "這扇窗框早已風光不再。",
+ "Those that can't, tell others what to do":
+   "辦不到的人,就只會指使別人怎麼做?",
+ "Through this door lies the other side":
+   "這門之後,便是另一側。",
+ "Through this door's keyhole, a constant mournful wail fills the room":
+   "透過這門的鑰匙孔,一陣不止歇的哀號充塞著整個房間。",
+ "Throwing knives when guards are around is not the wisest course of action":
+   "衛兵在旁時擲刀,可不是什麼明智之舉。",
+ "Throwing rocks when guards are around is not the wisest course of action":
+   "衛兵在旁時擲石,可不是什麼明智之舉。",
+ "Throw it quickly at your target. Try not to miss. It will do a lot of damage when it strikes and ignites":
+   "快把它擲向目標,別失手。它擊中並炸開時威力可不小。",
+ "Today is good day for fighting practice. Every day is good day for practice":
+   "今天是練武的好日子。其實天天都是練武的好日子。",
+ "To get past the guards outside, you have only to make the 'sign.'":
+   "想通過外頭的衛兵,你只需比出那個「暗號」。",
+ "\"Tomorrow night is your last night. You'll get your final orders then. Be seeing you.\"":
+   "「明晚是你的最後一晚。到時你會收到最終指令。回頭見。」",
+ "Tonight's meal is honeyed lamb with almonds and curried chicken. It is hoped you will enjoy yourself":
+   "今晚的菜色是蜜汁杏仁羊肉與咖哩雞。願您吃得盡興。",
+ "Top o' the morning to ya! Mar haba! What's new, Pussycat":
+   "早安啊您吶!Mar haba(你好)!最近如何呀,小貓咪?",
+ "To serve you is an honor":
+   "能為您效勞是一種榮幸。",
+ "Toshur is the local pottery merchant":
+   "托舒爾是本地的陶器商。",
+ "Type a name to save as:":
+   "輸入要存檔的名稱:",
+ "Uh oh. The guards have found you prowling outside at night. You're immediately taken into custody":
+   "糟了。衛兵發現你夜裡在外頭遊蕩,你當場就被收押了。",
+ "Uh oh. The guards have gotten tired of you hanging around here. You're taken into custody":
+   "糟了。衛兵受夠了你在這兒晃來晃去,把你收押了。",
+ "Uhura greets you with an ominous glare":
+   "烏胡拉以一記不祥的瞪視迎接你。",
+ "Uhura isn't interested in that item":
+   "烏胡拉對那件東西不感興趣。",
+ "Unfortunately, the guard is upon you before your spell takes effect":
+   "可惜,你的法術還沒生效,衛兵就撲到你面前了。",
+ "Unfortunately, your foe is upon you before your spell takes effect":
+   "可惜,你的法術還沒生效,敵人就撲到你面前了。",
+ "Unlike a certain King Edward of Daventry, you don't plan on losing this mirror":
+   "你可不打算像達文垂的某位愛德華王那樣,把這面鏡子弄丟。",
+ "Unlike heads, two layers of unguent are no better than one. But it didn't harm you either":
+   "跟頭不一樣,藥膏抹兩層並不比一層好,不過抹了也無妨。",
+ "Unlike heads, two poison cure pills are no better than one. But the pill does no harm either":
+   "跟頭不一樣,解毒藥丸吃兩顆並不比一顆好,不過吃了也無妨。",
+ "Use the counterslash to retaliate against blockable attacks by your adversary":
+   "用「反斬」來回擊對手那些可格擋的攻擊。",
+ "Use the rising slash to turn the tables on an opponent who relies on high attacks":
+   "用「上挑斬」來反制慣使上段攻擊的對手。",
+ "Very well, if such is your choice. What is it that you wish to know":
+   "好吧,既然你這麼選。你想知道什麼?",
+ "Vines cling to the walls, twisting their way skyward":
+   "藤蔓攀附在牆上,扭著身子向天空伸展。",
+ "Wall: stops two attacks":
+   "壁壘:擋下兩次攻擊",
+ "Warning! Don't speak to the awning":
+   "警告!別跟那遮篷說話。",
+ "Warning: items you drop will be lost permanently":
+   "警告:你丟下的物品將永久消失。",
+ "We are happy you have been our guest and even happier you have been our friend":
+   "你做我們的客人,我們很高興;你做我們的朋友,我們更是欣喜。",
+ "We are most honored by your presence at our inn, Hero of Spielburg":
+   "史畢柏格的英雄,您光臨我們的客棧,我們深感榮幸。",
+ "We are very fastidious when working, and you will find no Katta hairs in the dates":
+   "我們做事一絲不苟,你在椰棗裡絕找不到半根卡塔族的毛。",
+ "We do not accept intruders in our tower":
+   "我們的塔不容入侵者。",
+ "We do not accept liars in our tower":
+   "我們的塔不容說謊者。",
+ "Welcome back. If you see something that interests you, let me know":
+   "歡迎回來。你要是看上了什麼,就告訴我。",
 }
 
 resolved=[]
