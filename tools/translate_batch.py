@@ -4160,6 +4160,37 @@ BATCH = {
    "願你今天順心如意。",
  "The beast is much too large to fetch":
    "這野獸太大了,「取物」術搬不動。",
+ # --- 第三十九批 ---
+ "Every time we reached a new land, we sent a letter back to our kin in Shapeir to let them know our whereabouts. And every time we stopped in a new land, we visited the Adventurer's Guild in order to learn about the local news":
+   "每抵達一處新地方,我們就捎封信回夏皮爾給族人,好讓他們知道我們的下落。每在一處新地方落腳,我們也都會去當地的冒險者公會,打聽本地的消息。",
+ "Greetings, friend of the Katta":
+   "你好,卡塔族的朋友。",
+ "Magic, magic everywhere. Find it at Aziza's lair. Magic, magic, wait a bit. Find it in the soul of WIT. Magic, magic in the stars. The Astrologer can see that far. Magic, magic, I dare say, it's even in the games we play":
+   "魔法魔法,無處不在。阿姿莎的居所裡尋它。魔法魔法,且慢些。巫師技術學院的魂魄裡尋它。魔法魔法,藏於星辰。占星師看得那般遠。魔法魔法,我敢說,連我們玩的遊戲裡也有它。",
+ "Shema will be with you shortly":
+   "雪瑪很快就會來招呼你。",
+ "That wouldn't be a good idea":
+   "這主意不妙。",
+ "The Elemental's not going to fit in that little basket in its current form, but you certainly will if you insist on taking this approach":
+   "那元素精靈以目前的形態塞不進那小籃子——但你要是硬要這麼幹,你倒是塞得進去。",
+ "The Enable/Disable button: This button turns the copilot on and off. On the hardest arcade difficulty level, the copilot can not be enabled.[[The Close button: Closes the copilot menu.[[The Help button: Displays this message":
+   "啟用/停用鈕:此鈕開關戰鬥輔助。在最高的街機難度下,無法啟用輔助。[[關閉鈕:關閉輔助選單。[[說明鈕:顯示本訊息。",
+ "THE ICON BAR[[When your cursor is moved to the top of the screen the icon bar appears. The visible icons are WALK, LOOK, USE, TALK, SPECIAL ACTIONS, MAGIC, LAST-USED ITEM, INVENTORY, OPTIONS, and HELP":
+   "圖示列[[當你把游標移到畫面頂端,圖示列便會出現。看得見的圖示有:行走、查看、使用、交談、特殊動作、魔法、上次使用的物品、物品欄、選項,以及說明。",
+ "The item Saba sold you is a disk that's made of many small strings of reed carefully woven together. The image on the weaving shows a familiar face":
+   "薩巴賣給你的是個圓盤,用許多細小的蘆葦條精心編成。編織上的圖案是一張熟悉的臉。",
+ "The man glares back at you. This is not the face you associate with bartenders. It reminds you more of Bruno from Spielburg: definitely not a man to mess with":
+   "那人回瞪你一眼。這可不是你印象中酒保該有的臉,倒更讓你想起史畢柏格的布魯諾——絕對是個惹不得的傢伙。",
+ "The map only works in the streets and plazas of Shapeir":
+   "地圖只在夏皮爾的街道與廣場上管用。",
+ "The message reads:[[\"Those who wish to follow the way of the sword should start at the very beginning or face their undoing.\"":
+   "上頭寫著:[[「欲循劍道者,當自最初步起,否則必招敗亡。」",
+ "The mountain pass opened up a few weeks before you arrived in Spielburg. We had our very first guest stay over around that time. Unfortunately, as you know, he was no longer in a position to pay for his room and board":
+   "山隘在你抵達史畢柏格前幾週才開通。差不多那時候,我們迎來了第一位過夜的客人。可惜,你也知道,他後來已無力支付食宿費了。",
+ "The beast is much too large to fetch.":
+   "這野獸太大了,「取物」術搬不動。",
+ "The map only works in the streets and plazas":
+   "地圖只在街道與廣場上管用。",
 }
 
 resolved=[]
