@@ -36,8 +36,7 @@ def load_font(size):
     for path in FONT_CANDIDATES:
         if os.path.exists(path):
             try:
-                # TTC index 0 = 預設(Noto 第一個 face);TC face 由 fontconfig 處理,
-                # 對點陣烘製用預設 face 即可正確顯示繁體字形。
+                # TTC index 0 = 預設(Noto 第一個 face);TC face 由 fontconfig 處理。
                 return ImageFont.truetype(path, size, index=0), path
             except Exception as e:
                 print(f"  跳過 {path}: {e}", file=sys.stderr)
@@ -87,8 +86,13 @@ def main():
     # 同時烘 ASCII 0x20-0x7E(同一套 Noto、等高、比例半寬),讓中英混排同大小/同基線。
     # 全字共用基線:em box 垂直置中,所有 glyph 以 anchor='la' 畫在固定 oy。
     if args.bin:
-        ascent, descent = font.getmetrics()
-        oy = (size - (ascent + descent)) // 2  # em box 垂直置中 → 共用基線
+        # 共用基線:用代表中文字「國」的墨水範圍(ink bbox)垂直置中決定 oy。
+        # Noto 的 ascent+descent 含西文上伸/下延餘量,比 em 大,用 metrics 置中會讓
+        # 方塊字頂超出 cell,固定 UI 槽(如標題列)就被切。改用實際墨水置中,上下留
+        # padding。所有字(中英)共用此 oy,中英同基線不變。
+        _ref = font.getbbox("國")
+        _refh = _ref[3] - _ref[1]
+        oy = (size - _refh) // 2 - _ref[1]
         bin_chars = list(chars) + [chr(c) for c in range(0x20, 0x7F)]
         os.makedirs(os.path.dirname(args.bin) or ".", exist_ok=True)
         with open(args.bin, "wb") as bf:
