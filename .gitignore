@@ -18,3 +18,14 @@ out/
 # Python venv
 .venv/
 __pycache__/
+
+# 版權:軟體世界雜誌 OCR 轉錄(本機翻譯參考用,不公開發佈)
+docs/softworld-qfg2-walkthrough.md
+build/ocr/
+build/pages/
+build/wt/
+build/corpus*.txt
+
+# 版權遊戲手冊 / 暫存下載
+manual/
+*.crdownload
