@@ -1,0 +1,412 @@
+diff --git a/engines/ags/engine/ac/global_game.cpp b/engines/ags/engine/ac/global_game.cpp
+index 3ede3f1d..9e322403 100644
+--- a/engines/ags/engine/ac/global_game.cpp
++++ b/engines/ags/engine/ac/global_game.cpp
+@@ -773,14 +773,21 @@ void GetMessageText(int msg, char *buffer) {
+ }
+ 
+ void SetSpeechFont(int fontnum) {
+-	if ((fontnum < 0) || (fontnum >= _GP(game).numfonts))
+-		quit("!SetSpeechFont: invalid font number.");
++	if ((fontnum < 0) || (fontnum >= _GP(game).numfonts)) {
++		// CHT patch: AGDI games request a translation-supplied font slot that the
++		// base game lacks. Our CJK renderer is font-independent, so keep the
++		// current font instead of aborting.
++		warning("CHT: SetSpeechFont(%d) out of range [0,%d), keeping current font", fontnum, _GP(game).numfonts);
++		return;
++	}
+ 	_GP(play).speech_font = fontnum;
+ }
+ 
+ void SetNormalFont(int fontnum) {
+-	if ((fontnum < 0) || (fontnum >= _GP(game).numfonts))
+-		quit("!SetNormalFont: invalid font number.");
++	if ((fontnum < 0) || (fontnum >= _GP(game).numfonts)) {
++		warning("CHT: SetNormalFont(%d) out of range [0,%d), keeping current font", fontnum, _GP(game).numfonts);
++		return;
++	}
+ 	_GP(play).normal_font = fontnum;
+ }
+ 
+diff --git a/engines/ags/engine/ac/global_translation.cpp b/engines/ags/engine/ac/global_translation.cpp
+index 7adcc725..884f791a 100644
+--- a/engines/ags/engine/ac/global_translation.cpp
++++ b/engines/ags/engine/ac/global_translation.cpp
+@@ -19,6 +19,10 @@
+  *
+  */
+ 
++// CHT dev diagnostic: allow direct stdio for the string-dump file.
++#define FORBIDDEN_SYMBOL_ALLOW_ALL
++#include <cstdio>
++
+ #include "ags/shared/ac/common.h"
+ #include "ags/engine/ac/display.h"
+ #include "ags/engine/ac/game_state.h"
+@@ -31,15 +35,43 @@
+ #include "ags/shared/util/memory.h"
+ #include "ags/engine/ac/string.h"
+ #include "ags/globals.h"
++#include "common/file.h"
++#include "common/config-manager.h"
+ 
+ namespace AGS3 {
+ 
+ using namespace AGS::Shared::Memory;
+ 
++// CHT patch (dev-only): when ConfMan boolean "ags_dump_strings" is set, append
++// every source string passed to get_translation() to a file, so we can collect
++// the exact translatable keys (milestone M2). Off by default; no effect on players.
++static void cht_dump_source_string(const char *text) {
++	// ConfMan string "ags_dump_strings" = output file path (checked across domains).
++	static int s_state = 0; // 0=unknown 1=on 2=off
++	static FILE *s_dump = nullptr;
++	if (s_state == 0) {
++		Common::String path;
++		if (!(ConfMan.hasKey("ags_dump_strings", ConfMan.getActiveDomainName()) &&
++		      !(path = ConfMan.get("ags_dump_strings", ConfMan.getActiveDomainName())).empty()))
++			path.clear();
++		if (path.empty() && ConfMan.hasKey("ags_dump_strings", Common::ConfigManager::kApplicationDomain))
++			path = ConfMan.get("ags_dump_strings", Common::ConfigManager::kApplicationDomain);
++		if (!path.empty())
++			s_dump = fopen(path.c_str(), "w");
++		s_state = s_dump ? 1 : 2;
++		warning("CHT-DIAG: get_translation alive; dump path='%s' open=%d", path.c_str(), (int)(s_state == 1));
++	}
++	if (s_state == 1) {
++		fprintf(s_dump, "%s\n", text);
++		fflush(s_dump);
++	}
++}
++
+ const char *get_translation(const char *text) {
+ 	if (text == nullptr)
+ 		quit("!Null string supplied to CheckForTranslations");
+ 
++	cht_dump_source_string(text);
+ 	_G(source_text_length) = GetTextDisplayLength(text);
+ 
+ #if AGS_PLATFORM_64BIT
+diff --git a/engines/ags/engine/main/engine.cpp b/engines/ags/engine/main/engine.cpp
+index bb406b57..2e1c6226 100644
+--- a/engines/ags/engine/main/engine.cpp
++++ b/engines/ags/engine/main/engine.cpp
+@@ -55,6 +55,7 @@
+ #include "ags/shared/debugging/out.h"
+ #include "ags/engine/device/mouse_w32.h"
+ #include "ags/shared/font/ags_font_renderer.h"
++#include "ags/shared/font/cjk_font.h"
+ #include "ags/shared/font/fonts.h"
+ #include "ags/shared/gfx/image.h"
+ #include "ags/engine/gfx/graphics_driver.h"
+@@ -529,6 +530,10 @@ void engine_init_game_settings() {
+ 	// Setup a text encoding mode depending on the game data hint
+ 	if (_GP(game).options[OPT_GAMETEXTENCODING] == 65001) // utf-8 codepage number
+ 		set_uformat(U_UTF8);
++	else if (get_cjk_font() != nullptr)
++		// CHT patch: a CJK atlas is present, so the translation carries UTF-8
++		// multi-byte text. Force UTF-8 so ugetxc() decodes whole codepoints.
++		set_uformat(U_UTF8);
+ 	else
+ 		set_uformat(U_ASCII);
+ 
+diff --git a/engines/ags/module.mk b/engines/ags/module.mk
+index afc68429..2a432ec8 100644
+--- a/engines/ags/module.mk
++++ b/engines/ags/module.mk
+@@ -45,6 +45,7 @@ MODULE_OBJS = \
+ 	shared/core/asset.o \
+ 	shared/core/asset_manager.o \
+ 	shared/debugging/debug_manager.o \
++	shared/font/cjk_font.o \
+ 	shared/font/fonts.o \
+ 	shared/font/ttf_font_renderer.o \
+ 	shared/font/wfn_font.o \
+diff --git a/engines/ags/shared/font/cjk_font.cpp b/engines/ags/shared/font/cjk_font.cpp
+new file mode 100644
+index 00000000..f0cc0cd0
+--- /dev/null
++++ b/engines/ags/shared/font/cjk_font.cpp
+@@ -0,0 +1,80 @@
++/* ScummVM - Graphic Adventure Engine
++ *
++ * ScummVM is the legal property of its developers, whose names
++ * are too numerous to list here. Please refer to the COPYRIGHT
++ * file distributed with this source distribution.
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
++ */
++
++#include "ags/shared/font/cjk_font.h"
++#include "ags/shared/core/asset_manager.h"
++#include "ags/shared/debugging/out.h"
++#include "ags/shared/util/stream.h"
++#include "ags/globals.h"
++
++namespace AGS3 {
++
++using namespace AGS::Shared;
++
++bool CjkFont::Load(const char *filename) {
++	Stream *in = _GP(AssetMgr)->OpenAsset(filename);
++	if (in == nullptr)
++		return false;
++
++	char magic[4] = { 0 };
++	in->Read(magic, 4);
++	if (magic[0] != 'C' || magic[1] != 'J' || magic[2] != 'K' || magic[3] != 'F') {
++		delete in;
++		return false;
++	}
++	_size = in->ReadInt32();
++	int count = in->ReadInt32();
++	if (_size <= 0 || _size > 64 || count <= 0) {
++		delete in;
++		_size = 0;
++		return false;
++	}
++	const int bytes = _size * _size;
++	for (int i = 0; i < count; ++i) {
++		uint32 code = (uint32)in->ReadInt32();
++		CjkGlyph glyph;
++		glyph.Coverage.resize(bytes);
++		in->Read(&glyph.Coverage[0], bytes);
++		_glyphs[code] = glyph;
++	}
++	delete in;
++	Debug::Printf(kDbgMsg_Info, "CJK: loaded %d glyphs @ %dpx from %s", (int)_glyphs.size(), _size, filename);
++	return IsValid();
++}
++
++CjkFont *get_cjk_font() {
++	static CjkFont *s_font = nullptr;
++	static bool s_tried = false;
++	if (!s_tried) {
++		s_tried = true;
++		CjkFont *f = new CjkFont();
++		// 16x16 is the default for the QFG2 CHT slice; fall back to 24x24.
++		if (f->Load("cjkfont16.bin") || f->Load("cjkfont24.bin")) {
++			s_font = f;
++		} else {
++			delete f;
++			s_font = nullptr;
++		}
++	}
++	return s_font;
++}
++
++} // namespace AGS3
+diff --git a/engines/ags/shared/font/cjk_font.h b/engines/ags/shared/font/cjk_font.h
+new file mode 100644
+index 00000000..73741976
+--- /dev/null
++++ b/engines/ags/shared/font/cjk_font.h
+@@ -0,0 +1,66 @@
++/* ScummVM - Graphic Adventure Engine
++ *
++ * ScummVM is the legal property of its developers, whose names
++ * are too numerous to list here. Please refer to the COPYRIGHT
++ * file distributed with this source distribution.
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
++ */
++
++//=============================================================================
++//
++// CJK bitmap glyph atlas for the Traditional-Chinese localization patch.
++// Loaded once from "cjkfontNN.bin" (baked by tools/build_cjk_font.py) and
++// queried by the WFN/TTF renderers to draw multi-byte (UTF-8) codepoints.
++// English/ASCII text is unaffected: only codepoints present in the atlas
++// are drawn from here, everything else falls through to the original font.
++//
++//=============================================================================
++
++#ifndef AGS_SHARED_FONT_CJK_FONT_H
++#define AGS_SHARED_FONT_CJK_FONT_H
++
++#include "common/hashmap.h"
++#include "common/array.h"
++
++namespace AGS3 {
++
++struct CjkGlyph {
++	Common::Array<byte> Coverage; // size*size, 0..255
++};
++
++class CjkFont {
++public:
++	bool Load(const char *filename);
++	bool IsValid() const { return _size > 0 && _glyphs.size() > 0; }
++	int Size() const { return _size; }
++	// returns nullptr if the codepoint is not in the atlas
++	const CjkGlyph *Get(uint32 code) const {
++		Common::HashMap<uint32, CjkGlyph>::const_iterator it = _glyphs.find(code);
++		return (it == _glyphs.end()) ? nullptr : &it->_value;
++	}
++
++private:
++	int _size = 0;
++	Common::HashMap<uint32, CjkGlyph> _glyphs;
++};
++
++// Lazily loads cjkfontNN.bin via the asset manager; returns nullptr if absent.
++// Once loaded (or determined absent) the result is cached.
++CjkFont *get_cjk_font();
++
++} // namespace AGS3
++
++#endif
+diff --git a/engines/ags/shared/font/fonts.cpp b/engines/ags/shared/font/fonts.cpp
+index 6cd44ad2..41c71ccf 100644
+--- a/engines/ags/shared/font/fonts.cpp
++++ b/engines/ags/shared/font/fonts.cpp
+@@ -25,6 +25,7 @@
+ #include "ags/shared/ac/common.h" // set_our_eip
+ #include "ags/shared/ac/game_struct_defines.h"
+ #include "ags/shared/debugging/out.h"
++#include "ags/shared/font/cjk_font.h"
+ #include "ags/shared/font/fonts.h"
+ #include "ags/shared/font/ttf_font_renderer.h"
+ #include "ags/shared/font/wfn_font_renderer.h"
+@@ -119,6 +120,18 @@ static void font_post_init(size_t fontNumber) {
+ 			font.LineSpacingCalc = font.Metrics.CompatHeight + 2 * font.Info.AutoOutlineThickness;
+ 		}
+ 	}
++
++	// CHT patch: a CJK atlas draws glyphs at a fixed size that usually exceeds the
++	// base ASCII font height. Raise this font's logical height and line spacing so
++	// multi-line Chinese text does not overlap vertically.
++	if (CjkFont *cjk = get_cjk_font()) {
++		const int cs = cjk->Size();
++		font.Metrics.NominalHeight = std::max(font.Metrics.NominalHeight, cs);
++		font.Metrics.RealHeight = std::max(font.Metrics.RealHeight, cs);
++		font.Metrics.CompatHeight = std::max(font.Metrics.CompatHeight, cs);
++		font.Metrics.VExtent.second = std::max(font.Metrics.VExtent.second, cs);
++		font.LineSpacingCalc = std::max(font.LineSpacingCalc, cs + 2);
++	}
+ }
+ 
+ static void font_replace_renderer(size_t fontNumber, IAGSFontRenderer* renderer, IAGSFontRenderer2* renderer2) {
+diff --git a/engines/ags/shared/font/wfn_font_renderer.cpp b/engines/ags/shared/font/wfn_font_renderer.cpp
+index 9dfff34c..ede46e1b 100644
+--- a/engines/ags/shared/font/wfn_font_renderer.cpp
++++ b/engines/ags/shared/font/wfn_font_renderer.cpp
+@@ -23,6 +23,7 @@
+ #include "ags/shared/ac/common.h" // our_eip
+ #include "ags/shared/core/asset_manager.h"
+ #include "ags/shared/debugging/out.h"
++#include "ags/shared/font/cjk_font.h"
+ #include "ags/shared/font/wfn_font.h"
+ #include "ags/shared/gfx/bitmap.h"
+ #include "ags/shared/util/stream.h"
+@@ -32,6 +33,24 @@ namespace AGS3 {
+ 
+ using namespace AGS::Shared;
+ 
++// Blit one CJK atlas glyph (size x size, 8-bit coverage) using text_color.
++// Mirrors RenderChar's clipping. Returns horizontal advance in pixels.
++static int RenderCjkGlyph(Bitmap *ds, const int at_x, const int at_y, Rect clip,
++		const CjkGlyph &glyph, const int size, const color_t text_color) {
++	const byte *cov = &glyph.Coverage[0];
++	int sx = MAX(at_x, (int)clip.Left), ex = clip.Right + 1;
++	int sy = MAX(at_y, (int)clip.Top), ey = clip.Bottom + 1;
++	int sw = MAX(0, (int)clip.Left - at_x);
++	int sh = MAX(0, (int)clip.Top - at_y);
++	for (int h = sh, y = sy; h < size && y < ey; ++h, ++y) {
++		for (int w = sw, x = sx; w < size && x < ex; ++w, ++x) {
++			if (cov[h * size + w] >= 0x80)
++				ds->PutPixel(x, y, text_color);
++		}
++	}
++	return size;
++}
++
+ void WFNFontRenderer::AdjustYCoordinateForFont(int *ycoord, int fontNumber) {
+ 	// Do nothing
+ }
+@@ -43,24 +62,33 @@ void WFNFontRenderer::EnsureTextValidForFont(char *text, int fontNumber) {
+ int WFNFontRenderer::GetTextWidth(const char *text, int fontNumber) {
+ 	const WFNFont *font = _fontData[fontNumber].Font;
+ 	const FontRenderParams &params = _fontData[fontNumber].Params;
+-	int text_width = 0;
++	CjkFont *cjk = get_cjk_font();
++	int ascii_width = 0, cjk_width = 0;
+ 
+ 	for (int code = ugetxc(&text); code; code = ugetxc(&text)) {
+-		text_width += font->GetChar(code).Width;
++		if (cjk && cjk->Get((uint32)code))
++			cjk_width += cjk->Size();
++		else
++			ascii_width += font->GetChar(code).Width;
+ 	}
+-	return text_width * params.SizeMultiplier;
++	return ascii_width * params.SizeMultiplier + cjk_width;
+ }
+ 
+ int WFNFontRenderer::GetTextHeight(const char *text, int fontNumber) {
+ 	const WFNFont *font = _fontData[fontNumber].Font;
+ 	const FontRenderParams &params = _fontData[fontNumber].Params;
++	CjkFont *cjk = get_cjk_font();
+ 	int max_height = 0;
+ 
+ 	for (int code = ugetxc(&text); code; code = ugetxc(&text)) {
+-		const uint16_t height = font->GetChar(code).Height;
+-		max_height = std::max(max_height, static_cast<int>(height));
++		if (cjk && cjk->Get((uint32)code)) {
++			max_height = std::max(max_height, cjk->Size());
++		} else {
++			const uint16_t height = font->GetChar(code).Height;
++			max_height = std::max(max_height, static_cast<int>(height) * params.SizeMultiplier);
++		}
+ 	}
+-	return max_height * params.SizeMultiplier;
++	return max_height;
+ }
+ 
+ static int RenderChar(Bitmap *ds, const int at_x, const int at_y, Rect clip,
+@@ -72,13 +100,19 @@ void WFNFontRenderer::RenderText(const char *text, int fontNumber, BITMAP *desti
+ 
+ 	const WFNFont *font = _fontData[fontNumber].Font;
+ 	const FontRenderParams &params = _fontData[fontNumber].Params;
++	CjkFont *cjk = get_cjk_font();
+ 	Bitmap ds(destination, true);
+ 
+ 	// NOTE: allegro's putpixel ignores clipping (optimization),
+ 	// so we'll have to accommodate for that ourselves
+ 	Rect clip = ds.GetClip();
+-	for (int code = ugetxc(&text); code; code = ugetxc(&text))
+-		x += RenderChar(&ds, x, y, clip, font->GetChar(code), params.SizeMultiplier, colour);
++	for (int code = ugetxc(&text); code; code = ugetxc(&text)) {
++		const CjkGlyph *g = cjk ? cjk->Get((uint32)code) : nullptr;
++		if (g)
++			x += RenderCjkGlyph(&ds, x, y, clip, *g, cjk->Size(), colour);
++		else
++			x += RenderChar(&ds, x, y, clip, font->GetChar(code), params.SizeMultiplier, colour);
++	}
+ 
+ 	set_our_eip(oldeip);
+ }

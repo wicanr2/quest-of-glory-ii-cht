@@ -1,0 +1,94 @@
+name: build
+
+# 英雄傳奇II 繁中化:打包翻譯資產 + 跨平台 ScummVM(AGS + CJK patch)。
+# 注意:macOS / Android job 依 ScummVM 官方 build 流程撰寫,首次執行可能需依
+# runner 環境微調(NDK 版本、brew 套件名)。translate-assets job 為平台無關、
+# 一定可產出的核心交付物。
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  # ---- 平台無關的繁中化資產(核心交付物)----
+  translate-assets:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: 安裝 CJK 字型(host 來源)
+        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+      - name: 產生 chinese.tra + cjkfont16.bin
+        run: |
+          uv venv && uv pip install pillow
+          uv run tools/make_tra.py tools/translation.tsv --out dist/chinese.tra --charset-out build/charset.txt
+          uv run tools/build_cjk_font.py --size 16 --charset-file build/charset.txt --bin dist/cjkfont16.bin --out build/cjk16
+          uv run tools/build_cjk_font.py --size 24 --charset-file build/charset.txt --bin dist/cjkfont24.bin --out build/cjk24
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qfg2-cht-assets
+          path: |
+            dist/chinese.tra
+            dist/cjkfont16.bin
+            dist/cjkfont24.bin
+            README.md
+
+  # ---- macOS universal .app/.dmg(patched ScummVM,僅 ags engine)----
+  macos:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安裝相依
+        run: brew install sdl2 sdl2_net freetype libpng libvorbis flac faad2 a52dec libmad fluid-synth
+      - name: 取得並 patch ScummVM
+        run: bash tools/apply_patches.sh "$GITHUB_WORKSPACE/scummvm-src"
+      - name: configure + build + bundle
+        working-directory: scummvm-src
+        run: |
+          ./configure --disable-all-engines --enable-engine=ags --enable-release
+          make -j$(sysctl -n hw.ncpu)
+          make bundle
+      - name: 打包 DMG
+        run: |
+          mkdir -p dmgroot && cp -R scummvm-src/ScummVM.app dmgroot/ 2>/dev/null || cp -R scummvm-src/*.app dmgroot/
+          hdiutil create -volname "QFG2-CHT-ScummVM" -srcfolder dmgroot -ov -format UDZO qfg2-cht-macos.dmg
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qfg2-cht-macos
+          path: qfg2-cht-macos.dmg
+
+  # ---- Android APK(patched ScummVM,僅 ags engine)----
+  android:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安裝相依
+        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - name: 安裝 Android NDK
+        id: ndk
+        uses: nttld/setup-ndk@v1
+        with: { ndk-version: r26d }
+      - name: 取得並 patch ScummVM
+        run: bash tools/apply_patches.sh "$GITHUB_WORKSPACE/scummvm-src"
+      - name: configure + build APK (arm64)
+        working-directory: scummvm-src
+        env:
+          ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
+        run: |
+          # ScummVM Android toolchain build(僅 ags engine)。
+          # 參考 dists/android;首次執行請依 ScummVM 當前 Android 文件校正。
+          PATH="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
+          ./configure --host=android-aarch64 --enable-engine=ags --disable-all-engines --enable-release || \
+            { echo "::warning::Android configure 需依當前 ScummVM 文件校正"; exit 1; }
+          make -j$(nproc)
+          make androiddist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qfg2-cht-android
+          path: scummvm-src/**/*.apk
