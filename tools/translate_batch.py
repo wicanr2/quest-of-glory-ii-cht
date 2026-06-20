@@ -134,6 +134,69 @@ BATCH = {
    "好劍法。好身手。會有不少人以你為榮的。",
  "Maybe you find work for hero here, too":
    "說不定這兒也有適合英雄幹的活兒。",
+ # --- 第三批:場景描述 / 問候 / 互動 ---
+ "You would try the patience of a dervish! Do something":
+   "你連苦行僧的耐性都要磨光了!倒是做點什麼啊!",
+ "A beautifully ornate window adorns this area of the wall":
+   "牆上這一處鑲著一扇華美雕飾的窗。",
+ "A decorative basket adorns the alley":
+   "一只裝飾用的籃子點綴著巷子。",
+ "A delicately crafted jar of copper and bronze":
+   "一只以紅銅與青銅精工打造的罐子。",
+ "A derelict window hangs unevenly from its battered frame":
+   "一扇破窗歪斜地掛在殘破的窗框上。",
+ "A discarded barrel rests nearby. The wood shows heavy signs of rot":
+   "附近擱著一只廢棄的木桶,木頭已嚴重腐朽。",
+ "A eunuch patrols the parapet":
+   "一名宦官在城垛上巡邏。",
+ "A feeling of peace and tranquility permeates the area":
+   "一股祥和寧靜的氣息瀰漫此地。",
+ "A ghastly moan is all you hear from the other side of the door":
+   "門的另一側,你只聽見一聲淒厲的呻吟。",
+ "A handshake wouldn't do much to change this guy's bad attitude":
+   "光握個手,可改變不了這傢伙的臭脾氣。",
+ "A large iron grate blocks further passage in this direction":
+   "一道巨大的鐵柵欄擋住了這個方向的去路。",
+ "A most interesting tale":
+   "真是個有意思的故事。",
+ "A most prudent decision upon your part":
+   "你這決定下得真是明智。",
+ "An Acme Lock Pick, suitable for most standard locks and a few squirrely ones":
+   "一把「頂尖牌」開鎖器,應付大多數標準鎖綽綽有餘,連幾種刁鑽的也難不倒它。",
+ "A pile of heavy wooden crates has been stacked here":
+   "這裡堆著一疊沉重的木箱。",
+ "A pity we couldn't make an exchange. Perhaps some other time":
+   "真可惜,這筆買賣沒談成。那就改日再說吧。",
+ "A quick glance at the skyline tells you how much in decline the city is":
+   "只消瞄一眼天際線,你便知道這座城市已沒落到何種地步。",
+ "A simple yes or no will suffice":
+   "答個「要」或「不要」就行了。",
+ "A square, flat box lies discarded among the trash":
+   "一只方扁的盒子被丟棄在垃圾堆裡。",
+ "A strange sort of person, even for a human":
+   "真是個怪人——即便以人類的標準來看也一樣。",
+ "A topiary expert, you are not":
+   "修剪花木的高手,你肯定不是。",
+ "A wise choice. I dislike a man who doesn't drink":
+   "明智之選。我可不喜歡滴酒不沾的男人。",
+ "Greetings, Effendi. Could you spare some alms for one who is not so fortunate":
+   "您好,閣下。能否施捨些錢財,給我這不幸之人?",
+ "Greetings, friend of the Katta. Perhaps we should look for a way out of here":
+   "你好,卡塔族的朋友。或許我們該找條路離開這兒!",
+ "Greetings, Hero. Do you wish to engage in another wager with me":
+   "你好,英雄。想再跟我賭一把嗎?",
+ "Greetings, Hero. I am glad you have come to my aid":
+   "你好,英雄。你能來相助,我很欣慰。",
+ "Greetings, nimble one. The crowd seems very pleased with your achievement":
+   "你好,身手敏捷的傢伙。群眾似乎對你的本事很是滿意。",
+ "He doesn't appreciate being looked down upon. Why don't you dismount first":
+   "他可不喜歡被人居高臨下地看著。你何不先下坐騎?",
+ "He doesn't seem to have any useful items left in stock":
+   "他似乎沒剩什麼有用的貨了。",
+ "He is one of the local guards":
+   "他是本地的衛兵之一。",
+ "Hello! Bone jar! Hi, guy! Set a spell, take your shoes off! What may I do to you":
+   "哈囉!笨豬有!嗨呀老兄!坐下歇會兒,把鞋脫了吧!有啥能「效勞」你的?",
 }
 
 resolved=[]
