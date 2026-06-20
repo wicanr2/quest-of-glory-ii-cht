@@ -493,7 +493,7 @@ index 6cd44ad2..41c71ccf 100644
  
  static void font_replace_renderer(size_t fontNumber, IAGSFontRenderer* renderer, IAGSFontRenderer2* renderer2) {
 diff --git a/engines/ags/shared/font/wfn_font_renderer.cpp b/engines/ags/shared/font/wfn_font_renderer.cpp
-index 9dfff34c..e4ce01f2 100644
+index 9dfff34c..9d6463c4 100644
 --- a/engines/ags/shared/font/wfn_font_renderer.cpp
 +++ b/engines/ags/shared/font/wfn_font_renderer.cpp
 @@ -23,6 +23,7 @@
@@ -504,12 +504,15 @@ index 9dfff34c..e4ce01f2 100644
  #include "ags/shared/font/wfn_font.h"
  #include "ags/shared/gfx/bitmap.h"
  #include "ags/shared/util/stream.h"
-@@ -32,6 +33,37 @@ namespace AGS3 {
+@@ -32,6 +33,40 @@ namespace AGS3 {
  
  using namespace AGS::Shared;
  
 +// Blit one CJK atlas glyph (size x size, 8-bit coverage) using text_color.
 +// Mirrors RenderChar's clipping. Returns horizontal advance in pixels.
++// NOTE: coverage is thresholded to 1-bit. Proper alpha anti-aliasing needs the
++// destination bitmap's own pixel format (the global allegro 32-bit shifts used
++// by makeacol32 do not match every surface), so it is left for future work.
 +static int RenderCjkGlyph(Bitmap *ds, const int at_x, const int at_y, Rect clip,
 +		const CjkGlyph &glyph, const int size, const color_t text_color) {
 +	const byte *cov = &glyph.Coverage[0];
@@ -542,7 +545,7 @@ index 9dfff34c..e4ce01f2 100644
  void WFNFontRenderer::AdjustYCoordinateForFont(int *ycoord, int fontNumber) {
  	// Do nothing
  }
-@@ -43,24 +75,36 @@ void WFNFontRenderer::EnsureTextValidForFont(char *text, int fontNumber) {
+@@ -43,24 +78,36 @@ void WFNFontRenderer::EnsureTextValidForFont(char *text, int fontNumber) {
  int WFNFontRenderer::GetTextWidth(const char *text, int fontNumber) {
  	const WFNFont *font = _fontData[fontNumber].Font;
  	const FontRenderParams &params = _fontData[fontNumber].Params;
@@ -585,7 +588,7 @@ index 9dfff34c..e4ce01f2 100644
  }
  
  static int RenderChar(Bitmap *ds, const int at_x, const int at_y, Rect clip,
-@@ -72,13 +116,20 @@ void WFNFontRenderer::RenderText(const char *text, int fontNumber, BITMAP *desti
+@@ -72,13 +119,20 @@ void WFNFontRenderer::RenderText(const char *text, int fontNumber, BITMAP *desti
  
  	const WFNFont *font = _fontData[fontNumber].Font;
  	const FontRenderParams &params = _fontData[fontNumber].Params;

@@ -97,6 +97,14 @@ ScummVM AGS 的繪字統一走 `Renderer->RenderText/GetTextWidth`(`IAGSFontRend
 - **主選單/標題裝飾字繞過 `get_translation`**(自繪/精靈圖)→ 翻不到。對白/`Display()` 文字才走 translation。垂直切片用開場 DISCLAIMER(走 Display)。
 - **動態抽字**:hook `get_translation()` dump 每個 source string(經 ConfMan 路徑 gate),play through 即收集到真實 key;比自寫 MFL/script 解析器快得多。
 
+## hi-res canvas:ScummVM AGS 做不到(重要)
+
+想照 rule 81 拉高內部畫布(640×480 + 24×24)?**在 ScummVM 的 AGS 引擎不可行**:
+- 軟體渲染器 `ali_3d_scummvm` 的 `RenderSpritesAtScreenResolution()` 是**空實作(no-op)**;所有東西在 native 320×200 渲染,再由 ScummVM 後端縮放輸出 —— 沒有 supersampling 槓桿。
+- AGS 文字排版(換行/文字框尺寸)全在 native px 空間;要給文字更多空間,native 解析度就得變大,而那需要把**所有 room 背景 / sprite 2× 縮放 + 全座標(角色/熱點/walkable/GUI/物件)remap**,動到整個資料模型。不是小改動。
+- **CJK 抗鋸齒**:`makeacol32`/`getr32` 用全域 allegro 32-bit shift,**不一定等於目標 bitmap 的實際像素格式**(直接寫 caller 給的 `text_color` 才安全;拆解再用全域 shift 重組會變洋紅)。安全 AA 需取該 bitmap 自身格式,留待後續。
+- **務實替代**:16/24px 點陣 + F8 動態切換 + ScummVM 視窗放大。多數遊戲內文字(1–3 行)在 24px 下也塞得下,只有超長 Display 框會溢出,用 F8 降 16px 即可。
+
 ## 踩雷
 
 - `Unable to decode video 'AGDI.001'` / `Failed to find RIFF header` = AGDI launcher splash 影片,**無害**,遊戲照進。

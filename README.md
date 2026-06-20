@@ -29,7 +29,7 @@
 | 遊戲中 F8 切換語言 | ✅ 繁中 16×16 → 繁中 24×24 → 英文原版，即時循環 |
 | 全文翻譯 | 🚧 進行中（主線 61 句已譯，語氣參照《軟體世界》攻略；總量約 2350 句） |
 | 主選單裝飾標題字 | 🚧 該處繞過翻譯系統，待另解（精靈圖/字型替換） |
-| 640×480 真實高解析畫布 | 🚧 大改造，延後；目前 16/24px + ScummVM 視窗放大 |
+| 640×480 真實高解析畫布 | ⛔ ScummVM AGS 全 native 渲染、`RenderAtScreenRes` 為 no-op，無 supersampling；真高解析需把所有美術 2× + 全座標 remap（不可行於小改動）。實務以 16/24px + F8 切換 + 視窗放大替代 |
 | macOS `.dmg` GitHub Actions 打包 | ✅ CI 綠燈，自動產出 .dmg |
 | Android `.apk` GitHub Actions 打包 | 🚧 引擎可編譯，卡 Oboe 連結（需 ScummVM gradle/prefab 路徑） |
 
