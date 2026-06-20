@@ -1397,6 +1397,141 @@ BATCH = {
    "累歸累,可沒得歇。",
  "My name is Sharim":
    "我叫沙里姆。",
+ # --- 第十四批:地名/系統/諺語/對白 ---
+ "No rest for the weary! Something's after you":
+   "累歸累,可沒得歇!有東西在追你。",
+ "Not now. Get to the pillar":
+   "現在不行。先到柱子那兒去。",
+ "Not right now. Somebody might get hurt":
+   "現在不行,可能會有人受傷。",
+ "Not while you're riding your Saurus":
+   "你騎著索魯斯時可不行。",
+ "No way -- not with your backpack this heavy":
+   "門兒都沒有——你背包這麼重哪行!",
+ "Now, do we have a deal, or is this a deal":
+   "怎麼樣,這筆買賣成不成?",
+ "No, when it's e'rat'icated. What did the rat say as he fell 12,000 feet straight down":
+   "不,是牠被「鼠」除的時候。那隻老鼠直直墜下一萬兩千呎時,說了什麼?",
+ "Now I must get back to my work. If you see something that interests you, let me know":
+   "我得回去幹活了。你要是看上了什麼,就告訴我。",
+ "Now is not a good time to use your map":
+   "現在不適合看地圖。",
+ "Now seems like an excellent time for such a venture":
+   "現在似乎正是幹這檔事的大好時機。",
+ "Now that you've made friends and told tales, it's time to think about escaping":
+   "如今你已交了朋友、敘過往事,該想想怎麼脫身了。",
+ "Now would not be a good time for that":
+   "現在做那件事不是時候。",
+ "Occasional bumps and scratches can be heard from behind this door":
+   "這門後不時傳來碰撞與抓搔聲。",
+ "Of course, such places are hardly suitable for adventurers who wish to be heroes":
+   "當然,這種地方可不適合一心想當英雄的冒險者。",
+ "Oh, a wise guy, eh":
+   "喔,自作聰明是吧?",
+ "Oh, is that a pizza? I have never seen such a perfect one before. Did you make it yourself":
+   "喔,那是披薩嗎?我從沒見過這麼完美的一個。你親手做的?",
+ "Oh, is your pouch deflated? I'm so sorry. Well, I hope you can come again soon":
+   "喔,你的錢囊癟了?真遺憾。好吧,希望你很快能再來。",
+ "Oh, leaving are you? Farewell, then. Be sure to return if you need any of my pills":
+   "喔,要走了?那就再會吧。需要我的藥丸,記得再來。",
+ "Okay. What do you want to know":
+   "好。你想知道什麼?",
+ "Okay. You drop the ceramic container":
+   "好。你放下了那只陶罐。",
+ "Omar does not need that":
+   "奧瑪爾不需要那個。",
+ "Omar frowns at your gesture":
+   "奧瑪爾對你的舉動皺起了眉。",
+ "One of the few living things in the desert":
+   "是沙漠裡少數的活物之一。",
+ "One thing at a time, Hero":
+   "一次一件事,英雄。",
+ "Only a Fresno Raisin could love the blazing orange sun of Shapeir":
+   "也只有弗雷斯諾的葡萄乾,才會愛夏皮爾那輪炙熱的橘色太陽。",
+ "Only a Shapeirian sunset beats my jewelry as far as beauty and splendor are concerned":
+   "論美麗與華彩,唯有夏皮爾的落日能勝過我的珠寶。",
+ "On the opposite side, you hear deep and heavy shuffling and dragging sounds":
+   "另一側傳來沉重的拖曳與挪動聲。",
+ "On the other hand, where did you pick these up again":
+   "話說回來,你這些又是打哪兒撿來的?",
+ "On the other side of the door, heavy breathing and crying are audible":
+   "門的另一側,聽得見沉重的喘息與哭泣。",
+ "On this shelf are various examples of stuff, things, and megusalems":
+   "這架子上擺著各式各樣的玩意兒、東西,還有梅古撒冷。",
+ "Opening up nose like opening out heart. Keep a tissue handy for both":
+   "敞開鼻孔猶如敞開心扉。兩者都記得備條手帕。",
+ "Other than its shape, there's nothing special about this rock":
+   "除了形狀,這塊石頭沒什麼特別的。",
+ "Ouch! Why do you treat yourself so inappropriately":
+   "哎喲!你幹嘛這樣折騰自己?",
+ "Our lizard jerky rations are very cheap":
+   "我們的蜥蜴肉乾乾糧很便宜。",
+ "Our special blend of preservatives lets the rich, full-bodied lizard flavor come through":
+   "我們特調的防腐配方,能把那濃郁醇厚的蜥蜴風味完整保留下來。",
+ "People will think you've gone fruity":
+   "人家會以為你發瘋了!",
+ "Perhaps it would be best, Effendi, if you returned it to Omar himself":
+   "閣下,或許最好還是由您親自把它還給奧瑪爾。",
+ "Perhaps it would be wise to just hide under a rock for a few days or so":
+   "或許躲到石頭底下避個幾天,才是明智之舉。",
+ "Perhaps you should return when you have learned your name and some manners":
+   "等你弄清自己的名字、學會點規矩,再回來吧。",
+ "Permit me to loan you my sword, 'Soulforge.'":
+   "請容我把我的劍「鑄魂」借給你。",
+ "Picking nose like picking fight. Both leave hands dirty":
+   "挖鼻孔猶如挑釁打架,兩者都弄髒了手。",
+ "Picking your nose like picking your underwear. Better without audience":
+   "挖鼻孔猶如挑內褲,沒有觀眾時做比較好。",
+ "Pills to magically restore your health":
+   "以魔法恢復生命力的藥丸。",
+ "Pills to magically restore your spell-casting abilities":
+   "以魔法恢復施法能力的藥丸。",
+ "Pills to magically restore your stamina":
+   "以魔法恢復耐力的藥丸。",
+ "Pinned to the Guild wall was a poster requesting a hero for the realm of Spielburg to the west":
+   "公會牆上釘著一張海報,為西邊的史畢柏格之地徵求一名英雄。",
+ "Pity. Ah, well, there will be others. Good day, sir":
+   "可惜。唉,算了,還會有別人的。再會,先生。",
+ "Plants thrive beneath this residential window. A decorative awning provides shade from the harsh sun":
+   "這扇民宅窗下花草繁茂,一張裝飾用的遮篷擋去了烈日。",
+ "Plaza of the Fighters East":
+   "戰士廣場 東",
+ "Plaza of the Fighters West":
+   "戰士廣場 西",
+ "Plaza of the Fountain North":
+   "噴泉廣場 北",
+ "Plaza of the Fountain South":
+   "噴泉廣場 南",
+ "Plaza of the Palace":
+   "王宮廣場",
+ "Please don't leave. I need your help":
+   "請別走。我需要你的幫助。",
+ "Please, Effendi. You must come inside quickly before the guards notice us":
+   "拜託,閣下。趁衛兵還沒注意到我們,您得趕快進來。",
+ "Please keep it with you for as long as you are our guest":
+   "只要你還是我們的客人,就請隨身帶著它。",
+ "Please post all queries and comments on our forums at www.AGDInteractive.com":
+   "一切疑問與意見,請發表於我們的論壇 www.AGDInteractive.com。",
+ "Please select a game to delete":
+   "請選擇要刪除的存檔。",
+ "Please stand up first to avoid issues when returning to the current room after battle is over":
+   "請先站起來,以免戰鬥結束、回到當前房間時出狀況。",
+ "Please tell me what happens when you use it. I'm sorry I can't be there, but I have much work to do":
+   "請告訴我你用它時發生了什麼。抱歉我不能在場,實在有太多活兒要忙。",
+ "Please type a longer description":
+   "請輸入較長的描述。",
+ "Please type a longer name":
+   "請輸入較長的名稱。",
+ "Press the key you wish to assign to this action":
+   "請按下你想指派給此動作的按鍵。",
+ "Pretty jewelry and amulets hang on the stand":
+   "架上掛著精美的珠寶與護身符。",
+ "Q. How do you get down off a Saurus":
+   "問:你要怎麼從索魯斯身上「下」來?",
+ "Quiet. Someone might hear you":
+   "安靜。可能會被人聽見。",
+ "No one seems to be listening.":
+   "似乎沒有人在聽。",
 }
 
 resolved=[]
