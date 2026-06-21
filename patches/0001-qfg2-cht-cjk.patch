@@ -29,7 +29,7 @@ index 3ede3f1d..9e322403 100644
  }
  
 diff --git a/engines/ags/engine/ac/global_translation.cpp b/engines/ags/engine/ac/global_translation.cpp
-index 7adcc725..6ef56d55 100644
+index 7adcc725..922ab4aa 100644
 --- a/engines/ags/engine/ac/global_translation.cpp
 +++ b/engines/ags/engine/ac/global_translation.cpp
 @@ -19,8 +19,13 @@
@@ -46,7 +46,7 @@ index 7adcc725..6ef56d55 100644
  #include "ags/engine/ac/game_state.h"
  #include "ags/engine/ac/global_translation.h"
  #include "ags/engine/ac/string.h"
-@@ -30,18 +35,380 @@
+@@ -30,18 +35,395 @@
  #include "ags/plugins/plugin_engine.h"
  #include "ags/shared/util/memory.h"
  #include "ags/engine/ac/string.h"
@@ -56,6 +56,7 @@ index 7adcc725..6ef56d55 100644
 +#include "ags/shared/font/fonts.h"
 +#include "ags/shared/script/cc_script.h"
 +#include "ags/shared/game/room_struct.h"
++#include "ags/shared/ac/dialog_topic.h"
 +#include "ags/shared/core/asset_manager.h"
 +#include "ags/shared/ac/common_defines.h"
 +#include "ags/shared/gui/gui_button.h"
@@ -137,6 +138,13 @@ index 7adcc725..6ef56d55 100644
 +	for (int i = 0; i < _GP(game).numinvitems; ++i)
 +		if (!_GP(game).invinfo[i].name.IsEmpty())
 +			fprintf(f, "%s\n", _GP(game).invinfo[i].name.GetCStr());
++	// CHT:dialog 對話選項(DialogTopic.optionnames;對話主題選單如 Inn/Bazaar/Djinn/Katta,
++	// 不在 script string,AGS 走 numbered topic 選單,需單獨抽否則對話選項全英文)
++	for (size_t i = 0; i < _G(dialog).size(); ++i) {
++		for (int j = 0; j < _G(dialog)[i].numoptions; ++j)
++			if (_G(dialog)[i].optionnames[j][0])
++				fprintf(f, "%s\n", _G(dialog)[i].optionnames[j]);
++	}
 +	// Room scripts(各 roomN.crm 的 NPC 對白/Display/Say;遊戲對話大宗在此)。
 +	// 全域 dump 只抽到旁白/物品/全域訊息,NPC 台詞散在各 room 的 compiled script,
 +	// 逐 room 載入臨時 RoomStruct 抽其 script 字串,補上才不會漏掉 NPC 對話。
@@ -385,6 +393,10 @@ index 7adcc725..6ef56d55 100644
 +// the original English even if a translation dictionary is loaded.
 +static bool g_cht_translation_on = true;
 +
++// CHT:F8 當前語言模式後綴,寫進 status bar 標題(@gamename@)讓玩家知道切到哪個模式。
++static const char *g_cht_lang_suffix = " (\xE7\xB9\x81\xE4\xB8\xAD16)";  // 初始繁中16
++const char *cht_get_lang_mode_suffix() { return g_cht_lang_suffix; }
++
 +void cht_cycle_language_mode() {
 +	// Cycle: 0 = 繁中 16x16, 1 = 繁中 24x24, 2 = English(原文).
 +	static int mode = 0;
@@ -395,15 +407,18 @@ index 7adcc725..6ef56d55 100644
 +		cht_set_cjk_enabled(true);
 +		cht_set_cjk_size(16);
 +		name = "\xE7\xB9\x81\xE4\xB8\xAD 16x16";
++		g_cht_lang_suffix = " (\xE7\xB9\x81\xE4\xB8\xAD16)";
 +	} else if (mode == 1) {
 +		g_cht_translation_on = true;
 +		cht_set_cjk_enabled(true);
 +		cht_set_cjk_size(24);
 +		name = "\xE7\xB9\x81\xE4\xB8\xAD 24x24";
++		g_cht_lang_suffix = " (\xE7\xB9\x81\xE4\xB8\xAD24)";
 +	} else {
 +		g_cht_translation_on = false;
 +		cht_set_cjk_enabled(false);
 +		name = "English";
++		g_cht_lang_suffix = "";
 +	}
 +	// Recompute every font's metrics so line spacing matches the new glyph size.
 +	for (size_t i = 0; i < _GP(fonts).size(); ++i)
@@ -428,10 +443,10 @@ index 7adcc725..6ef56d55 100644
  	// check if a plugin wants to translate it - if so, return that
  	// TODO: plugin API is currently strictly 32-bit, so this may break on 64-bit systems
 diff --git a/engines/ags/engine/ac/global_translation.h b/engines/ags/engine/ac/global_translation.h
-index dbfa0014..ab017e6b 100644
+index dbfa0014..0d9d3afb 100644
 --- a/engines/ags/engine/ac/global_translation.h
 +++ b/engines/ags/engine/ac/global_translation.h
-@@ -29,6 +29,18 @@ int IsTranslationAvailable();
+@@ -29,6 +29,19 @@ int IsTranslationAvailable();
  // GetTranslationName assumes a string buffer of MAX_MAXSTRLEN
  int GetTranslationName(char *buffer);
  
@@ -446,10 +461,34 @@ index dbfa0014..ab017e6b 100644
 +
 +// CHT:F8 遊戲中循環語言模式(繁中16 → 繁中24 → 英文原文)。
 +void cht_cycle_language_mode();
++const char *cht_get_lang_mode_suffix();   // CHT:當前模式後綴,寫進 @gamename@ 標題
 +
  } // namespace AGS3
  
  #endif
+diff --git a/engines/ags/engine/ac/gui.cpp b/engines/ags/engine/ac/gui.cpp
+index 98de129f..79a74e45 100644
+--- a/engines/ags/engine/ac/gui.cpp
++++ b/engines/ags/engine/ac/gui.cpp
+@@ -24,6 +24,7 @@
+ #include "ags/shared/ac/common.h"
+ #include "ags/engine/ac/draw.h"
+ #include "ags/engine/ac/event.h"
++#include "ags/engine/ac/global_translation.h"
+ #include "ags/engine/ac/game_setup.h"
+ #include "ags/shared/ac/game_setup_struct.h"
+ #include "ags/engine/ac/game_state.h"
+@@ -391,7 +392,9 @@ void replace_macro_tokens(const char *text, String &fixed_text) {
+ 			else if (ags_stricmp(macroname, "scoretext") == 0)
+ 				snprintf(tempo, sizeof(tempo), "%d of %d", _GP(play).score, MAXSCORE);
+ 			else if (ags_stricmp(macroname, "gamename") == 0)
+-				snprintf(tempo, sizeof(tempo), "%s", _GP(play).game_name.GetCStr());
++				// CHT:標題=翻譯後遊戲名 + F8 當前語言模式後綴(讓玩家知道切到哪個模式)
++				snprintf(tempo, sizeof(tempo), "%s%s",
++					get_translation(_GP(play).game_name.GetCStr()), cht_get_lang_mode_suffix());
+ 			else if (ags_stricmp(macroname, "overhotspot") == 0) {
+ 				// While game is in Wait mode, no overhotspot text
+ 				if (!IsInterfaceEnabled())
 diff --git a/engines/ags/engine/ac/room.cpp b/engines/ags/engine/ac/room.cpp
 index 8e4d11f3..04dc4ae4 100644
 --- a/engines/ags/engine/ac/room.cpp
