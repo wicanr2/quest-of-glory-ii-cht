@@ -17,6 +17,7 @@ FONT = sys.argv[4] if len(sys.argv) > 4 else "/usr/share/fonts/opentype/noto/Not
 DIL  = int(sys.argv[5]) if len(sys.argv) > 5 else 4   # dilate 大小(金框內職業名用小避免破壞金框)
 THR  = int(sys.argv[6]) if len(sys.argv) > 6 else 330  # 深色閾值(room503 淺色米黃字要調高才抓得到)
 MINS = int(sys.argv[7]) if len(sys.argv) > 7 else 0    # 最小 sum(503 排金框外黑底用100;502 屬性名深褐字 sum~82 須用0)
+MODE = sys.argv[8] if len(sys.argv) > 8 else "sum"     # mask 模式:sum=深色字(502);hsv=米黃字亮本體+暗描邊、避金框(503)
 
 d = open(RAW, "rb").read()
 w, h, bpp = struct.unpack("<iii", d[:12])
@@ -36,16 +37,22 @@ for ln in open(MAN, encoding="utf-8"):
         rw = int(p[4]) if len(p) >= 5 else 95   # 第5欄=清除寬度(金框內職業名用窄,預設95)
         items.append((int(p[0]), int(p[1]), p[2], fs, rw))
 
-# mask:屬性名 rect(寬 80 高 14)內的深色 pixel(英文字),inpaint 用周圍卷軸補
+# mask:屬性名 rect 內的英文字 pixel,inpaint 用周圍補
 mask = np.zeros((h, w), np.uint8)
+hsvimg = cv2.cvtColor(bgr.astype(np.uint8), cv2.COLOR_BGR2HSV) if MODE == "hsv" else None
 for (x, y, _t, fs, rw) in items:
     RH = fs + 2
     x0, y0 = max(0, x - 3), max(0, y - 2)
     x1, y1 = min(w, x + rw), min(h, y + RH)
-    region = bgr[y0:y1, x0:x1].astype(int)
-    rsum = region.sum(axis=2)
-    dark = (rsum >= MINS) & (rsum < THR)     # MINS>0 排除金框外黑底/框線,只清字描邊(避免破壞金框)
-    mask[y0:y1, x0:x1][dark] = 255
+    if MODE == "hsv":
+        # room503 米黃字:用亮度 V 區分。職業名=亮米黃本體(V>=175)+暗描邊(55<=V<120);
+        # 排除金框金色(V120-175)與金框外黑底(V<55) → 清字不破壞金框
+        Vr = hsvimg[y0:y1, x0:x1, 2].astype(int)
+        m = (Vr >= 175) | ((Vr >= 55) & (Vr < 120))
+    else:
+        rsum = bgr[y0:y1, x0:x1].astype(int).sum(axis=2)
+        m = (rsum >= MINS) & (rsum < THR)    # 深色字(502 卷軸);MINS>0 排黑底
+    mask[y0:y1, x0:x1][m] = 255
 mask = cv2.dilate(mask, np.ones((DIL, DIL), np.uint8))   # 擴張涵蓋抗鋸齒邊
 
 inp = cv2.inpaint(bgr, mask, 3, cv2.INPAINT_TELEA)   # 卷軸紋理修復
