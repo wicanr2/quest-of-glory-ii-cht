@@ -44,15 +44,18 @@ for (x, y, _t, fs, rw) in items:
     RH = fs + 2
     x0, y0 = max(0, x - 3), max(0, y - 2)
     x1, y1 = min(w, x + rw), min(h, y + RH)
-    if MODE == "hsv":
-        # room503 米黃字:用亮度 V 區分。職業名=亮米黃本體(V>=175)+暗描邊(55<=V<120);
-        # 排除金框金色(V120-175)與金框外黑底(V<55) → 清字不破壞金框
+    if MODE == "fill":
+        # 浮雕同色字(職業名筆畫=金框金色,亮度/色相都分不開):不分字,整個 rect 全 mask,
+        # inpaint 從 rect 外的金框內金黃補進填平。rect 須精確在金框內、避開金框邊框。
+        mask[y0:y1, x0:x1] = 255
+    elif MODE == "hsv":
         Vr = hsvimg[y0:y1, x0:x1, 2].astype(int)
         m = (Vr >= 175) | ((Vr >= 55) & (Vr < 120))
+        mask[y0:y1, x0:x1][m] = 255
     else:
         rsum = bgr[y0:y1, x0:x1].astype(int).sum(axis=2)
         m = (rsum >= MINS) & (rsum < THR)    # 深色字(502 卷軸);MINS>0 排黑底
-    mask[y0:y1, x0:x1][m] = 255
+        mask[y0:y1, x0:x1][m] = 255
 mask = cv2.dilate(mask, np.ones((DIL, DIL), np.uint8))   # 擴張涵蓋抗鋸齒邊
 
 inp = cv2.inpaint(bgr, mask, 3, cv2.INPAINT_TELEA)   # 卷軸紋理修復
