@@ -467,7 +467,7 @@ index dbfa0014..0d9d3afb 100644
  
  #endif
 diff --git a/engines/ags/engine/ac/gui.cpp b/engines/ags/engine/ac/gui.cpp
-index 98de129f..79a74e45 100644
+index 98de129f..a951042f 100644
 --- a/engines/ags/engine/ac/gui.cpp
 +++ b/engines/ags/engine/ac/gui.cpp
 @@ -24,6 +24,7 @@
@@ -478,17 +478,6 @@ index 98de129f..79a74e45 100644
  #include "ags/engine/ac/game_setup.h"
  #include "ags/shared/ac/game_setup_struct.h"
  #include "ags/engine/ac/game_state.h"
-@@ -391,7 +392,9 @@ void replace_macro_tokens(const char *text, String &fixed_text) {
- 			else if (ags_stricmp(macroname, "scoretext") == 0)
- 				snprintf(tempo, sizeof(tempo), "%d of %d", _GP(play).score, MAXSCORE);
- 			else if (ags_stricmp(macroname, "gamename") == 0)
--				snprintf(tempo, sizeof(tempo), "%s", _GP(play).game_name.GetCStr());
-+				// CHT:標題=翻譯後遊戲名 + F8 當前語言模式後綴(讓玩家知道切到哪個模式)
-+				snprintf(tempo, sizeof(tempo), "%s%s",
-+					get_translation(_GP(play).game_name.GetCStr()), cht_get_lang_mode_suffix());
- 			else if (ags_stricmp(macroname, "overhotspot") == 0) {
- 				// While game is in Wait mode, no overhotspot text
- 				if (!IsInterfaceEnabled())
 diff --git a/engines/ags/engine/ac/room.cpp b/engines/ags/engine/ac/room.cpp
 index 8e4d11f3..04dc4ae4 100644
 --- a/engines/ags/engine/ac/room.cpp
