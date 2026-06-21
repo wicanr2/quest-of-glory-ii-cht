@@ -138,7 +138,10 @@ jobs:
           # 用 android-aarch64 不 match 任何 case → 不進 Android 分支 → 不套 -loboe -llog → undefined
           ./configure --host=android-arm64-v8a --enable-engine=ags --disable-all-engines --enable-release
           make -j$(nproc)
-          make androiddist
+          # [HARD] ScummVM 無 androiddist target;正確的是 androidtest(產 debug APK
+          # = ScummVM-debug.apk,debug key 已簽、可直接安裝)。androidrelease 需 keystore 簽名。
+          make androidtest
+          ls -la *.apk
       - uses: actions/upload-artifact@v4
         with:
           name: qfg2-cht-android
