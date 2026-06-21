@@ -545,10 +545,10 @@ index afc68429..2a432ec8 100644
  	shared/font/wfn_font.o \
 diff --git a/engines/ags/shared/font/cjk_font.cpp b/engines/ags/shared/font/cjk_font.cpp
 new file mode 100644
-index 00000000..36191c57
+index 00000000..975a0482
 --- /dev/null
 +++ b/engines/ags/shared/font/cjk_font.cpp
-@@ -0,0 +1,112 @@
+@@ -0,0 +1,131 @@
 +/* ScummVM - Graphic Adventure Engine
 + *
 + * ScummVM is the legal property of its developers, whose names
@@ -660,13 +660,32 @@ index 00000000..36191c57
 +	return s_enabled ? s_font : nullptr;
 +}
 +
++// CHT:status bar 遊戲名標題(font 0)專用的小字級 CJK。原版標題是矮 status bar
++// 的小英文(字高 7),套 16px 中文過大不協調;改用 12px 點陣讓標題接近原版比例。
++// 英文模式(s_enabled=false)回 null,標題走原文。載不到 cjkfont12.bin 就退回一般字級。
++CjkFont *get_cjk_title_font() {
++	if (!s_enabled)
++		return nullptr;
++	static CjkFont *s_title = nullptr;
++	static bool s_tried = false;
++	if (!s_title && !s_tried) {
++		s_tried = true;
++		CjkFont *f = new CjkFont();
++		if (f->Load("cjkfont12.bin"))
++			s_title = f;
++		else
++			delete f;
++	}
++	return s_title ? s_title : get_cjk_font();
++}
++
 +} // namespace AGS3
 diff --git a/engines/ags/shared/font/cjk_font.h b/engines/ags/shared/font/cjk_font.h
 new file mode 100644
-index 00000000..0af6c364
+index 00000000..aa6d205a
 --- /dev/null
 +++ b/engines/ags/shared/font/cjk_font.h
-@@ -0,0 +1,72 @@
+@@ -0,0 +1,73 @@
 +/* ScummVM - Graphic Adventure Engine
 + *
 + * ScummVM is the legal property of its developers, whose names
@@ -730,6 +749,7 @@ index 00000000..0af6c364
 +// Lazily loads cjkfontNN.bin via the asset manager; returns nullptr if absent
 +// or if the CJK overlay is currently disabled (English mode). Cached.
 +CjkFont *get_cjk_font();
++CjkFont *get_cjk_title_font();   // CHT:font 0(status bar 標題)專用的小字級 CJK(12px)
 +
 +// Runtime control for the in-game F8 language toggle.
 +void cht_set_cjk_size(int size);     // 16 or 24; reloads the atlas
@@ -771,7 +791,7 @@ index 6cd44ad2..41c71ccf 100644
  
  static void font_replace_renderer(size_t fontNumber, IAGSFontRenderer* renderer, IAGSFontRenderer2* renderer2) {
 diff --git a/engines/ags/shared/font/wfn_font_renderer.cpp b/engines/ags/shared/font/wfn_font_renderer.cpp
-index 9dfff34c..9d6463c4 100644
+index 9dfff34c..710d9232 100644
 --- a/engines/ags/shared/font/wfn_font_renderer.cpp
 +++ b/engines/ags/shared/font/wfn_font_renderer.cpp
 @@ -23,6 +23,7 @@
@@ -828,7 +848,7 @@ index 9dfff34c..9d6463c4 100644
  	const WFNFont *font = _fontData[fontNumber].Font;
  	const FontRenderParams &params = _fontData[fontNumber].Params;
 -	int text_width = 0;
-+	CjkFont *cjk = get_cjk_font();
++	CjkFont *cjk = (fontNumber == 0) ? get_cjk_title_font() : get_cjk_font();
 +	const bool atlas = cht_line_has_cjk(text, cjk);
 +	int ascii_width = 0, cjk_width = 0;
  
@@ -847,7 +867,7 @@ index 9dfff34c..9d6463c4 100644
  int WFNFontRenderer::GetTextHeight(const char *text, int fontNumber) {
  	const WFNFont *font = _fontData[fontNumber].Font;
  	const FontRenderParams &params = _fontData[fontNumber].Params;
-+	CjkFont *cjk = get_cjk_font();
++	CjkFont *cjk = (fontNumber == 0) ? get_cjk_title_font() : get_cjk_font();
 +	const bool atlas = cht_line_has_cjk(text, cjk);
  	int max_height = 0;
  
@@ -870,7 +890,7 @@ index 9dfff34c..9d6463c4 100644
  
  	const WFNFont *font = _fontData[fontNumber].Font;
  	const FontRenderParams &params = _fontData[fontNumber].Params;
-+	CjkFont *cjk = get_cjk_font();
++	CjkFont *cjk = (fontNumber == 0) ? get_cjk_title_font() : get_cjk_font();
 +	const bool atlas = cht_line_has_cjk(text, cjk);
  	Bitmap ds(destination, true);
  

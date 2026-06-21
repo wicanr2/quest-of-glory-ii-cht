@@ -19,11 +19,12 @@ docker run --rm -v "$ROOT/scummvm-src":/src -w /src qfg2-scummvm-builder bash -c
   [ -f config.mk ] || ./configure --disable-all-engines --enable-engine=ags
   make -j"$(nproc)"'
 
-echo "==> [4/5] 烘 16/24px 字型 + 產生 chinese.tra"
+echo "==> [4/5] 烘 12/16/24px 字型 + 產生 chinese.tra"
 docker run --rm -v "$ROOT":/work -v /usr/share/fonts:/usr/share/fonts:ro -w /work \
   ghcr.io/astral-sh/uv:python3.12-bookworm-slim bash -c '
     uv venv -q && uv pip install -q pillow
     uv run tools/make_tra.py tools/translation.tsv --out game/chinese.tra --charset-out build/charset.txt
+    uv run tools/build_cjk_font.py --size 12 --charset-file build/charset.txt --bin game/cjkfont12.bin --out build/cjk12
     uv run tools/build_cjk_font.py --size 16 --charset-file build/charset.txt --bin game/cjkfont16.bin --out build/cjk16
     uv run tools/build_cjk_font.py --size 24 --charset-file build/charset.txt --bin game/cjkfont24.bin --out build/cjk24'
 echo "==> [5/5] 角色創建中文背景(headless dump 原版 bg + OpenCV inpaint;best-effort)"
