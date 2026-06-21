@@ -14,6 +14,9 @@ RAW  = sys.argv[1] if len(sys.argv) > 1 else "out/cap/cb.origbg502.raw"
 MAN  = sys.argv[2] if len(sys.argv) > 2 else "tools/cht_room502.txt"
 OUT  = sys.argv[3] if len(sys.argv) > 3 else "game/cht_roombg502.bin"
 FONT = sys.argv[4] if len(sys.argv) > 4 else "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"
+DIL  = int(sys.argv[5]) if len(sys.argv) > 5 else 4   # dilate 大小(金框內職業名用小避免破壞金框)
+THR  = int(sys.argv[6]) if len(sys.argv) > 6 else 330  # 深色閾值(room503 淺色米黃字要調高才抓得到)
+MINS = int(sys.argv[7]) if len(sys.argv) > 7 else 0    # 最小 sum(503 排金框外黑底用100;502 屬性名深褐字 sum~82 須用0)
 
 d = open(RAW, "rb").read()
 w, h, bpp = struct.unpack("<iii", d[:12])
@@ -40,9 +43,10 @@ for (x, y, _t, fs, rw) in items:
     x0, y0 = max(0, x - 3), max(0, y - 2)
     x1, y1 = min(w, x + rw), min(h, y + RH)
     region = bgr[y0:y1, x0:x1].astype(int)
-    dark = region.sum(axis=2) < 330          # 放寬涵蓋抗鋸齒半深邊(避免殘影)
+    rsum = region.sum(axis=2)
+    dark = (rsum >= MINS) & (rsum < THR)     # MINS>0 排除金框外黑底/框線,只清字描邊(避免破壞金框)
     mask[y0:y1, x0:x1][dark] = 255
-mask = cv2.dilate(mask, np.ones((4, 4), np.uint8))   # 擴張涵蓋抗鋸齒邊
+mask = cv2.dilate(mask, np.ones((DIL, DIL), np.uint8))   # 擴張涵蓋抗鋸齒邊
 
 inp = cv2.inpaint(bgr, mask, 3, cv2.INPAINT_TELEA)   # 卷軸紋理修復
 
