@@ -32,7 +32,7 @@
 | 旁白／描述／劇情翻譯 | ✅ **2352 句全數繁中化**（look 物件、場景描述、劇情旁白、物品、系統訊息） |
 | NPC 對話翻譯 | ✅ **再 6791 句繁中化**（各房間角色台詞；對齊譯名表與語域，中英對照典藏見 [`translation/`](translation/)） |
 | 特殊名詞顯示加註 | ✅ 自創生物/地名首次出現附原文，如 索魯斯(Saurus)、卡塔(Katta) |
-| 引擎美術 GUI 文字（sprite） | 🚧 角色創建職業 button（戰士/法師/盜賊）已重繪 sprite 注入；屬性名、主選單裝飾字仍是美術圖，待逐一重繪 |
+| 引擎美術 GUI 文字 | 🚧 職業 button（戰士/法師/盜賊）已重繪 sprite 注入；屬性名已定位（烘在角色創建 room 背景圖、只載入一次），引擎 CJK overlay 實作中；主選單裝飾字待續 |
 | 640×480 真實高解析畫布 | ⛔ ScummVM AGS 全 native 渲染、`RenderAtScreenRes` 為 no-op，無 supersampling；真高解析需把所有美術 2× + 全座標 remap（不可行於小改動）。實務以 16/24px + F8 切換 + 視窗放大替代 |
 | macOS `.dmg` GitHub Actions 打包 | ✅ CI 綠燈，自動產出 .dmg |
 | Android `.apk` GitHub Actions 打包 | 🚧 引擎可編譯，卡 Oboe 連結（需 ScummVM gradle/prefab 路徑） |
