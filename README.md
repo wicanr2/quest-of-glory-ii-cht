@@ -105,7 +105,21 @@
 
 ## 怎麼玩
 
-### 最簡單：完整包，一鍵啟動
+### Linux 最簡單：AppImage 單檔，雙擊即玩
+
+`tools/make_appimage.sh` 把 patched 引擎、原版遊戲、繁中資產與所有依賴 `.so`（SDL2、音訊、字型…）打包成**單一 AppImage**，不需安裝、不依賴系統函式庫，雙擊就進遊戲：
+
+```bash
+bash tools/make_appimage.sh        # → out/release/英雄傳奇II-烈火神兵-x86_64.AppImage
+chmod +x out/release/英雄傳奇II-烈火神兵-x86_64.AppImage
+./out/release/英雄傳奇II-烈火神兵-x86_64.AppImage
+```
+
+已在乾淨環境（未裝任何 ScummVM 依賴）驗證 self-contained 啟動、繁中正常。
+
+> AppImage 內含原版遊戲檔（AGDI 版權），依其授權僅供本機自用，不放上本 repo。
+
+### 跨平台：完整包，一鍵啟動
 
 `tools/package_release.sh` 會把 **patched ScummVM 引擎 + 原版遊戲 + 中文資產 + 啟動器** 組成一個解壓即玩的完整包（Windows 版連相依 DLL 一起放好）：
 
