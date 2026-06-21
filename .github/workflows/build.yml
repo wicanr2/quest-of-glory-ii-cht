@@ -108,10 +108,13 @@ jobs:
             -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=android-21 -DCMAKE_BUILD_TYPE=Release \
             -DBUILD_SHARED_LIBS=ON
           cmake --build "$GITHUB_WORKSPACE/oboe-build" -j$(nproc)
-          # 放進 NDK sysroot lib:link 階段(-loboe)與 APK 打包(掃 sysroot)都找得到 liboboe.so
+          # 放進 NDK sysroot lib:NDK 連結 API21 會找 aarch64-linux-android/(通用)與 /21/ 兩處,都放。
           SYSLIB="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android"
-          cp "$GITHUB_WORKSPACE/oboe-build/liboboe.so" "$SYSLIB/" 2>/dev/null || \
-            find "$GITHUB_WORKSPACE/oboe-build" -name 'liboboe.so' -exec cp {} "$SYSLIB/" \;
+          LOBOE=$(find "$GITHUB_WORKSPACE/oboe-build" -name 'liboboe.so' | head -1)
+          echo ">> liboboe.so 位置: $LOBOE"
+          cp "$LOBOE" "$SYSLIB/"
+          cp "$LOBOE" "$SYSLIB/21/" 2>/dev/null || true
+          ls -la "$SYSLIB/liboboe.so" "$SYSLIB/21/liboboe.so" 2>/dev/null || true
       - name: configure + build APK (arm64)
         working-directory: scummvm-src
         env:
