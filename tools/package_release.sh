@@ -24,7 +24,7 @@ rsync -a --exclude 'chinese.tra' --exclude 'cjkfont*.bin' "$GAME"/ "$OUT"/ 2>/de
 
 # 2) 繁中資產
 cp "$GAME"/chinese.tra "$OUT"/ 2>/dev/null || { echo "缺 chinese.tra,先跑 build_release_assets.sh"; exit 1; }
-cp "$GAME"/cjkfont16.bin "$GAME"/cjkfont24.bin "$OUT"/ 2>/dev/null || true
+cp "$GAME"/cjkfont12.bin "$GAME"/cjkfont16.bin "$GAME"/cjkfont24.bin "$OUT"/ 2>/dev/null || true   # 12=標題字級
 
 # 3) 預生成 scummvm.ini(把遊戲與 translation=chinese 烘進去,玩家免設定)
 cat > "$OUT/scummvm.ini" <<'INI'
