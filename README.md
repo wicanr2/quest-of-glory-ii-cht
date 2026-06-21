@@ -32,7 +32,7 @@
 | 旁白／描述／劇情翻譯 | ✅ **2352 句全數繁中化**（look 物件、場景描述、劇情旁白、物品、系統訊息） |
 | NPC 對話翻譯 | ✅ **再 6791 句繁中化**（各房間角色台詞；對齊譯名表與語域，中英對照典藏見 [`translation/`](translation/)） |
 | 特殊名詞顯示加註 | ✅ 自創生物/地名首次出現附原文，如 索魯斯(Saurus)、卡塔(Katta) |
-| 引擎美術 GUI 文字 | 🚧 職業 button（戰士/法師/盜賊）已重繪注入；角色創建 15 個屬性名（力量/智力/敏捷…武器/招架/閃避…）已用引擎 CJK overlay 蓋進 room 背景；底部欄、主選單裝飾字待續 |
+| 引擎美術 GUI 文字 | 🚧 職業 button（戰士/法師/盜賊）已重繪注入；角色創建 15 個屬性名（力量/智力/敏捷…武器/招架/閃避…）以 OpenCV 內容感知修復卷軸紋理後印上中文，F8 可切回原版且玩家數值不受影響；底部欄、主選單裝飾字待續 |
 | 640×480 真實高解析畫布 | ⛔ ScummVM AGS 全 native 渲染、`RenderAtScreenRes` 為 no-op，無 supersampling；真高解析需把所有美術 2× + 全座標 remap（不可行於小改動）。實務以 16/24px + F8 切換 + 視窗放大替代 |
 | macOS `.dmg` GitHub Actions 打包 | ✅ CI 綠燈，自動產出 .dmg |
 | Android `.apk` GitHub Actions 打包 | 🚧 引擎可編譯，卡 Oboe 連結（需 ScummVM gradle/prefab 路徑） |
@@ -53,9 +53,13 @@
 
 ![實機中文 NPC 對話：卡塔商人沙明](docs/screenshot-gameplay-dialog.png)
 
-開新英雄時，整個角色創建面板幾乎都中文了——職業 button（戰士/法師/盜賊）、頂上標題「烈火神兵」（這幾個字差點栽在字型的上伸餘量上，靠墨水範圍置中才擺正），連兩排屬性名（力量/智力/敏捷／武器/招架/閃避…）都是。屬性名是烘在 room 背景圖上的美術字、本來不走翻譯，靠引擎在 room 載入後把英文清掉、用點陣中文蓋上去：
+開新英雄時，整個角色創建面板幾乎都中文了——職業 button（戰士/法師/盜賊）、頂上標題「烈火神兵」（這幾個字差點栽在字型的上伸餘量上，靠墨水範圍置中才擺正），連兩排屬性名（力量/智力/敏捷／武器/招架/閃避…）都是。屬性名是烘在 room 背景圖上的美術字、本來不走翻譯。直接拿單色塊蓋掉英文會連卷軸的羊皮紙紋理一起抹平——所以改用 OpenCV 內容感知修復（inpaint）先把英文區的紋理依周圍補回來，再印上中文；同時保留一份原版背景，按 F8 即時切回英文，而玩家右側欄填的力量/智力數值始終不受影響：
 
 ![角色創建：職業／標題／屬性名中文化](docs/screenshot-charcreate-attribs.png)
+
+同一個畫面按 F8 切回英文原版——卷軸紋理完整、屬性數值原封不動，只有屬性名換回英文：
+
+![角色創建：F8 切回英文原版](docs/screenshot-charcreate-en.png)
 
 遊戲中按 **F8**，繁中 16×16 → 繁中 24×24 → 英文原版即時循環：
 
@@ -135,7 +139,7 @@
 
 ## 技術細節：怎麼讓 1999 年的引擎吐出方塊字
 
-QFG2 VGA 是 **Adventure Game Studio 2.72**（2006 編譯）——一個徹頭徹尾的單位元組 ANSI 引擎，原生不認識任何一個中文字。要它畫中文，動的是 ScummVM 的 AGS 引擎，全部收斂在一份自包含 patch（`patches/0001-qfg2-cht-cjk.patch`，約 250 行）：
+QFG2 VGA 是 **Adventure Game Studio 2.72**（2006 編譯）——一個徹頭徹尾的單位元組 ANSI 引擎，原生不認識任何一個中文字。要它畫中文，動的是 ScummVM 的 AGS 引擎，全部收斂在一份自包含 patch（`patches/0001-qfg2-cht-cjk.patch`）：
 
 - **`shared/font/cjk_font.{h,cpp}`**：載入 `cjkfontNN.bin` 點陣字 atlas（`CJKF` 標頭 + 每字 N×N 覆蓋率）。
 - **`wfn_font_renderer.cpp`**：繪字迴圈中，codepoint 命中 atlas 就 blit 點陣中文，否則走原本的 WFN 點陣 ASCII 字——中英混排同一行。
