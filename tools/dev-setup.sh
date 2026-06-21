@@ -26,6 +26,8 @@ docker run --rm -v "$ROOT":/work -v /usr/share/fonts:/usr/share/fonts:ro -w /wor
     uv run tools/make_tra.py tools/translation.tsv --out game/chinese.tra --charset-out build/charset.txt
     uv run tools/build_cjk_font.py --size 16 --charset-file build/charset.txt --bin game/cjkfont16.bin --out build/cjk16
     uv run tools/build_cjk_font.py --size 24 --charset-file build/charset.txt --bin game/cjkfont24.bin --out build/cjk24'
+# room 文字 overlay manifest(角色創建屬性名;引擎讀 game dir)
+cp tools/cht_room*.txt game/ 2>/dev/null || true
 
 echo "==> [5/5] 完成。下一步:"
 echo "    bash tools/package_release.sh linux     # 組完整可玩包(含遊戲)→ out/release/"

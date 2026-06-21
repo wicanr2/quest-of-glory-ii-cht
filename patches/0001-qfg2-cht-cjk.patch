@@ -29,7 +29,7 @@ index 3ede3f1d..9e322403 100644
  }
  
 diff --git a/engines/ags/engine/ac/global_translation.cpp b/engines/ags/engine/ac/global_translation.cpp
-index 7adcc725..6625b525 100644
+index 7adcc725..bd3cde1b 100644
 --- a/engines/ags/engine/ac/global_translation.cpp
 +++ b/engines/ags/engine/ac/global_translation.cpp
 @@ -19,6 +19,10 @@
@@ -43,7 +43,7 @@ index 7adcc725..6625b525 100644
  #include "ags/shared/ac/common.h"
  #include "ags/engine/ac/display.h"
  #include "ags/engine/ac/game_state.h"
-@@ -30,18 +34,302 @@
+@@ -30,18 +34,365 @@
  #include "ags/plugins/plugin_engine.h"
  #include "ags/shared/util/memory.h"
  #include "ags/engine/ac/string.h"
@@ -59,6 +59,7 @@ index 7adcc725..6625b525 100644
 +#include "ags/shared/gui/gui_main.h"
 +#include "ags/shared/ac/sprite_cache.h"
 +#include "ags/shared/gfx/bitmap.h"
++#include "ags/shared/util/geometry.h"
 +#include "ags/shared/debugging/out.h"
  #include "ags/globals.h"
 +#include "common/file.h"
@@ -303,6 +304,68 @@ index 7adcc725..6625b525 100644
 +	warning("CHT: runtime button dump → %s", bpath.c_str());
 +}
 +
++// CHT:簡易 UTF-8 解碼(中文 3 bytes),供 room overlay 用。
++static uint32 cht_utf8_next(const char **p) {
++	const unsigned char *s = (const unsigned char *)*p;
++	if (s[0] < 0x80) { if (s[0]) (*p)++; return s[0]; }
++	if ((s[0] & 0xE0) == 0xC0) { *p += 2; return ((s[0] & 0x1F) << 6) | (s[1] & 0x3F); }
++	if ((s[0] & 0xF0) == 0xE0) { *p += 3; return ((s[0] & 0x0F) << 12) | ((s[1] & 0x3F) << 6) | (s[2] & 0x3F); }
++	(*p)++; return 0;
++}
++
++// CHT:room 背景文字 overlay。角色創建屬性名(Strength…)是烘在 room 原始背景圖
++// 上的美術字、script 只載入一次不重畫,所以在 room 載入後於屬性名位置清掉英文、
++// 用 CJK atlas 畫中文蓋上,中文就會留著。座標+中文由 game/cht_room<N>.txt 提供。
++void cht_room_text_overlay() {
++	CjkFont *cjk = get_cjk_font();
++	if (!cjk || _GP(thisroom).BgFrameCount == 0 || !_GP(thisroom).BgFrames[0].Graphic)
++		return;
++	Common::File f;
++	Common::String fn = Common::String::format("cht_room%d.txt", _G(displayed_room));
++	if (!f.open(Common::Path(fn)))
++		return;
++	AGS::Shared::Bitmap *bg = _GP(thisroom).BgFrames[0].Graphic.get();
++	const int sz = cjk->Size();
++	int applied = 0;
++	while (!f.eos()) {
++		Common::String line = f.readLine();
++		line.trim();
++		if (line.empty() || line.hasPrefix("#"))
++			continue;
++		const char *s = line.c_str();
++		int x = atoi(s);
++		while (*s && *s != ' ') ++s; while (*s == ' ') ++s;
++		int y = atoi(s);
++		while (*s && *s != ' ') ++s; while (*s == ' ') ++s;   // s → 中文(UTF-8)
++		if (x < 0 || y < 0 || x >= bg->GetWidth() || y >= bg->GetHeight())
++			continue;
++		// 掃屬性名區:最亮 pixel = 卷軸底色(清英文用)、最暗 = 原英文字色(畫中文用)
++		color_t bgcol = 0, textcol = 0;
++		int bright = -1, dark = 1 << 30;
++		for (int py = y; py < y + sz && py < bg->GetHeight(); ++py)
++			for (int px = x; px < x + 80 && px < bg->GetWidth(); ++px) {
++				color_t c = bg->GetPixel(px, py);
++				int br = (int)(c & 0xFF) + (int)((c >> 8) & 0xFF) + (int)((c >> 16) & 0xFF);
++				if (br > bright) { bright = br; bgcol = c; }
++				if (br < dark) { dark = br; textcol = c; }
++			}
++		bg->FillRect(Rect(x, y, x + 79, y + sz - 1), bgcol);   // 清英文
++		int cx = x;
++		for (uint32 cp = cht_utf8_next(&s); cp; cp = cht_utf8_next(&s)) {
++			const CjkGlyph *g = cjk->Get(cp);
++			if (!g) continue;
++			for (int hh = 0; hh < sz; ++hh)
++				for (int ww = 0; ww < sz; ++ww)
++					if (g->Coverage[hh * sz + ww] >= 0x80)
++						bg->PutPixel(cx + ww, y + hh, textcol);
++			cx += g->Advance;
++		}
++		++applied;
++	}
++	f.close();
++	warning("CHT: room %d text overlay: %d entries", _G(displayed_room), applied);
++}
++
 +// CHT: in-game F8 language toggle state. When false, get_translation returns
 +// the original English even if a translation dictionary is loaded.
 +static bool g_cht_translation_on = true;
@@ -347,10 +410,10 @@ index 7adcc725..6625b525 100644
  	// check if a plugin wants to translate it - if so, return that
  	// TODO: plugin API is currently strictly 32-bit, so this may break on 64-bit systems
 diff --git a/engines/ags/engine/ac/global_translation.h b/engines/ags/engine/ac/global_translation.h
-index dbfa0014..aca13338 100644
+index dbfa0014..096d565e 100644
 --- a/engines/ags/engine/ac/global_translation.h
 +++ b/engines/ags/engine/ac/global_translation.h
-@@ -29,6 +29,16 @@ int IsTranslationAvailable();
+@@ -29,6 +29,17 @@ int IsTranslationAvailable();
  // GetTranslationName assumes a string buffer of MAX_MAXSTRLEN
  int GetTranslationName(char *buffer);
  
@@ -360,6 +423,7 @@ index dbfa0014..aca13338 100644
 +// CHT:把重繪的中文 button 圖(cht_btnsprites.bin)注入 spriteset,替換美術 sprite。
 +void cht_load_button_sprites();
 +void cht_dump_buttons_rt();
++void cht_room_text_overlay();
 +
 +// CHT:F8 遊戲中循環語言模式(繁中16 → 繁中24 → 英文原文)。
 +void cht_cycle_language_mode();
@@ -367,6 +431,18 @@ index dbfa0014..aca13338 100644
  } // namespace AGS3
  
  #endif
+diff --git a/engines/ags/engine/ac/room.cpp b/engines/ags/engine/ac/room.cpp
+index 8e4d11f3..04dc4ae4 100644
+--- a/engines/ags/engine/ac/room.cpp
++++ b/engines/ags/engine/ac/room.cpp
+@@ -443,6 +443,7 @@ void load_new_room(int newnum, CharacterInfo *forchar) {
+ 	set_our_eip(200);
+ 	_GP(thisroom).GameID = NO_GAME_ID_IN_ROOM_FILE;
+ 	load_room(room_filename, &_GP(thisroom), _GP(game).IsLegacyHiRes(), _GP(game).SpriteInfos);
++	cht_room_text_overlay();  // CHT:room 載入後在屬性名位置畫中文 overlay(角色創建等)
+ 
+ 	if ((_GP(thisroom).GameID != NO_GAME_ID_IN_ROOM_FILE) &&
+ 	        (_GP(thisroom).GameID != _GP(game).uniqueid)) {
 diff --git a/engines/ags/engine/main/engine.cpp b/engines/ags/engine/main/engine.cpp
 index bb406b57..c548b422 100644
 --- a/engines/ags/engine/main/engine.cpp

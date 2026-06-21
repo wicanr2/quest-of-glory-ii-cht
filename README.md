@@ -32,7 +32,7 @@
 | 旁白／描述／劇情翻譯 | ✅ **2352 句全數繁中化**（look 物件、場景描述、劇情旁白、物品、系統訊息） |
 | NPC 對話翻譯 | ✅ **再 6791 句繁中化**（各房間角色台詞；對齊譯名表與語域，中英對照典藏見 [`translation/`](translation/)） |
 | 特殊名詞顯示加註 | ✅ 自創生物/地名首次出現附原文，如 索魯斯(Saurus)、卡塔(Katta) |
-| 引擎美術 GUI 文字 | 🚧 職業 button（戰士/法師/盜賊）已重繪 sprite 注入；屬性名已定位（烘在角色創建 room 背景圖、只載入一次），引擎 CJK overlay 實作中；主選單裝飾字待續 |
+| 引擎美術 GUI 文字 | 🚧 職業 button（戰士/法師/盜賊）已重繪注入；角色創建 15 個屬性名（力量/智力/敏捷…武器/招架/閃避…）已用引擎 CJK overlay 蓋進 room 背景；底部欄、主選單裝飾字待續 |
 | 640×480 真實高解析畫布 | ⛔ ScummVM AGS 全 native 渲染、`RenderAtScreenRes` 為 no-op，無 supersampling；真高解析需把所有美術 2× + 全座標 remap（不可行於小改動）。實務以 16/24px + F8 切換 + 視窗放大替代 |
 | macOS `.dmg` GitHub Actions 打包 | ✅ CI 綠燈，自動產出 .dmg |
 | Android `.apk` GitHub Actions 打包 | 🚧 引擎可編譯，卡 Oboe 連結（需 ScummVM gradle/prefab 路徑） |
@@ -53,9 +53,9 @@
 
 ![實機中文 NPC 對話：卡塔商人沙明](docs/screenshot-gameplay-dialog.png)
 
-開新英雄時，連職業 button 都換成中文——戰士、法師、盜賊一眼就懂。標題「英雄傳奇 II：烈火神兵」頂在最上方那條窄框裡，也端正不被切（這幾個字差點栽在字型的上伸餘量上，最後靠墨水範圍置中才擺正）。屬性欄那排 Strength／Agility 是引擎內嵌的美術圖、不走翻譯，仍在處理：
+開新英雄時，整個角色創建面板幾乎都中文了——職業 button（戰士/法師/盜賊）、頂上標題「烈火神兵」（這幾個字差點栽在字型的上伸餘量上，靠墨水範圍置中才擺正），連兩排屬性名（力量/智力/敏捷／武器/招架/閃避…）都是。屬性名是烘在 room 背景圖上的美術字、本來不走翻譯，靠引擎在 room 載入後把英文清掉、用點陣中文蓋上去：
 
-![角色創建：職業 button 與標題中文化](docs/screenshot-charcreate.png)
+![角色創建：職業／標題／屬性名中文化](docs/screenshot-charcreate-attribs.png)
 
 遊戲中按 **F8**，繁中 16×16 → 繁中 24×24 → 英文原版即時循環：
 
