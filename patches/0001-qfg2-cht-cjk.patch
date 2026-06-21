@@ -29,7 +29,7 @@ index 3ede3f1d..9e322403 100644
  }
  
 diff --git a/engines/ags/engine/ac/global_translation.cpp b/engines/ags/engine/ac/global_translation.cpp
-index 7adcc725..922ab4aa 100644
+index 7adcc725..fc47c2bb 100644
 --- a/engines/ags/engine/ac/global_translation.cpp
 +++ b/engines/ags/engine/ac/global_translation.cpp
 @@ -19,8 +19,13 @@
@@ -46,7 +46,7 @@ index 7adcc725..922ab4aa 100644
  #include "ags/engine/ac/game_state.h"
  #include "ags/engine/ac/global_translation.h"
  #include "ags/engine/ac/string.h"
-@@ -30,18 +35,395 @@
+@@ -30,18 +35,400 @@
  #include "ags/plugins/plugin_engine.h"
  #include "ags/shared/util/memory.h"
  #include "ags/engine/ac/string.h"
@@ -381,9 +381,14 @@ index 7adcc725..922ab4aa 100644
 +	AGS::Shared::Bitmap *src = (get_cjk_font() != nullptr) ? g_cht_cht_bg : g_cht_orig_bg;
 +	AGS::Shared::Bitmap *dst = _GP(thisroom).BgFrames[0].Graphic.get();
 +	const int H = dst->GetHeight();
-+	// 只 blit 左右欄屬性名區(中間職業/拱門 + 數值框不動,保留 script 已畫的數值)
-+	dst->Blit(src, 0, 28, 0, 28, 89, H - 28);        // 左欄屬性名(左數值框 x91 起,避開以保留 script 畫的數值)
-+	dst->Blit(src, 195, 28, 195, 28, 86, H - 28);    // 右欄屬性名(右數值框 x282 起,避開以保留數值)
++	if (_G(displayed_room) == 502) {
++		// room 502 角色創建:只 blit 左右欄屬性名區(中間職業/拱門 + 數值框不動,保留 script 畫的數值)
++		dst->Blit(src, 0, 28, 0, 28, 89, H - 28);        // 左欄屬性名(左數值框 x91 起,避開)
++		dst->Blit(src, 195, 28, 195, 28, 86, H - 28);    // 右欄屬性名(右數值框 x282 起,避開)
++	} else {
++		// 其他 room(503 職業選擇等:職業名烘在 bg、無 script 數值):整張 blit
++		dst->Blit(src, 0, 0, 0, 0, dst->GetWidth(), H);
++	}
 +	_GP(play).raw_modified[0] = 1;
 +	invalidate_screen();
 +	mark_current_background_dirty();   // 觸發 room 背景重繪(F8 切換時畫面才更新)

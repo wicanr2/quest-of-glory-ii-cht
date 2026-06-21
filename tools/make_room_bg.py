@@ -30,15 +30,15 @@ for ln in open(MAN, encoding="utf-8"):
     p = ln.split()
     if len(p) >= 3:
         fs = int(p[3]) if len(p) >= 4 else 14   # 第4欄=字級(預設14;底部窄欄用11)
-        items.append((int(p[0]), int(p[1]), p[2], fs))
+        rw = int(p[4]) if len(p) >= 5 else 95   # 第5欄=清除寬度(金框內職業名用窄,預設95)
+        items.append((int(p[0]), int(p[1]), p[2], fs, rw))
 
 # mask:屬性名 rect(寬 80 高 14)內的深色 pixel(英文字),inpaint 用周圍卷軸補
 mask = np.zeros((h, w), np.uint8)
-RW = 95
-for (x, y, _t, fs) in items:
+for (x, y, _t, fs, rw) in items:
     RH = fs + 2
     x0, y0 = max(0, x - 3), max(0, y - 2)
-    x1, y1 = min(w, x + RW), min(h, y + RH)
+    x1, y1 = min(w, x + rw), min(h, y + RH)
     region = bgr[y0:y1, x0:x1].astype(int)
     dark = region.sum(axis=2) < 330          # 放寬涵蓋抗鋸齒半深邊(避免殘影)
     mask[y0:y1, x0:x1][dark] = 255
@@ -57,7 +57,7 @@ im = Image.fromarray(cv2.cvtColor(inp, cv2.COLOR_BGR2RGB))
 draw = ImageDraw.Draw(im)
 fill = (textcol[2], textcol[1], textcol[0])          # BGR→RGB
 _fcache = {}
-for (x, y, t, fs) in items:
+for (x, y, t, fs, rw) in items:
     if fs not in _fcache:
         _fcache[fs] = ImageFont.truetype(FONT, fs)
     draw.text((x, y - 1), t, fill=fill, font=_fcache[fs])
