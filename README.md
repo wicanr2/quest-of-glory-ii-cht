@@ -1,4 +1,4 @@
-# 英雄傳奇 II:烈火試煉 — 繁體中文化
+# 英雄傳奇 II:烈火神兵 — 繁體中文化
 ### Quest for Glory II: Trial by Fire (AGDI VGA Remake) — Traditional Chinese
 
 > 還記得嗎？1990 年的某個午後，你在電腦店架上翻到一盒《Quest for Glory》。
@@ -32,7 +32,7 @@
 | 旁白／描述／劇情翻譯 | ✅ **2352 句全數繁中化**（look 物件、場景描述、劇情旁白、物品、系統訊息） |
 | NPC 對話翻譯 | ✅ **再 6791 句繁中化**（各房間角色台詞；對齊譯名表與語域，中英對照典藏見 [`translation/`](translation/)） |
 | 特殊名詞顯示加註 | ✅ 自創生物/地名首次出現附原文，如 索魯斯(Saurus)、卡塔(Katta) |
-| 主選單裝飾標題字 | 🚧 該處繞過翻譯系統，待另解（精靈圖/字型替換） |
+| 引擎美術 GUI 文字（sprite） | 🚧 角色創建職業 button（戰士/法師/盜賊）已重繪 sprite 注入；屬性名、主選單裝飾字仍是美術圖，待逐一重繪 |
 | 640×480 真實高解析畫布 | ⛔ ScummVM AGS 全 native 渲染、`RenderAtScreenRes` 為 no-op，無 supersampling；真高解析需把所有美術 2× + 全座標 remap（不可行於小改動）。實務以 16/24px + F8 切換 + 視窗放大替代 |
 | macOS `.dmg` GitHub Actions 打包 | ✅ CI 綠燈，自動產出 .dmg |
 | Android `.apk` GitHub Actions 打包 | 🚧 引擎可編譯，卡 Oboe 連結（需 ScummVM gradle/prefab 路徑） |
@@ -45,13 +45,17 @@
 
 ![實機開場過場](docs/gameplay-intro.gif)
 
-真正坐進遊戲裡的一刻 —— 英雄踏進夏皮爾的「卡塔之尾客棧」，紫帷幔、地毯、坐墊一如當年。畫面左上的標題「英雄傳奇 II：烈火試煉」，是引擎即時渲染的繁體中文，不是貼圖：
+真正坐進遊戲裡的一刻 —— 英雄踏進夏皮爾的「卡塔之尾客棧」，紫帷幔、地毯、坐墊一如當年。畫面左上的標題「英雄傳奇 II：烈火神兵」，是引擎即時渲染的繁體中文，不是貼圖：
 
 ![實機遊戲畫面：夏皮爾的卡塔之尾客棧](docs/screenshot-gameplay-shapeir.png)
 
 連 NPC 都說中文了 —— 卡塔商人沙明在客棧裡迎接你的開場白。專有名詞首次出現會自動補上原文（「卡塔(Katta)」「夏皮爾(Shapeir)」），老玩家對照原文無痛接軌：
 
 ![實機中文 NPC 對話：卡塔商人沙明](docs/screenshot-gameplay-dialog.png)
+
+開新英雄時，連職業 button 都換成中文——戰士、法師、盜賊一眼就懂。標題「英雄傳奇 II：烈火神兵」頂在最上方那條窄框裡，也端正不被切（這幾個字差點栽在字型的上伸餘量上，最後靠墨水範圍置中才擺正）。屬性欄那排 Strength／Agility 是引擎內嵌的美術圖、不走翻譯，仍在處理：
+
+![角色創建：職業 button 與標題中文化](docs/screenshot-charcreate.png)
 
 遊戲中按 **F8**，繁中 16×16 → 繁中 24×24 → 英文原版即時循環：
 
@@ -161,7 +165,7 @@ macOS `.dmg`、Windows `.exe`(含相依 DLL)與 Android `.apk` 由 GitHub Action
 - **Sierra On-Line / Lori & Corey Cole** — 1990 年的原版《Quest for Glory II》與整個系列。
 - **AGD Interactive** — 八年心血的 VGA 重製版。原版仍可於 [agdinteractive.com](http://www.agdinteractive.com) 免費下載，請去支持原作者。
 - **ScummVM 團隊** — 讓三十年的老引擎還能在現代裝置上呼吸。
-- 1990 年代《電腦玩家》《軟體世界》《PC Game》三大誌的英雄傳奇攻略與譯文，是這份譯名的起點。
+- 1990 年代《電腦玩家》《軟體世界》《PC Game》三大誌的英雄傳奇攻略與譯文，是這份譯名的起點——副標「**烈火神兵**」正是沿用《軟體世界》當年那篇攻略的標題，而非把 Trial by Fire 直譯成「烈火試煉」。
 
 ## 授權
 
