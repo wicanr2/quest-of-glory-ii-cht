@@ -128,7 +128,9 @@ jobs:
           export CXX=aarch64-linux-android21-clang++
           export CPPFLAGS="-I$GITHUB_WORKSPACE/oboe/include"
           export LDFLAGS="-L$GITHUB_WORKSPACE/oboe-build"
-          ./configure --host=android-aarch64 --enable-engine=ags --disable-all-engines --enable-release
+          # [HARD] --host 必須是 android-arm64-v8a(ScummVM configure 認的 pattern);
+          # 用 android-aarch64 不 match 任何 case → 不進 Android 分支 → 不套 -loboe -llog → undefined
+          ./configure --host=android-arm64-v8a --enable-engine=ags --disable-all-engines --enable-release
           make -j$(nproc)
           make androiddist
       - uses: actions/upload-artifact@v4
