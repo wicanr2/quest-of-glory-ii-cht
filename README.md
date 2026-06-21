@@ -34,6 +34,7 @@
 | 特殊名詞顯示加註 | ✅ 自創生物/地名首次出現附原文，如 索魯斯(Saurus)、卡塔(Katta) |
 | 引擎美術 GUI 文字 | 🚧 職業 button（戰士/法師/盜賊）已重繪注入；角色創建 15 個屬性名（力量/智力/敏捷…武器/招架/閃避…）以 OpenCV 內容感知修復卷軸紋理後印上中文，F8 可切回原版且玩家數值不受影響；底部欄、主選單裝飾字待續 |
 | 640×480 真實高解析畫布 | ⛔ ScummVM AGS 全 native 渲染、`RenderAtScreenRes` 為 no-op，無 supersampling；真高解析需把所有美術 2× + 全座標 remap（不可行於小改動）。實務以 16/24px + F8 切換 + 視窗放大替代 |
+| Linux AppImage 一鍵打包 | ✅ self-contained 單檔（引擎＋遊戲＋繁中＋依賴），在乾淨環境（未裝 SDL2）實機驗證可雙擊即玩 |
 | macOS `.dmg` GitHub Actions 打包 | ✅ CI 綠燈，自動產出 .dmg |
 | Android `.apk` GitHub Actions 打包 | 🚧 引擎可編譯，卡 Oboe 連結（需 ScummVM gradle/prefab 路徑） |
 

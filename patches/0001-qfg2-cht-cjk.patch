@@ -29,7 +29,7 @@ index 3ede3f1d..9e322403 100644
  }
  
 diff --git a/engines/ags/engine/ac/global_translation.cpp b/engines/ags/engine/ac/global_translation.cpp
-index 7adcc725..5d3d88fc 100644
+index 7adcc725..aee96758 100644
 --- a/engines/ags/engine/ac/global_translation.cpp
 +++ b/engines/ags/engine/ac/global_translation.cpp
 @@ -19,8 +19,13 @@
@@ -46,7 +46,7 @@ index 7adcc725..5d3d88fc 100644
  #include "ags/engine/ac/game_state.h"
  #include "ags/engine/ac/global_translation.h"
  #include "ags/engine/ac/string.h"
-@@ -30,18 +35,376 @@
+@@ -30,18 +35,378 @@
  #include "ags/plugins/plugin_engine.h"
  #include "ags/shared/util/memory.h"
  #include "ags/engine/ac/string.h"
@@ -372,8 +372,8 @@ index 7adcc725..5d3d88fc 100644
 +	AGS::Shared::Bitmap *dst = _GP(thisroom).BgFrames[0].Graphic.get();
 +	const int H = dst->GetHeight();
 +	// 只 blit 左右欄屬性名區(中間職業/拱門 + 數值框不動,保留 script 已畫的數值)
-+	dst->Blit(src, 0, 28, 0, 28, 108, H - 28);       // 左欄屬性名
-+	dst->Blit(src, 195, 28, 195, 28, 103, H - 28);   // 右欄屬性名
++	dst->Blit(src, 0, 28, 0, 28, 89, H - 28);        // 左欄屬性名(左數值框 x91 起,避開以保留 script 畫的數值)
++	dst->Blit(src, 195, 28, 195, 28, 86, H - 28);    // 右欄屬性名(右數值框 x282 起,避開以保留數值)
 +	_GP(play).raw_modified[0] = 1;
 +	invalidate_screen();
 +	mark_current_background_dirty();   // 觸發 room 背景重繪(F8 切換時畫面才更新)
@@ -407,6 +407,8 @@ index 7adcc725..5d3d88fc 100644
 +	for (size_t i = 0; i < _GP(fonts).size(); ++i)
 +		font_recalc_metrics(i);
 +	cht_room_bg_apply();   // CHT:F8 切語言時 room 背景中文版/原版跟著切(保留原圖)
++	// CHT:讓走 .tra 的 GUI 文字(頂部遊戲名標題等)跟著重繪,否則 F8 切換後標題會卡在舊語言
++	AGS::Shared::GUI::MarkForTranslationUpdate();
 +	Debug::Printf(kDbgMsg_Info, "CHT: language mode -> %s", name);
 +}
 +
