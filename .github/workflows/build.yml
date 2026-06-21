@@ -120,9 +120,15 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
         run: |
-          # ScummVM Android toolchain build(僅 ags engine)。需:NDK clang 進 PATH、
-          # target API wrapper 當 CC/CXX、Oboe 的 include/lib 路徑。
-          # 注意:此 job 尚未在真實 runner 跑綠,首次請依 ScummVM dists/android 文件校正。
+          # ScummVM Android toolchain build(僅 ags engine)。
+          # [HARD] ANDROID_NDK_ROOT 必須指向我們 setup 的 NDK:configure(2208 行)用
+          # $ANDROID_NDK_ROOT/source.properties 抓 NDK 版本,沒設會抓到 runner 預裝的
+          # 別版(27.3)→ 與 build.gradle ndkVersion 不符 → make androiddist exit 1。
+          export ANDROID_NDK_ROOT="$ANDROID_NDK_HOME"
+          # 把 dists/android/build.gradle 的 ndkVersion 改成實際 NDK 版本,讓 configure 比對通過
+          NDKVER=$(sed -n 's/^Pkg.Revision *= *//p' "$ANDROID_NDK_ROOT/source.properties")
+          echo ">> NDK 版本: $NDKVER"
+          sed -i "s/ndkVersion *= *\"[^\"]*\"/ndkVersion = \"$NDKVER\"/" dists/android/build.gradle
           export PATH="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
           export CC=aarch64-linux-android21-clang
           export CXX=aarch64-linux-android21-clang++
