@@ -27,14 +27,16 @@ for ln in open(MAN, encoding="utf-8"):
     ln = ln.strip()
     if not ln or ln.startswith("#"):
         continue
-    p = ln.split(None, 2)
-    if len(p) == 3:
-        items.append((int(p[0]), int(p[1]), p[2]))
+    p = ln.split()
+    if len(p) >= 3:
+        fs = int(p[3]) if len(p) >= 4 else 14   # 第4欄=字級(預設14;底部窄欄用11)
+        items.append((int(p[0]), int(p[1]), p[2], fs))
 
 # mask:屬性名 rect(寬 80 高 14)內的深色 pixel(英文字),inpaint 用周圍卷軸補
 mask = np.zeros((h, w), np.uint8)
-RW, RH = 95, 16
-for (x, y, _t) in items:
+RW = 95
+for (x, y, _t, fs) in items:
+    RH = fs + 2
     x0, y0 = max(0, x - 3), max(0, y - 2)
     x1, y1 = min(w, x + RW), min(h, y + RH)
     region = bgr[y0:y1, x0:x1].astype(int)
@@ -53,10 +55,12 @@ else:
 
 im = Image.fromarray(cv2.cvtColor(inp, cv2.COLOR_BGR2RGB))
 draw = ImageDraw.Draw(im)
-font = ImageFont.truetype(FONT, 14)
 fill = (textcol[2], textcol[1], textcol[0])          # BGR→RGB
-for (x, y, t) in items:
-    draw.text((x, y - 1), t, fill=fill, font=font)
+_fcache = {}
+for (x, y, t, fs) in items:
+    if fs not in _fcache:
+        _fcache[fs] = ImageFont.truetype(FONT, fs)
+    draw.text((x, y - 1), t, fill=fill, font=_fcache[fs])
 
 # 存中文版 bg.bin(int32 w,h + BGRA),引擎讀
 rgba = np.array(im.convert("RGBA"))

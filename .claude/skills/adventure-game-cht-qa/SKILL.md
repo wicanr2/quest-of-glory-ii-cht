@@ -88,6 +88,17 @@ room bg y = (顯示 y - 40) / 2          顯示 x = room bg x * 2
 
 **看圖用 Read 工具直接看 PNG**(harness 會視覺呈現)，不要 `cat`、不要開 viewer。
 
+## 4b. 完整翻譯掃描(最易漏 — 實戰血淚)
+
+**「畫面有中文」≠「翻完整」。** 每進一個畫面,要逐字掃**殘留英文**,而不是看到有中文就過。實戰漏掉過一整批:角色創建底部欄(Avail Pts / Puzzle Pts / Health / Stamina / Mana 全沒翻,只翻了上半 15 個屬性名)、職業 button 的 normal sprite(未 hover 是英文、hover 才中文)、start / cancel button、空名時的錯誤提示框 "Please choose a longer name"、遊戲內 dialog 對話介面、頂部標題字級過大。QA 當時只確認「有中文」就放行,全數漏掉。
+
+掃描鐵則:
+- **逐畫面列「英文殘留清單」**:每張截圖讀完,把**還是英文的字一個個列出來**當待辦,而不是確認有中文就過。通過標準 = 畫面上找不到任何一個英文單字(專名加註的原文括號如「夏皮爾(Shapeir)」除外)。
+- **button/sprite 兩態都要看**:normal(未選/未 hover)與 highlight(選中/hover)是**不同 sprite**,常只換了一個。對每個 button 都 hover 上去截一張、移開再截一張,兩張都要中文。
+- **互動觸發的文字才看得到**:錯誤提示框(故意觸發,如空名按確定)、hover tooltip、對話選項 UI、暫停選單、確認對話框(Yes/No、still-have-points)。不互動就完全漏掉。
+- **room bg 美術字要數齊**:一個面板的標籤常分散多區(主屬性 + 底部統計 + 按鈕列),manifest/inpaint 要涵蓋**全部**,不只顯眼的上半。
+- **字級也算瑕疵**:標題/標籤中文若被切邊、過大溢出、與框不對齊,一併記。
+
 ## 5. 打包驗證(self-contained 的真測法)
 
 別在「已裝開發依賴的機器」測打包——那測不出缺函式庫。**用乾淨 base image 模擬目標機**:

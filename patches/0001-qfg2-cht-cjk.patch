@@ -29,7 +29,7 @@ index 3ede3f1d..9e322403 100644
  }
  
 diff --git a/engines/ags/engine/ac/global_translation.cpp b/engines/ags/engine/ac/global_translation.cpp
-index 7adcc725..aee96758 100644
+index 7adcc725..6ef56d55 100644
 --- a/engines/ags/engine/ac/global_translation.cpp
 +++ b/engines/ags/engine/ac/global_translation.cpp
 @@ -19,8 +19,13 @@
@@ -46,7 +46,7 @@ index 7adcc725..aee96758 100644
  #include "ags/engine/ac/game_state.h"
  #include "ags/engine/ac/global_translation.h"
  #include "ags/engine/ac/string.h"
-@@ -30,18 +35,378 @@
+@@ -30,18 +35,380 @@
  #include "ags/plugins/plugin_engine.h"
  #include "ags/shared/util/memory.h"
  #include "ags/engine/ac/string.h"
@@ -140,7 +140,9 @@ index 7adcc725..aee96758 100644
 +	// Room scripts(各 roomN.crm 的 NPC 對白/Display/Say;遊戲對話大宗在此)。
 +	// 全域 dump 只抽到旁白/物品/全域訊息,NPC 台詞散在各 room 的 compiled script,
 +	// 逐 room 載入臨時 RoomStruct 抽其 script 字串,補上才不會漏掉 NPC 對話。
-+	for (int rn = 0; rn < MAX_ROOMS; ++rn) {
++	// CHT:不可用 MAX_ROOMS(=300)當上限,角色創建等特殊畫面是 room 502 等高編號,
++	// 會被漏抽導致該 room 的對話框/dialog 文字沒翻。掃到 1000 涵蓋全部 room。
++	for (int rn = 0; rn < 1000; ++rn) {
 +		AGS::Shared::String rfn = AGS::Shared::String::FromFormat("room%d.crm", rn);
 +		if (rn == 0 && !_GP(AssetMgr)->DoesAssetExist(rfn) && _GP(AssetMgr)->DoesAssetExist("intro.crm"))
 +			rfn = "intro.crm";
