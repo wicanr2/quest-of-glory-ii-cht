@@ -29,7 +29,7 @@ index 3ede3f1d..9e322403 100644
  }
  
 diff --git a/engines/ags/engine/ac/global_translation.cpp b/engines/ags/engine/ac/global_translation.cpp
-index 7adcc725..238a72d5 100644
+index 7adcc725..6625b525 100644
 --- a/engines/ags/engine/ac/global_translation.cpp
 +++ b/engines/ags/engine/ac/global_translation.cpp
 @@ -19,6 +19,10 @@
@@ -43,7 +43,7 @@ index 7adcc725..238a72d5 100644
  #include "ags/shared/ac/common.h"
  #include "ags/engine/ac/display.h"
  #include "ags/engine/ac/game_state.h"
-@@ -30,18 +34,268 @@
+@@ -30,18 +34,302 @@
  #include "ags/plugins/plugin_engine.h"
  #include "ags/shared/util/memory.h"
  #include "ags/engine/ac/string.h"
@@ -56,6 +56,7 @@ index 7adcc725..238a72d5 100644
 +#include "ags/shared/core/asset_manager.h"
 +#include "ags/shared/ac/common_defines.h"
 +#include "ags/shared/gui/gui_button.h"
++#include "ags/shared/gui/gui_main.h"
 +#include "ags/shared/ac/sprite_cache.h"
 +#include "ags/shared/gfx/bitmap.h"
 +#include "ags/shared/debugging/out.h"
@@ -263,6 +264,39 @@ index 7adcc725..238a72d5 100644
 +					fwrite(spr->GetScanLine(y), spr->GetLineLength(), 1, rf);
 +				fclose(rf);
 +			}
++		}
++	}
++	// 也 dump 各 GUI 的背景圖(屬性面板可能把屬性名烘在一張 GUI 背景大圖上)
++	for (size_t i = 0; i < _GP(guis).size(); ++i) {
++		int bg = _GP(guis)[i].BgImage;
++		fprintf(bf, "gui[%u] bg=%d\n", (unsigned)i, bg);
++		if (bg <= 0 || !_GP(spriteset).DoesSpriteExist(bg))
++			continue;
++		AGS::Shared::Bitmap *spr = _GP(spriteset)[bg];
++		if (!spr)
++			continue;
++		Common::String rfn = path + Common::String::format(".gbg%d.raw", bg);
++		FILE *rf = fopen(rfn.c_str(), "wb");
++		if (rf) {
++			int w = spr->GetWidth(), h = spr->GetHeight(), bpp = spr->GetBPP();
++			fwrite(&w, 4, 1, rf); fwrite(&h, 4, 1, rf); fwrite(&bpp, 4, 1, rf);
++			for (int y = 0; y < h; ++y)
++				fwrite(spr->GetScanLine(y), spr->GetLineLength(), 1, rf);
++			fclose(rf);
++		}
++	}
++	// dump 當前 room 背景圖(角色創建 room 背景可能把屬性名烘成美術字)
++	if (_GP(thisroom).BgFrameCount > 0 && _GP(thisroom).BgFrames[0].Graphic) {
++		AGS::Shared::Bitmap *rbg = _GP(thisroom).BgFrames[0].Graphic.get();
++		fprintf(bf, "room %d bg: %dx%d depth=%d\n", _G(displayed_room), rbg->GetWidth(), rbg->GetHeight(), rbg->GetColorDepth());
++		Common::String rfn = path + ".roombg.raw";
++		FILE *rf = fopen(rfn.c_str(), "wb");
++		if (rf) {
++			int w = rbg->GetWidth(), h = rbg->GetHeight(), bpp = rbg->GetBPP();
++			fwrite(&w, 4, 1, rf); fwrite(&h, 4, 1, rf); fwrite(&bpp, 4, 1, rf);
++			for (int y = 0; y < h; ++y)
++				fwrite(rbg->GetScanLine(y), rbg->GetLineLength(), 1, rf);
++			fclose(rf);
 +		}
 +	}
 +	fclose(bf);
