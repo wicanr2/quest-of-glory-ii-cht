@@ -1,0 +1,58 @@
+# ScummVM(AGS engine)Windows x86_64 交叉編譯工具鏈 —— 在 Linux 上 cross-compile。
+#
+# 這支 Dockerfile 把「Linux→Windows 交叉編譯 ScummVM」實戰踩過的雷全部固化,
+# build 一次後重用,不必每次 apt(對齊 rise-of-the-dragon 的 rotd-emu 預裝 image 模式):
+#
+#   1. 出口防火牆只放行 https:443、擋 http:80 → apt 預設走 http 會 timeout。
+#      解法:把 apt 來源改 https(deb822 的 *.sources 與傳統 *.list 都改)。
+#   2. ScummVM configure 用 host 的 GNU `strings` 掃 PE exe 判斷位元組序;
+#      debian-slim 不含 `strings` 且 configure 找 cross strings 的前綴對不上
+#      (找 x86_64-mingw32- 而非 x86_64-w64-mingw32-)→ endianness=unknown → 中止。
+#      解法:裝 host `binutils`(提供能讀 PE 的 `strings`)。
+#   3. ScummVM 對 SDL2 偵測敏感,發行版 mingw-SDL2 套件常對不上 → 改用官方
+#      SDL2-devel-mingw 預編包 + configure --with-sdl-prefix。
+#   4. AGS 需要 zlib → 裝 libz-mingw-w64-dev(連帶提供執行期 zlib1.dll)。
+#
+# 用法:tools/build_windows_debian.sh 會自動 build 本 image 並用它編 exe。
+FROM debian:12-slim
+
+# [雷 1] 出口僅 443:apt 全走 https(裝 ca-certificates 前先關憑證驗證,避免雞生蛋)
+RUN find /etc/apt -type f \( -name "*.sources" -o -name "*.list" \) \
+      -exec sed -i "s|http://|https://|g" {} + \
+ && echo 'Acquire::https::Verify-Peer "false";' > /etc/apt/apt.conf.d/99noverify
+
+ENV DEBIAN_FRONTEND=noninteractive
+# mingw-w64 GCC + [雷 2] binutils(host strings)+ [雷 4] zlib mingw + 建置工具
+RUN apt-get update -qq \
+ && apt-get install -y -qq \
+      g++-mingw-w64-x86-64 mingw-w64-tools libz-mingw-w64-dev \
+      binutils ca-certificates curl xz-utils make nasm pkg-config file \
+ && rm -rf /var/lib/apt/lists/*
+
+# [雷 3] 官方 SDL2 mingw 開發包,解到 /opt 並建穩定 symlink 供 --with-sdl-prefix
+ARG SDL2VER=2.30.9
+RUN curl -fsSL -o /tmp/sdl2.tar.gz \
+      https://github.com/libsdl-org/SDL/releases/download/release-${SDL2VER}/SDL2-devel-${SDL2VER}-mingw.tar.gz \
+ && tar xf /tmp/sdl2.tar.gz -C /opt \
+ && ln -s /opt/SDL2-${SDL2VER}/x86_64-w64-mingw32 /opt/sdl2-mingw \
+ && rm /tmp/sdl2.tar.gz
+ENV SDL2_MINGW=/opt/sdl2-mingw
+
+# AGS 遊戲音樂常為 Ogg Vorbis(QFG2 的 music.vox 內含 7000+ 個 OggS)→ 手編 libogg +
+# libvorbis static 進 mingw sysroot,讓交叉編譯出的 exe 能解碼背景音樂。
+# 發行版沒有 mingw 版 vorbis 套件,故照官方 release 源碼自編(對齊 rise-of-the-dragon)。
+ARG OGGVER=1.3.5
+ARG VORBISVER=1.3.7
+RUN PFX=/usr/x86_64-w64-mingw32 \
+ && export PKG_CONFIG_PATH="$PFX/lib/pkgconfig" \
+ && cd /tmp \
+ && for spec in ogg/libogg-${OGGVER} vorbis/libvorbis-${VORBISVER}; do \
+      nm=$(basename "$spec"); \
+      curl -fsSL -o "$nm.tar.gz" "https://downloads.xiph.org/releases/$spec.tar.gz"; \
+      tar xf "$nm.tar.gz"; cd "$nm"; \
+      ./configure --host=x86_64-w64-mingw32 --prefix="$PFX" --enable-static --disable-shared >/dev/null 2>&1; \
+      make -j"$(nproc)" >/dev/null 2>&1; make install >/dev/null 2>&1; \
+      cd /tmp; rm -rf "$nm" "$nm.tar.gz"; \
+    done
+
+WORKDIR /work
