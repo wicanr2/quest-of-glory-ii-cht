@@ -15,6 +15,9 @@ out/
 *.o
 *.a
 
+# 集中存放的釋出產物(含 AGDI 版權遊戲的完整包 + dev-setup bundle)— 絕不入庫
+dist-all/
+
 # Python venv
 .venv/
 __pycache__/

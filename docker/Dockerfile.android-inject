@@ -1,0 +1,46 @@
+# ScummVM Android「把遊戲注入 base APK」的工具鏈 image。
+#
+# 為什麼要 image:這台的 docker bind-mount 對「host 寫小檔 → 下個容器讀」有快照
+# 不一致問題(host 端 stdout 寫好的 libc++_shared.so,inject 容器啟動時 mount 到的卻
+# 是舊快照,還會在結束時把舊狀態寫回覆蓋 host)。把不變的工具與 native libs 烘進
+# image、不經 mount 傳遞,就避開這個雷;只有「遊戲檔(讀)」與「輸出 APK(寫)」走 mount。
+#
+# 內含:JDK17 + Android build-tools(apksigner/zipalign)+ r26d libc++_shared.so +
+#       oboe 1.9.0 liboboe.so(都放 /opt/android_libs,arm64-v8a)。
+FROM ubuntu:24.04
+
+# 出口僅開 443:apt 改走 https
+RUN find /etc/apt -type f \( -name "*.sources" -o -name "*.list" \) \
+      -exec sed -i "s|http://|https://|g" {} + \
+ && echo 'Acquire::https::Verify-Peer "false";' > /etc/apt/apt.conf.d/99noverify
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update -qq \
+ && apt-get install -y -qq openjdk-17-jdk-headless wget unzip zip \
+ && rm -rf /var/lib/apt/lists/*
+
+# Android build-tools(apksigner + zipalign),經 cmdline-tools 裝,不裝 NDK
+ENV ANDROID_SDK_ROOT=/opt/asdk
+RUN mkdir -p "$ANDROID_SDK_ROOT/cmdline-tools" && cd /tmp \
+ && wget -q https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -O ct.zip \
+ && unzip -q ct.zip -d "$ANDROID_SDK_ROOT/cmdline-tools" \
+ && mv "$ANDROID_SDK_ROOT/cmdline-tools/cmdline-tools" "$ANDROID_SDK_ROOT/cmdline-tools/latest" \
+ && yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true \
+ && "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" "build-tools;35.0.0" >/dev/null \
+ && rm -f /tmp/ct.zip
+ENV BUILD_TOOLS=/opt/asdk/build-tools/35.0.0
+
+# runtime native libs(base APK 缺,不補會秒退):從 NDK r26d 抽 libc++_shared.so
+# (與 CI 編引擎同 ABI)、從 oboe 1.9.0 aar 抽 liboboe.so。都用 unzip -p 經 stdout 落地。
+RUN mkdir -p /opt/android_libs && cd /tmp \
+ && wget -q https://dl.google.com/android/repository/android-ndk-r26d-linux.zip -O ndk.zip \
+ && ENTRY=$(unzip -Z1 ndk.zip | grep -E "sysroot/usr/lib/aarch64-linux-android/libc\+\+_shared.so$" | head -1) \
+ && unzip -p ndk.zip "$ENTRY" > /opt/android_libs/libc++_shared.so \
+ && rm -f ndk.zip \
+ && wget -q https://dl.google.com/dl/android/maven2/com/google/oboe/oboe/1.9.0/oboe-1.9.0.aar -O oboe.aar \
+ && unzip -q -o oboe.aar -d oboe \
+ && cp "$(find oboe -name liboboe.so -path '*arm64*' | head -1)" /opt/android_libs/liboboe.so \
+ && rm -rf oboe oboe.aar \
+ && echo "android_libs:" && ls -la /opt/android_libs
+
+WORKDIR /work
