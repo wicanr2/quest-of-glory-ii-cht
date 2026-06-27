@@ -171,6 +171,28 @@ jobs:
           cp /tmp/madinst/include/mad.h "$TC/sysroot/usr/include/"
           cp /tmp/madinst/lib/libmad.a "$TC/sysroot/usr/lib/aarch64-linux-android/"
           ls -l "$TC/sysroot/usr/lib/aarch64-linux-android/libmad.a"
+      - name: 自編 libmpeg2 for Android(arm64-v8a;AGS 片頭 MPEG-1 影片 CPU 軟解)
+        env:
+          ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
+        run: |
+          # AGS 用 Video::MPEGPSDecoder 播 .001 片頭(MPEG-1 system stream),影片解碼 #ifdef USE_MPEG2
+          # (libmpeg2,純 CPU 軟解)。NDK 沒有 → ScummVM feature 無 MPEG2、片頭報 Unable to decode video
+          # (Linux/Windows build 有 MPEG2 所以動畫能播)。比照 libmad cross-build 進 NDK sysroot。
+          # 本地 docker + NDK r26d 已實證 arm64/x86_64 兩 ABI 的 libmpeg2.a 產出。
+          # ScummVM configure 偵測碼(inttypes + extern C + MPEG2_RELEASE>=0.4.0)cross 時只 compile+link。
+          TC="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64"
+          export PATH="$TC/bin:$PATH"
+          export CC=aarch64-linux-android21-clang CXX=aarch64-linux-android21-clang++ AR=llvm-ar RANLIB=llvm-ranlib
+          curl -fsSL -o /tmp/mpeg2.tar.gz https://deb.debian.org/debian/pool/main/m/mpeg2dec/mpeg2dec_0.5.1.orig.tar.gz
+          cd /tmp && tar xf mpeg2.tar.gz && cd libmpeg2-0.5.1
+          # 老 config.sub/guess(不認 android triple)換 GNU 新版
+          find . \( -name config.sub -o -name config.guess \) | while read f; do curl -fsSL -o "$f" "https://git.savannah.gnu.org/cgit/config.git/plain/$(basename "$f")"; chmod +x "$f"; done
+          ./configure --host=aarch64-linux-android --enable-static --disable-shared --disable-sdl --without-x --prefix=/tmp/m2inst
+          make -j$(nproc) && make install
+          mkdir -p "$TC/sysroot/usr/include/mpeg2dec"
+          cp /tmp/m2inst/include/mpeg2dec/*.h "$TC/sysroot/usr/include/mpeg2dec/"
+          cp /tmp/m2inst/lib/libmpeg2.a "$TC/sysroot/usr/lib/aarch64-linux-android/"
+          ls -l "$TC/sysroot/usr/lib/aarch64-linux-android/libmpeg2.a"
       - name: configure + build APK (arm64)
         working-directory: scummvm-src
         env:
@@ -275,6 +297,23 @@ jobs:
           cp /tmp/madinst/include/mad.h "$TC/sysroot/usr/include/"
           cp /tmp/madinst/lib/libmad.a "$TC/sysroot/usr/lib/x86_64-linux-android/"
           ls -l "$TC/sysroot/usr/lib/x86_64-linux-android/libmad.a"
+      - name: 自編 libmpeg2 for Android(x86_64;AGS 片頭 MPEG-1 影片 CPU 軟解)
+        env:
+          ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
+        run: |
+          # 同 arm64:AGS 片頭 .001 是 MPEG-1,需 libmpeg2(USE_MPEG2,CPU 軟解)。NDK 沒有就不播。
+          TC="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64"
+          export PATH="$TC/bin:$PATH"
+          export CC=x86_64-linux-android21-clang CXX=x86_64-linux-android21-clang++ AR=llvm-ar RANLIB=llvm-ranlib
+          curl -fsSL -o /tmp/mpeg2.tar.gz https://deb.debian.org/debian/pool/main/m/mpeg2dec/mpeg2dec_0.5.1.orig.tar.gz
+          cd /tmp && tar xf mpeg2.tar.gz && cd libmpeg2-0.5.1
+          find . \( -name config.sub -o -name config.guess \) | while read f; do curl -fsSL -o "$f" "https://git.savannah.gnu.org/cgit/config.git/plain/$(basename "$f")"; chmod +x "$f"; done
+          ./configure --host=x86_64-linux-android --enable-static --disable-shared --disable-sdl --without-x --prefix=/tmp/m2inst
+          make -j$(nproc) && make install
+          mkdir -p "$TC/sysroot/usr/include/mpeg2dec"
+          cp /tmp/m2inst/include/mpeg2dec/*.h "$TC/sysroot/usr/include/mpeg2dec/"
+          cp /tmp/m2inst/lib/libmpeg2.a "$TC/sysroot/usr/lib/x86_64-linux-android/"
+          ls -l "$TC/sysroot/usr/lib/x86_64-linux-android/libmpeg2.a"
       - name: configure + build APK (x86_64 debug)
         working-directory: scummvm-src
         env:
