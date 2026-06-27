@@ -70,6 +70,23 @@ jobs:
           make -j"$(sysctl -n hw.ncpu)"
           make install
           ls -l /opt/homebrew/lib/libmad.a /opt/homebrew/include/mad.h
+      - name: 自編 libmpeg2(片頭 AGDI.001 MPEG-1 CPU 軟解;brew 未裝)
+        run: |
+          # AGS 片頭 .001 是 MPEG-1,ScummVM Video::MPEGPSDecoder 影片解碼 #ifdef USE_MPEG2(libmpeg2)。
+          # brew install 沒裝 libmpeg2 → 片頭播不出(Failed to find RIFF header → fallback MPEG 無解碼器)。
+          # 照源碼自編裝進 /opt/homebrew。只編核心 libmpeg2/(略過 libvo 輸出模組,避免平台相依);
+          # config.sub/guess(2004)不認 aarch64-apple-darwin → 換 GNU 新版。
+          curl -fsSL -o /tmp/mpeg2.tar.gz https://deb.debian.org/debian/pool/main/m/mpeg2dec/mpeg2dec_0.5.1.orig.tar.gz
+          cd /tmp && tar xf mpeg2.tar.gz && cd libmpeg2-0.5.1
+          for f in $(find . -name config.sub -o -name config.guess); do
+            curl -fsSL -o "$f" "https://git.savannah.gnu.org/cgit/config.git/plain/$(basename "$f")"; chmod +x "$f"
+          done
+          ./configure --prefix=/opt/homebrew --enable-static --disable-shared --disable-sdl --without-x
+          make -C libmpeg2 -j"$(sysctl -n hw.ncpu)"
+          mkdir -p /opt/homebrew/include/mpeg2dec
+          cp libmpeg2/.libs/libmpeg2.a /opt/homebrew/lib/
+          cp include/mpeg2.h include/mpeg2convert.h /opt/homebrew/include/mpeg2dec/
+          ls -l /opt/homebrew/lib/libmpeg2.a /opt/homebrew/include/mpeg2dec/mpeg2.h
       - name: 取得並 patch ScummVM
         run: bash tools/apply_patches.sh "$GITHUB_WORKSPACE/scummvm-src"
       - name: configure + build + bundle
