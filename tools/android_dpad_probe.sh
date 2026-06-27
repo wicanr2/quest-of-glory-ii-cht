@@ -92,11 +92,15 @@ SCUMMVM_ACT="org.scummvm.scummvm.ScummVMActivity"
 # → 還是 1 arg。先徹底 force-stop 殺掉 task,讓 am start -d 觸發 onCreate 重讀 data。
 adb shell am force-stop "$PKG"; sleep 3
 adb logcat -c 2>/dev/null   # 清 logcat,讓 scummvm_main args 數只反映這次 am start
-AM_OUT=$(adb shell am start -n "${PKG}/${SCUMMVM_ACT}" -d "scummvm:5daysastranger" 2>&1)
+# -S = am 內建 force-stop before start,比手動 force-stop 更徹底解 singleInstance task 殘留
+AM_OUT=$(adb shell am start -S -n "${PKG}/${SCUMMVM_ACT}" -d "scummvm:5daysastranger" 2>&1)
 LOG "  am start result: ${AM_OUT}"
 sleep 30   # AGS 首次載入較慢(解壓 + 可能有片頭)
 SHOT shot_02_game.png
 LOGSNAP logcat_03_game_start.txt
+# [診斷] args 數 + AGS/載入/退出訊息直接 echo 到 stdout(繞過 NFS 抓不到 artifact)
+LOG "  --- logcat 關鍵(stdout 直印,gh log 可見)---"
+adb logcat -d 2>/dev/null | grep -iE "scummvm_main with|scummvm_main exited|Running:|AGS|engine|gameid|No such|not found|launcherDialog|Fatal" | tail -15
 
 # crash 偵測
 if adb shell uiautomator dump /sdcard/u.xml >/dev/null 2>&1; then
