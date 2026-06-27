@@ -1,0 +1,75 @@
+diff --git a/backends/platform/android/org/scummvm/scummvm/ScummVMActivity.java b/backends/platform/android/org/scummvm/scummvm/ScummVMActivity.java
+index 7288d333..38b16b10 100644
+--- a/backends/platform/android/org/scummvm/scummvm/ScummVMActivity.java
++++ b/backends/platform/android/org/scummvm/scummvm/ScummVMActivity.java
+@@ -1106,8 +1106,11 @@ public class ScummVMActivity extends Activity {
+ 		final Uri intentData = getIntent().getData();
+ 		String[] args;
+ 		if (intentData == null) {
++			// CHT: 從 launcher 圖示啟動(無 intent data)時,直接跑本作遊戲、不停在 ScummVM 列表。
++			// 這是單一遊戲 APK,免去玩家手動選遊戲 + 按 Start。等同命令列 `scummvm qfg2agdi`。
+ 			args = new String[]{
+-				"ScummVM"
++				"ScummVM",
++				"qfg2agdi"
+ 			};
+ 		} else {
+ 			args = new String[]{
+diff --git a/engines/ags/engine/main/game_run.cpp b/engines/ags/engine/main/game_run.cpp
+index a8007e05..72d8571b 100644
+--- a/engines/ags/engine/main/game_run.cpp
++++ b/engines/ags/engine/main/game_run.cpp
+@@ -73,6 +73,7 @@
+ #include "ags/engine/script/script_runtime.h"
+ #include "ags/events.h"
+ #include "ags/globals.h"
++#include "common/system.h"   // CHT: g_system / OSystem::kFeatureVirtualKeyboard(Android 系統鍵盤)
+ 
+ namespace AGS3 {
+ 
+@@ -90,6 +91,35 @@ static bool ShouldStayInWaitMode();
+ #define UNTIL_INTISNEG  8
+ #define UNTIL_ANIMBTNEND 9
+ 
++// CHT: Android 系統鍵盤同步 —— AGS 原生不呼叫 kFeatureVirtualKeyboard,手機上遇到
++// 遊戲內文字輸入(如 QFG2 建角色輸入姓名的 GUITextBox)系統鍵盤不會自動跳出、打不了字。
++// 每幀偵測「有可見且啟用的 GUITextBox 在等輸入」,對應開/關虛擬鍵盤(狀態變化才呼叫)。
++// 桌面平台 setFeatureState(kFeatureVirtualKeyboard) 為 no-op,不影響。
++static void cht_sync_virtual_keyboard() {
++	bool wantTextInput = false;
++	if (_G(all_buttons_disabled) < 0) {
++		for (int gi = 0; gi < _GP(game).numgui && !wantTextInput; ++gi) {
++			auto &gui = _GP(guis)[gi];
++			if (!gui.IsDisplayed())
++				continue;
++			for (int ci = 0; ci < gui.GetControlCount(); ++ci) {
++				if (gui.GetControlType(ci) != kGUITextBox)
++					continue;
++				auto *tb = static_cast<GUITextBox *>(gui.GetControl(ci));
++				if (tb && tb->IsEnabled() && tb->IsVisible()) {
++					wantTextInput = true;
++					break;
++				}
++			}
++		}
++	}
++	static bool s_vkeybd_on = false;
++	if (wantTextInput != s_vkeybd_on) {
++		s_vkeybd_on = wantTextInput;
++		g_system->setFeatureState(OSystem::kFeatureVirtualKeyboard, wantTextInput);
++	}
++}
++
+ static void ProperExit() {
+ 	_G(want_exit) = false;
+ 	_G(proper_exit) = 1;
+@@ -799,6 +829,9 @@ void UpdateGameOnce(bool checkControls, IDriverDependantBitmap *extraBitmap, int
+ 
+ 	sys_evt_process_pending();
+ 
++	// CHT: 依遊戲內是否有 GUITextBox 在等輸入,同步開/關 Android 系統鍵盤(見上方說明)
++	cht_sync_virtual_keyboard();
++
+ 	_G(numEventsAtStartOfFunction) = _GP(events).size();
+ 
+ 	if (_G(want_exit)) {
