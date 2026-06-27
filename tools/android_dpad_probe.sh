@@ -1,91 +1,60 @@
 #!/usr/bin/env bash
-# 在 reactivecircus/android-emulator-runner 的 script context 跑(host 端 adb 對 emulator)。
-# 目的:驗證 ScummVM 的螢幕 on-screen D-pad 在 AGS 遊戲內是否真的移動滑鼠游標。
-# 測試素材是免費的《5 Days a Stranger》(AGS engine, freeware),**完全不涉及 QFG2 版權**。
+# 驗證 ScummVM 的螢幕 on-screen D-pad 是否真的移動滑鼠游標。
 #
-# 設計見 docs/ci-android-dpad-test-plan.md、機制見 docs/android-dpad-virtual-mouse.md。
-# ScummVM Android 沒有 intent 命令列參數接口,走:config 預加 game target → 啟動進 launcher
-# → adb input 點進遊戲 → 推 D-pad + 連續 screencap,最後人工/自動看游標有沒有動。
+# 用官方 ScummVM x86_64 APK:D-pad→游標是 ScummVM **上游引擎機制**(不是本專案的 CJK patch),
+# 用官方 APK 測一樣成立;而且本專案 CI 只 build arm64-v8a(給手機),arm64 的 libscummvm.so 在
+# x86_64 模擬器載入失敗會 crash(踩過),官方 release 有 x86_64 ABI 才跑得起來。完全不涉版權。
 #
-# 刻意 NOT set -e:第一版座標/路徑都還在校正,寧可每步都截圖跑完、從截圖看真相,
-# 也不要中途某個 adb 非零退出就整支掛掉(上一輪就是 monkey 啟動失敗 exit 252 卡死)。
+# 策略:在 ScummVM **launcher**(GUI context,VirtualMouse 確定有效 — android.cpp:731)裡,
+# onscreen_control 預設就是 true(options.cpp:494),用右上角控制器圖示循環 touch mode 到
+# Gamepad(D-pad),推 D-pad 看游標移動。不需 run-as(官方 release 不可)、不需 Add Game。
+# (進 AGS 遊戲內再驗一次是延伸 TODO,見 docs/ci-android-dpad-test-plan.md。)
+#
+# set +e + exit 0:CI 探測腳本目的是「跑完、把證據帶回來」,從 artifact 反推,不要中途就停。
 set +e
-GAME_DIR="${GAME_DIR:-game5days}"
 APK="${APK:-base.apk}"
-SHOT() { adb exec-out screencap -p > "$1" 2>/dev/null && echo "  screencap → $1 ($(wc -c <"$1" 2>/dev/null) bytes)"; }
-# PKG 在 step 0 動態抓到後才定義內容;monkey -p $PKG 用 package 的 LAUNCHER intent 啟動,
-# 不必知道 activity 完整類名(debug 的 package id 帶 .debug,但 activity 類名沒帶,寫死會錯)。
-START() { adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; }
+SHOT() { adb exec-out screencap -p > "$1" 2>/dev/null && echo "  → $1 ($(wc -c <"$1") bytes)"; }
 
-echo "== 0) 等開機完成 + 裝 APK =="
+echo "== 0) 裝官方 APK + 動態抓 package =="
 adb wait-for-device
-adb shell input keyevent 82 >/dev/null 2>&1   # 解鎖
-adb install -r -g "$APK" && echo "  APK 裝好" || echo "  !! APK 安裝失敗"
-# [關鍵] CI 是 debug build,build.gradle 有 applicationIdSuffix ".debug",真實 package 名是
-# org.scummvm.scummvm.debug。寫死 org.scummvm.scummvm 會全找不到 → 動態抓。
+adb shell input keyevent 82 >/dev/null 2>&1
+adb install -r -g "$APK" && echo "  APK 裝好" || echo "  !! 安裝失敗"
 PKG=$(adb shell pm list packages 2>/dev/null | grep -i scummvm | sed 's/package://' | tr -d "\r" | head -1)
-echo "  package = ${PKG:-<找不到 scummvm package!>}"
-adb shell pm path "$PKG" >/dev/null 2>&1 && echo "  pm path OK" || echo "  !! pm path 找不到"
+echo "  package = ${PKG:-<找不到!>}"
 
-echo "== 1) 推免費 AGS 測試遊戲到 sdcard(不涉版權)=="
-adb shell rm -rf /sdcard/ags5days; adb shell mkdir -p /sdcard/ags5days
-adb push "$GAME_DIR"/. /sdcard/ags5days/ >/dev/null && echo "  遊戲推好" || echo "  !! push 失敗"
-adb shell ls /sdcard/ags5days
-
-echo "== 2) 首次啟動 ScummVM(解壓 assets + 建 config),等久一點再關 =="
-START; sleep 30
-SHOT shot_00_firstboot.png
-adb shell am force-stop $PKG; sleep 3
-
-echo "== 3) 找 scummvm.ini(debug APK 可 run-as) =="
-CFG=$(adb shell run-as $PKG sh -c '
-  for p in files/.config/scummvm/scummvm.ini files/.local/share/scummvm/scummvm.ini files/scummvm.ini .config/scummvm/scummvm.ini; do
-    [ -f "$p" ] && { echo "$p"; break; }
-  done' 2>/dev/null | tr -d "\r")
-echo "  config = ${CFG:-<找不到,列出 files/ 看看>}"
-[ -z "$CFG" ] && adb shell run-as $PKG sh -c 'find files -name "*.ini" 2>/dev/null; ls -R files 2>/dev/null | head -40'
-
-echo "== 4) 寫入:開 on-screen D-pad(Gamepad)+ 預加 5 Days 為 game target =="
-if [ -n "$CFG" ]; then
-  adb shell run-as $PKG sh -c "cat >> '$CFG'" <<'INI'
-
-onscreen_control=true
-touch_mode_menus=2
-touch_mode_2d_games=2
-kbdmouse_speed=3
-
-[5daysastranger]
-engineid=ags
-gameid=5daysastranger
-description=5 Days a Stranger (AGS D-pad test)
-path=/sdcard/ags5days
-INI
-  echo "  寫入完成"; adb shell run-as $PKG sh -c "tail -20 '$CFG'"
-else
-  echo "  !! 沒找到 config,跳過(截圖仍會抓 launcher 狀態)"
+echo "== 1) 啟動 ScummVM launcher,等它起來(官方 x86_64 應該不再 crash) =="
+adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
+sleep 28
+SHOT shot_00_launcher.png
+# 偵測 crash dialog(keeps stopping):有就關掉重試一次,並把畫面 dump 出來看
+if adb shell uiautomator dump /sdcard/u.xml >/dev/null 2>&1; then
+  if adb shell cat /sdcard/u.xml 2>/dev/null | grep -qi "stopping\|has stopped\|crash"; then
+    echo "  !! 偵測到 crash dialog → 關閉重啟一次"
+    adb shell input tap 160 380; sleep 2
+    adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 20
+    SHOT shot_00b_relaunch.png
+  else
+    echo "  ✓ 無 crash dialog,ScummVM 應已起來"
+  fi
 fi
 
-echo "== 5) 重啟 → launcher(應顯示 D-pad + 遊戲列表)=="
-START; sleep 20
-SHOT shot_01_launcher.png
+echo "== 2) onscreen_control 預設 true → 右上角有控制器圖示。tap 循環 touch mode 到 Gamepad =="
+# 模擬器解析度約 320x640。控制器圖示在右上角;每 tap 循環一個 touch mode(menus 預設 mouse)。
+for n in 1 2 3; do
+  adb shell input tap 298 28; sleep 2
+  SHOT shot_0${n}_touchmode.png
+done
 
-echo "== 6) 進遊戲:點列表第一列 + 可能的 Start 鈕(座標粗抓,看截圖校正)=="
-adb shell input tap 360 240; sleep 1; SHOT shot_02_tap1.png
-adb shell input tap 360 240; sleep 1
-adb shell input tap 620 1180; sleep 2          # 底部可能的 Start 鈕
-sleep 22
-SHOT shot_03_ingame.png
-
-echo "== 7) 推 D-pad「右」方向,每步截圖 → 游標應沿方向移動 =="
+echo "== 3) Gamepad 模式應顯示左下 D-pad。推 D-pad「右」,每步截圖看 launcher 游標移動 =="
 for i in 4 5 6 7; do
-  adb shell input swipe 230 1700 230 1700 500   # 長按左下 D-pad 右方向格
+  adb shell input swipe 60 560 60 560 600    # 長按左下 D-pad 右方向格(座標粗抓,看截圖校正)
   SHOT shot_0${i}_dpad.png
 done
 
-echo "== 8) 右下動作鈕 = 滑鼠點擊 =="
-adb shell input tap 980 1700; sleep 2
+echo "== 4) 右下動作鈕 = 點擊 =="
+adb shell input tap 280 560; sleep 2
 SHOT shot_08_click.png
 
 echo "== done =="
-ls -la shot_*.png 2>/dev/null || echo "  !! 完全沒有截圖"
+ls -la shot_*.png 2>/dev/null || echo "  !! 沒有截圖"
 exit 0

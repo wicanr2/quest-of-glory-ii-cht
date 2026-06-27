@@ -109,6 +109,25 @@ adb exec-out screencap -p > shot_06_click.png
 5. **emulator 啟動 ScummVM 的 OpenGL ES** — swiftshader 軟體渲染雖可跑,首畫面可能較慢,
    `sleep` 要給夠;必要時改 `-gpu swiftshader_indirect` 以外的選項。
 
+## 實作踩雷記錄(CI 迭代)
+
+第一版 probe 落地後在 CI 模擬器上反覆踩雷,每輪 ~25-30 分(android build + emulator),逐一收斂。
+這也是上面 plan 風險 #1~#3 的實戰驗證:
+
+| 輪 | 症狀 | 根因 | 修法 |
+|---|---|---|---|
+| 1 | step 3「首次啟動」`exit 252` 整支掛掉,沒有任何截圖 | `monkey -c LAUNCHER` 配寫死的 `PKG=org.scummvm.scummvm` 找不到 activity → monkey abort;又因 `set -e` 一非零就整支退出 | 改 `set +e` + 每步截圖 + `exit 0`,讓 probe 跑完、從 artifact 反推;啟動先改 `am start` |
+| 2 | job 變 success 但 9 張截圖**全是 Android 桌面**、size 幾乎一樣(105823 bytes) | ScummVM 根本沒啟動 —— `am start -n $PKG/.SplashActivity` 仍失敗,log 同時報 `pm path` 找不到 package | 指向 package 名問題(見第 3 輪) |
+| 3 | package 名修對後,launcher 截圖跳出「**ScummVM (debug) keeps stopping**」彈窗 | **根因**:`dists/android/build.gradle` 有 `applicationIdSuffix ".debug"`,真實 package 名是 **`org.scummvm.scummvm.debug`**;寫死 `org.scummvm.scummvm` 讓 `pm path`/`am start`/`monkey` 全找不到。修對後 ScummVM 被啟動了,卻一啟動就 crash(見第 4 輪) | install 後 `pm list packages \| grep scummvm` **動態抓**真名 |
+| 4 | ScummVM 一啟動就 crash(keeps stopping) | **ABI 不匹配**:`android` job 只 build **arm64-v8a**(給手機),但 GitHub x86 runner 的模擬器是 **x86_64**;arm64 的 `libscummvm.so` 在 x86_64 模擬器載入失敗 → crash。`adb install` 不擋(照裝),要跑起來才爆 | **改用官方 ScummVM x86_64 APK**(D-pad 是上游引擎機制、與本專案 patch 無關,官方 APK 一樣有)。順帶解開「官方 release 不能 `run-as` 改 config」的死結:`onscreen_control` 預設就是 `true`(options.cpp:494),用右上角控制器圖示 tap 循環切 Gamepad 即可,不必寫 config |
+
+**通用教訓(別的專案也適用)**:
+- **APK ABI 要對上模擬器 arch** — 一顆 arm64 APK `adb install` 到 x86_64 模擬器**會裝、但一跑就 crash**(native lib 載入失敗)。GitHub x86 runner 跑 x86_64 模擬器最順,所以測試素材要嘛含 x86_64 ABI、要嘛另 build 一顆 x86_64。
+- **package 名別寫死** — debug build 帶 `.debug` 後綴。`adb install` 回報成功 ≠ 你以為的 package id 存在;一律 `pm list packages \| grep <app>` 撈真名。
+- **截圖 size 全部相同 = 畫面靜止** — headless 看不到螢幕時,這是「app 沒起來/卡死」最快的判讀訊號,比逐張開圖快。
+- **probe 要 `set +e` + `exit 0`** — CI 探測腳本的目的是「跑完、把證據(截圖/log)全帶回來」,不是「第一個錯就停」。讓它跑到底,從 artifact 反推哪步壞。
+- **`am start -n $PKG/.Activity` 的相對類名是陷阱** — 會用 package-id(帶 .debug)當前綴 → 類名錯;用 `monkey -p $PKG` 不指定 activity 最省事。
+
 ## 產出與下一步
 
 - 本計畫先決定**素材(5 Days a Stranger,1.2 MB freeware AGS)**與 **workflow 形狀**。

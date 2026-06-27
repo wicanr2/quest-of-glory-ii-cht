@@ -184,29 +184,19 @@ jobs:
           name: qfg2-cht-windows
           path: dist-win/
 
-  # ---- 用 Android 模擬器驗證 on-screen D-pad 移游標(免費 AGS 遊戲,不涉版權)----
+  # ---- 用 Android 模擬器驗證 on-screen D-pad 移游標(不涉版權)----
   # 計畫見 docs/ci-android-dpad-test-plan.md;機制見 docs/android-dpad-virtual-mouse.md。
-  # 用純引擎 APK + 免費的《5 Days a Stranger》(AGS, freeware)當素材,絕不碰 QFG2 版權資料。
+  # D-pad 是 ScummVM 上游引擎機制(非本專案 CJK patch),故用官方 ScummVM x86_64 APK 測即可,
+  # 完全不碰 QFG2 版權資料。本專案 CI 只 build arm64-v8a(給手機),在 x86_64 模擬器會 crash。
   android-dpad-test:
-    needs: android
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: 下載 CI 純引擎 APK(android job 產出)
-        uses: actions/download-artifact@v4
-        with:
-          name: qfg2-cht-android
-          path: apk-in
-      - name: 準備 base APK
-        run: cp "$(find apk-in -name '*.apk' | head -1)" base.apk && ls -la base.apk
-      - name: 取免費 AGS 測試遊戲(5 Days a Stranger, freeware)
+      - name: 取官方 ScummVM x86_64 APK(模擬器是 x86_64,本專案 arm64 APK 在此會 crash)
         run: |
-          wget -q https://archive.org/download/5_Days_a_Stranger/5days.zip
-          mkdir -p game5days && unzip -q 5days.zip -d game5days
-          MAIN=$(find game5days \( -iname '*.exe' -o -iname 'ac2game.*' \) | head -1)
-          echo "GAME_DIR=$(dirname "$MAIN")" >> "$GITHUB_ENV"
+          wget -q https://downloads.scummvm.org/frs/scummvm/2026.3.0/scummvm-2026.3.0-android-x86_64.apk -O base.apk
           echo "APK=base.apk" >> "$GITHUB_ENV"
-          echo ">> 遊戲根:$(dirname "$MAIN")"; find game5days | head -20
+          ls -la base.apk
       - name: 開 KVM(模擬器硬體加速)
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
