@@ -111,6 +111,9 @@ adb exec-out screencap -p > shot_06_click.png
 
 ## 實作踩雷記錄(CI 迭代)
 
+> 結案視角的整合(執行摘要 + 五輪根因 + 已實證範圍 + 後續建議)見成果記錄
+> [`android-dpad-outcome.md`](android-dpad-outcome.md);本節是踩雷的原始逐輪明細。
+
 第一版 probe 落地後在 CI 模擬器上反覆踩雷,每輪 ~25-30 分(android build + emulator),逐一收斂。
 這也是上面 plan 風險 #1~#3 的實戰驗證:
 

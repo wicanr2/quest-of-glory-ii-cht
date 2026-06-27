@@ -90,6 +90,10 @@ keymapper** 把這條路接了起來。整條鏈(行號為 ScummVM 上游 source
 keymap 的 fallback。**這需要實機(或上述 CI 模擬器)確認**;若遊戲內 D-pad 沒接到 VirtualMouse,
 方案 2 的 patch 要再加一條「AGS context 綁定 DPAD→VMOUSE」的 keymap。
 
+> CI 驗證進度:已在 ScummVM **launcher(menu context)** 實證「touch mode 切 Gamepad + VirtualMouse 游標
+> 被觸控移動」(有截圖);但 launcher 不畫左下 D-pad 十字視覺,**進 AGS 遊戲內推 visual D-pad 仍待驗**。
+> 五輪迭代根因、三張證據圖與已實證範圍見成果記錄 [`android-dpad-outcome.md`](android-dpad-outcome.md)。
+
 ## 參考
 
 - [ScummVM Android 文件 — 觸控控制](https://docs.scummvm.org/en/v2.6.1/other_platforms/android.html)
