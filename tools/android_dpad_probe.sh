@@ -38,6 +38,11 @@ if adb shell uiautomator dump /sdcard/u.xml >/dev/null 2>&1; then
   fi
 fi
 
+echo "== 1b) 關掉首次啟動的「Add a game」說明框 / 可能的權限框(否則擋住 D-pad demo) =="
+adb shell input tap 155 475; sleep 1     # 說明框左下的 OK 鈕(座標見上輪 shot_00)
+adb shell input keyevent 4 >/dev/null 2>&1; sleep 1   # back 清殘留 dialog
+SHOT shot_00b_dismissed.png
+
 echo "== 2) onscreen_control 預設 true → 右上角有控制器圖示。tap 循環 touch mode 到 Gamepad =="
 # 模擬器解析度約 320x640。控制器圖示在右上角;每 tap 循環一個 touch mode(menus 預設 mouse)。
 for n in 1 2 3; do
