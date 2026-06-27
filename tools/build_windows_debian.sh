@@ -23,20 +23,34 @@ export PKG_CONFIG_PATH="/usr/x86_64-w64-mingw32/lib/pkgconfig"   # 讓 configure
 mkdir -p /tmp/build && cp -a /src/. /tmp/build/ && cd /tmp/build
 rm -f scummvm scummvm.exe config.log config.mk; find . -name "*.o" -delete 2>/dev/null || true
 
-# vorbis 啟用(背景音樂 ogg);flac/mad/freetype/png 等遊戲用不到的 codec 仍關以縮小依賴
+# vorbis(背景音樂 ogg)+ mad(MP3)啟用。
+# [關鍵] mad 是 AGS engine 的**必要依賴**(不是可選 codec):缺了 configure 會靜默剔除整個
+# engine 只留 detection,exe 跑遊戲時報「Could not find suitable engine plugin」。
+# Dockerfile.win-cross 已 hand-build libmad 進 sysroot,這裡務必**不要** --disable-mad。
+# flac/freetype/png 等才是遊戲用不到、可關以縮小依賴的可選 codec。
 ./configure --host=$HOST --disable-all-engines --enable-engine=ags --enable-release \
   --with-sdl-prefix="$SDL2_MINGW/bin" \
-  --disable-fluidsynth --disable-flac --disable-mad --disable-png \
+  --disable-fluidsynth --disable-flac --disable-png \
   --disable-freetype2 --disable-theoradec --disable-faad --disable-mpeg2 --disable-a52 \
   --disable-libcurl --disable-sndio --disable-timidity --disable-sparkle \
   --disable-nuked-opl --disable-eventrecorder \
   >/tmp/cfg.log 2>&1 || { echo "### CONFIGURE FAILED ###"; tail -30 /tmp/cfg.log; exit 11; }
 echo "    configure OK — $(grep -m1 "^Backend" /tmp/cfg.log)"
 echo "    vorbis: $(grep -iE "Ogg Vorbis|vorbis support" /tmp/cfg.log | head -1 || echo "(未列)")"
+echo "    MAD:    $(grep -iE "Checking for MAD" /tmp/cfg.log | head -1 || echo "(未列)")"
+# [守門] AGS engine 沒被 mad 依賴剔除 —— configure 不得出現 Disabling AGS,否則直接中止
+if grep -qiE "Disabling engine Adventure Game Studio" /tmp/cfg.log; then
+  echo "### AGS ENGINE 被剔除(libmad 依賴未滿足)— 中止 ###"
+  grep -iE "Disabling engine Adventure|Checking for MAD" /tmp/cfg.log; exit 13
+fi
 
 make -j"$(nproc)" >/tmp/make.log 2>&1 || { echo "### MAKE FAILED ###"; tail -45 /tmp/make.log; exit 12; }
 $HOST-strip scummvm.exe
 echo "    scummvm.exe(stripped)= $(stat -c%s scummvm.exe) bytes"
+# [守門] 確認 ags engine 本體真的編入(不只 detection.o)
+AGS_OBJ=$(find engines/ags -name "*.o" ! -name "detection.o" | wc -l)
+echo "    ags engine 本體 .o 數 = $AGS_OBJ (0=只有 detection,引擎沒編入)"
+[ "$AGS_OBJ" -gt 0 ] || { echo "### AGS engine 本體未編入 — 中止 ###"; exit 14; }
 
 # 收集執行期 DLL:SDL2 + zlib1 + gcc/c++ runtime
 cp scummvm.exe /out/

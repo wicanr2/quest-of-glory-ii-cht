@@ -42,8 +42,8 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - name: 安裝相依(只裝 AGS 必要;多裝的 codec 會讓 configure 強制靜態連結而缺 .a)
-        run: brew install sdl2 sdl2_net freetype libpng libvorbis libogg flac bzip2 zlib dylibbundler
+      - name: 安裝相依(mad 是 AGS engine 必要依賴,缺了整個引擎會被 configure 靜默剔除)
+        run: brew install sdl2 sdl2_net freetype libpng libvorbis libogg flac mad bzip2 zlib dylibbundler
       - name: 把 keg-only 的 bzip2/zlib 靜態檔 symlink 到 configure 硬編的路徑
         run: |
           # ScummVM configure 在 link 行硬編 /opt/homebrew/lib/libbz2.a 與 libz.a,
@@ -55,10 +55,23 @@ jobs:
       - name: configure + build + bundle
         working-directory: scummvm-src
         run: |
+          # [關鍵] 不可 --disable-mad:mad(MP3)是 AGS engine 必要依賴,缺了 configure 會印
+          # "Disabling engine AGS because dependencies unmet: MAD" 卻仍退出 0,只編 detection,
+          # 跑遊戲報 "Could not find suitable engine plugin"。
           ./configure --disable-all-engines --enable-engine=ags --enable-release \
-            --disable-mad --disable-faad --disable-a52 --disable-fluidsynth \
-            --disable-libcurl --disable-sndio --disable-tts
+            --disable-faad --disable-a52 --disable-fluidsynth \
+            --disable-libcurl --disable-sndio --disable-tts \
+            2>&1 | tee /tmp/cfg.log
+          # [守門] AGS engine 沒被 mad 依賴剔除,否則中止(避免又默默產出跑不了的 app)
+          if grep -qiE "Disabling engine Adventure Game Studio" /tmp/cfg.log; then
+            echo "### AGS ENGINE 被剔除(libmad 依賴未滿足)— 中止 ###"
+            grep -iE "Disabling engine Adventure|Checking for MAD" /tmp/cfg.log; exit 13
+          fi
           make -j$(sysctl -n hw.ncpu)
+          # [守門] 確認 ags engine 本體真的編入(不只 detection.o)
+          AGS_OBJ=$(find engines/ags -name "*.o" ! -name "detection.o" | wc -l | tr -d " ")
+          echo "ags engine 本體 .o 數 = $AGS_OBJ (0=只有 detection,引擎沒編入)"
+          [ "$AGS_OBJ" -gt 0 ] || { echo "### AGS engine 本體未編入 — 中止 ###"; exit 14; }
           make bundle
       - name: 把相依 dylib 打包進 .app(否則乾淨 Mac 缺 brew 庫會 dyld 閃退)
         working-directory: scummvm-src

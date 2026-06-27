@@ -27,6 +27,7 @@ RUN apt-get update -qq \
  && apt-get install -y -qq \
       g++-mingw-w64-x86-64 mingw-w64-tools libz-mingw-w64-dev \
       binutils ca-certificates curl xz-utils make nasm pkg-config file \
+      autotools-dev \
  && rm -rf /var/lib/apt/lists/*
 
 # [雷 3] 官方 SDL2 mingw 開發包,解到 /opt 並建穩定 symlink 供 --with-sdl-prefix
@@ -54,5 +55,27 @@ RUN PFX=/usr/x86_64-w64-mingw32 \
       make -j"$(nproc)" >/dev/null 2>&1; make install >/dev/null 2>&1; \
       cd /tmp; rm -rf "$nm" "$nm.tar.gz"; \
     done
+
+# [雷 5 — 致命] AGS engine 把 libmad(MP3 解碼)列為**必要依賴**(engines/ags/configure.engine
+# 第 6 欄 "16bit mad")。mingw sysroot 缺 libmad → ScummVM configure 印
+# "Disabling engine AGS because dependencies unmet: MAD" 卻仍以退出碼 0 結束 →
+# build「成功」但只編 engines/ags/detection.o,**engine 本體完全沒編入** →
+# exe 認得出遊戲(--list-targets 有)卻跑不了(--list-engines 空)→ 啟動報
+# "Could not find suitable engine plugin"。發行版無 mingw libmad 套件,照源碼自編。
+# libmad 0.15.1b(2004)兩個 cross 雷:
+#   (a) configure 用早被 GCC 移除的 -fforce-mem / -fforce-addr → 編譯中止,sed 拿掉。
+#   (b) 隨附的 config.sub(2004)不認 x86_64-w64-mingw32 host → 用 autotools-dev 的新版覆蓋。
+ARG MADVER=0.15.1b
+RUN PFX=/usr/x86_64-w64-mingw32 \
+ && cd /tmp \
+ && curl -fsSL -o libmad.tar.gz \
+      "https://deb.debian.org/debian/pool/main/libm/libmad/libmad_${MADVER}.orig.tar.gz" \
+ && tar xf libmad.tar.gz && cd libmad-${MADVER} \
+ && sed -i 's/-fforce-mem//g; s/-fforce-addr//g' configure \
+ && cp /usr/share/misc/config.sub /usr/share/misc/config.guess . \
+ && ./configure --host=x86_64-w64-mingw32 --prefix="$PFX" --enable-static --disable-shared >/dev/null 2>&1 \
+ && make -j"$(nproc)" >/dev/null 2>&1 && make install >/dev/null 2>&1 \
+ && test -f "$PFX/lib/libmad.a" -a -f "$PFX/include/mad.h" \
+ && cd /tmp && rm -rf libmad-${MADVER} libmad.tar.gz
 
 WORKDIR /work
