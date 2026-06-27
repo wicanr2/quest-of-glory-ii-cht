@@ -10,17 +10,22 @@
 # 刻意 NOT set -e:第一版座標/路徑都還在校正,寧可每步都截圖跑完、從截圖看真相,
 # 也不要中途某個 adb 非零退出就整支掛掉(上一輪就是 monkey 啟動失敗 exit 252 卡死)。
 set +e
-PKG=org.scummvm.scummvm
 GAME_DIR="${GAME_DIR:-game5days}"
 APK="${APK:-base.apk}"
 SHOT() { adb exec-out screencap -p > "$1" 2>/dev/null && echo "  screencap → $1 ($(wc -c <"$1" 2>/dev/null) bytes)"; }
-START() { adb shell am start -n "$PKG/.SplashActivity" >/dev/null 2>&1; }   # ScummVM 入口是 SplashActivity
+# PKG 在 step 0 動態抓到後才定義內容;monkey -p $PKG 用 package 的 LAUNCHER intent 啟動,
+# 不必知道 activity 完整類名(debug 的 package id 帶 .debug,但 activity 類名沒帶,寫死會錯)。
+START() { adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; }
 
 echo "== 0) 等開機完成 + 裝 APK =="
 adb wait-for-device
 adb shell input keyevent 82 >/dev/null 2>&1   # 解鎖
 adb install -r -g "$APK" && echo "  APK 裝好" || echo "  !! APK 安裝失敗"
-adb shell pm path $PKG || echo "  !! 找不到 package"
+# [關鍵] CI 是 debug build,build.gradle 有 applicationIdSuffix ".debug",真實 package 名是
+# org.scummvm.scummvm.debug。寫死 org.scummvm.scummvm 會全找不到 → 動態抓。
+PKG=$(adb shell pm list packages 2>/dev/null | grep -i scummvm | sed 's/package://' | tr -d "\r" | head -1)
+echo "  package = ${PKG:-<找不到 scummvm package!>}"
+adb shell pm path "$PKG" >/dev/null 2>&1 && echo "  pm path OK" || echo "  !! pm path 找不到"
 
 echo "== 1) 推免費 AGS 測試遊戲到 sdcard(不涉版權)=="
 adb shell rm -rf /sdcard/ags5days; adb shell mkdir -p /sdcard/ags5days
