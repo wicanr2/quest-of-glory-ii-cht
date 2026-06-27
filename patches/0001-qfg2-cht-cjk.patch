@@ -399,7 +399,7 @@ index 7adcc725..fc47c2bb 100644
 +static bool g_cht_translation_on = true;
 +
 +// CHT:F8 當前語言模式後綴,寫進 status bar 標題(@gamename@)讓玩家知道切到哪個模式。
-+static const char *g_cht_lang_suffix = " (\xE7\xB9\x81\xE4\xB8\xAD16)";  // 初始繁中16
++static const char *g_cht_lang_suffix = " (\xE7\xB9\x81\xE4\xB8\xAD" "16)";  // 初始繁中16
 +const char *cht_get_lang_mode_suffix() { return g_cht_lang_suffix; }
 +
 +void cht_cycle_language_mode() {
@@ -412,13 +412,13 @@ index 7adcc725..fc47c2bb 100644
 +		cht_set_cjk_enabled(true);
 +		cht_set_cjk_size(16);
 +		name = "\xE7\xB9\x81\xE4\xB8\xAD 16x16";
-+		g_cht_lang_suffix = " (\xE7\xB9\x81\xE4\xB8\xAD16)";
++		g_cht_lang_suffix = " (\xE7\xB9\x81\xE4\xB8\xAD" "16)";
 +	} else if (mode == 1) {
 +		g_cht_translation_on = true;
 +		cht_set_cjk_enabled(true);
 +		cht_set_cjk_size(24);
 +		name = "\xE7\xB9\x81\xE4\xB8\xAD 24x24";
-+		g_cht_lang_suffix = " (\xE7\xB9\x81\xE4\xB8\xAD24)";
++		g_cht_lang_suffix = " (\xE7\xB9\x81\xE4\xB8\xAD" "24)";
 +	} else {
 +		g_cht_translation_on = false;
 +		cht_set_cjk_enabled(false);
