@@ -183,3 +183,47 @@ jobs:
         with:
           name: qfg2-cht-windows
           path: dist-win/
+
+  # ---- 用 Android 模擬器驗證 on-screen D-pad 移游標(免費 AGS 遊戲,不涉版權)----
+  # 計畫見 docs/ci-android-dpad-test-plan.md;機制見 docs/android-dpad-virtual-mouse.md。
+  # 用純引擎 APK + 免費的《5 Days a Stranger》(AGS, freeware)當素材,絕不碰 QFG2 版權資料。
+  android-dpad-test:
+    needs: android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 下載 CI 純引擎 APK(android job 產出)
+        uses: actions/download-artifact@v4
+        with:
+          name: qfg2-cht-android
+          path: apk-in
+      - name: 準備 base APK
+        run: cp "$(find apk-in -name '*.apk' | head -1)" base.apk && ls -la base.apk
+      - name: 取免費 AGS 測試遊戲(5 Days a Stranger, freeware)
+        run: |
+          wget -q https://archive.org/download/5_Days_a_Stranger/5days.zip
+          mkdir -p game5days && unzip -q 5days.zip -d game5days
+          MAIN=$(find game5days \( -iname '*.exe' -o -iname 'ac2game.*' \) | head -1)
+          echo "GAME_DIR=$(dirname "$MAIN")" >> "$GITHUB_ENV"
+          echo "APK=base.apk" >> "$GITHUB_ENV"
+          echo ">> 遊戲根:$(dirname "$MAIN")"; find game5days | head -20
+      - name: 開 KVM(模擬器硬體加速)
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+      - name: 模擬器跑 D-pad probe
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          target: google_apis
+          force-avd-creation: false
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot
+          disable-animations: true
+          script: bash tools/android_dpad_probe.sh
+      - name: 收集 D-pad 截圖(人工確認游標有沒有被推動)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dpad-test-shots
+          path: 'shot_*.png'
