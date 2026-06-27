@@ -31,7 +31,7 @@ description=Quest for Glory II: Trial by Fire (CHT)
 path=$GAMEDIR
 translation=chinese
 INI
-exec "$HERE/usr/bin/scummvm" --config="$CFG" qfg2agdi "$@"
+exec "$HERE/usr/bin/scummvm" --config="$CFG" --themepath="$HERE/usr/share/scummvm" --extrapath="$HERE/usr/share/scummvm" qfg2agdi "$@"
 EOF
 
 cat > qfg2-cht.desktop <<'EOF'
@@ -53,6 +53,11 @@ A=/work/build/appimage/AppDir
 rm -rf "$A"; mkdir -p "$A/usr/bin" "$A/usr/lib" "$A/usr/share/qfg2agdi" "$A/usr/share/icons/hicolor/256x256/apps"
 cp /work/scummvm-src/scummvm "$A/usr/bin/scummvm"
 cp -r /work/game/. "$A/usr/share/qfg2agdi/"
+# ScummVM 執行需要的 data 檔(GUI theme + engine data);缺了 theme 載入失敗、編碼/字型異常
+mkdir -p "$A/usr/share/scummvm"
+for f in scummmodern.zip scummclassic.zip scummremastered.zip residualvm.zip gui-icons.dat shaders.dat translations.dat; do cp "/work/scummvm-src/gui/themes/$f" "$A/usr/share/scummvm/" 2>/dev/null || true; done
+for f in achievements.dat classicmacfonts.dat encoding.dat fonts-cjk.dat fonts.dat macgui.dat helpdialog.zip; do cp "/work/scummvm-src/dists/engine-data/$f" "$A/usr/share/scummvm/" 2>/dev/null || true; done
+cp /work/scummvm-src/dists/networking/wwwroot.zip "$A/usr/share/scummvm/" 2>/dev/null || true
 convert /work/docs/screenshot-charcreate-attribs.png -resize 256x256^ -gravity center -extent 256x256 "$A/qfg2-cht.png"
 cp "$A/qfg2-cht.png" "$A/usr/share/icons/hicolor/256x256/apps/qfg2-cht.png"
 cp /work/build/appimage/qfg2-cht.desktop "$A/qfg2-cht.desktop"

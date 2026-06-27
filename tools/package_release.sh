@@ -76,10 +76,31 @@ LAUNCH
   *) echo "未知平台:$PLAT"; exit 1 ;;
 esac
 
-# 4) 玩家說明
+# 4b) ScummVM 執行必需的 data 檔(GUI theme + engine data)。缺了 GUI theme 會載入失敗、
+#     編碼/字型等功能異常(對應 GitHub issue #1「Failed to load theme」、#2「engine plugin」)。
+#     macOS .app 的 Resources 已含這組,只需補 linux/windows。來源:scummvm-src(對齊 mac core 集)。
+case "$PLAT" in
+  linux|windows)
+    SRC="$ROOT/scummvm-src"
+    if [ -d "$SRC" ]; then
+      for f in scummmodern.zip scummclassic.zip scummremastered.zip residualvm.zip gui-icons.dat shaders.dat translations.dat; do
+        cp "$SRC/gui/themes/$f" "$OUT"/ 2>/dev/null || true
+      done
+      for f in achievements.dat classicmacfonts.dat encoding.dat fonts-cjk.dat fonts.dat macgui.dat helpdialog.zip; do
+        cp "$SRC/dists/engine-data/$f" "$OUT"/ 2>/dev/null || true
+      done
+      cp "$SRC/dists/networking/wwwroot.zip" "$OUT"/ 2>/dev/null || true
+      echo ">> 已附 ScummVM data 檔:$(ls "$OUT"/*.dat "$OUT"/*.zip 2>/dev/null | wc -l) 個(theme + engine data)"
+    else
+      echo "!! 找不到 scummvm-src,無法附 ScummVM data 檔 → 玩家端 GUI theme 會載入失敗"
+    fi
+    ;;
+esac
+
+# 5) 玩家說明
 cp "$ROOT/README.md" "$OUT/README.md" 2>/dev/null || true
 cat > "$OUT/說明.txt" <<TXT
-英雄傳奇 II:烈火試煉 — 繁體中文版
+英雄傳奇 II:烈火神兵 — 繁體中文版
 
 直接執行「玩英雄傳奇II-繁中」啟動器即可。
 遊戲中按 F8 可循環切換:繁中16 → 繁中24 → 英文原版。
