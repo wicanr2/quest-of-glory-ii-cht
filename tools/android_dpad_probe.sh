@@ -63,6 +63,7 @@ cat > /tmp/scummvm_probe.ini << 'INIEOF'
 [scummvm]
 onscreen_control=true
 touch_mode_2d_games=2
+touch_mode_menus=1
 kbdmouse_speed=3
 
 [5daysastranger]
@@ -79,50 +80,50 @@ adb shell "run-as $PKG sh -c 'cat > files/scummvm.ini'" < /tmp/scummvm_probe.ini
 adb shell "run-as $PKG sh -c 'cat files/scummvm.ini'" 2>/dev/null \
   && LOG "  ✓ 內容讀回成功" || LOG "  !! 讀回失敗"
 
-LOG "== 3) 啟動 ScummVM(game list 應有 5 Days a Stranger) =="
-adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
-sleep 25
-SHOT shot_02_launcher.png
+LOG "== 3) am start 直接帶 --game=5daysastranger,繞過 launcher UI 選遊戲 =="
+# 根因:過去 9 輪 tap/keyevent 選遊戲都失敗(tap 座標偏、TAB 開鍵盤、touch_mode 未對),
+# 改用 am start 帶 --game 參數直接進遊戲,不走 launcher 互動。
+#
+# applicationIdSuffix '.debug' 只改 package id;Java class 仍是 org.scummvm.scummvm.*。
+# ScummVMActivity.java: getIntent().getStringExtra("Args") → 當 argv 解析。
+# step 0b 已做首次 monkey 啟動 → assets 已 copy 到 files/ → 這裡直接跑 ScummVMActivity。
+SCUMMVM_ACT="org.scummvm.scummvm.ScummVMActivity"
+AM_OUT=$(adb shell am start -n "${PKG}/${SCUMMVM_ACT}" \
+  --es "Args" "--game=5daysastranger" 2>&1)
+LOG "  am start result: ${AM_OUT}"
+sleep 30   # AGS 首次載入較慢(解壓 + 可能有片頭)
+SHOT shot_02_game.png
+LOGSNAP logcat_03_game_start.txt
 
-# 偵測 crash dialog + 收集 logcat crash 原因
+# crash 偵測
 if adb shell uiautomator dump /sdcard/u.xml >/dev/null 2>&1; then
-  if adb shell cat /sdcard/u.xml 2>/dev/null | grep -qi "stopping\|has stopped\|crash"; then
-    LOG "  !! 偵測到 crash dialog → 收集 logcat 再關閉後重啟"
-    # [診斷] crash 時立即抓 logcat:AndroidRuntime(Java 異常)+ DEBUG(native tombstone)
-    LOGSNAP logcat_02_crash.txt
-    LOG "  logcat_02_crash.txt: $(wc -l < logcat_02_crash.txt 2>/dev/null) lines"
-    # 也存完整 logcat 讓事後細查(含 dlopen/linker 錯誤)
-    adb logcat -d -b crash,main -v time 2>/dev/null | tail -300 > logcat_02_full.txt || true
-    adb shell input tap 160 380; sleep 2
-    adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
-    sleep 20
-    SHOT shot_02b_relaunch.png
+  if adb shell cat /sdcard/u.xml 2>/dev/null | grep -qi "stopping\|has stopped"; then
+    LOG "  !! crash detected → 收 logcat"
+    LOGSNAP logcat_03_crash.txt
+    adb logcat -d -b crash,main -v time 2>/dev/null | tail -300 > logcat_03_full.txt || true
+    adb shell input tap 160 380; sleep 2   # 關 crash dialog
   else
     LOG "  ✓ 無 crash dialog"
   fi
 fi
 
-LOG "== 3b) 關掉首次啟動說明框 + 可能的權限框 =="
-# shot_02_launcher 已知 OK 鈕在 y≈475,x≈155(上幾輪校準過)
-adb shell input tap 155 475; sleep 1
-adb shell input keyevent 4 >/dev/null 2>&1; sleep 1
-SHOT shot_03_dismissed.png
+# am start 失敗 fallback:若畫面仍在 launcher(或黑屏)則用 monkey + 直接 tap 選遊戲。
+# touch_mode_menus=1(Direct Mouse)已寫進 ini → tap = 絕對座標點擊,應選中 5days。
+if echo "$AM_OUT" | grep -qi "^Error\|error:"; then
+  LOG "  !! am start 報錯 → monkey fallback"
+  adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
+  sleep 20
+  SHOT shot_02b_launcher_fallback.png
+  adb shell input tap 155 475; sleep 1     # 關說明框
+  adb shell input keyevent 4 >/dev/null 2>&1; sleep 1
+  # Direct Mouse(touch_mode_menus=1):tap 在 game list 第一個項目上 = 選中
+  adb shell input tap 90 90; sleep 1      # y≈88 是 game list 第一行中心
+  SHOT shot_02c_selected_fb.png
+  adb shell input tap 265 587; sleep 3    # Start 鈕
+  SHOT shot_02d_started_fb.png
+fi
 
-LOG "== 4) 確認 touch mode(launcher 自身是 menu context,點圖示確認狀態) =="
-# 控制器圖示在右上角 (298,28);5days 在 game list 所以 Gamepad 模式應已就位
-SHOT shot_04_pre_game.png
-
-LOG "== 5) 用鍵盤事件選 5days + Enter start(繞過觸控/座標) =="
-# 雙擊 tap 兩輪都沒選中 game list —— 觸控可能被 onscreen_control 的虛擬控制器接管,或座標飄。
-# 改用 SDL 鍵盤事件:Tab 把焦點移進 game list,方向鍵選第一個遊戲,Enter = start。最不受
-# touch mode/解析度影響。
-adb shell input keyevent 61; sleep 1       # TAB:焦點進 game list
-adb shell input keyevent 20; sleep 1       # DPAD_DOWN:選第一個遊戲(5days)
-SHOT shot_05_selected.png
-adb shell input keyevent 66; sleep 3       # ENTER = start game
-SHOT shot_06_starting.png
-adb shell input keyevent 23; sleep 2       # 備援:DPAD_CENTER 也當 start
-SHOT shot_06b_started.png
+SHOT shot_03_after_launch.png
 
 LOG "== 6) 等 AGS 遊戲載入 + 抓 logcat 看 5days 有沒有被載入(detection/start) =="
 sleep 18
