@@ -80,16 +80,14 @@ adb shell "run-as $PKG sh -c 'cat > files/scummvm.ini'" < /tmp/scummvm_probe.ini
 adb shell "run-as $PKG sh -c 'cat files/scummvm.ini'" 2>/dev/null \
   && LOG "  ✓ 內容讀回成功" || LOG "  !! 讀回失敗"
 
-LOG "== 3) am start 直接帶 --game=5daysastranger,繞過 launcher UI 選遊戲 =="
-# 根因:過去 9 輪 tap/keyevent 選遊戲都失敗(tap 座標偏、TAB 開鍵盤、touch_mode 未對),
-# 改用 am start 帶 --game 參數直接進遊戲,不走 launcher 互動。
-#
-# applicationIdSuffix '.debug' 只改 package id;Java class 仍是 org.scummvm.scummvm.*。
-# ScummVMActivity.java: getIntent().getStringExtra("Args") → 當 argv 解析。
-# step 0b 已做首次 monkey 啟動 → assets 已 copy 到 files/ → 這裡直接跑 ScummVMActivity。
+LOG "== 3) am start -d scummvm:5daysastranger 直接進遊戲(繞過 launcher UI)=="
+# 第十輪真相:--es Args 沒生效(logcat 'scummvm_main with 1 args')。看 source 才知道:
+# ScummVMActivity.java:1106-1118 的 argv 來自 **intent DATA(Uri)**,不是 extra:
+#   args = ["ScummVM", intentData.getSchemeSpecificPart()]
+# 所以帶 -d "scummvm:<target>" → getSchemeSpecificPart()="<target>" → scummvm_main 收 2 args、
+# 直接 run 該 target(等同命令列 `scummvm 5daysastranger`)。target 條目已在 step 2 的 ini 預加。
 SCUMMVM_ACT="org.scummvm.scummvm.ScummVMActivity"
-AM_OUT=$(adb shell am start -n "${PKG}/${SCUMMVM_ACT}" \
-  --es "Args" "--game=5daysastranger" 2>&1)
+AM_OUT=$(adb shell am start -n "${PKG}/${SCUMMVM_ACT}" -d "scummvm:5daysastranger" 2>&1)
 LOG "  am start result: ${AM_OUT}"
 sleep 30   # AGS 首次載入較慢(解壓 + 可能有片頭)
 SHOT shot_02_game.png
