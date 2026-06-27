@@ -19,6 +19,13 @@ APK="${APK:-ScummVM-debug.apk}"
 GAME_DIR="${GAME_DIR:-}"
 SHOT() { adb exec-out screencap -p > "$1" 2>/dev/null && echo "  >> $1 ($(wc -c <"$1") bytes)"; }
 LOG()  { echo "[$(date +%T)] $*"; }
+# logcat 快照:把目前 ring buffer 存成 $1,過濾 crash/AndroidRuntime/DEBUG/ScummVM
+LOGSNAP() {
+  adb logcat -d -b crash,main -v time 2>/dev/null \
+    | grep -E "AndroidRuntime|DEBUG|FATAL|ScummVM|Fatal|force finishing|Uncaught|JNI DETECTED|signal |Abort" \
+    | tail -100 > "$1" 2>/dev/null
+  echo "  >> $1 ($(wc -l <"$1") lines)"
+}
 
 LOG "== 0) 裝 debug APK + 動態抓 package =="
 adb wait-for-device
@@ -26,11 +33,14 @@ adb shell input keyevent 82 >/dev/null 2>&1   # 解鎖螢幕
 adb install -r -g "$APK" && LOG "  APK 裝好" || LOG "  !! 安裝失敗"
 PKG=$(adb shell pm list packages 2>/dev/null | grep -i scummvm | sed 's/package://' | tr -d "\r" | head -1)
 LOG "  package = ${PKG:-<找不到!>}"
+# logcat 清空,讓後續快照只含本次執行的訊息
+adb logcat -c 2>/dev/null; sleep 1
 SHOT shot_00_installed.png
 
 LOG "== 0b) 短暫首次啟動 → 讓 ScummVM 建立 files/ 目錄(run-as 需要此目錄存在) =="
 adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
 sleep 12
+LOGSNAP logcat_00b_first_launch.txt   # 診斷:首次啟動是否也 crash
 adb shell am force-stop "$PKG" >/dev/null 2>&1
 sleep 2
 
@@ -74,10 +84,15 @@ adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
 sleep 25
 SHOT shot_02_launcher.png
 
-# 偵測 crash dialog
+# 偵測 crash dialog + 收集 logcat crash 原因
 if adb shell uiautomator dump /sdcard/u.xml >/dev/null 2>&1; then
   if adb shell cat /sdcard/u.xml 2>/dev/null | grep -qi "stopping\|has stopped\|crash"; then
-    LOG "  !! 偵測到 crash dialog → 關閉後重啟"
+    LOG "  !! 偵測到 crash dialog → 收集 logcat 再關閉後重啟"
+    # [診斷] crash 時立即抓 logcat:AndroidRuntime(Java 異常)+ DEBUG(native tombstone)
+    LOGSNAP logcat_02_crash.txt
+    LOG "  logcat_02_crash.txt: $(wc -l < logcat_02_crash.txt 2>/dev/null) lines"
+    # 也存完整 logcat 讓事後細查(含 dlopen/linker 錯誤)
+    adb logcat -d -b crash,main -v time 2>/dev/null | tail -300 > logcat_02_full.txt || true
     adb shell input tap 160 380; sleep 2
     adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
     sleep 20
@@ -127,5 +142,5 @@ SHOT shot_13_click.png
 SHOT shot_14_final.png
 
 LOG "== done =="
-ls -la shot_*.png 2>/dev/null || LOG "  !! 沒有截圖"
+ls -la shot_*.png logcat*.txt 2>/dev/null || LOG "  !! 沒有截圖/logcat"
 exit 0

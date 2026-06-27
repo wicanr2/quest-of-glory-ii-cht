@@ -137,16 +137,19 @@ jobs:
           # [HARD] --host 必須是 android-arm64-v8a(ScummVM configure 認的 pattern);
           # 用 android-aarch64 不 match 任何 case → 不進 Android 分支 → 不套 -loboe -llog → undefined
           ./configure --host=android-arm64-v8a --enable-engine=ags --disable-all-engines --enable-release
-          make -j$(nproc)
-          # [HARD] liboboe.so 必須放進 android_project/lib/arm64-v8a/ 才會被 Gradle 打包進 APK;
-          # 只放進 NDK sysroot 只夠 link,不夠 runtime(同 android-x86 job 的修正)。
+          # [HARD] liboboe.so 必須在 make -j$(nproc) 之前放進 android_project/lib/arm64-v8a/。
+          # (同 android-x86 job 的修正:make 'all' target 本身已包含 gradlew assembleDebug,
+          #  APK 在第一個 make 就封裝完畢;make 後才 cp liboboe.so 是 too late。)
           LOBOE=$(find "$GITHUB_WORKSPACE/oboe-build" -name 'liboboe.so' | head -1)
           mkdir -p android_project/lib/arm64-v8a
-          cp "$LOBOE" android_project/lib/arm64-v8a/
-          echo ">> liboboe.so 放進 android_project/lib/arm64-v8a/ ($(wc -c <"$LOBOE") bytes)"
+          cp "$LOBOE" android_project/lib/arm64-v8a/liboboe.so
+          echo ">> liboboe.so 預置 android_project/lib/arm64-v8a/ ($(wc -c <"$LOBOE") bytes)"
+          make -j$(nproc)
           # [HARD] androidtest 會跑 installDebug(裝到裝置),CI 無裝置/模擬器會 fail。
           # androiddistdebug = all(gradlew assembleDebug 純 build APK)+ cp 到 debug/,不安裝。
           make androiddistdebug
+          echo ">> APK 內含 .so:"
+          unzip -l ScummVM-debug.apk | grep '\.so' || true
           ls -la *.apk debug/*.apk 2>/dev/null
       - uses: actions/upload-artifact@v4
         with:
@@ -206,14 +209,20 @@ jobs:
           export LDFLAGS="-L$GITHUB_WORKSPACE/oboe-build"
           # [HARD] --host=android-x86_64:ScummVM configure 認的 x86_64 pattern(見 configure:1785)
           ./configure --host=android-x86_64 --enable-engine=ags --disable-all-engines --enable-release
-          make -j$(nproc)
-          # [HARD] liboboe.so 必須放進 android_project/lib/x86_64/ 才會被 Gradle(jniLibs.srcDirs 'lib/')
-          # 一起打包進 APK;只放進 NDK sysroot 只夠 link,不夠 runtime。
+          # [HARD] liboboe.so 必須在 make -j$(nproc) 之前放進 android_project/lib/x86_64/。
+          # 原因:ScummVM 的 make 'all' target(= make -j$(nproc) 預設)已包含
+          # (cd ./android_project; ./gradlew assembleDebug)。APK 在第一個 make 就封裝完畢。
+          # 若在 make 之後才 cp liboboe.so,APK 早已建好,make androiddistdebug 是 no-op。
+          # 解法:configure 完成後、make 執行前先預置 liboboe.so。
           LOBOE=$(find "$GITHUB_WORKSPACE/oboe-build" -name 'liboboe.so' | head -1)
           mkdir -p android_project/lib/x86_64
-          cp "$LOBOE" android_project/lib/x86_64/
-          echo ">> liboboe.so 放進 android_project/lib/x86_64/ ($(wc -c <"$LOBOE") bytes)"
+          cp "$LOBOE" android_project/lib/x86_64/liboboe.so
+          echo ">> liboboe.so 預置 android_project/lib/x86_64/ ($(wc -c <"$LOBOE") bytes)"
+          make -j$(nproc)
+          # make -j 的 'all' target 已跑 Gradle;androiddistdebug 確保 APK 複製到 debug/
           make androiddistdebug
+          echo ">> APK 內含 .so:"
+          unzip -l ScummVM-debug.apk | grep '\.so' || true
           ls -la *.apk debug/*.apk 2>/dev/null
       - uses: actions/upload-artifact@v4
         with:
@@ -306,9 +315,11 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot
           disable-animations: true
           script: bash tools/android_dpad_probe.sh
-      - name: 收集 D-pad 截圖(人工確認游標有沒有被推動)
+      - name: 收集截圖 + logcat(人工確認游標有沒有被推動)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: dpad-test-shots
-          path: 'shot_*.png'
+          path: |
+            shot_*.png
+            logcat*.txt
