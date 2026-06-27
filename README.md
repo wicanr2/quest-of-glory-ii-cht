@@ -160,6 +160,14 @@ chmod +x out/release/英雄傳奇II-烈火神兵-x86_64.AppImage
 
 > F8 切換對「之後繪製的文字」即時生效；已經停在畫面上的文字框要等下一句才換。中文字形烘自系統 Noto Sans CJK TC，點陣 16×16／24×24，內嵌英文同樣烘進字圖以求中英同大小同基線，不需另裝字型。
 
+### 手機上怎麼操作：螢幕 D-pad 推滑鼠
+
+QFG2 是滑鼠 point-and-click 遊戲，手指直接戳放大的畫面很難點準幾像素大的小物件。ScummVM 內建的解法是把「移動游標」和「點擊」拆開——螢幕左下一個 **D-pad** 把游標一格一格推到定點，右下按鈕點下去：
+
+![Android 螢幕 D-pad → 虛擬滑鼠游標 的設計](docs/android-dpad-design.png)
+
+開啟方式與底層機制（`VirtualMouse` + keymapper + Gamepad 觸控模式）見 [`docs/android-dpad-virtual-mouse.md`](docs/android-dpad-virtual-mouse.md)；用 GitHub Actions 模擬器自動驗證 D-pad（**不涉版權**、免費 AGS 遊戲當素材）的計畫見 [`docs/ci-android-dpad-test-plan.md`](docs/ci-android-dpad-test-plan.md)。
+
 ---
 
 ## 技術細節：怎麼讓 1999 年的引擎吐出方塊字
@@ -183,7 +191,7 @@ bash tools/dev-setup.sh                 # 建環境 → patch → 編引擎 → 
 bash tools/package_release.sh linux     # 組完整可玩包 → out/release/qfg2-cht-linux.tar.gz
 ```
 
-各步驟拆解、跨平台打包與工具鏈速查見 [`docs/DEV-SETUP.md`](docs/DEV-SETUP.md);工程過程與技術決策見 [`docs/MAKING-OF.md`](docs/MAKING-OF.md);手機上用螢幕虛擬 **D-pad 精確推動滑鼠游標**(point-and-click 遊戲的觸控解法)的機制與設定見 [`docs/android-dpad-virtual-mouse.md`](docs/android-dpad-virtual-mouse.md);用 GitHub Actions 模擬器自動驗證 D-pad(**不涉版權**、用免費 AGS 遊戲《5 Days a Stranger》當素材)的計畫見 [`docs/ci-android-dpad-test-plan.md`](docs/ci-android-dpad-test-plan.md)。
+各步驟拆解、跨平台打包與工具鏈速查見 [`docs/DEV-SETUP.md`](docs/DEV-SETUP.md);工程過程與技術決策見 [`docs/MAKING-OF.md`](docs/MAKING-OF.md);手機觸控的螢幕 D-pad 虛擬滑鼠見上面「[手機上怎麼操作](#手機上怎麼操作螢幕-d-pad-推滑鼠)」與 [`docs/android-dpad-virtual-mouse.md`](docs/android-dpad-virtual-mouse.md)。
 
 macOS `.dmg`、Windows `.exe`(含相依 DLL)與 Android `.apk` 由 GitHub Actions（`.github/workflows/build.yml`）打包,不需對應平台的機器;下載 CI artifact 後用 `ENGINE=... tools/package_release.sh <平台>` 組完整包。
 

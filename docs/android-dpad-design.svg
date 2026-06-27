@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="660" viewBox="0 0 980 660" font-family="'Noto Sans CJK TC','PingFang TC','Microsoft JhengHei',sans-serif">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bfe0f5"/><stop offset="1" stop-color="#e9d7a8"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#c2410c"/>
+    </marker>
+    <marker id="arrb" markerWidth="11" markerHeight="11" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 Z" fill="#1f3a5f"/>
+    </marker>
+  </defs>
+
+  <rect width="980" height="660" fill="#f7f5ef"/>
+  <text x="40" y="50" font-size="27" font-weight="700" fill="#1f3a5f">ScummVM 螢幕 D-pad → 虛擬滑鼠游標</text>
+  <text x="40" y="78" font-size="15" fill="#5b6b7b">point-and-click 老遊戲搬上手機的觸控解法:手指不戳畫面,改用 D-pad 把游標一格一格推到定點,按鈕點擊</text>
+  <line x1="40" y1="92" x2="940" y2="92" stroke="#d8d0c0" stroke-width="2"/>
+
+  <!-- ========== 左:手機螢幕 mockup ========== -->
+  <text x="40" y="122" font-size="16" font-weight="700" fill="#1f3a5f">① 玩家看到的畫面</text>
+  <!-- 手機外框 -->
+  <rect x="40" y="135" width="380" height="470" rx="26" fill="#23282e" stroke="#10141a" stroke-width="3"/>
+  <!-- 遊戲畫面 -->
+  <rect x="58" y="158" width="344" height="424" rx="6" fill="url(#sky)"/>
+  <!-- 場景示意:沙城剪影 -->
+  <path d="M58 500 L120 460 L150 480 L210 440 L260 470 L320 445 L402 490 L402 582 L58 582 Z" fill="#caa86a" opacity="0.9"/>
+  <rect x="150" y="455" width="34" height="55" fill="#b8915a"/><rect x="270" y="448" width="30" height="62" fill="#b8915a"/>
+  <circle cx="345" cy="205" r="22" fill="#f4d06a" opacity="0.85"/>
+  <text x="70" y="185" font-size="13" fill="#5b6b7b">遊戲畫面(放大的 320×200)</text>
+
+  <!-- 滑鼠游標 + 移動軌跡 -->
+  <path d="M150 320 q60 -10 120 24" fill="none" stroke="#c2410c" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arr)"/>
+  <g transform="translate(270 344)">
+    <path d="M0,0 L0,20 L5,15 L9,23 L12,21 L8,14 L15,14 Z" fill="#fff" stroke="#222" stroke-width="1.3"/>
+  </g>
+  <text x="150" y="312" font-size="12.5" fill="#c2410c" font-weight="700">游標被推著走</text>
+
+  <!-- 左下 D-pad -->
+  <g transform="translate(105 505)">
+    <rect x="-34" y="-12" width="24" height="24" rx="4" fill="#2b3138" stroke="#475569" stroke-width="1.5"/>
+    <rect x="10" y="-12" width="24" height="24" rx="4" fill="#c2410c" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="-12" y="-34" width="24" height="24" rx="4" fill="#2b3138" stroke="#475569" stroke-width="1.5"/>
+    <rect x="-12" y="10" width="24" height="24" rx="4" fill="#2b3138" stroke="#475569" stroke-width="1.5"/>
+    <rect x="-12" y="-12" width="24" height="24" rx="3" fill="#3a424b"/>
+    <text x="22" y="3" font-size="13" fill="#fff" font-weight="700">▶</text>
+  </g>
+  <text x="62" y="572" font-size="12.5" fill="#fff" font-weight="700">D-pad(左下)</text>
+
+  <!-- 右下動作鈕 -->
+  <g transform="translate(355 505)">
+    <circle cx="0" cy="0" r="17" fill="#1d4ed8" stroke="#93c5fd" stroke-width="2"/>
+    <circle cx="-38" cy="14" r="14" fill="#334155" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="-4" y="5" font-size="13" fill="#fff" font-weight="700">L</text>
+    <text x="-42" y="19" font-size="11" fill="#cbd5e1">R</text>
+  </g>
+  <text x="300" y="572" font-size="12.5" fill="#fff" font-weight="700">動作鈕(右下)</text>
+
+  <!-- ========== 右:機制鏈 ========== -->
+  <text x="470" y="122" font-size="16" font-weight="700" fill="#1f3a5f">② 底層怎麼接(ScummVM 內建)</text>
+
+  <!-- 鏈條 A:D-pad → 移游標 -->
+  <g font-size="14">
+    <rect x="470" y="140" width="210" height="52" rx="9" fill="#fff" stroke="#c2410c" stroke-width="2"/>
+    <text x="482" y="163" fill="#1f3a5f" font-weight="700">按住 D-pad「右」</text>
+    <text x="482" y="182" fill="#5b6b7b" font-size="12">螢幕觸控(gamepad.svg)</text>
+
+    <line x1="680" y1="166" x2="726" y2="166" stroke="#c2410c" stroke-width="2.5" marker-end="url(#arr)"/>
+
+    <rect x="726" y="140" width="214" height="52" rx="9" fill="#fff" stroke="#c2410c" stroke-width="2"/>
+    <text x="738" y="161" fill="#1f3a5f" font-weight="700" font-size="13">JOYSTICK_BUTTON_</text>
+    <text x="738" y="180" fill="#1f3a5f" font-weight="700" font-size="13">DPAD_RIGHT</text>
+
+    <line x1="833" y1="192" x2="833" y2="226" stroke="#c2410c" stroke-width="2.5" marker-end="url(#arr)"/>
+
+    <rect x="726" y="226" width="214" height="58" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="2.5"/>
+    <text x="738" y="248" fill="#c2410c" font-weight="700">VirtualMouse</text>
+    <text x="738" y="268" fill="#5b6b7b" font-size="12">keymapper:DPAD → 游標位移</text>
+
+    <line x1="726" y1="255" x2="556" y2="255" stroke="#c2410c" stroke-width="2.5" marker-end="url(#arr)"/>
+    <rect x="470" y="229" width="86" height="52" rx="9" fill="#fff" stroke="#c2410c" stroke-width="2"/>
+    <text x="486" y="250" fill="#1f3a5f" font-weight="700" font-size="13">游標</text>
+    <text x="483" y="268" fill="#5b6b7b" font-size="11.5">往右移</text>
+  </g>
+
+  <!-- 鏈條 B:動作鈕 → 點擊 -->
+  <g font-size="14">
+    <rect x="470" y="320" width="210" height="50" rx="9" fill="#fff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="482" y="341" fill="#1f3a5f" font-weight="700">點右下動作鈕</text>
+    <text x="482" y="359" fill="#5b6b7b" font-size="12">L 鈕 / R 鈕</text>
+
+    <line x1="680" y1="345" x2="726" y2="345" stroke="#1f3a5f" stroke-width="2.5" marker-end="url(#arrb)"/>
+    <rect x="726" y="320" width="214" height="50" rx="9" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="738" y="341" fill="#1d4ed8" font-weight="700">滑鼠左鍵 / 右鍵點擊</text>
+    <text x="738" y="359" fill="#5b6b7b" font-size="12">keymap → mouse click</text>
+  </g>
+
+  <!-- 為什麼這樣設計 -->
+  <rect x="470" y="398" width="470" height="86" rx="10" fill="#f0ece0" stroke="#d8d0c0" stroke-width="1.5"/>
+  <text x="486" y="423" font-size="14" font-weight="700" fill="#1f3a5f">為什麼要 D-pad,不直接戳畫面?</text>
+  <text x="486" y="446" font-size="12.5" fill="#5b6b7b">手指 ≈ 40px 寬、又會遮住目標;遊戲熱區常只有幾像素。把「移動」和</text>
+  <text x="486" y="464" font-size="12.5" fill="#5b6b7b">「點擊」拆開 —— D-pad 慢慢推游標、按鈕獨立點下 —— 才點得準、走得到定點。</text>
+
+  <!-- config 註腳 -->
+  <rect x="40" y="618" width="900" height="30" rx="6" fill="#23282e"/>
+  <text x="56" y="638" font-size="13" fill="#e9d7a8" font-family="monospace">scummvm.ini:  onscreen_control=true   touch_mode_2d_games=2 (Gamepad)   kbdmouse_speed=2~4 (游標速度)</text>
+
+  <text x="470" y="508" font-size="11" fill="#94a3b8">source(ScummVM 上游):virtual-mouse.cpp、touchcontrols.cpp、android.cpp</text>
+</svg>
