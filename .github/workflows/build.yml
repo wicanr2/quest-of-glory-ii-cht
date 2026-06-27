@@ -138,6 +138,12 @@ jobs:
           # 用 android-aarch64 不 match 任何 case → 不進 Android 分支 → 不套 -loboe -llog → undefined
           ./configure --host=android-arm64-v8a --enable-engine=ags --disable-all-engines --enable-release
           make -j$(nproc)
+          # [HARD] liboboe.so 必須放進 android_project/lib/arm64-v8a/ 才會被 Gradle 打包進 APK;
+          # 只放進 NDK sysroot 只夠 link,不夠 runtime(同 android-x86 job 的修正)。
+          LOBOE=$(find "$GITHUB_WORKSPACE/oboe-build" -name 'liboboe.so' | head -1)
+          mkdir -p android_project/lib/arm64-v8a
+          cp "$LOBOE" android_project/lib/arm64-v8a/
+          echo ">> liboboe.so 放進 android_project/lib/arm64-v8a/ ($(wc -c <"$LOBOE") bytes)"
           # [HARD] androidtest 會跑 installDebug(裝到裝置),CI 無裝置/模擬器會 fail。
           # androiddistdebug = all(gradlew assembleDebug 純 build APK)+ cp 到 debug/,不安裝。
           make androiddistdebug
@@ -201,6 +207,12 @@ jobs:
           # [HARD] --host=android-x86_64:ScummVM configure 認的 x86_64 pattern(見 configure:1785)
           ./configure --host=android-x86_64 --enable-engine=ags --disable-all-engines --enable-release
           make -j$(nproc)
+          # [HARD] liboboe.so 必須放進 android_project/lib/x86_64/ 才會被 Gradle(jniLibs.srcDirs 'lib/')
+          # 一起打包進 APK;只放進 NDK sysroot 只夠 link,不夠 runtime。
+          LOBOE=$(find "$GITHUB_WORKSPACE/oboe-build" -name 'liboboe.so' | head -1)
+          mkdir -p android_project/lib/x86_64
+          cp "$LOBOE" android_project/lib/x86_64/
+          echo ">> liboboe.so 放進 android_project/lib/x86_64/ ($(wc -c <"$LOBOE") bytes)"
           make androiddistdebug
           ls -la *.apk debug/*.apk 2>/dev/null
       - uses: actions/upload-artifact@v4
