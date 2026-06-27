@@ -54,12 +54,15 @@ jobs:
         run: |
           # ScummVM 的 scummvm-static target 在 link 行硬編 /opt/homebrew/lib/libmad.a,
           # 但 brew mad 不附 .a。照源碼自編裝進 /opt/homebrew(libmad.a + mad.h 各就各位)。
-          # libmad 0.15.1b(2004)兩個雷:(a) configure 用 clang 不認的 -fforce-mem/-fforce-addr;
-          # (b) 隨附 config.sub/guess 不認 aarch64-apple-darwin。
+          # libmad 0.15.1b(2004)三個雷:
+          # (a) configure 對「gcc」塞一堆 gcc 專屬最佳化 flag,但 macOS 的 gcc 是 clang,
+          #     -fforce-mem/-fforce-addr/-fthread-jumps/-fcse-*/-fregmove/-fexpensive-optimizations/
+          #     -fschedule-insns2 等全部 unknown argument → 編譯中止。一次 strip 光。
+          # (b) 隨附 config.sub/guess(2004)不認 aarch64-apple-darwin → 換 GNU 新版。
           curl -fsSL -o /tmp/libmad.tar.gz \
             https://deb.debian.org/debian/pool/main/libm/libmad/libmad_0.15.1b.orig.tar.gz
           cd /tmp && tar xf libmad.tar.gz && cd libmad-0.15.1b
-          sed -i '' 's/-fforce-mem//g; s/-fforce-addr//g' configure
+          sed -i '' -E 's/-f(force-mem|force-addr|inline-functions|thread-jumps|cse-follow-jumps|cse-skip-blocks|rerun-cse-after-loop|rerun-loop-opt|gcse|expensive-optimizations|regmove|schedule-insns2|schedule-insns|strength-reduce)//g' configure
           curl -fsSL -o config.sub   'https://git.savannah.gnu.org/cgit/config.git/plain/config.sub'
           curl -fsSL -o config.guess 'https://git.savannah.gnu.org/cgit/config.git/plain/config.guess'
           chmod +x config.sub config.guess
