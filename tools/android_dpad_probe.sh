@@ -87,6 +87,11 @@ LOG "== 3) am start -d scummvm:5daysastranger 直接進遊戲(繞過 launcher UI
 # 所以帶 -d "scummvm:<target>" → getSchemeSpecificPart()="<target>" → scummvm_main 收 2 args、
 # 直接 run 該 target(等同命令列 `scummvm 5daysastranger`)。target 條目已在 step 2 的 ini 預加。
 SCUMMVM_ACT="org.scummvm.scummvm.ScummVMActivity"
+# [關鍵] ScummVMActivity 是 launchMode=singleInstance:step 0b 首次啟動後 Activity 已存在,
+# am start 會走 onNewIntent(不重建 onCreate 的 argv,argv 只在 onCreate:1106 從 getData() 建)
+# → 還是 1 arg。先徹底 force-stop 殺掉 task,讓 am start -d 觸發 onCreate 重讀 data。
+adb shell am force-stop "$PKG"; sleep 3
+adb logcat -c 2>/dev/null   # 清 logcat,讓 scummvm_main args 數只反映這次 am start
 AM_OUT=$(adb shell am start -n "${PKG}/${SCUMMVM_ACT}" -d "scummvm:5daysastranger" 2>&1)
 LOG "  am start result: ${AM_OUT}"
 sleep 30   # AGS 首次載入較慢(解壓 + 可能有片頭)
