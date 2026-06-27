@@ -43,9 +43,12 @@ docker run --rm -v "$PWD":/work -w /work "$IMAGE" bash -c '
   rm -f "/tmp/stage/assets/assets/games/$GID"/*.pdf "/tmp/stage/assets/assets/games/$GID"/*.url 2>/dev/null || true
   cp "'"$BASE"'" /tmp/work.apk
 
-  # [雷2] runtime native libs 從 image 取(arm64-v8a)
+  # [雷2] base APK 已含與 libscummvm.so 同版本(CI 從 oboe git 源碼編)的 liboboe.so。
+  # 絕不可用 image 內的 oboe 1.9.0 覆蓋它 —— ABI 不符會在 oboe::AudioStreamBase 複製
+  # 建構子 crash(openStream 時 std::string layout 對不上 → operator new 爆量 → terminate)。
+  # 只補 base APK 缺的 libc++_shared.so(r26d,與 CI 同 ABI;CI 的 arm64 job 沒帶它)。
   mkdir -p /tmp/stage/lib/arm64-v8a
-  cp /opt/android_libs/liboboe.so /opt/android_libs/libc++_shared.so /tmp/stage/lib/arm64-v8a/
+  cp /opt/android_libs/libc++_shared.so /tmp/stage/lib/arm64-v8a/
 
   # [雷1] 遊戲檔登錄 MD5SUMS(相對 files/,即 assets/games/<id>/<f>)→ 觸發 re-extract + mass-add
   unzip -o -q /tmp/work.apk "assets/MD5SUMS" -d /tmp/md5
