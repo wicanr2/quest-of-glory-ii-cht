@@ -217,7 +217,12 @@ jobs:
           LOBOE=$(find "$GITHUB_WORKSPACE/oboe-build" -name 'liboboe.so' | head -1)
           mkdir -p android_project/lib/x86_64
           cp "$LOBOE" android_project/lib/x86_64/liboboe.so
-          echo ">> liboboe.so 預置 android_project/lib/x86_64/ ($(wc -c <"$LOBOE") bytes)"
+          # [HARD] oboe 是 c++_shared,liboboe.so 動態連 libc++_shared.so。APK 缺它 →
+          # liboboe 載入失敗 → ScummVM 一啟動就 crash(keeps stopping)。這正是 inject_android.sh
+          # 當初補過的「liboboe needs libc++_shared」。從 NDK sysroot 補 x86_64 版進 jniLibs。
+          LIBCPP="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/x86_64-linux-android/libc++_shared.so"
+          cp "$LIBCPP" android_project/lib/x86_64/libc++_shared.so
+          echo ">> 預置 liboboe.so ($(wc -c <"$LOBOE")) + libc++_shared.so ($(wc -c <"$LIBCPP")) 到 lib/x86_64/"
           make -j$(nproc)
           # make -j 的 'all' target 已跑 Gradle;androiddistdebug 確保 APK 複製到 debug/
           make androiddistdebug
