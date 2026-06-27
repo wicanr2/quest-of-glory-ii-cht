@@ -78,4 +78,30 @@ RUN PFX=/usr/x86_64-w64-mingw32 \
  && test -f "$PFX/lib/libmad.a" -a -f "$PFX/include/mad.h" \
  && cd /tmp && rm -rf libmad-${MADVER} libmad.tar.gz
 
+# AGS 片頭過場 .001 是 MPEG-1,ScummVM 的 Video::MPEGPSDecoder 影片解碼 #ifdef USE_MPEG2
+# (libmpeg2,純 CPU 軟解)。缺它則片頭播不出(Failed to find RIFF header / Unable to decode)。
+# libmpeg2 0.5.1(Debian 套件名 mpeg2dec)的 mingw cross 三雷:
+#   (a) libvo 的 DirectX 輸出模組 video_out_dx.c 用過時 Win32 API(GWL_USERDATA)→ 編不過。
+#       只需核心解碼庫,故 make -C libmpeg2(略過 libvo 與播放器),手動裝 lib + header。
+#   (b) mingw-w64 header 的 extern inline CRT helper(imaxabs/_Exit/llabs/atoll…)會在每個 .o
+#       吐外部符號 → 連結時 multiple definition。用 -D__CRT__NO_INLINE 讓 header 不內聯、改連 CRT 庫。
+#   (c) 隨附 config.sub(2004)不認 x86_64-w64-mingw32 → 同 libmad 用 autotools-dev 新版覆蓋。
+# ScummVM 用 #include <mpeg2dec/mpeg2.h>,故 header 裝到 include/mpeg2dec/。
+ARG MPEG2VER=0.5.1
+RUN PFX=/usr/x86_64-w64-mingw32 \
+ && cd /tmp \
+ && curl -fsSL -o mpeg2.tar.gz \
+      "https://deb.debian.org/debian/pool/main/m/mpeg2dec/mpeg2dec_${MPEG2VER}.orig.tar.gz" \
+ && tar xf mpeg2.tar.gz && cd libmpeg2-${MPEG2VER} \
+ && find . -name config.sub  -exec cp /usr/share/misc/config.sub  {} \; \
+ && find . -name config.guess -exec cp /usr/share/misc/config.guess {} \; \
+ && CFLAGS="-O2 -D__CRT__NO_INLINE" ./configure --host=x86_64-w64-mingw32 \
+      --enable-static --disable-shared --disable-sdl --without-x --prefix="$PFX" >/dev/null 2>&1 \
+ && make -C libmpeg2 >/dev/null 2>&1 \
+ && mkdir -p "$PFX/include/mpeg2dec" \
+ && cp libmpeg2/.libs/libmpeg2.a "$PFX/lib/" \
+ && cp include/mpeg2.h include/mpeg2convert.h "$PFX/include/mpeg2dec/" \
+ && test -f "$PFX/lib/libmpeg2.a" -a -f "$PFX/include/mpeg2dec/mpeg2.h" \
+ && cd /tmp && rm -rf libmpeg2-${MPEG2VER} mpeg2.tar.gz
+
 WORKDIR /work

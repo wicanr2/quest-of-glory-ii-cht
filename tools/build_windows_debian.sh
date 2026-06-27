@@ -31,13 +31,15 @@ rm -f scummvm scummvm.exe config.log config.mk; find . -name "*.o" -delete 2>/de
 ./configure --host=$HOST --disable-all-engines --enable-engine=ags --enable-release \
   --with-sdl-prefix="$SDL2_MINGW/bin" \
   --disable-fluidsynth --disable-flac --disable-png \
-  --disable-freetype2 --disable-theoradec --disable-faad --disable-mpeg2 --disable-a52 \
+  --disable-freetype2 --disable-theoradec --disable-faad --disable-a52 \
   --disable-libcurl --disable-sndio --disable-timidity --disable-sparkle \
   --disable-nuked-opl --disable-eventrecorder \
   >/tmp/cfg.log 2>&1 || { echo "### CONFIGURE FAILED ###"; tail -30 /tmp/cfg.log; exit 11; }
 echo "    configure OK — $(grep -m1 "^Backend" /tmp/cfg.log)"
 echo "    vorbis: $(grep -iE "Ogg Vorbis|vorbis support" /tmp/cfg.log | head -1 || echo "(未列)")"
 echo "    MAD:    $(grep -iE "Checking for MAD" /tmp/cfg.log | head -1 || echo "(未列)")"
+# 片頭 AGDI.001 是 MPEG-1,靠 libmpeg2(USE_MPEG2)CPU 軟解
+echo "    mpeg2:  $(grep -iE "libmpeg2 >= " /tmp/cfg.log | head -1 || echo "(未列)")"
 # [守門] AGS engine 沒被 mad 依賴剔除 —— configure 不得出現 Disabling AGS,否則直接中止
 if grep -qiE "Disabling engine Adventure Game Studio" /tmp/cfg.log; then
   echo "### AGS ENGINE 被剔除(libmad 依賴未滿足)— 中止 ###"
