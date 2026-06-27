@@ -148,6 +148,29 @@ jobs:
           cp "$LOBOE" "$SYSLIB/"
           cp "$LOBOE" "$SYSLIB/21/" 2>/dev/null || true
           ls -la "$SYSLIB/liboboe.so" "$SYSLIB/21/liboboe.so" 2>/dev/null || true
+      - name: 自編 libmad for Android(arm64-v8a;AGS engine 必要依賴,缺則引擎只剩 detection)
+        env:
+          ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
+        run: |
+          # AGS engine 硬依賴 libmad(MP3)。NDK 環境沒有 → configure 印 Disabling AGS、退出 0、
+          # 只編 detection → APK 跑遊戲報「Could not find suitable engine plugin」(同 Win/macOS 根因)。
+          # 用 NDK clang 把 libmad cross-build 進 NDK sysroot(同 oboe 模式),configure 才偵測得到。
+          # 本地 docker + NDK r26d 已實證:libmad.a 產出 + #include<mad.h> -lmad 連結成 aarch64 ELF。
+          TC="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64"
+          export PATH="$TC/bin:$PATH"
+          export CC=aarch64-linux-android21-clang CXX=aarch64-linux-android21-clang++ AR=llvm-ar RANLIB=llvm-ranlib
+          curl -fsSL -o /tmp/libmad.tar.gz https://deb.debian.org/debian/pool/main/libm/libmad/libmad_0.15.1b.orig.tar.gz
+          cd /tmp && tar xf libmad.tar.gz && cd libmad-0.15.1b
+          # libmad 0.15.1b 老雷:gcc 專屬最佳化 flag(NDK clang 全不認)strip 光;config.sub 換新版認 android triple;
+          # CXX 必設(libtool 會探測 C++ 編譯器,只設 CC 會退回 host /lib/cpp 而 sanity 失敗)。
+          sed -i -E 's/-f(force-mem|force-addr|inline-functions|thread-jumps|cse-follow-jumps|cse-skip-blocks|rerun-cse-after-loop|rerun-loop-opt|gcse|expensive-optimizations|regmove|schedule-insns2|schedule-insns|strength-reduce)//g' configure
+          curl -fsSL -o config.sub   'https://git.savannah.gnu.org/cgit/config.git/plain/config.sub'
+          curl -fsSL -o config.guess 'https://git.savannah.gnu.org/cgit/config.git/plain/config.guess'
+          ./configure --host=aarch64-linux-android --enable-static --disable-shared --enable-fpm=64bit --prefix=/tmp/madinst
+          make -j$(nproc) && make install
+          cp /tmp/madinst/include/mad.h "$TC/sysroot/usr/include/"
+          cp /tmp/madinst/lib/libmad.a "$TC/sysroot/usr/lib/aarch64-linux-android/"
+          ls -l "$TC/sysroot/usr/lib/aarch64-linux-android/libmad.a"
       - name: configure + build APK (arm64)
         working-directory: scummvm-src
         env:
@@ -178,6 +201,10 @@ jobs:
           cp "$LOBOE" android_project/lib/arm64-v8a/liboboe.so
           echo ">> liboboe.so 預置 android_project/lib/arm64-v8a/ ($(wc -c <"$LOBOE") bytes)"
           make -j$(nproc)
+          # [守門] 確認 ags engine 本體真的編入(libmad 生效),不只 detection.o
+          AGS_OBJ=$(find engines/ags -name "*.o" ! -name "detection.o" | wc -l)
+          echo ">> ags engine 本體 .o 數 = $AGS_OBJ (0=只有 detection,libmad 沒生效)"
+          [ "$AGS_OBJ" -gt 0 ] || { echo "### AGS engine 未編入 — 中止 ###"; exit 14; }
           # [HARD] androidtest 會跑 installDebug(裝到裝置),CI 無裝置/模擬器會 fail。
           # androiddistdebug = all(gradlew assembleDebug 純 build APK)+ cp 到 debug/,不安裝。
           make androiddistdebug
@@ -225,6 +252,26 @@ jobs:
           cp "$LOBOE" "$SYSLIB/"
           cp "$LOBOE" "$SYSLIB/21/" 2>/dev/null || true
           ls -la "$SYSLIB/liboboe.so" "$SYSLIB/21/liboboe.so" 2>/dev/null || true
+      - name: 自編 libmad for Android(x86_64;AGS engine 必要依賴,缺則引擎只剩 detection)
+        env:
+          ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
+        run: |
+          # 同 arm64 job:AGS engine 硬依賴 libmad,NDK 沒有 → 引擎只剩 detection、跑遊戲報
+          # Could not find suitable engine plugin。用 NDK clang cross-build 進 sysroot。
+          # 本地 docker + NDK r26d 已實證:x86_64 libmad.a + -lmad 連結成 x86-64 ELF。
+          TC="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64"
+          export PATH="$TC/bin:$PATH"
+          export CC=x86_64-linux-android21-clang CXX=x86_64-linux-android21-clang++ AR=llvm-ar RANLIB=llvm-ranlib
+          curl -fsSL -o /tmp/libmad.tar.gz https://deb.debian.org/debian/pool/main/libm/libmad/libmad_0.15.1b.orig.tar.gz
+          cd /tmp && tar xf libmad.tar.gz && cd libmad-0.15.1b
+          sed -i -E 's/-f(force-mem|force-addr|inline-functions|thread-jumps|cse-follow-jumps|cse-skip-blocks|rerun-cse-after-loop|rerun-loop-opt|gcse|expensive-optimizations|regmove|schedule-insns2|schedule-insns|strength-reduce)//g' configure
+          curl -fsSL -o config.sub   'https://git.savannah.gnu.org/cgit/config.git/plain/config.sub'
+          curl -fsSL -o config.guess 'https://git.savannah.gnu.org/cgit/config.git/plain/config.guess'
+          ./configure --host=x86_64-linux-android --enable-static --disable-shared --enable-fpm=64bit --prefix=/tmp/madinst
+          make -j$(nproc) && make install
+          cp /tmp/madinst/include/mad.h "$TC/sysroot/usr/include/"
+          cp /tmp/madinst/lib/libmad.a "$TC/sysroot/usr/lib/x86_64-linux-android/"
+          ls -l "$TC/sysroot/usr/lib/x86_64-linux-android/libmad.a"
       - name: configure + build APK (x86_64 debug)
         working-directory: scummvm-src
         env:
@@ -257,6 +304,10 @@ jobs:
           cp "$LIBCPP" android_project/lib/x86_64/libc++_shared.so
           echo ">> 預置 liboboe.so ($(wc -c <"$LOBOE")) + libc++_shared.so ($(wc -c <"$LIBCPP")) 到 lib/x86_64/"
           make -j$(nproc)
+          # [守門] 確認 ags engine 本體真的編入(libmad 生效),不只 detection.o
+          AGS_OBJ=$(find engines/ags -name "*.o" ! -name "detection.o" | wc -l)
+          echo ">> ags engine 本體 .o 數 = $AGS_OBJ (0=只有 detection,libmad 沒生效)"
+          [ "$AGS_OBJ" -gt 0 ] || { echo "### AGS engine 未編入 — 中止 ###"; exit 14; }
           # make -j 的 'all' target 已跑 Gradle;androiddistdebug 確保 APK 複製到 debug/
           make androiddistdebug
           echo ">> APK 內含 .so:"
