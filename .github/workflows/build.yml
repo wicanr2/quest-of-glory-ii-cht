@@ -192,7 +192,10 @@ jobs:
           export LDFLAGS="-L$GITHUB_WORKSPACE/oboe-build"
           # [HARD] --host 必須是 android-arm64-v8a(ScummVM configure 認的 pattern);
           # 用 android-aarch64 不 match 任何 case → 不進 Android 分支 → 不套 -loboe -llog → undefined
-          ./configure --host=android-arm64-v8a --enable-engine=ags --disable-all-engines --enable-release
+          # [HARD] 參數順序:--disable-all-engines 必須在 --enable-engine=ags **之前**。
+          # configure 逐一處理、後者覆蓋:若 enable 在前、disable-all 在後,會把 ags 一起關掉
+          # → log 出現「Engines Skipped: Adventure Game Studio」、只編 detection.o(引擎沒進 APK)。
+          ./configure --host=android-arm64-v8a --disable-all-engines --enable-engine=ags --enable-release
           # [HARD] liboboe.so 必須在 make -j$(nproc) 之前放進 android_project/lib/arm64-v8a/。
           # (同 android-x86 job 的修正:make 'all' target 本身已包含 gradlew assembleDebug,
           #  APK 在第一個 make 就封裝完畢;make 後才 cp liboboe.so 是 too late。)
@@ -288,7 +291,8 @@ jobs:
           export CPPFLAGS="-I$GITHUB_WORKSPACE/oboe/include"
           export LDFLAGS="-L$GITHUB_WORKSPACE/oboe-build"
           # [HARD] --host=android-x86_64:ScummVM configure 認的 x86_64 pattern(見 configure:1785)
-          ./configure --host=android-x86_64 --enable-engine=ags --disable-all-engines --enable-release
+          # [HARD] 同 arm64:--disable-all-engines 必須在 --enable-engine=ags 之前,否則 ags 被一起關掉
+          ./configure --host=android-x86_64 --disable-all-engines --enable-engine=ags --enable-release
           # [HARD] liboboe.so 必須在 make -j$(nproc) 之前放進 android_project/lib/x86_64/。
           # 原因:ScummVM 的 make 'all' target(= make -j$(nproc) 預設)已包含
           # (cd ./android_project; ./gradlew assembleDebug)。APK 在第一個 make 就封裝完畢。
