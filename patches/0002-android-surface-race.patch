@@ -1,0 +1,34 @@
+diff --git a/backends/platform/android/org/scummvm/scummvm/ScummVM.java b/backends/platform/android/org/scummvm/scummvm/ScummVM.java
+index a768d488..4fde0f9d 100644
+--- a/backends/platform/android/org/scummvm/scummvm/ScummVM.java
++++ b/backends/platform/android/org/scummvm/scummvm/ScummVM.java
+@@ -24,6 +24,7 @@ package org.scummvm.scummvm;
+ import android.content.res.AssetManager;
+ import android.graphics.PixelFormat;
+ import android.util.Log;
++import android.view.Surface;
+ import android.view.SurfaceHolder;
+ 
+ import androidx.annotation.NonNull;
+@@ -247,6 +248,21 @@ public abstract class ScummVM implements SurfaceHolder.Callback,
+ 
+ 	// Callback from C++ peer instance
+ 	final protected EGLSurface initSurface() throws Exception {
++		// On fast devices and modern Android (15/16), the SurfaceView's underlying Surface can be
++		// transiently null/invalid during the Splash->ScummVM activity startup churn. Handing such a
++		// holder to eglCreateWindowSurface() throws UnsupportedOperationException ("... can only be
++		// called with an instance of Surface ..."), which the C++ peer turns into a fatal error so
++		// the app insta-crashes (e.g. Galaxy S25+ on Android 16). Wait on the same monitor the surface
++		// callbacks notify until the holder actually has a valid Surface before creating the EGL surface.
++		synchronized(_sem_surface) {
++			Surface s;
++			while (_surface_holder == null
++					|| (s = _surface_holder.getSurface()) == null
++					|| !s.isValid()) {
++				_sem_surface.wait();
++			}
++		}
++
+ 		_egl_surface = _egl.eglCreateWindowSurface(_egl_display, _egl_config,
+ 													_surface_holder, null);
+ 
