@@ -42,18 +42,31 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - name: 安裝相依(mad 是 AGS engine 必要依賴,缺了整個引擎會被 configure 靜默剔除)
-        run: brew install sdl2 sdl2_net freetype libpng libvorbis libogg flac mad bzip2 zlib dylibbundler
-      - name: 把 keg-only 的 bzip2/zlib/mad 靜態檔 symlink 到 configure 硬編的路徑
+      - name: 安裝相依(libmad 另從源碼自編,brew 的 mad 只有 dylib、缺靜態 .a)
+        run: brew install sdl2 sdl2_net freetype libpng libvorbis libogg flac bzip2 zlib dylibbundler autoconf
+      - name: 把 keg-only 的 bzip2/zlib 靜態檔 symlink 到 configure 硬編的路徑
         run: |
-          # ScummVM configure 在 link 行硬編 /opt/homebrew/lib/lib{bz2,z,mad}.a,
-          # 但 brew bzip2/zlib/mad 的 .a 在各自 keg /opt/homebrew/opt/*/lib,
-          # 沒 symlink 到 /opt/homebrew/lib → 靜態 link 報 "no such file"。建 symlink。
-          # (mad 偵測階段用 dylib 通過 Checking for MAD,最後靜態 link 才需要 .a)
+          # ScummVM configure 在 link 行硬編 /opt/homebrew/lib/libbz2.a 與 libz.a,
+          # 但 brew bzip2/zlib 是 keg-only,.a 在 /opt/homebrew/opt/*/lib。建 symlink。
           ln -sf /opt/homebrew/opt/bzip2/lib/libbz2.a /opt/homebrew/lib/libbz2.a
           ln -sf /opt/homebrew/opt/zlib/lib/libz.a    /opt/homebrew/lib/libz.a
-          ln -sf /opt/homebrew/opt/mad/lib/libmad.a   /opt/homebrew/lib/libmad.a
-          ls -l /opt/homebrew/lib/libmad.a /opt/homebrew/opt/mad/lib/libmad.a
+      - name: 自編 libmad 靜態庫(AGS engine 必要依賴;brew mad 只有 dylib,ScummVM 靜態 link 需 libmad.a)
+        run: |
+          # ScummVM 的 scummvm-static target 在 link 行硬編 /opt/homebrew/lib/libmad.a,
+          # 但 brew mad 不附 .a。照源碼自編裝進 /opt/homebrew(libmad.a + mad.h 各就各位)。
+          # libmad 0.15.1b(2004)兩個雷:(a) configure 用 clang 不認的 -fforce-mem/-fforce-addr;
+          # (b) 隨附 config.sub/guess 不認 aarch64-apple-darwin。
+          curl -fsSL -o /tmp/libmad.tar.gz \
+            https://deb.debian.org/debian/pool/main/libm/libmad/libmad_0.15.1b.orig.tar.gz
+          cd /tmp && tar xf libmad.tar.gz && cd libmad-0.15.1b
+          sed -i '' 's/-fforce-mem//g; s/-fforce-addr//g' configure
+          curl -fsSL -o config.sub   'https://git.savannah.gnu.org/cgit/config.git/plain/config.sub'
+          curl -fsSL -o config.guess 'https://git.savannah.gnu.org/cgit/config.git/plain/config.guess'
+          chmod +x config.sub config.guess
+          ./configure --prefix=/opt/homebrew --enable-static --disable-shared
+          make -j"$(sysctl -n hw.ncpu)"
+          make install
+          ls -l /opt/homebrew/lib/libmad.a /opt/homebrew/include/mad.h
       - name: 取得並 patch ScummVM
         run: bash tools/apply_patches.sh "$GITHUB_WORKSPACE/scummvm-src"
       - name: configure + build + bundle
