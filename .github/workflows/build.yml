@@ -147,6 +147,67 @@ jobs:
           name: qfg2-cht-android
           path: scummvm-src/**/*.apk
 
+  # ---- Android APK(x86_64 debug,供 android-dpad-test 模擬器使用)----
+  # 原 android job 只 build arm64-v8a(給真手機);arm64 APK 裝到 x86_64 模擬器一跑就 crash。
+  # 本 job 另 build x86_64 debug APK,ABI 對上 GitHub Actions 的 x86_64 模擬器。
+  # 規則:不破壞原 android job 的 arm64 產物;本 job 純為 CI 驗證用途。
+  android-x86:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安裝相依
+        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - name: 安裝 Android NDK
+        id: ndk
+        uses: nttld/setup-ndk@v1
+        with: { ndk-version: r26d }
+      - name: 取得並 patch ScummVM
+        run: bash tools/apply_patches.sh "$GITHUB_WORKSPACE/scummvm-src"
+      - name: 從源碼建 Oboe(x86_64)
+        env:
+          ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
+        run: |
+          git clone --depth 1 https://github.com/google/oboe.git "$GITHUB_WORKSPACE/oboe"
+          # [HARD] BUILD_SHARED_LIBS=ON:ScummVM 用 -Wl,-Bdynamic -loboe 動態連結,同 arm64 job。
+          cmake -S "$GITHUB_WORKSPACE/oboe" -B "$GITHUB_WORKSPACE/oboe-build" \
+            -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake" \
+            -DANDROID_ABI=x86_64 -DANDROID_PLATFORM=android-21 -DCMAKE_BUILD_TYPE=Release \
+            -DBUILD_SHARED_LIBS=ON
+          cmake --build "$GITHUB_WORKSPACE/oboe-build" -j$(nproc)
+          # x86_64 sysroot 放 x86_64-linux-android/(同 arm64 job 的 aarch64-linux-android/)
+          SYSLIB="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/x86_64-linux-android"
+          LOBOE=$(find "$GITHUB_WORKSPACE/oboe-build" -name 'liboboe.so' | head -1)
+          echo ">> liboboe.so 位置: $LOBOE"
+          cp "$LOBOE" "$SYSLIB/"
+          cp "$LOBOE" "$SYSLIB/21/" 2>/dev/null || true
+          ls -la "$SYSLIB/liboboe.so" "$SYSLIB/21/liboboe.so" 2>/dev/null || true
+      - name: configure + build APK (x86_64 debug)
+        working-directory: scummvm-src
+        env:
+          ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
+        run: |
+          export ANDROID_NDK_ROOT="$ANDROID_NDK_HOME"
+          NDKVER=$(sed -n 's/^Pkg.Revision *= *//p' "$ANDROID_NDK_ROOT/source.properties")
+          echo ">> NDK 版本: $NDKVER"
+          sed -i "s/ndkVersion *= *\"[^\"]*\"/ndkVersion = \"$NDKVER\"/" dists/android/build.gradle
+          export PATH="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
+          # [HARD] x86_64 toolchain:CC/CXX 換成 x86_64-linux-android21-clang*
+          export CC=x86_64-linux-android21-clang
+          export CXX=x86_64-linux-android21-clang++
+          export CPPFLAGS="-I$GITHUB_WORKSPACE/oboe/include"
+          export LDFLAGS="-L$GITHUB_WORKSPACE/oboe-build"
+          # [HARD] --host=android-x86_64:ScummVM configure 認的 x86_64 pattern(見 configure:1785)
+          ./configure --host=android-x86_64 --enable-engine=ags --disable-all-engines --enable-release
+          make -j$(nproc)
+          make androiddistdebug
+          ls -la *.apk debug/*.apk 2>/dev/null
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qfg2-cht-android-x86
+          path: scummvm-src/**/*.apk
+
   # ---- Windows .exe + 相依 DLL(patched ScummVM,僅 ags engine,MSYS2 MinGW)----
   windows:
     runs-on: windows-latest
@@ -186,17 +247,39 @@ jobs:
 
   # ---- 用 Android 模擬器驗證 on-screen D-pad 移游標(不涉版權)----
   # 計畫見 docs/ci-android-dpad-test-plan.md;機制見 docs/android-dpad-virtual-mouse.md。
-  # D-pad 是 ScummVM 上游引擎機制(非本專案 CJK patch),故用官方 ScummVM x86_64 APK 測即可,
-  # 完全不碰 QFG2 版權資料。本專案 CI 只 build arm64-v8a(給手機),在 x86_64 模擬器會 crash。
+  # 用本專案自己的 x86_64 debug APK(android-x86 job 產出)→ ABI 對上 x86_64 模擬器且可 run-as 寫 config。
+  # 測試遊戲:《5 Days a Stranger》(免費 AGS freeware),完全不碰 QFG2 版權資料。
   android-dpad-test:
+    needs: android-x86
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: 取官方 ScummVM x86_64 APK(模擬器是 x86_64,本專案 arm64 APK 在此會 crash)
+      - name: 下載本專案 x86_64 debug APK(android-x86 job 產出)
+        uses: actions/download-artifact@v4
+        with:
+          name: qfg2-cht-android-x86
+          path: /home/runner/work/_temp/apk
+      - name: 找 APK 路徑 + 設定環境變數
         run: |
-          wget -q https://downloads.scummvm.org/frs/scummvm/2026.3.0/scummvm-2026.3.0-android-x86_64.apk -O base.apk
-          echo "APK=base.apk" >> "$GITHUB_ENV"
-          ls -la base.apk
+          APK=$(find /home/runner/work/_temp/apk -name '*.apk' | head -1)
+          echo "APK=$APK" >> "$GITHUB_ENV"
+          echo ">> APK: $APK"
+          ls -la "$APK"
+      - name: 下載《5 Days a Stranger》(免費 AGS freeware,不涉 QFG2 版權)
+        run: |
+          # gameid=5daysastranger,ScummVM AGS detection 認的主檔是 5days.exe
+          wget -q "https://archive.org/download/5_Days_a_Stranger/5days.zip" -O /tmp/5days.zip \
+            && echo ">> 下載完成 ($(wc -c </tmp/5days.zip) bytes)" \
+            || echo "!! 下載失敗"
+          mkdir -p /home/runner/work/_temp/5days
+          unzip -q /tmp/5days.zip -d /home/runner/work/_temp/5days 2>/dev/null || true
+          # 有些 zip 多一層子目錄,找出真正含 5days.exe 的目錄
+          GAME_ROOT=$(find /home/runner/work/_temp/5days -maxdepth 3 -name '5days.exe' -type f \
+            | head -1 | xargs dirname 2>/dev/null)
+          GAME_ROOT="${GAME_ROOT:-/home/runner/work/_temp/5days}"
+          echo "GAME_DIR=$GAME_ROOT" >> "$GITHUB_ENV"
+          echo ">> 遊戲目錄: $GAME_ROOT"
+          ls -la "$GAME_ROOT/" | head -20
       - name: 開 KVM(模擬器硬體加速)
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
