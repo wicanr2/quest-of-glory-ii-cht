@@ -86,6 +86,12 @@ RUN PFX=/usr/x86_64-w64-mingw32 \
 #   (b) mingw-w64 header 的 extern inline CRT helper(imaxabs/_Exit/llabs/atoll…)會在每個 .o
 #       吐外部符號 → 連結時 multiple definition。用 -D__CRT__NO_INLINE 讓 header 不內聯、改連 CRT 庫。
 #   (c) 隨附 config.sub(2004)不認 x86_64-w64-mingw32 → 同 libmad 用 autotools-dev 新版覆蓋。
+#   (d)【致命,實測】libmpeg2 在 x86_64 上仍套用 32-bit x86 MMX 內嵌組語(config.h 的
+#       `#define ARCH_X86`)。那段 asm 是為 Linux System V ABI 寫的,在 mingw/Windows x64 ABI
+#       下暫存器慣例不合 → mpeg2_init OK、序列頭 OK,但一解 slice 就 crash → ScummVM 的
+#       error("Could not initialize libmpeg2") 致命退出(= issue #3「版權宣告後程式結束」)。
+#       停用 ARCH_X86 + ACCEL_DETECT 改純 C(慢一點但正確)。mingw 版實測:accel=0、DECODED 51 frames。
+#       (Linux/Android arm64 用同 asm 沒事,因為那是 Linux ABI / 非 x86,故只 mingw 需此修正。)
 # ScummVM 用 #include <mpeg2dec/mpeg2.h>,故 header 裝到 include/mpeg2dec/。
 ARG MPEG2VER=0.5.1
 RUN PFX=/usr/x86_64-w64-mingw32 \
@@ -97,6 +103,7 @@ RUN PFX=/usr/x86_64-w64-mingw32 \
  && find . -name config.guess -exec cp /usr/share/misc/config.guess {} \; \
  && CFLAGS="-O2 -D__CRT__NO_INLINE" ./configure --host=x86_64-w64-mingw32 \
       --enable-static --disable-shared --disable-sdl --without-x --prefix="$PFX" >/dev/null 2>&1 \
+ && sed -i 's|#define ARCH_X86 .*|/* ARCH_X86 disabled: 32-bit MMX asm crashes on mingw x64 ABI */|; s|#define ACCEL_DETECT .*|/* ACCEL_DETECT disabled */|' include/config.h \
  && make -C libmpeg2 >/dev/null 2>&1 \
  && mkdir -p "$PFX/include/mpeg2dec" \
  && cp libmpeg2/.libs/libmpeg2.a "$PFX/lib/" \
