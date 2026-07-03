@@ -201,7 +201,7 @@ bash tools/dev-setup.sh                 # 建環境 → patch → 編引擎 → 
 bash tools/package_release.sh linux     # 組完整可玩包 → out/release/qfg2-cht-linux.tar.gz
 ```
 
-各步驟拆解、跨平台打包與工具鏈速查見 [`docs/DEV-SETUP.md`](docs/DEV-SETUP.md);工程過程與技術決策見 [`docs/MAKING-OF.md`](docs/MAKING-OF.md);手機觸控的螢幕 D-pad 虛擬滑鼠見上面「[手機上怎麼操作](#手機上怎麼操作螢幕-d-pad-推滑鼠)」(機制 / 設計圖 / CI 驗證計畫 / 成果記錄四份文件的索引在那段),CI 自動驗證的五輪根因與已實證範圍見 [`docs/android-dpad-outcome.md`](docs/android-dpad-outcome.md)。
+各步驟拆解、跨平台打包與工具鏈速查見 [`docs/DEV-SETUP.md`](docs/DEV-SETUP.md);工程過程與技術決策見 [`docs/MAKING-OF.md`](docs/MAKING-OF.md);手機觸控的螢幕 D-pad 虛擬滑鼠見上面「[手機上怎麼操作](#手機上怎麼操作螢幕-d-pad-推滑鼠)」(機制 / 設計圖 / CI 驗證計畫 / 成果記錄四份文件的索引在那段),CI 自動驗證的五輪根因與已實證範圍見 [`docs/android-dpad-outcome.md`](docs/android-dpad-outcome.md);四平台(Windows/macOS/Android/Linux)交叉編譯一路踩過的雷(libmad 依賴被靜默剔除、configure 參數順序、libmpeg2 x86 asm 在 x64 crash、oboe ABI、16KB ELF 對齊等)整理成 [`docs/lessons-learned.md`](docs/lessons-learned.md)。
 
 macOS `.dmg`、Windows `.exe`(含相依 DLL)與 Android `.apk` 由 GitHub Actions（`.github/workflows/build.yml`）打包,不需對應平台的機器;下載 CI artifact 後用 `ENGINE=... tools/package_release.sh <平台>` 組完整包。
 
